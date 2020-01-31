@@ -46,7 +46,7 @@ public class ConsumerExample {
 
         final KStream<String, String> processedStream = inputStreamData.mapValues(record -> record.toUpperCase() );
 
-//        processedStream.to(stringSerde, stringSerde, "taxioutput");
+        processedStream.to(stringSerde, stringSerde, "taxioutput");
 //
 //        final KafkaStreams streams = new KafkaStreams(builder, props);
 //        streams.cleanUp();
