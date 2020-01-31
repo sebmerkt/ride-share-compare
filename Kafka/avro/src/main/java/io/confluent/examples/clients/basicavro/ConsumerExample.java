@@ -46,7 +46,7 @@ public class ConsumerExample {
 
             while (true) {
                 final ConsumerRecords<String, String> records = consumer.poll(100);
-//                System.out.println(records);
+                System.out.println(records.count());
 //                for (final ConsumerRecord<String, String> record : records) {
 //                    final String key = record.key();
 //                    final String value = record.value();
