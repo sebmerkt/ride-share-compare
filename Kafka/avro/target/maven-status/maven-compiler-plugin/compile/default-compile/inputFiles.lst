@@ -1,0 +1,4 @@
+/home/sam/ride-share-compare/Kafka/avro/target/generated-sources/io/confluent/examples/clients/basicavro/Payment.java
+/home/sam/ride-share-compare/Kafka/avro/src/main/java/io/confluent/examples/clients/basicavro/ProducerExample.java
+/home/sam/ride-share-compare/Kafka/avro/src/main/java/io/confluent/examples/clients/basicavro/ConsumerExample.java
+/home/sam/ride-share-compare/Kafka/avro/src/main/java/io/confluent/examples/clients/basicavro/TaxiData.java
