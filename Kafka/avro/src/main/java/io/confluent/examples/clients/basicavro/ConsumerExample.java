@@ -39,20 +39,20 @@ public class ConsumerExample {
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
         props.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, true);
 
-//        final Serde stringSerde = Serdes.String();
+        final Serde stringSerde = Serdes.String();
 
         try (final KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props)) {
             consumer.subscribe(Collections.singletonList(TOPIC));
 
-//            while (true) {
-//                final ConsumerRecords<String, String> records = consumer.poll(100);
-////                System.out.println(records);
+            while (true) {
+                final ConsumerRecords<String, String> records = consumer.poll(100);
+//                System.out.println(records);
 //                for (final ConsumerRecord<String, String> record : records) {
 //                    final String key = record.key();
 //                    final String value = record.value();
 //                    System.out.printf("key = %s, value = %s%n", key, value);
 //                }
-//            }
+            }
 
         }
 
