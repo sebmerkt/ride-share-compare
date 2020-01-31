@@ -11,6 +11,7 @@ import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.streams.KafkaStreams;
+import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KStreamBuilder;
 
@@ -21,11 +22,13 @@ import java.util.Properties;
 
 public class ConsumerExample {
 
-    private static final String TOPIC = "transactions";
+//    private static final String TOPIC = "transactions";
 
     @SuppressWarnings("InfiniteLoopStatement")
     public static void main(final String[] args) {
         final Properties props = new Properties();
+
+        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "insight-ride-share-application");
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "test-payments");
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
