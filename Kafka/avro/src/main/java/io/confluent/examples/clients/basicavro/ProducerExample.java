@@ -73,7 +73,7 @@ public class ProducerExample {
                 System.out.println("Producing batch: " + batchNum);
                 batchNum += 1;
 
-                final String csvFile = "fhv_tripdata_2019-01.csv";
+                final String csvFile = "/home/ubuntu/fhv_tripdata_2019-01.csv";
                 String line = "";
                 final String cvsSplitBy = ",";
 
