@@ -46,12 +46,12 @@ public class ConsumerExample {
 
             while (true) {
                 final ConsumerRecords<String, String> records = consumer.poll(100);
-                System.out.println(records);
-//                for (final ConsumerRecord<String, String> record : records) {
-//                    final String key = record.key();
-//                    final String value = record.value();
-//                    System.out.printf("key = %s, value = %s%n", key, value);
-//                }
+//                System.out.println(records);
+                for (final ConsumerRecord<String, String> record : records) {
+                    final String key = record.key();
+                    final String value = record.value();
+                    System.out.printf("key = %s, value = %s%n", key, value);
+                }
             }
 
         }
