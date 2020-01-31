@@ -1,0 +1,15 @@
+{"namespace": "io.confluent.examples.clients.basicavro",
+ "type": "record",
+ "name": "FHVvehile",
+ "fields": [
+     {"name": "ID", "type": "string"},
+     {"name": "dispatching_base_num", "type": "string"}
+     {"name": "pickup_datetime", "type": "string"}
+     {"name": "dropoff_datetime", "type": "string"}
+     {"name": "PULocationID", "type": "double"}
+     {"name": "DOLocationID", "type": "double"}
+     {"name": "SR_Flag", "type": "doube"}
+ ]
+}
+
+

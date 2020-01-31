@@ -22,7 +22,7 @@ import java.util.Properties;
 
 public class ConsumerExample {
 
-//    private static final String TOPIC = "transactions";
+    private static final String TOPIC = "taxiinput";
 
     @SuppressWarnings("InfiniteLoopStatement")
     public static void main(final String[] args) {
@@ -39,16 +39,34 @@ public class ConsumerExample {
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
         props.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, true);
 
-        final Serde stringSerde = Serdes.String();
+//        final Serde stringSerde = Serdes.String();
 
-        final KStreamBuilder builder = new KStreamBuilder();
-        final KStream<String, String> inputStreamData = builder.stream(stringSerde, stringSerde, "taxiinput");
+        try (final KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props)) {
+            consumer.subscribe(Collections.singletonList(TOPIC));
 
-        final KStream<String, String> processedStream = inputStreamData.mapValues(record -> record.toUpperCase() );
+            while (true) {
+                final ConsumerRecords<String, String> records = consumer.poll(100);
+                System.out.println(records);
+//                for (final ConsumerRecord<String, String> record : records) {
+//                    final String key = record.key();
+//                    final String value = record.value();
+//                    System.out.printf("key = %s, value = %s%n", key, value);
+//                }
+            }
 
-        processedStream.to(stringSerde, stringSerde, "taxioutput");
+        }
+
+
+
+
+//        final KStreamBuilder builder = new KStreamBuilder();
+//        final KStream<String, String> inputStreamData = builder.stream(stringSerde, stringSerde, "taxiinput");
 //
-        final KafkaStreams streams = new KafkaStreams(builder, props);
+//        final KStream<String, String> processedStream = inputStreamData.mapValues(record -> record.toUpperCase() );
+//
+//        processedStream.to(stringSerde, stringSerde, "taxioutput");
+////
+//        final KafkaStreams streams = new KafkaStreams(builder, props);
 //        streams.cleanUp();
 //        streams.start();
 //

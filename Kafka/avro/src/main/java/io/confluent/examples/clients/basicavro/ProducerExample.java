@@ -65,7 +65,7 @@ public class ProducerExample {
             // Get an object and print its contents.
             taxiData.setFullObject(s3client.getObject(new GetObjectRequest(bucketName, taxiData.getKey())));
 
-            final Producer<String, String> producer = new KafkaProducer<>(props);
+            final Producer<String, String> producer = new KafkaProducer<String, String>(props);
             int batchNum = 0;
 
             while (true) {
