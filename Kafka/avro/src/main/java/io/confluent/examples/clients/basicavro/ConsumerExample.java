@@ -48,7 +48,7 @@ public class ConsumerExample {
 
         processedStream.to(stringSerde, stringSerde, "taxioutput");
 //
-//        final KafkaStreams streams = new KafkaStreams(builder, props);
+        final KafkaStreams streams = new KafkaStreams(builder, props);
 //        streams.cleanUp();
 //        streams.start();
 //
