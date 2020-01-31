@@ -46,17 +46,17 @@ public class ConsumerExample {
 
         final KStream<String, String> processedStream = inputStreamData.mapValues(record -> record.toUpperCase() );
 
-        processedStream.to(stringSerde, stringSerde, "taxioutput");
-
-        final KafkaStreams streams = new KafkaStreams(builder, props);
-        streams.cleanUp();
-        streams.start();
-
-        // print the topology
-        System.out.println(streams.toString());
-
-        // shutdown hook to correctly close the streams application
-        Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
+//        processedStream.to(stringSerde, stringSerde, "taxioutput");
+//
+//        final KafkaStreams streams = new KafkaStreams(builder, props);
+//        streams.cleanUp();
+//        streams.start();
+//
+//        // print the topology
+//        System.out.println(streams.toString());
+//
+//        // shutdown hook to correctly close the streams application
+//        Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
     }
 
 //        try (final KafkaConsumer<String, Payment> consumer = new KafkaConsumer<>(props)) {
