@@ -3,6 +3,7 @@ package com.insight;
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import io.confluent.kafka.streams.serdes.avro.GenericAvroSerde;
+import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -10,12 +11,17 @@ import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.streams.KafkaStreams;
+import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.KStream;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Properties;
+
+import static com.insight.RideShareProducer.buildRecord;
 
 public class RideShareStreamer {
     public static void main(String[] args) throws Exception {
@@ -32,6 +38,8 @@ public class RideShareStreamer {
 
         final String schemaUrl = "http://" + schemaDNS + ":8081";
 
+        // avro schema avsc file path.
+        final String schemaPath = "src/main/resources/avro/com/insight/yellowcab.avsc";
 
         final Serde<GenericRecord> genericAvroSerde = new GenericAvroSerde();
 
@@ -48,8 +56,24 @@ public class RideShareStreamer {
         StreamsBuilder builder = new StreamsBuilder();
 
         KStream<String, GenericRecord> rideStream = builder.stream(TOPICIN);
+        ;
+        KStream<String, GenericRecord> processedStream = rideStream.mapValues(val -> {
 
-//        KStream<String, String> processedStream = rideStream.mapValues(record -> record.value().get() );
+//            final File schemaFile = new File(schemaPath);
+//            Schema avroSchema = null;
+//            try {
+//                avroSchema = new Schema.Parser().parse(schemaFile);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            val.toString().split(",", -18))[11];
+
+            // message value, avro generic record.
+//            GenericRecord pageViewEventRecord = buildRecord(avroSchema, );
+
+            System.out.println(val);
+            return val;
+        });
 
         rideStream.to(TOPICOUT);
 
