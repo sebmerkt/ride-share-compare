@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<checkstyle version="8.18">
-<file name="/home/sam/ride-share-compare/Kafka/avro/src/main/java/io/confluent/examples/clients/basicavro/ProducerExample.java">
-</file>
-<file name="/home/sam/ride-share-compare/Kafka/avro/src/main/java/io/confluent/examples/clients/basicavro/ConsumerExample.java">
-</file>
-<file name="/home/sam/ride-share-compare/Kafka/avro/src/main/java/io/confluent/examples/clients/basicavro/TaxiData.java">
-</file>
-</checkstyle>
