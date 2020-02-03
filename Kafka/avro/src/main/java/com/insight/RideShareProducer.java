@@ -30,7 +30,7 @@ public class RideShareProducer {
 
 
     private static final String schemaUrl = "http://"+schemaDNS+":8081";
-    private static final String TOPIC = "taxitest2";
+    private static final String TOPIC = "taxitest3in";
 
     // avro schema avsc file path.
     private static final String schemaPath = "src/main/resources/avro/com/insight/yellowcab.avsc";
