@@ -71,7 +71,7 @@ public class RideShareStreamer {
             // message value, avro generic record.
 //            GenericRecord pageViewEventRecord = buildRecord(avroSchema, );
 
-            System.out.println(val);
+            System.out.println(val.get("Payment_Type"));
             return val;
         });
 
