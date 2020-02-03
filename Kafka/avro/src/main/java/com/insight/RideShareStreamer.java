@@ -50,9 +50,9 @@ public class RideShareStreamer {
 
         rideStream.to(TOPICOUT);
 
-//        // start kafka streams.
-//        KStreams streams = new KafkaStreams(builder.build(), config);
-//        streams.start();
+        // start kafka streams.
+        KafkaStreams streams = new KafkaStreams(builder.build(), config);
+        streams.start();
 
 //        // Add shutdown hook to respond to SIGTERM and gracefully close Kafka Streams
 //        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
