@@ -20,7 +20,7 @@ import java.util.Properties;
 
 public class RideShareConsumer {
 
-    private static final String TOPIC = "taxitest2";
+    private static final String TOPIC = "taxitest3out";
 
     static Map<String, String> env = System.getenv();
     static String schemaDNS = env.get("SCHEMA_REGISTRY");
