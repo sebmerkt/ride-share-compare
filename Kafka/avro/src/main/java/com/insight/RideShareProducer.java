@@ -86,7 +86,7 @@ public class RideShareProducer {
 
                     producer.send(new ProducerRecord<String, GenericRecord>(TOPIC, String.valueOf(i), record));
                     try{
-                        TimeUnit.MILLISECONDS .sleep(1);
+                        TimeUnit.SECONDS .sleep(2);
                     } catch (final InterruptedException e) {
                         break;
                     }

@@ -72,7 +72,9 @@ public class RideShareStreamer {
 //            GenericRecord pageViewEventRecord = buildRecord(avroSchema, );
 
             System.out.println(val.get("Payment_Type"));
-            val.put("Payment_Type", val.get("Payment_Type")+"-NEW");
+            System.out.println(val.put("Payment_Type", val.get("Payment_Type")+"-NEW");
+            System.out.println(val.get("Payment_Type"));
+
             return val;
         });
 
