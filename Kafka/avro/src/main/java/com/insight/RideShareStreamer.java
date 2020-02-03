@@ -38,9 +38,6 @@ public class RideShareStreamer {
 
         final String schemaUrl = "http://" + schemaDNS + ":8081";
 
-        // avro schema avsc file path.
-        final String schemaPath = "src/main/resources/avro/com/insight/yellowcab.avsc";
-
         final Serde<GenericRecord> genericAvroSerde = new GenericAvroSerde();
 
         Properties props = new Properties();
@@ -56,29 +53,19 @@ public class RideShareStreamer {
         StreamsBuilder builder = new StreamsBuilder();
 
         KStream<String, GenericRecord> rideStream = builder.stream(TOPICIN);
-        ;
+
         KStream<String, GenericRecord> processedStream = rideStream.mapValues(val -> {
-
-//            final File schemaFile = new File(schemaPath);
-//            Schema avroSchema = null;
-//            try {
-//                avroSchema = new Schema.Parser().parse(schemaFile);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            val.toString().split(",", -18))[11];
-
-            // message value, avro generic record.
-//            GenericRecord pageViewEventRecord = buildRecord(avroSchema, );
 
             System.out.println(val.get("Payment_Type"));
             val.put("Payment_Type", val.get("Payment_Type")+"-NEW");
             System.out.println(val.get("Payment_Type"));
 
+            System.out.println(val.get("Payment_Type").getClass().getName());
+
             return val;
         });
 
-        rideStream.to(TOPICOUT);
+        processedStream.to(TOPICOUT);
 
         // start kafka streams.
         KafkaStreams streams = new KafkaStreams(builder.build(), config);
