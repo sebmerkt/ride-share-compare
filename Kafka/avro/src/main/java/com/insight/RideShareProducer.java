@@ -63,7 +63,7 @@ public class RideShareProducer {
         // construct kafka producer.
         final Producer<String, GenericRecord> producer = new KafkaProducer<>(props);// message key.
 
-        final String[] csvFile = {"/home/ubuntu/yellow_tripdata_2009-01_short.csv",
+        final String[] csvFile = {//"/home/ubuntu/yellow_tripdata_2009-01_short.csv",
                 "/home/ubuntu/yellow_tripdata_2015-01_short.csv"};
 //          final String[] csvFile = {"/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2009-01.csv",
 //                  "/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2015-01.csv"};
@@ -116,6 +116,7 @@ public class RideShareProducer {
         record.put("End_Lon", InsertDouble(transaction[9]));
         record.put("End_Lat", InsertDouble(transaction[10]));
         record.put("Payment_Type", InsertString(transaction[11]));
+        record.put("Payment_Type", InsertLong(transaction[11]));
         record.put("Fare_Amt", InsertDouble(transaction[12]));
         record.put("surcharge", InsertDouble(transaction[13]));
         record.put("mta_tax", InsertDouble(transaction[14]));
