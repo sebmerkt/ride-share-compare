@@ -29,7 +29,7 @@ public class RideShareProducerV1 {
 
             for (long i = 0; i < 10; i++) {
                 final String orderId = "id" + Long.toString(i);
-                final Ride ride = new Ride(orderId, 1000.00d);
+                final Ride ride = new Ride();
                 final ProducerRecord<String, Ride> record = new ProducerRecord<String, Ride>(TOPIC, ride.getId().toString(),
                         ride);
                 producer.send(record);
