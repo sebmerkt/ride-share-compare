@@ -27,14 +27,17 @@ public class RideShareProducerV1 {
 
         try (KafkaProducer<String, Ride> producer = new KafkaProducer<String, Ride>(props)) {
 
+            System.out.println(Ride.getClassSchema());
             for (long i = 0; i < 10; i++) {
                 final String orderId = "id" + Long.toString(i);
                 final Ride ride = new Ride();
+                System.out.println(ride.getSchema());
                 final ProducerRecord<String, Ride> record = new ProducerRecord<String, Ride>(TOPIC, "test",
                         ride);
                 producer.send(record);
                 Thread.sleep(1000L);
             }
+
 
             producer.flush();
             System.out.printf("Successfully produced 10 messages to a topic called %s%n", TOPIC);
