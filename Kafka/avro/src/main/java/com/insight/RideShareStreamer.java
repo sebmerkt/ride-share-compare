@@ -60,7 +60,7 @@ public class RideShareStreamer {
 //            val.put("Payment_Type", val.get("Payment_Type")+"-NEW");
 //            System.out.println(val.get("Payment_Type"));
 
-            System.out.println(val.get("Payment_Type").getClass().getName());
+//            System.out.println(val.get("Payment_Type").getClass().getName());
 
             return val;
         });
