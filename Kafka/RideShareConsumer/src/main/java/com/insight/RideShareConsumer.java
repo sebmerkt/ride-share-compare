@@ -67,7 +67,6 @@ public class RideShareConsumer {
                 for (final ConsumerRecord<String, GenericRecord> record : records) {
                     final String key = record.key();
                     final GenericRecord value = record.value();
-                    record.value().get
 
                     final String vendor_name = record.value().get("vendor_name").toString();
                     final String Trip_Pickup_DateTime = InsertString(record.value().get("Trip_Pickup_DateTime"));
