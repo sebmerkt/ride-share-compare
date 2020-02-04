@@ -8,6 +8,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.errors.SerializationException;
 import org.apache.kafka.common.serialization.StringSerializer;
 
+import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Properties;
 
@@ -36,7 +37,7 @@ public class RideShareProducerV1 {
                 Iterator itr = ride.getSchema().getFields().iterator();
                 while(itr.hasNext()) {
                     Object element = itr.next();
-                    System.out.print(element.toString() + "\n ");
+                    System.out.print(element.getClass() + "\n ");
                 }
                 final ProducerRecord<String, Ride> record = new ProducerRecord<String, Ride>(TOPIC, "test",
                         ride);
