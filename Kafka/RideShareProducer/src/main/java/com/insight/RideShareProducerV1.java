@@ -36,7 +36,7 @@ public class RideShareProducerV1 {
                 Iterator itr = ride.getSchema().getFields().iterator();
                 while(itr.hasNext()) {
                     Object element = itr.next();
-                    System.out.print(element + " ");
+                    System.out.print(element.toString() + "\n ");
                 }
                 final ProducerRecord<String, Ride> record = new ProducerRecord<String, Ride>(TOPIC, "test",
                         ride);
