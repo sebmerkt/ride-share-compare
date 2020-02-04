@@ -71,6 +71,7 @@ public class RideShareProducer {
 //                  "/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2015-01.csv"};
         System.out.println(schemaPath);
         System.out.println(args[1]);
+        System.out.println(args.length);
 
         int batchNum = 1;
         while (batchNum<args.length-1) {
