@@ -18,6 +18,8 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Properties;
 
+import static java.time.Duration.ofMillis;
+
 public class RideShareConsumer {
 
     private static final String TOPIC = "taxitest3out";
@@ -50,7 +52,7 @@ public class RideShareConsumer {
                 brokerDNS1+":9092,"+brokerDNS2+":9092,"+brokerDNS3+":9092,"+brokerDNS4+":9092");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "test-rides");
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
-        props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "1000");
+        props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "5000");
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, schemaUrl);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
@@ -61,7 +63,7 @@ public class RideShareConsumer {
             consumer.subscribe(Collections.singletonList(TOPIC));
 
             while (true) {
-                final ConsumerRecords<String, GenericRecord> records = consumer.poll(100);
+                final ConsumerRecords<String, GenericRecord> records = consumer.poll(ofMillis(10));
                 for (final ConsumerRecord<String, GenericRecord> record : records) {
                     final String key = record.key();
                     final GenericRecord value = record.value();

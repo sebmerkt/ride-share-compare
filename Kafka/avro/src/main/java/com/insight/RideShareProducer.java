@@ -63,10 +63,10 @@ public class RideShareProducer {
         // construct kafka producer.
         final Producer<String, GenericRecord> producer = new KafkaProducer<>(props);// message key.
 
-        final String[] csvFile = {"/home/ubuntu/yellow_tripdata_2009-01_short.csv",
-                "/home/ubuntu/yellow_tripdata_2015-01_short.csv"};
-//          final String[] csvFile = {"/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2009-01.csv",
-//                  "/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2015-01.csv"};
+//        final String[] csvFile = {"/home/ubuntu/yellow_tripdata_2009-01_short.csv",
+//                "/home/ubuntu/yellow_tripdata_2015-01_short.csv"};
+          final String[] csvFile = {"/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2009-01.csv",
+                  "/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2015-01.csv"};
 
         int batchNum = 0;
         while (batchNum<csvFile.length) {
@@ -86,7 +86,7 @@ public class RideShareProducer {
 
                     producer.send(new ProducerRecord<String, GenericRecord>(TOPIC, String.valueOf(i), record));
                     try{
-                        TimeUnit.SECONDS .sleep(2);
+                        TimeUnit.MILLISECONDS .sleep(1);
                     } catch (final InterruptedException e) {
                         break;
                     }
