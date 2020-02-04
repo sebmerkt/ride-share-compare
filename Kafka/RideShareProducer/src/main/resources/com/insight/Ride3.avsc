@@ -1,6 +1,6 @@
 {"namespace": "com.insight",
 	"type": "record",
-	"name": "ride_share_provider_A_v3",
+	"name": "Ride3",
 	"fields": [
 		{"name": "vendor_name", "type": ["string", "null"], "default": ""},
 		{"name": "Trip_Pickup_DateTime", "type": ["string", "null"], "default": ""},

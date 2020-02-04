@@ -72,7 +72,7 @@ public class RideShareProducer {
 //          final String[] csvFile = {"/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2009-01.csv",
 //                  "/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2015-01.csv"};
 
-        Ride ride = new Ride();
+        Ride1 ride = new Ride1();
 
         int batchNum = 0;
         while (batchNum<args.length) {
