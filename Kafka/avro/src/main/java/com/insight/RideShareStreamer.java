@@ -57,8 +57,8 @@ public class RideShareStreamer {
         KStream<String, GenericRecord> processedStream = rideStream.mapValues(val -> {
 
             System.out.println(val.get("Payment_Type"));
-//            val.put("Payment_Type", val.get("Payment_Type")+"-NEW");
-//            System.out.println(val.get("Payment_Type"));
+            val.put("Payment_Type", val.get("Payment_Type")+"-NEW");
+            System.out.println(val.get("Payment_Type"));
 
             System.out.println(val.get("Payment_Type").getClass().getName());
 
