@@ -69,6 +69,8 @@ public class RideShareProducer {
 //                "/home/ubuntu/yellow_tripdata_2009-01_V2.csv"};
 //          final String[] csvFile = {"/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2009-01.csv",
 //                  "/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2015-01.csv"};
+        System.out.println(schemaPath);
+        System.out.println(args[1]);
 
         int batchNum = 1;
         while (batchNum<args.length-1) {
