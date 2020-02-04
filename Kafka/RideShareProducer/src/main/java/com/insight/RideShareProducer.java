@@ -65,7 +65,7 @@ public class RideShareProducer {
 //        client.register(subject, avroSchema);
 
         // construct kafka producer.
-        final Producer<String, Ride2> producer = new KafkaProducer<>(props);// message key.
+        final KafkaProducer<String, Ride2> producer = new KafkaProducer<>(props);// message key.
 
 //        final String[] csvFile = {"/home/ubuntu/yellow_tripdata_2009-01_V1.csv",
 //                "/home/ubuntu/yellow_tripdata_2009-01_V2.csv"};
