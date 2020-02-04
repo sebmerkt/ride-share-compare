@@ -86,11 +86,12 @@ public class RideShareProducer {
             br.readLine();  //Read first line
             while ((line = br.readLine()) != null) {
                 final String[] taxiTrip = line.split(cvsSplitBy, -18);
+                String uniqueID = UUID.randomUUID().toString();
 
                 if (i > 0 && !line.contains("NULL")) {
                     buildRecord(ride, taxiTrip);// send avro message to the topic page-view-event.
 
-                    producer.send(new ProducerRecord<String, Ride>(TOPIC, String.valueOf(i), ride));
+                    producer.send(new ProducerRecord<String, Ride>(TOPIC, uniqueID, ride));
                     try{
                         TimeUnit.SECONDS .sleep(1);
                     } catch (final InterruptedException e) {
@@ -108,8 +109,6 @@ public class RideShareProducer {
 
 
     public static void buildRecord( final Ride ride, final String[] transaction) {
-        String uniqueID = UUID.randomUUID().toString();
-
         ride.setVendorName( InsertString(transaction[0]) );
         ride.setTripPickupDateTime( InsertString(transaction[1]) );
         ride.setTripDropoffDateTime( InsertString(transaction[2]) );

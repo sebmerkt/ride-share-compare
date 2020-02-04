@@ -32,8 +32,8 @@ public class RideShareProducerV1 {
             System.out.println(Ride.getClassSchema());
             for (long i = 0; i < 10; i++) {
 
-//                final Ride ride = new Ride();
-                final Ride ride = new Ride(vendor_name, Trip_Pickup_DateTime, Trip_Dropoff_DateTime, Trip_Distance, Start_Lon, Start_Lat, End_Lon, End_Lat, Total_Amt)
+                final Ride ride = new Ride();
+//                final Ride ride = new Ride(vendor_name, Trip_Pickup_DateTime, Trip_Dropoff_DateTime, Trip_Distance, Start_Lon, Start_Lat, End_Lon, End_Lat, Total_Amt)
 
                 ride.setVendorName("Vendor "+String.valueOf(i));
 
