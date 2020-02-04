@@ -22,7 +22,7 @@ import static java.time.Duration.ofMillis;
 
 public class RideShareConsumer {
 
-    private static final String TOPIC = "taxitest3out";
+    private static final String TOPIC = "taxitest4out";
 
     static Map<String, String> env = System.getenv();
     static String schemaDNS = env.get("SCHEMA_REGISTRY");

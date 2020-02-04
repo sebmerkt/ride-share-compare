@@ -26,8 +26,8 @@ import static com.insight.RideShareProducer.buildRecord;
 public class RideShareStreamer {
     public static void main(String[] args) throws Exception {
 
-        final String TOPICIN = "taxitest3in";
-        final String TOPICOUT = "taxitest3out";
+        final String TOPICIN = "taxitest4in";
+        final String TOPICOUT = "taxitest4out";
 
         final Map<String, String> env = System.getenv();
         final String schemaDNS = env.get("SCHEMA_REGISTRY");
