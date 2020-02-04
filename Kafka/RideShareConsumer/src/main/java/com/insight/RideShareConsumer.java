@@ -67,10 +67,11 @@ public class RideShareConsumer {
                 for (final ConsumerRecord<String, GenericRecord> record : records) {
                     final String key = record.key();
                     final GenericRecord value = record.value();
+                    record.value().get
 
                     final String vendor_name = record.value().get("vendor_name").toString();
-                    final String Trip_Pickup_DateTime = InsertString(record.value().get("Trip_Pickup_DateTime").toString());
-                    final String Trip_Dropoff_DateTime = InsertString(record.value().get("Trip_Dropoff_DateTime").toString());
+                    final String Trip_Pickup_DateTime = InsertString(record.value().get("Trip_Pickup_DateTime"));
+                    final String Trip_Dropoff_DateTime = InsertString(record.value().get("Trip_Dropoff_DateTime"));
 //                    final long Passenger_Count = (long) record.value().get("Passenger_Count");
                     final double Trip_Distance = (double) record.value().get("Trip_Distance");
                     final double Start_Lon = (double) record.value().get("Start_Lon");
@@ -125,10 +126,10 @@ public class RideShareConsumer {
     }
 
 
-    public static String InsertString(final String input){
-        if (input != null && !input.isEmpty()) {
+    public static String InsertString(final Object input){
+        if (input != null) {
             try {
-                return input;
+                return input.toString();
             }
             catch (NumberFormatException e) {
                 return "";
