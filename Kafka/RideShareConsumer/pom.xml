@@ -60,16 +60,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
       <version>${kafka.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.kafka</groupId>
-      <artifactId>kafka-streams</artifactId>
-      <version>${kafka.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>io.confluent</groupId>
-      <artifactId>kafka-streams-avro-serde</artifactId>
-      <version>${confluent.version}</version>
-    </dependency>
-    <dependency>
       <groupId>org.apache.avro</groupId>
       <artifactId>avro</artifactId>
       <version>${avro.version}</version>
@@ -115,7 +105,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     <manifest>
                         <addClasspath>true</addClasspath>
                         <classpathPrefix>lib/</classpathPrefix>
-                        <mainClass>com.insight.RideShareProducer</mainClass>
+                        <mainClass>com.insight.RideShareConsumer</mainClass>
                     </manifest>
                 </archive>
             </configuration>
@@ -131,9 +121,9 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <goal>schema</goal>
           </goals>
           <configuration>
-            <sourceDirectory>${project.basedir}/src/main/resources/avro/com/insight/</sourceDirectory>
+            <sourceDirectory>${project.basedir}/src/main/resources/com/insight/</sourceDirectory>
             <includes>
-              <include>yellowcab.avsc</include>
+              <include>ride_share_provider_A_v1.avsc</include>
             </includes>
             <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
           </configuration>
@@ -149,7 +139,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                   <param>http://localhost:8081</param>
               </schemaRegistryUrls>
               <subjects>
-                  <transactions-value>src/main/resources/avro/com/insight/yellowcab.avsc</transactions-value>
+                  <transactions-value>src/main/resources/com/insight/ride_share_provider_A_v1.avsc</transactions-value>
               </subjects>
           </configuration>
           <goals>
