@@ -69,8 +69,8 @@ public class RideShareConsumer {
                     final GenericRecord value = record.value();
 
                     final String vendor_name = record.value().get("vendor_name").toString();
-                    final String Trip_Pickup_DateTime = record.value().get("Trip_Pickup_DateTime").toString();
-                    final String Trip_Dropoff_DateTime = record.value().get("Trip_Dropoff_DateTime").toString();
+                    final String Trip_Pickup_DateTime = InsertString(record.value().get("Trip_Pickup_DateTime").toString());
+                    final String Trip_Dropoff_DateTime = InsertString(record.value().get("Trip_Dropoff_DateTime").toString());
 //                    final long Passenger_Count = (long) record.value().get("Passenger_Count");
                     final double Trip_Distance = (double) record.value().get("Trip_Distance");
                     final double Start_Lon = (double) record.value().get("Start_Lon");
@@ -122,5 +122,20 @@ public class RideShareConsumer {
         }
 
         return conn;
+    }
+
+
+    public static String InsertString(final String input){
+        if (input != null && !input.isEmpty()) {
+            try {
+                return input;
+            }
+            catch (NumberFormatException e) {
+                return "";
+            }
+        }
+        else{
+            return "";
+        }
     }
 }
