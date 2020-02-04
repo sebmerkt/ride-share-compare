@@ -33,7 +33,7 @@ public class RideShareProducer {
     private static final String TOPIC = "taxitest4in";
 
 //    // avro schema avsc file path.
-    private static final String schemaPathBase = "src/main/resources/avro/com/insight/"; ///yellowcab.avsc";
+    private static final String schemaPathBase = "src/main/resources/com/insight/"; ///yellowcab.avsc";
 
     // subject convention is "<topic-name>-value"
     private static final String subject = TOPIC + "-value";
