@@ -47,7 +47,7 @@ public class RideShareStreamer {
         KStream<String, GenericRecord> processedStream = rideStream.mapValues(val -> {
 
 //            System.out.println(val.get("vendor_name"));
-            val.put("vendor_name", val.get("vendor_name")+String.valueOf(System.currentTimeMillis()));
+            val.put("vendor_name", String.valueOf(System.currentTimeMillis()));
             System.out.println(val.get("vendor_name"));
 
 //            System.out.println(val.get("Payment_Type").getClass().getName());
