@@ -1,0 +1,15 @@
+{"namespace": "com.insight",
+	"type": "record",
+	"name": "ride_share_provider_A_v1",
+	"fields": [
+		{"name": "vendor_name", "type": ["string", "null"] },
+		{"name": "Trip_Pickup_DateTime", "type": ["string", "null"] },
+		{"name": "Trip_Dropoff_DateTime", "type": ["string", "null"] },
+		{"name": "Trip_Distance", "type": ["double", "null"] },
+		{"name": "Start_Lon", "type": ["double", "null"] },
+		{"name": "Start_Lat", "type": ["double", "null"] },
+		{"name": "End_Lon", "type": ["double", "null"] },
+		{"name": "End_Lat", "type": ["double", "null"] },
+		{"name": "Total_Amt", "type": ["double", "null"] }
+	]
+}

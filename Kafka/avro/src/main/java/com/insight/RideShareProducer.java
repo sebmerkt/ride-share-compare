@@ -32,8 +32,8 @@ public class RideShareProducer {
     private static final String schemaUrl = "http://"+schemaDNS+":8081";
     private static final String TOPIC = "taxitest3in";
 
-    // avro schema avsc file path.
-    private static final String schemaPath = "src/main/resources/avro/com/insight/yellowcab.avsc";
+//    // avro schema avsc file path.
+    private static final String schemaPathBase = "src/main/resources/avro/com/insight/"; ///yellowcab.avsc";
 
     // subject convention is "<topic-name>-value"
     private static final String subject = TOPIC + "-value";
@@ -41,6 +41,7 @@ public class RideShareProducer {
 
     @SuppressWarnings("InfiniteLoopStatement")
     public static void main(final String[] args) throws IOException, RestClientException {
+
         System.out.println("Starting Producer");
 
         final Properties props = new Properties();
@@ -52,7 +53,8 @@ public class RideShareProducer {
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
         props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, schemaUrl);
-//
+
+        final String schemaPath = schemaPathBase+args[0]+".avsc";
         final File schemaFile = new File(schemaPath);
         final Schema avroSchema = new Schema.Parser().parse(schemaFile);
 
@@ -63,20 +65,20 @@ public class RideShareProducer {
         // construct kafka producer.
         final Producer<String, GenericRecord> producer = new KafkaProducer<>(props);// message key.
 
-//        final String[] csvFile = {"/home/ubuntu/yellow_tripdata_2009-01_short.csv",
-//                "/home/ubuntu/yellow_tripdata_2015-01_short.csv"};
-          final String[] csvFile = {"/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2009-01.csv",
-                  "/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2015-01.csv"};
+//        final String[] csvFile = {"/home/ubuntu/yellow_tripdata_2009-01_V1.csv",
+//                "/home/ubuntu/yellow_tripdata_2009-01_V2.csv"};
+//          final String[] csvFile = {"/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2009-01.csv",
+//                  "/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2015-01.csv"};
 
-        int batchNum = 0;
-        while (batchNum<csvFile.length) {
+        int batchNum = 1;
+        while (batchNum<args.length-1) {
             int i = 0;
-            System.out.println("Streaming file: "+csvFile[batchNum]);
+            System.out.println("Streaming file: "+args[batchNum]);
             BufferedReader br = null;
             String line = "";
             final String cvsSplitBy = ",";
 
-            br = new BufferedReader(new FileReader(csvFile[batchNum]));
+            br = new BufferedReader(new FileReader(args[batchNum]));
             br.readLine();  //Read first line
             while ((line = br.readLine()) != null) {
                 final String[] taxiTrip = line.split(cvsSplitBy, -18);
@@ -86,7 +88,7 @@ public class RideShareProducer {
 
                     producer.send(new ProducerRecord<String, GenericRecord>(TOPIC, String.valueOf(i), record));
                     try{
-                        TimeUnit.MILLISECONDS .sleep(1);
+                        TimeUnit.SECONDS .sleep(1);
                     } catch (final InterruptedException e) {
                         break;
                     }
