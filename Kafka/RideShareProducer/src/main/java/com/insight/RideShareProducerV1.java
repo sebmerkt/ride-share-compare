@@ -14,7 +14,7 @@ import java.util.Properties;
 
 public class RideShareProducerV1 {
 
-    private static final String TOPIC = "transactions";
+    private static final String TOPIC = "taxitest4in";
 
     @SuppressWarnings("InfiniteLoopStatement")
     public static void main(final String[] args) {
