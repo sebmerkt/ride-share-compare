@@ -33,6 +33,8 @@ public class RideShareProducerV1 {
             for (long i = 0; i < 10; i++) {
                 final String orderId = "id" + Long.toString(i);
                 final Ride ride = new Ride();
+                ride.setVendorName("Vendor "+String.valueOf(i));
+
                 System.out.println(ride.getSchema().getFields());
                 Iterator itr = ride.getSchema().getFields().iterator();
                 while(itr.hasNext()) {
