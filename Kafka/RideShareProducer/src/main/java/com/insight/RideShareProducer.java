@@ -74,7 +74,7 @@ public class RideShareProducer {
 
         Ride ride = new Ride();
 
-        int batchNum = 1;
+        int batchNum = 0;
         while (batchNum<args.length) {
             int i = 0;
             System.out.println("Streaming file: "+args[batchNum]);
