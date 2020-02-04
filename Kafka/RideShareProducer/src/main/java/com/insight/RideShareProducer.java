@@ -65,7 +65,7 @@ public class RideShareProducer {
 //        client.register(subject, avroSchema);
 
         // construct kafka producer.
-        final Producer<String, Ride> producer = new KafkaProducer<>(props);// message key.
+        final Producer<String, Ride1> producer = new KafkaProducer<>(props);// message key.
 
 //        final String[] csvFile = {"/home/ubuntu/yellow_tripdata_2009-01_V1.csv",
 //                "/home/ubuntu/yellow_tripdata_2009-01_V2.csv"};
@@ -91,7 +91,7 @@ public class RideShareProducer {
                 if (i > 0 && !line.contains("NULL")) {
                     buildRecord(ride, taxiTrip);// send avro message to the topic page-view-event.
 
-                    producer.send(new ProducerRecord<String, Ride>(TOPIC, uniqueID, ride));
+                    producer.send(new ProducerRecord<String, Ride1>(TOPIC, uniqueID, ride));
                     try{
                         TimeUnit.SECONDS .sleep(1);
                     } catch (final InterruptedException e) {
@@ -108,7 +108,7 @@ public class RideShareProducer {
     }
 
 
-    public static void buildRecord( final Ride ride, final String[] transaction) {
+    public static void buildRecord( final Ride1 ride, final String[] transaction) {
         ride.setVendorName( InsertString(transaction[0]) );
         ride.setTripPickupDateTime( InsertString(transaction[1]) );
         ride.setTripDropoffDateTime( InsertString(transaction[2]) );
