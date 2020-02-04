@@ -2,13 +2,13 @@ package com.insight;
 
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
+import org.apache.avro.Schema;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.errors.SerializationException;
 import org.apache.kafka.common.serialization.StringSerializer;
 
-import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Properties;
 
@@ -33,11 +33,11 @@ public class RideShareProducerV1 {
             for (long i = 0; i < 10; i++) {
                 final String orderId = "id" + Long.toString(i);
                 final Ride ride = new Ride();
-                System.out.println(ride.getSchema().getFields().iterator());
+                System.out.println(ride.getSchema().getFields());
                 Iterator itr = ride.getSchema().getFields().iterator();
                 while(itr.hasNext()) {
-                    Field element = (Field) itr.next();
-                    System.out.print(element.getName() + "\n ");
+                    Schema.Field element = (Schema.Field) itr.next();
+                    System.out.print(element.name() + "\n ");
                 }
                 final ProducerRecord<String, Ride> record = new ProducerRecord<String, Ride>(TOPIC, "test",
                         ride);
