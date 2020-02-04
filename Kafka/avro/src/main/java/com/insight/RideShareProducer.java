@@ -112,21 +112,21 @@ public class RideShareProducer {
         record.put("vendor_name", InsertString(transaction[0]));
         record.put("Trip_Pickup_DateTime", InsertString(transaction[1]));
         record.put("Trip_Dropoff_DateTime", InsertString(transaction[2]));
-        record.put("Passenger_Count", InsertLong(transaction[3]));
-        record.put("Trip_Distance", InsertDouble(transaction[4]));
-        record.put("Start_Lon", InsertDouble(transaction[5]));
-        record.put("Start_Lat", InsertDouble(transaction[6]));
-        record.put("Rate_Code", InsertDouble(transaction[7]));
-        record.put("store_and_forward", InsertDouble(transaction[8]));
-        record.put("End_Lon", InsertDouble(transaction[9]));
-        record.put("End_Lat", InsertDouble(transaction[10]));
-        record.put("Payment_Type", InsertString(transaction[11]));
-        record.put("Fare_Amt", InsertDouble(transaction[12]));
-        record.put("surcharge", InsertDouble(transaction[13]));
-        record.put("mta_tax", InsertDouble(transaction[14]));
-        record.put("Tip_Amt", InsertDouble(transaction[15]));
-        record.put("Tolls_Amt", InsertDouble(transaction[16]));
-        record.put("Total_Amt", InsertDouble(transaction[17]));
+//        record.put("Passenger_Count", InsertLong(transaction[3]));
+        record.put("Trip_Distance", InsertDouble(transaction[3]));
+        record.put("Start_Lon", InsertDouble(transaction[4]));
+        record.put("Start_Lat", InsertDouble(transaction[5]));
+//        record.put("Rate_Code", InsertDouble(transaction[7]));
+//        record.put("store_and_forward", InsertDouble(transaction[8]));
+        record.put("End_Lon", InsertDouble(transaction[6]));
+        record.put("End_Lat", InsertDouble(transaction[7]));
+//        record.put("Payment_Type", InsertString(transaction[11]));
+//        record.put("Fare_Amt", InsertDouble(transaction[12]));
+//        record.put("surcharge", InsertDouble(transaction[13]));
+//        record.put("mta_tax", InsertDouble(transaction[14]));
+//        record.put("Tip_Amt", InsertDouble(transaction[15]));
+//        record.put("Tolls_Amt", InsertDouble(transaction[16]));
+        record.put("Total_Amt", InsertDouble(transaction[8]));
 
         return record;
     }
