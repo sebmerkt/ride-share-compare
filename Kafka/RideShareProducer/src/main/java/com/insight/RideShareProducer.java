@@ -17,6 +17,7 @@ import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import java.io.*;
 import java.util.Map;
 import java.util.Properties;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 public class RideShareProducer {
@@ -33,7 +34,7 @@ public class RideShareProducer {
     private static final String TOPIC = "taxitest4in";
 
 //    // avro schema avsc file path.
-    private static final String schemaPathBase = "src/main/resources/com/insight/"; ///yellowcab.avsc";
+//    private static final String schemaPathBase = "src/main/resources/com/insight/"; ///yellowcab.avsc";
 
     // subject convention is "<topic-name>-value"
     private static final String subject = TOPIC + "-value";
@@ -54,24 +55,24 @@ public class RideShareProducer {
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
         props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, schemaUrl);
 
-        final String schemaPath = schemaPathBase+args[0]+".avsc";
-        final File schemaFile = new File(schemaPath);
-        final Schema avroSchema = new Schema.Parser().parse(schemaFile);
+//        final String schemaPath = schemaPathBase+args[0]+".avsc";
+//        final File schemaFile = new File(schemaPath);
+//        final Schema avroSchema = new Schema.Parser().parse(schemaFile);
 
-        final CachedSchemaRegistryClient client = new CachedSchemaRegistryClient(schemaUrl, 20);
 
-        client.register(subject, avroSchema);
+//        final CachedSchemaRegistryClient client = new CachedSchemaRegistryClient(schemaUrl, 20);
+
+//        client.register(subject, avroSchema);
 
         // construct kafka producer.
-        final Producer<String, GenericRecord> producer = new KafkaProducer<>(props);// message key.
+        final Producer<String, Ride> producer = new KafkaProducer<>(props);// message key.
 
 //        final String[] csvFile = {"/home/ubuntu/yellow_tripdata_2009-01_V1.csv",
 //                "/home/ubuntu/yellow_tripdata_2009-01_V2.csv"};
 //          final String[] csvFile = {"/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2009-01.csv",
 //                  "/home/ubuntu/nyc-taxi-rideshare/trip_data/yellow_tripdata_2015-01.csv"};
-        System.out.println(schemaPath);
-        System.out.println(args[1]);
-        System.out.println(args.length);
+
+        Ride ride = new Ride();
 
         int batchNum = 1;
         while (batchNum<args.length) {
@@ -87,9 +88,9 @@ public class RideShareProducer {
                 final String[] taxiTrip = line.split(cvsSplitBy, -18);
 
                 if (i > 0 && !line.contains("NULL")) {
-                    final GenericRecord record = buildRecord(avroSchema, taxiTrip);// send avro message to the topic page-view-event.
+                    buildRecord(ride, taxiTrip);// send avro message to the topic page-view-event.
 
-                    producer.send(new ProducerRecord<String, GenericRecord>(TOPIC, String.valueOf(i), record));
+                    producer.send(new ProducerRecord<String, Ride>(TOPIC, String.valueOf(i), ride));
                     try{
                         TimeUnit.SECONDS .sleep(1);
                     } catch (final InterruptedException e) {
@@ -106,29 +107,19 @@ public class RideShareProducer {
     }
 
 
-    public static GenericRecord buildRecord(final Schema schema, final String[] transaction) {    // avro schema avsc file path.
-        final GenericData.Record record = new GenericData.Record(schema);    // put the elements according to the avro schema.
+    public static void buildRecord( final Ride ride, final String[] transaction) {
+        String uniqueID = UUID.randomUUID().toString();
 
-        record.put("vendor_name", InsertString(transaction[0]));
-        record.put("Trip_Pickup_DateTime", InsertString(transaction[1]));
-        record.put("Trip_Dropoff_DateTime", InsertString(transaction[2]));
-//        record.put("Passenger_Count", InsertLong(transaction[3]));
-        record.put("Trip_Distance", InsertDouble(transaction[3]));
-        record.put("Start_Lon", InsertDouble(transaction[4]));
-        record.put("Start_Lat", InsertDouble(transaction[5]));
-//        record.put("Rate_Code", InsertDouble(transaction[7]));
-//        record.put("store_and_forward", InsertDouble(transaction[8]));
-        record.put("End_Lon", InsertDouble(transaction[6]));
-        record.put("End_Lat", InsertDouble(transaction[7]));
-//        record.put("Payment_Type", InsertString(transaction[11]));
-//        record.put("Fare_Amt", InsertDouble(transaction[12]));
-//        record.put("surcharge", InsertDouble(transaction[13]));
-//        record.put("mta_tax", InsertDouble(transaction[14]));
-//        record.put("Tip_Amt", InsertDouble(transaction[15]));
-//        record.put("Tolls_Amt", InsertDouble(transaction[16]));
-        record.put("Total_Amt", InsertDouble(transaction[8]));
+        ride.setVendorName( InsertString(transaction[0]) );
+        ride.setTripPickupDateTime( InsertString(transaction[1]) );
+        ride.setTripDropoffDateTime( InsertString(transaction[2]) );
+        ride.setTripDistance( InsertDouble(transaction[3]) );
+        ride.setStartLon( InsertDouble(transaction[4]) );
+        ride.setStartLat( InsertDouble(transaction[5]) );
+        ride.setEndLon( InsertDouble(transaction[6]) );
+        ride.setEndLat( InsertDouble(transaction[7]) );
+        ride.setTotalAmt( InsertDouble(transaction[8]) );
 
-        return record;
     }
 
     public static String InsertString(final String input){

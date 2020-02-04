@@ -151,4 +151,18 @@ public class RideShareConsumer {
             return 0.0;
         }
     }
+
+    public static long InsertLong(final Object input){
+        if (input != null) {
+            try {
+                return (long) input;
+            }
+            catch (NumberFormatException e) {
+                return 0;
+            }
+        }
+        else{
+            return 0;
+        }
+    }
 }
