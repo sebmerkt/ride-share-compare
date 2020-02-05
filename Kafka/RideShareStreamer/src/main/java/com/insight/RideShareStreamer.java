@@ -56,7 +56,7 @@ public class RideShareStreamer {
             if (schema.contains("End_Lat")) {
                 System.out.println("End_Lat YAY!");
             }
-            else if (schema.contains("Passenger_Count")) {
+            if (schema.contains("Passenger_Count")) {
                 System.out.println("Passenger_Count YAY!");
             }
 //            Iterator itr = val.getSchema().getFields().iterator();
