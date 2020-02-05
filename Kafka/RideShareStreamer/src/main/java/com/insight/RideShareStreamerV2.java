@@ -15,7 +15,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 
-public class RideShareStreamer {
+public class RideShareStreamerV2 {
     public static void main(String[] args) throws Exception {
 
         final String TOPICIN = "taxitest4in";
@@ -47,7 +47,13 @@ public class RideShareStreamer {
         KStream<String, GenericRecord> rideStream = builder.stream(TOPICIN);
 
         KStream<String, GenericRecord> processedStream = rideStream.mapValues(val -> {
-
+            // Newer schema have integer codes: 1= Creative Mobile Technologies (CMT), LLC; 2= VeriFone Inc. (VTS)
+            if ( val.get("vendor_name") == "1" ) {
+                val.put("vendor_name", String.valueOf("CMT"));
+            }
+            else if ( val.get("vendor_name") == "2" ) {
+                val.put("vendor_name", String.valueOf("VTS"));
+            }
 
 //            System.out.println(val.get("vendor_name"));
 //            val.put("vendor_name", String.valueOf(System.currentTimeMillis()));

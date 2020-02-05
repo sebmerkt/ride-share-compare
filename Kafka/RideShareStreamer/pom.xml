@@ -104,7 +104,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     <manifest>
                         <addClasspath>true</addClasspath>
                         <classpathPrefix>lib/</classpathPrefix>
-                        <mainClass>com.insight.RideShareStreamer</mainClass>
+                        <mainClass>com.insight.RideShareStreamerV1</mainClass>
                     </manifest>
                 </archive>
             </configuration>
