@@ -7,21 +7,20 @@ import java.util.Properties;
 
 public class RideShareProducerV1 extends RideShareProducerBase <Ride1> {
 
-
     @SuppressWarnings("InfiniteLoopStatement")
     public static void main(final String[] args) throws IOException {
 
-        RideShareProducerV1 rideShareProducer = new RideShareProducerV1();
-
-        Ride1 ride = new Ride1();
-
         final Properties props = initProperties();
 
-        KafkaProducer<String, Ride1> producer = new KafkaProducer<>(props);
+        RideShareProducerV1 rideShareProducer = new RideShareProducerV1( );
+
+        rideShareProducer.setRide( new Ride1() );
+
+        rideShareProducer.setProducer( new KafkaProducer<>(props));
 
         rideShareProducer.sendRecords(args);
-        producer.flush();
-        producer.close();
+        rideShareProducer.getProducer().flush();
+        rideShareProducer.getProducer().close();
     }
 
     @Override

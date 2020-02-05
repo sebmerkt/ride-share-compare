@@ -22,7 +22,23 @@ public abstract class RideShareProducerBase <Ride> {
     // construct kafka producer.
     KafkaProducer<String, Ride> producer = null;
 
-    Ride ride;
+    Ride ride = null;
+
+    Ride getRide() {
+        return ride;
+    }
+
+    void setRide ( final Ride newRide ) {
+        ride = newRide;
+    }
+
+    KafkaProducer<String, Ride> getProducer() {
+        return producer;
+    }
+
+    void setProducer ( final KafkaProducer<String, Ride> newProducer ) {
+        producer = newProducer;
+    }
 
     public void sendRecords (String[] args) throws IOException {
         int batchNum = 0;

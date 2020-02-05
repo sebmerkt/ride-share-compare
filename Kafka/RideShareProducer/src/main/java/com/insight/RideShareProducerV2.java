@@ -10,18 +10,17 @@ public class RideShareProducerV2 extends RideShareProducerBase <Ride2> {
     @SuppressWarnings("InfiniteLoopStatement")
     public static void main(final String[] args) throws IOException {
 
-        RideShareProducerV1 rideShareProducer = new RideShareProducerV1();
-
         final Properties props = initProperties();
 
-        // construct kafka producer.
-        final KafkaProducer<String, Ride2> producer = new KafkaProducer<>(props);
+        RideShareProducerV2 rideShareProducer = new RideShareProducerV2( );
 
-        Ride2 ride = new Ride2();
+        rideShareProducer.setRide( new Ride2() );
 
-        rideShareProducer.sendRecords( args );
-        producer.flush();
-        producer.close();
+        rideShareProducer.setProducer( new KafkaProducer<>(props));
+
+        rideShareProducer.sendRecords(args);
+        rideShareProducer.getProducer().flush();
+        rideShareProducer.getProducer().close();
     }
 
 
