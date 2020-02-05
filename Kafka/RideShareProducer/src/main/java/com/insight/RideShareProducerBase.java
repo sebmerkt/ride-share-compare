@@ -1,6 +1,5 @@
 package com.insight;
 
-import io.confluent.kafka.schemaregistry.client.rest.exceptions.RestClientException;
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -9,7 +8,6 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Map;
@@ -21,7 +19,12 @@ public abstract class RideShareProducerBase <Ride> {
 
     static String TOPIC = "taxitest4in";
 
-    public void sendRecords ( String[] args, Ride ride , KafkaProducer<String, Ride> producer ) throws IOException {
+    // construct kafka producer.
+    KafkaProducer<String, Ride> producer = null;
+
+    Ride ride;
+
+    public void sendRecords (String[] args) throws IOException {
         int batchNum = 0;
         while (batchNum<args.length) {
             int i = 0;
@@ -38,7 +41,7 @@ public abstract class RideShareProducerBase <Ride> {
                 String uniqueID = UUID.randomUUID().toString();
 
                 if (i > 0 && !line.contains("NULL")) {
-                    buildRecord(ride, taxiTrip);
+                    buildRecord( taxiTrip );
 
                     producer.send(new ProducerRecord<String, Ride>(TOPIC, uniqueID, ride));
                     try{
@@ -54,7 +57,7 @@ public abstract class RideShareProducerBase <Ride> {
         }
     }
 
-    abstract void buildRecord(final Ride ride, final String[] message);
+     abstract void buildRecord(final String[] message);
 //    abstract void sendRecords ( String[] args, Ride ride, KafkaProducer<String, Ride> producer ) throws IOException;
 
     public static Properties initProperties() {
