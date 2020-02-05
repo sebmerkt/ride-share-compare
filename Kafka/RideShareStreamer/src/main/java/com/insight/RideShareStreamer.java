@@ -49,6 +49,8 @@ public class RideShareStreamer {
 //            System.out.println(val.get("vendor_name"));
             val.put("vendor_name", String.valueOf(System.currentTimeMillis()));
             System.out.println(val.get("vendor_name"));
+            System.out.println(val.getSchema().toString());
+            System.out.println(" ");
 
 //            System.out.println(val.get("Payment_Type").getClass().getName());
 
