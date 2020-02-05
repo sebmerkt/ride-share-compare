@@ -52,12 +52,18 @@ public class RideShareStreamer {
 //            System.out.println(val.get("vendor_name"));
             val.put("vendor_name", String.valueOf(System.currentTimeMillis()));
             System.out.println(val.get("vendor_name"));
-//            System.out.println(val.getSchema().toString());
-            Iterator itr = val.getSchema().getFields().iterator();
-            while(itr.hasNext()) {
-                Schema.Field element = (Schema.Field) itr.next();
-                System.out.print(element.name() + "\n ");
+            String schema = val.getSchema().toString();
+            if (schema.contains("End_Lat")) {
+                System.out.println("End_Lat YAY!");
             }
+            else if (schema.contains("Passenger_Count")) {
+                System.out.println("Passenger_Count YAY!");
+            }
+//            Iterator itr = val.getSchema().getFields().iterator();
+//            while(itr.hasNext()) {
+//                Schema.Field element = (Schema.Field) itr.next();
+//                System.out.print(element.name() + "\n");
+//            }
             System.out.println(" ");
 
 //            System.out.println(val.get("Payment_Type").getClass().getName());
