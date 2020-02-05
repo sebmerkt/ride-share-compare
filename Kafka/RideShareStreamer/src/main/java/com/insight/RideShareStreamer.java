@@ -50,7 +50,7 @@ public class RideShareStreamer {
 
 
 //            System.out.println(val.get("vendor_name"));
-            val.put("vendor_name", String.valueOf(System.currentTimeMillis()));
+//            val.put("vendor_name", String.valueOf(System.currentTimeMillis()));
             System.out.println(val.get("vendor_name"));
             String schema = val.getSchema().toString();
             if (schema.contains("End_Lat")) {
