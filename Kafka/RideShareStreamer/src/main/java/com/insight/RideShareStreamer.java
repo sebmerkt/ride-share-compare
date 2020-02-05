@@ -63,7 +63,7 @@ public class RideShareStreamer {
             while(itr.hasNext()) {
                 Schema.Field element = (Schema.Field) itr.next();
                 System.out.print(element.defaultVal() + "\n");
-                System.out.print(element.getObjectProps() + "\n");
+                System.out.print(element.getObjectProp(element.name()) + "\n");
             }
             System.out.println(" ");
 
