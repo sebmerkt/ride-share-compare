@@ -59,11 +59,11 @@ public class RideShareStreamer {
             if (schema.contains("Passenger_Count")) {
                 System.out.println("Passenger_Count YAY!");
             }
-//            Iterator itr = val.getSchema().getFields().iterator();
-//            while(itr.hasNext()) {
-//                Schema.Field element = (Schema.Field) itr.next();
-//                System.out.print(element.name() + "\n");
-//            }
+            Iterator itr = val.getSchema().getFields().iterator();
+            while(itr.hasNext()) {
+                Schema.Field element = (Schema.Field) itr.next();
+                System.out.print(element.getClass() + "\n");
+            }
             System.out.println(" ");
 
 //            System.out.println(val.get("Payment_Type").getClass().getName());
