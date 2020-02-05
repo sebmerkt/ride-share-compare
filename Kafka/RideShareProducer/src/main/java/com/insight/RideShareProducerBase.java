@@ -17,30 +17,45 @@ import java.util.Properties;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-public abstract class RideShareProducerBase {
+public abstract class RideShareProducerBase <Ride> {
 
     static String TOPIC = "taxitest4in";
 
-    @SuppressWarnings("InfiniteLoopStatement")
-    public static void main(final String[] args) throws IOException {
+    public void sendRecords ( String[] args, Ride ride , KafkaProducer<String, Ride> producer ) throws IOException {
+        int batchNum = 0;
+        while (batchNum<args.length) {
+            int i = 0;
+            System.out.println("Streaming file: "+args[batchNum]);
+            BufferedReader br = null;
+            String line = "";
+            final String cvsSplitBy = ",";
 
-//        final Properties props = initProperties();
-//
-//        // construct kafka producer.
-//        final KafkaProducer<String, Ride1> producer = new KafkaProducer<>(props);
-//
-//        Ride1 ride = new Ride1();
-//
-//        sendRecords(args, ride, producer);
-//
-//        producer.flush();
-//        producer.close();
+            br = new BufferedReader(new FileReader(args[batchNum]));
+            //Read first line
+            br.readLine();
+            while ((line = br.readLine()) != null) {
+                final String[] taxiTrip = line.split(cvsSplitBy, -18);
+                String uniqueID = UUID.randomUUID().toString();
+
+                if (i > 0 && !line.contains("NULL")) {
+                    buildRecord(ride, taxiTrip);
+
+                    producer.send(new ProducerRecord<String, Ride>(TOPIC, uniqueID, ride));
+                    try{
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (final InterruptedException e) {
+                        break;
+                    }
+
+                }
+                i += 1;
+            }
+            batchNum += 1;
+        }
     }
 
-
-    static void buildRecord(final Ride1 ride, final String[] transaction) {
-    }
-//    abstract void sendRecords ( String[] args, Ride ride, KafkaProducer<String, Ride1> producer ) throws IOException;
+    abstract void buildRecord(final Ride ride, final String[] message);
+//    abstract void sendRecords ( String[] args, Ride ride, KafkaProducer<String, Ride> producer ) throws IOException;
 
     public static Properties initProperties() {
 
@@ -102,4 +117,5 @@ public abstract class RideShareProducerBase {
             return 0.0;
         }
     }
+
 }

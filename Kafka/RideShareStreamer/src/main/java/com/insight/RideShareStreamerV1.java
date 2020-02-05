@@ -2,7 +2,6 @@ package com.insight;
 
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import io.confluent.kafka.streams.serdes.avro.GenericAvroSerde;
-import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
@@ -11,12 +10,11 @@ import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.KStream;
 
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 
 public class RideShareStreamerV1 {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         final String TOPICIN = "taxitest4in";
         final String TOPICOUT = "taxitest4out";
