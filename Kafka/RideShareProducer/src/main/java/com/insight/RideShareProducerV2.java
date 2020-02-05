@@ -1,26 +1,22 @@
 package com.insight;
 
-import io.confluent.kafka.schemaregistry.client.CachedSchemaRegistryClient;
 import io.confluent.kafka.schemaregistry.client.rest.exceptions.RestClientException;
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
-import org.apache.avro.Schema;
-import org.apache.avro.generic.GenericData;
-import org.apache.avro.generic.GenericRecord;
+import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
-import io.confluent.kafka.serializers.KafkaAvroSerializer;
 
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-public class RideShareProducer {
+public class RideShareProducerV2 {
 
     static Map<String, String> env = System.getenv();
     static String schemaDNS = env.get("SCHEMA_REGISTRY");
@@ -34,7 +30,7 @@ public class RideShareProducer {
     private static final String TOPIC = "taxitest4in";
 
 //    // avro schema avsc file path.
-//    private static final String schemaPathBase = "src/main/resources/com/insight/"; ///yellowcab.avsc";
+//    private static final String schemaPathBase = "src/main/resources/com/insight/";
 
     // subject convention is "<topic-name>-value"
     private static final String subject = TOPIC + "-value";
@@ -54,15 +50,6 @@ public class RideShareProducer {
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
         props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, schemaUrl);
-
-//        final String schemaPath = schemaPathBase+args[0]+".avsc";
-//        final File schemaFile = new File(schemaPath);
-//        final Schema avroSchema = new Schema.Parser().parse(schemaFile);
-
-
-//        final CachedSchemaRegistryClient client = new CachedSchemaRegistryClient(schemaUrl, 20);
-
-//        client.register(subject, avroSchema);
 
         // construct kafka producer.
         final KafkaProducer<String, Ride2> producer = new KafkaProducer<>(props);// message key.

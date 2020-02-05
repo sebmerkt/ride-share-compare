@@ -117,7 +117,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
           <configuration>
             <sourceDirectory>${project.basedir}/src/main/resources/com/insight/</sourceDirectory>
             <includes>
-                <include>Ride.avsc</include>
+                <include>Ride1.avsc</include>
                 <include>Ride2.avsc</include>
             </includes>
             <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
@@ -134,7 +134,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                   <param>http://localhost:8081</param>
               </schemaRegistryUrls>
               <subjects>
-                  <transactions-value>src/main/resources/com/insight/Ride.avsc</transactions-value>
+                  <transactions-value>src/main/resources/com/insight/Ride1.avsc</transactions-value>
                   <transactions-value>src/main/resources/com/insight/Ride2.avsc</transactions-value>
               </subjects>
           </configuration>

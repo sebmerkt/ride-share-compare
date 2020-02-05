@@ -1,6 +1,6 @@
 {"namespace": "com.insight",
 	"type": "record",
-	"name": "Ride",
+	"name": "Ride1",
 	"fields": [
 		{"name": "vendor_name", "type": ["string", "null"], "default": ""},
 		{"name": "Trip_Pickup_DateTime", "type": ["string", "null"], "default": ""},
