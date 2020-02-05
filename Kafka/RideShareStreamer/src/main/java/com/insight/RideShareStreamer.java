@@ -2,6 +2,7 @@ package com.insight;
 
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import io.confluent.kafka.streams.serdes.avro.GenericAvroSerde;
+import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
@@ -10,6 +11,7 @@ import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.KStream;
 
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 
@@ -46,10 +48,16 @@ public class RideShareStreamer {
 
         KStream<String, GenericRecord> processedStream = rideStream.mapValues(val -> {
 
+
 //            System.out.println(val.get("vendor_name"));
             val.put("vendor_name", String.valueOf(System.currentTimeMillis()));
             System.out.println(val.get("vendor_name"));
-            System.out.println(val.getSchema().toString());
+//            System.out.println(val.getSchema().toString());
+            Iterator itr = val.getSchema().getFields().iterator();
+            while(itr.hasNext()) {
+                Schema.Field element = (Schema.Field) itr.next();
+                System.out.print(element.name() + "\n ");
+            }
             System.out.println(" ");
 
 //            System.out.println(val.get("Payment_Type").getClass().getName());
