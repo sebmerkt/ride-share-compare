@@ -35,7 +35,7 @@ public class RideShareConsumerV2 extends RideShareConsumerBase {
                     final String vendor_name = record.value().get("vendor_name").toString();
                     final String Trip_Pickup_DateTime = InsertString(record.value().get("Trip_Pickup_DateTime"));
                     final String Trip_Dropoff_DateTime = InsertString(record.value().get("Trip_Dropoff_DateTime"));
-                    final long Passenger_Count = (long) record.value().get("Passenger_Count");
+                    final int Passenger_Count = InsertInt(record.value().get("Passenger_Count"));
                     final double Trip_Distance = InsertDouble(record.value().get("Trip_Distance"));
                     final double Start_Lon = InsertDouble(record.value().get("Start_Lon"));
                     final double Start_Lat = InsertDouble(record.value().get("Start_Lat"));
