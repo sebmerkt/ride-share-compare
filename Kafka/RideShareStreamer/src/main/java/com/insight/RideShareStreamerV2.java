@@ -6,7 +6,7 @@ import org.apache.avro.generic.GenericRecord;
 import java.util.Iterator;
 
 public class RideShareStreamerV2 extends RideShareStreamerBase {
-    
+
     public static void main(String[] args) {
 
         RideShareStreamerV2 rideShareStreamer = new RideShareStreamerV2();
