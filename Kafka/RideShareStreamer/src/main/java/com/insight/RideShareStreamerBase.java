@@ -78,14 +78,14 @@ public abstract class RideShareStreamerBase {
 
 // TESTING
 
-        processedStream.to(TOPICOUT);
-
-        // start kafka streams.
-        KafkaStreams streams = new KafkaStreams(builder.build(), config);
-        streams.start();
-
-        // shutdown hook to correctly close the streams application
-        Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
+//        processedStream.to(TOPICOUT);
+//
+//        // start kafka streams.
+//        KafkaStreams streams = new KafkaStreams(builder.build(), config);
+//        streams.start();
+//
+//        // shutdown hook to correctly close the streams application
+//        Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
     }
 
     static StreamsConfig initConfig() {
