@@ -16,7 +16,7 @@ public class RideShareConsumerV2 extends RideShareConsumerBase {
     @SuppressWarnings("InfiniteLoopStatement")
     public static void main(final String[] args) {
 
-        RideShareConsumerV1 rideShareConsumer = new RideShareConsumerV1();
+        RideShareConsumerV2 rideShareConsumer = new RideShareConsumerV2();
         rideShareConsumer.connect();
         rideShareConsumer.initProperties();
         rideShareConsumer.writeToDB();
