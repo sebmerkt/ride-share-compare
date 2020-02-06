@@ -40,11 +40,14 @@ public class AggregationConsumer {
         consumer.subscribe(Collections.singletonList(TOPIC));
 
         while (true) {
-            final ConsumerRecords<String, Integer> record = consumer.poll(ofMillis(10));
-//            final String test = record;
-            System.out.println(record);
-        }
+            final ConsumerRecords<String, Integer> records = consumer.poll(ofMillis(10));
+            for (final ConsumerRecord<String, Integer> record : records) {
 
+                final int test = record.value();
+                System.out.println(test);
+            }
+
+        }
     }
 
 
