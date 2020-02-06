@@ -121,6 +121,8 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
               <subjects>
                   <transactions-value>src/main/resources/com/insight/Ride1.avsc</transactions-value>
                   <transactions-value>src/main/resources/com/insight/Ride2.avsc</transactions-value>
+                  <transactions-value>src/main/resources/com/insight/Ride3.avsc</transactions-value>
+                  <transactions-value>src/main/resources/com/insight/Ride4.avsc</transactions-value>
               </subjects>
           </configuration>
           <goals>
