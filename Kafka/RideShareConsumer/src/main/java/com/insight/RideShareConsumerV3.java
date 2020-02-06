@@ -35,16 +35,16 @@ public class RideShareConsumerV3 extends RideShareConsumerBase {
                     final String vendor_name = record.value().get("vendor_name").toString();
                     final String Trip_Pickup_DateTime = InsertString(record.value().get("Trip_Pickup_DateTime"));
                     final String Trip_Dropoff_DateTime = InsertString(record.value().get("Trip_Dropoff_DateTime"));
-                    final long Passenger_Count = (long) record.value().get("Passenger_Count");
+                    final int Passenger_Count = InsertInt(record.value().get("Passenger_Count"));
                     final double Trip_Distance = InsertDouble(record.value().get("Trip_Distance"));
                     final double Start_Lon = InsertDouble(record.value().get("Start_Lon"));
                     final double Start_Lat = InsertDouble(record.value().get("Start_Lat"));
                     final double End_Lon = InsertDouble(record.value().get("End_Lon"));
                     final double End_Lat = InsertDouble(record.value().get("End_Lat"));
                     final String Payment_Type = record.value().get("Payment_Type").toString();
-                    final double Fare_Amt = (double) record.value().get("Fare_Amt");
-                    final double Tip_Amt = (double) record.value().get("Tip_Amt");
-                    final double Tolls_Amt = (double) record.value().get("Tolls_Amt");
+                    final double Fare_Amt = InsertDouble(record.value().get("Fare_Amt"));
+                    final double Tip_Amt = InsertDouble(record.value().get("Tip_Amt"));
+                    final double Tolls_Amt = InsertDouble(record.value().get("Tolls_Amt"));
                     final double Total_Amt = InsertDouble(record.value().get("Total_Amt"));
 
                     Statement stmt = dbConn.createStatement();

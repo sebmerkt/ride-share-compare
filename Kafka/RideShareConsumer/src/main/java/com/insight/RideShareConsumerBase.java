@@ -83,7 +83,7 @@ abstract public class RideShareConsumerBase {
     public static double InsertDouble(final Object input){
         if (input != null) {
             try {
-                return (double) input;
+                return Double.parseDouble(input.toString());
             }
             catch (NumberFormatException e) {
                 return 0.0;
@@ -91,6 +91,20 @@ abstract public class RideShareConsumerBase {
         }
         else{
             return 0.0;
+        }
+    }
+
+    public static int InsertInt(final Object input){
+        if (input != null) {
+            try {
+                return Integer.parseInt(input.toString());
+            }
+            catch (NumberFormatException e) {
+                return 0;
+            }
+        }
+        else{
+            return 0;
         }
     }
 }
