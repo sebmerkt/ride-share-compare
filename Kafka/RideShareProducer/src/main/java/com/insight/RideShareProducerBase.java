@@ -137,4 +137,18 @@ public abstract class RideShareProducerBase <Ride> {
         }
     }
 
+    public static int InsertInt(final String input){
+        if (input != null && !input.isEmpty()) {
+            try {
+                return Integer.parseInt(input);
+            }
+            catch (NumberFormatException e) {
+                return 0;
+            }
+        }
+        else{
+            return 0;
+        }
+    }
+
 }
