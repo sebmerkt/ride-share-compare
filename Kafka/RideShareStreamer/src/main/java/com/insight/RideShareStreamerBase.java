@@ -35,46 +35,46 @@ public abstract class RideShareStreamerBase {
 
 
 // TESTING
-        final Map<String, String> env = System.getenv();
-
-        final String brokerDNS1 = env.get("BROKER1");
-        final String brokerDNS2 = env.get("BROKER2");
-        final String brokerDNS3 = env.get("BROKER3");
-        final String brokerDNS4 = env.get("BROKER4");
-
-        Properties props2 = new Properties();
-        props2.put(StreamsConfig.APPLICATION_ID_CONFIG, "ride-share-stream-processing");
-        props2.put(StreamsConfig.CLIENT_ID_CONFIG, "test-rides");
-        props2.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, brokerDNS1 + ":9092," + brokerDNS2 + ":9092,"
-                + brokerDNS3 + ":9092," + brokerDNS4 + ":9092");
-        props2.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
-        props2.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.Integer().getClass().getName());
-
-        StreamsConfig config2 =  new StreamsConfig(props2);
-
-
-        KStream<String, Integer> testStream = processedStream.map((k, v) -> new KeyValue<String, Integer>(k, 1));
-
-//        KTable<String, Long> testTable = testStream.groupByKey()
-//                .count();
-
-        KStream<String, Integer> testAgg = testStream.groupByKey()
-                .reduce((aggValue, newValue) -> aggValue + newValue, Materialized.as("SALES_STORE"))
-                .toStream();
-
-        // Write KStream to a topic
-        testAgg.to("taxitestagg");
-
-        // start kafka streams.
-        KafkaStreams streams2 = new KafkaStreams(builder.build(), config2);
-        streams2.start();
-
-
-//        KTable<Windowed<String>, GenericRecord> oneMinuteWindowed = processedStream
+//        final Map<String, String> env = System.getenv();
 //
-//                .groupByKey()
+//        final String brokerDNS1 = env.get("BROKER1");
+//        final String brokerDNS2 = env.get("BROKER2");
+//        final String brokerDNS3 = env.get("BROKER3");
+//        final String brokerDNS4 = env.get("BROKER4");
 //
-//                .reduce((val, agg) -> agg + Double.valueOf(val.get("Total_Amt").toString()), TimeWindows.of(ofSeconds(60)), "store1m");
+//        Properties props2 = new Properties();
+//        props2.put(StreamsConfig.APPLICATION_ID_CONFIG, "ride-share-stream-processing");
+//        props2.put(StreamsConfig.CLIENT_ID_CONFIG, "test-rides");
+//        props2.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, brokerDNS1 + ":9092," + brokerDNS2 + ":9092,"
+//                + brokerDNS3 + ":9092," + brokerDNS4 + ":9092");
+//        props2.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
+//        props2.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.Integer().getClass().getName());
+//
+//        StreamsConfig config2 =  new StreamsConfig(props2);
+//
+//
+//        KStream<String, Integer> testStream = processedStream.map((k, v) -> new KeyValue<String, Integer>(k, 1));
+//
+////        KTable<String, Long> testTable = testStream.groupByKey()
+////                .count();
+//
+//        KStream<String, Integer> testAgg = testStream.groupByKey()
+//                .reduce((aggValue, newValue) -> aggValue + newValue, Materialized.as("SALES_STORE"))
+//                .toStream();
+//
+//        // Write KStream to a topic
+//        testAgg.to("taxitestagg");
+//
+//        // start kafka streams.
+//        KafkaStreams streams2 = new KafkaStreams(builder.build(), config2);
+//        streams2.start();
+//
+//
+////        KTable<Windowed<String>, GenericRecord> oneMinuteWindowed = processedStream
+////
+////                .groupByKey()
+////
+////                .reduce((val, agg) -> agg + Double.valueOf(val.get("Total_Amt").toString()), TimeWindows.of(ofSeconds(60)), "store1m");
 
 // TESTING
 
