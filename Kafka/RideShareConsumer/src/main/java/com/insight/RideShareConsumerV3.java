@@ -11,12 +11,12 @@ import java.util.Collections;
 
 import static java.time.Duration.ofMillis;
 
-public class RideShareConsumerV2 extends RideShareConsumerBase {
+public class RideShareConsumerV3 extends RideShareConsumerBase {
 
     @SuppressWarnings("InfiniteLoopStatement")
     public static void main(final String[] args) {
 
-        RideShareConsumerV1 rideShareConsumer = new RideShareConsumerV1();
+        RideShareConsumerV3 rideShareConsumer = new RideShareConsumerV3();
         rideShareConsumer.connect();
         rideShareConsumer.initProperties();
         rideShareConsumer.writeToDB();
@@ -41,8 +41,10 @@ public class RideShareConsumerV2 extends RideShareConsumerBase {
                     final double Start_Lat = InsertDouble(record.value().get("Start_Lat"));
                     final double End_Lon = InsertDouble(record.value().get("End_Lon"));
                     final double End_Lat = InsertDouble(record.value().get("End_Lat"));
+                    final String Payment_Type = record.value().get("Payment_Type").toString();
                     final double Fare_Amt = (double) record.value().get("Fare_Amt");
                     final double Tip_Amt = (double) record.value().get("Tip_Amt");
+                    final double Tolls_Amt = (double) record.value().get("Tolls_Amt");
                     final double Total_Amt = InsertDouble(record.value().get("Total_Amt"));
 
                     Statement stmt = dbConn.createStatement();
@@ -50,7 +52,7 @@ public class RideShareConsumerV2 extends RideShareConsumerBase {
                     String sql = "INSERT INTO yellowcabsV1 " +
                             "VALUES ('" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+Trip_Dropoff_DateTime+"', "+
                             Passenger_Count+", "+Trip_Distance+", "+Start_Lon+", "+Start_Lat+", "+
-                            +End_Lon+", "+End_Lat+", "+Fare_Amt+", "+Tip_Amt+", "+Total_Amt+
+                            +End_Lon+", "+End_Lat+", '"+Payment_Type+"', "+Fare_Amt+", "+Tip_Amt+", "+Tolls_Amt+", "+Total_Amt+
                             ", 'SRID=4326;POINT("+Start_Lon+" "+Start_Lat+")', 'SRID=4326;POINT("+End_Lon+" "+End_Lat+")' "+")";
 
                     stmt.executeUpdate(sql);
