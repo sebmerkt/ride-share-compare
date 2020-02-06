@@ -10,9 +10,6 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Properties;
@@ -38,17 +35,14 @@ public class AggregationConsumer {
         Properties props = initProperties();
 //        aggregationConsumer.writeToDB();
 
-        final KafkaConsumer<String, GenericRecord> consumer = new KafkaConsumer<>(props);
+        final KafkaConsumer<String, Integer> consumer = new KafkaConsumer<>(props);
 
         consumer.subscribe(Collections.singletonList(TOPIC));
 
         while (true) {
-            final ConsumerRecords<String, GenericRecord> records = consumer.poll(ofMillis(10));
-            for (final ConsumerRecord<String, GenericRecord> record : records) {
-
-                final String test = record.value().get("test").toString();
-                System.out.println(test);
-            }
+            final ConsumerRecords<String, Integer> record = consumer.poll(ofMillis(10));
+//            final String test = record;
+            System.out.println(record);
         }
 
     }
