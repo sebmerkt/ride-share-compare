@@ -2,6 +2,7 @@ package com.insight;
 
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import io.confluent.kafka.streams.serdes.avro.GenericAvroSerde;
+import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
@@ -10,15 +11,35 @@ import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.KStream;
 
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 
-public class RideShareStreamer {
-    public static void main(String[] args) throws Exception {
+public abstract class RideShareStreamerBase {
 
-        final String TOPICIN = "taxitest4in";
-        final String TOPICOUT = "taxitest4out";
+    static final String TOPICIN = "taxitest4in";
+    static final String TOPICOUT = "taxitest4out";
 
+    void processStream() {
+        StreamsConfig config = initConfig();
+
+        StreamsBuilder builder = new StreamsBuilder();
+
+        KStream<String, GenericRecord> rideStream = builder.stream(TOPICIN);
+
+        KStream<String, GenericRecord> processedStream = rideStream.mapValues(val -> processMessage(val));
+
+        processedStream.to(TOPICOUT);
+
+        // start kafka streams.
+        KafkaStreams streams = new KafkaStreams(builder.build(), config);
+        streams.start();
+
+        // shutdown hook to correctly close the streams application
+        Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
+    }
+
+    static StreamsConfig initConfig() {
         final Map<String, String> env = System.getenv();
         final String schemaDNS = env.get("SCHEMA_REGISTRY");
         final String brokerDNS1 = env.get("BROKER1");
@@ -38,35 +59,10 @@ public class RideShareStreamer {
         props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, schemaUrl);
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, genericAvroSerde.getClass().getName());
-        StreamsConfig config = new StreamsConfig(props);
 
-        StreamsBuilder builder = new StreamsBuilder();
-
-        KStream<String, GenericRecord> rideStream = builder.stream(TOPICIN);
-
-        KStream<String, GenericRecord> processedStream = rideStream.mapValues(val -> {
-
-//            System.out.println(val.get("vendor_name"));
-            val.put("vendor_name", val.get("vendor_name")+"-NEW");
-            System.out.println(val.get("vendor_name"));
-
-//            System.out.println(val.get("Payment_Type").getClass().getName());
-
-            return val;
-        });
-
-        processedStream.to(TOPICOUT);
-
-        // start kafka streams.
-        KafkaStreams streams = new KafkaStreams(builder.build(), config);
-        streams.start();
-
-
-        // print the topology
-        System.out.println(streams.toString());
-
-        // shutdown hook to correctly close the streams application
-        Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
+        return new StreamsConfig(props);
     }
+
+    abstract GenericRecord processMessage(GenericRecord val);
 
 }

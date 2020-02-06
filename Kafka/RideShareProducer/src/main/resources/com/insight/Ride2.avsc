@@ -1,6 +1,6 @@
 {"namespace": "com.insight",
   "type": "record",
-  "name": "ride_share_provider_A_v4",
+  "name": "Ride2",
   "fields": [
     {"name": "vendor_name", "type": ["string", "null"], "default": ""},
     {"name": "Trip_Pickup_DateTime", "type": ["string", "null"], "default": ""},
@@ -9,16 +9,10 @@
     {"name": "Trip_Distance", "type": ["double", "null"], "default": 0.0},
     {"name": "Start_Lon", "type": ["double", "null"], "default": 0.0},
     {"name": "Start_Lat", "type": ["double", "null"], "default": 0.0},
-    {"name": "Rate_Code", "type": ["double", "null"], "default": 0.0},
-    {"name": "store_and_forward", "type": ["double", "null"], "default": 0.0},
     {"name": "End_Lon", "type": ["double", "null"], "default": 0.0},
     {"name": "End_Lat", "type": ["double", "null"], "default": 0.0},
-    {"name": "Payment_Type", "type": ["string", "null"], "default": ""},
     {"name": "Fare_Amt", "type": ["double", "null"], "default": 0.0},
-    {"name": "surcharge", "type": ["double", "null"], "default": 0.0},
-    {"name": "mta_tax", "type": ["double", "null"], "default": 0.0},
     {"name": "Tip_Amt", "type": ["double", "null"], "default": 0.0},
-    {"name": "Tolls_Amt", "type": ["double", "null"], "default": 0.0},
     {"name": "Total_Amt", "type": ["double", "null"], "default": 0.0}
   ]
 }

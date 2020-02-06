@@ -105,31 +105,11 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     <manifest>
                         <addClasspath>true</addClasspath>
                         <classpathPrefix>lib/</classpathPrefix>
-                        <mainClass>com.insight.RideShareConsumer</mainClass>
+                        <mainClass>com.insight.RideShareConsumerV1</mainClass>
                     </manifest>
                 </archive>
             </configuration>
         </plugin>
-      <plugin>
-        <groupId>org.apache.avro</groupId>
-        <artifactId>avro-maven-plugin</artifactId>
-        <version>${avro.version}</version>
-        <executions>
-          <execution>
-          <phase>generate-sources</phase>
-          <goals>
-            <goal>schema</goal>
-          </goals>
-          <configuration>
-            <sourceDirectory>${project.basedir}/src/main/resources/com/insight/</sourceDirectory>
-            <includes>
-              <include>ride_share_provider_A_v1.avsc</include>
-            </includes>
-            <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
-          </configuration>
-        </execution>
-      </executions>
-      </plugin>
       <plugin>
           <groupId>io.confluent</groupId>
           <artifactId>kafka-schema-registry-maven-plugin</artifactId>
@@ -139,7 +119,10 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                   <param>http://localhost:8081</param>
               </schemaRegistryUrls>
               <subjects>
-                  <transactions-value>src/main/resources/com/insight/ride_share_provider_A_v1.avsc</transactions-value>
+                  <transactions-value>src/main/resources/com/insight/Ride1.avsc</transactions-value>
+                  <transactions-value>src/main/resources/com/insight/Ride2.avsc</transactions-value>
+                  <transactions-value>src/main/resources/com/insight/Ride3.avsc</transactions-value>
+                  <transactions-value>src/main/resources/com/insight/Ride4.avsc</transactions-value>
               </subjects>
           </configuration>
           <goals>
