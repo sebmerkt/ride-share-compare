@@ -19,6 +19,7 @@ public class RideShareConsumerV2 extends RideShareConsumerBase {
         RideShareConsumerV1 rideShareConsumer = new RideShareConsumerV1();
         rideShareConsumer.connect();
         rideShareConsumer.initProperties();
+        rideShareConsumer.writeToDB();
 
     }
 
