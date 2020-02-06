@@ -55,8 +55,8 @@ public abstract class RideShareStreamerBase {
 
         KStream<String, Integer> testStream = processedStream.map((k, v) -> new KeyValue<String, Integer>(k, 1));
 
-        KTable<String, Long> testTable = testStream.groupByKey()
-                .count();
+//        KTable<String, Long> testTable = testStream.groupByKey()
+//                .count();
 
         KStream<String, Integer> testAgg = testStream.groupByKey()
                 .reduce((aggValue, newValue) -> aggValue + newValue, Materialized.as("SALES_STORE"))
