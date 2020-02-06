@@ -7,13 +7,17 @@ import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
+import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
-import org.apache.kafka.streams.kstream.KStream;
+import org.apache.kafka.streams.kstream.*;
 
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
+
+import static java.time.Duration.ofMillis;
+import static java.time.Duration.ofSeconds;
 
 public abstract class RideShareStreamerBase {
 
@@ -28,6 +32,28 @@ public abstract class RideShareStreamerBase {
         KStream<String, GenericRecord> rideStream = builder.stream(TOPICIN);
 
         KStream<String, GenericRecord> processedStream = rideStream.mapValues(val -> processMessage(val));
+
+
+// TESTING
+        KStream<String, Integer> testStream = processedStream.map((k, v) -> new KeyValue<String, Integer>(k, 1));
+
+        KTable<String, Long> testTable = testStream.groupByKey()
+                .count();
+
+        KStream<String, Integer> testAgg = testStream.groupByKey()
+                .reduce((aggValue, newValue) -> aggValue + newValue, Materialized.as("SALES_STORE"))
+                .toStream();
+
+        // Write KStream to a topic
+        testAgg.to("taxitestagg");
+
+//        KTable<Windowed<String>, GenericRecord> oneMinuteWindowed = processedStream
+//
+//                .groupByKey()
+//
+//                .reduce((val, agg) -> agg + Double.valueOf(val.get("Total_Amt").toString()), TimeWindows.of(ofSeconds(60)), "store1m");
+
+// TESTING
 
         processedStream.to(TOPICOUT);
 

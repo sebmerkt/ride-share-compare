@@ -23,26 +23,6 @@ public class RideShareStreamerV2 extends RideShareStreamerBase {
             val.put("vendor_name", String.valueOf("VTS"));
         }
 
-//            System.out.println(val.get("vendor_name"));
-//            val.put("vendor_name", String.valueOf(System.currentTimeMillis()));
-        System.out.println(val.get("vendor_name"));
-        String schema = val.getSchema().toString();
-        if (schema.contains("End_Lat")) {
-            System.out.println("End_Lat YAY!");
-        }
-        if (schema.contains("Passenger_Count")) {
-            System.out.println("Passenger_Count YAY!");
-        }
-        Iterator itr = val.getSchema().getFields().iterator();
-        while(itr.hasNext()) {
-            Schema.Field element = (Schema.Field) itr.next();
-            System.out.print(element.defaultVal() + "\n");
-            System.out.print(element.getObjectProp(element.name()) + "\n");
-        }
-        System.out.println(" ");
-
-//            System.out.println(val.get("Payment_Type").getClass().getName());
-
         return val;
     }
 
