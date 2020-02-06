@@ -5,6 +5,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Collections;
@@ -19,7 +20,6 @@ public class RideShareConsumerV1 extends RideShareConsumerBase {
         RideShareConsumerV1 rideShareConsumer = new RideShareConsumerV1();
         rideShareConsumer.connect();
         rideShareConsumer.initProperties();
-
     }
 
     @Override

@@ -17,9 +17,9 @@ abstract public class RideShareConsumerBase {
 
     static Map<String, String> env = System.getenv();
 
-    Connection dbConn = null;
-
     Properties props = null;
+
+    Connection dbConn = null;
 
     abstract void writeToDB();
 
@@ -34,7 +34,8 @@ abstract public class RideShareConsumerBase {
 
         String schemaUrl = "http://" + schemaDNS + ":8081";
 
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
+        props = new Properties();
+                props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
                 brokerDNS1 + ":9092," + brokerDNS2 + ":9092," + brokerDNS3 + ":9092," + brokerDNS4 + ":9092");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "test-rides");
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
@@ -46,7 +47,7 @@ abstract public class RideShareConsumerBase {
         //        props.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, true);
     }
 
-    public void connect() {
+    public Connection connect() {
 
         String dbServer = env.get("DB_SERVER");
         String dbName = env.get("DB_NAME");
@@ -55,12 +56,14 @@ abstract public class RideShareConsumerBase {
         String user = env.get("DB_USER");
         String password = env.get("DB_PW");
 
+//        Connection conn = null;
         try {
             dbConn = DriverManager.getConnection(url, user, password);
             System.out.println("Connected to the PostgreSQL server successfully.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return dbConn;
     }
 
     public static String InsertString(final Object input){
