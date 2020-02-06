@@ -53,7 +53,7 @@ public class RideShareConsumerV4 extends RideShareConsumerBase {
 
                     Statement stmt = dbConn.createStatement();
 
-                    String sql = "INSERT INTO yellowcabsV1 " +
+                    String sql = "INSERT INTO ride_share_A_v4 " +
                             "VALUES ('" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+Trip_Dropoff_DateTime+"', "+
                             Passenger_Count+", "+Trip_Distance+", "+Start_Lon+", "+Start_Lat+", "+Rate_Code+", "+
                             store_and_forward+", "+End_Lon+", "+End_Lat+", '"+Payment_Type+"', "+
