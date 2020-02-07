@@ -49,8 +49,11 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
         }
 
 //        final InputStream resourceAsStream = getClass().getResourceAsStream("/taxi_zones.json");
-//
 //        val.get("PULocationID");
+
+        if ( getClass().getResource("/taxi_zones.json").getFile().isEmpty() ){
+            System.out.println("EMPTY");
+        }
 
         JSONObject obj = new JSONObject(getClass().getResource("/taxi_zones.json").getFile());
         System.out.println(obj.toString());
