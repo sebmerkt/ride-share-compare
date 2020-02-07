@@ -5,6 +5,7 @@ import org.apache.avro.generic.GenericRecord;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.Iterator;
 
 public class RideShareStreamerV5 extends RideShareStreamerBase {
@@ -51,22 +52,16 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
 //        final InputStream resourceAsStream = getClass().getResourceAsStream("/taxi_zones.json");
 //        val.get("PULocationID");
 
-        if ( getClass().getResource("/taxi_zones.json").getFile().isEmpty() ){
-            System.out.println("EMPTY");
-            System.out.println(getClass().getResource("/taxi_zones.json").getFile());
-        }
-        else{
-            System.out.println("Full");
-            System.out.println(getClass().getResource("/taxi_zones.json").getFile());
-        }
+        File file = new File(
+                getClass().getClassLoader().getResource("taxi_zones.json").getFile()
+        );
 
-        JSONObject obj = new JSONObject(getClass().getResource("/taxi_zones.json").getFile());
-        System.out.println(obj.toString());
-        String pageName = obj.getJSONObject("LocationID").getString("");
+//        JSONObject obj = new JSONObject(getClass().getResource("/taxi_zones.json").getFile());
+//        System.out.println(file);
+//        String pageName = obj.getJSONObject("LocationID").getString("");
 
 //            System.out.println(val.get("vendor_name"));
 //            val.put("vendor_name", String.valueOf(System.currentTimeMillis()));
-        System.out.println(val.get(pageName));
         String schema = val.getSchema().toString();
         if (schema.contains("End_Lat")) {
             System.out.println("End_Lat YAY!");
