@@ -28,7 +28,14 @@ public abstract class RideShareStreamerBase {
 
         KStream<String, GenericRecord> rideStream = builder.stream(TOPICIN);
 
-        KStream<String, GenericRecord> processedStream = rideStream.mapValues(val -> processMessage(val));
+        KStream<String, GenericRecord> processedStream = rideStream.mapValues(val -> {
+            try {
+                return processMessage(val);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return val;
+        });
 
         processedStream.to(TOPICOUT);
 
