@@ -121,6 +121,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                 <include>Ride2.avsc</include>
                 <include>Ride3.avsc</include>
                 <include>Ride4.avsc</include>
+                <include>Ride5.avsc</include>
             </includes>
             <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
           </configuration>
@@ -140,6 +141,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                   <transactions-value>src/main/resources/com/insight/Ride2.avsc</transactions-value>
                   <transactions-value>src/main/resources/com/insight/Ride3.avsc</transactions-value>
                   <transactions-value>src/main/resources/com/insight/Ride4.avsc</transactions-value>
+                  <transactions-value>src/main/resources/com/insight/Ride5.avsc</transactions-value>
               </subjects>
           </configuration>
           <goals>
