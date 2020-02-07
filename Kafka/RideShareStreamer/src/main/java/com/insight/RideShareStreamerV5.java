@@ -53,6 +53,7 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
 //        val.get("PULocationID");
 
         JSONObject obj = new JSONObject(getClass().getResource("/taxi_zones.json").getFile());
+        System.out.println(obj.toString());
         String pageName = obj.getJSONObject("LocationID").getString("");
 
 //            System.out.println(val.get("vendor_name"));
