@@ -10,6 +10,7 @@ import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.KStream;
+import org.json.JSONException;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -63,6 +64,6 @@ public abstract class RideShareStreamerBase {
         return new StreamsConfig(props);
     }
 
-    abstract GenericRecord processMessage(GenericRecord val);
+    abstract GenericRecord processMessage(GenericRecord val) throws JSONException;
 
 }
