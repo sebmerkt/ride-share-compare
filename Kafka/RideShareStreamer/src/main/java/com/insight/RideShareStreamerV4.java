@@ -50,49 +50,8 @@ public class RideShareStreamerV4 extends RideShareStreamerBase {
             val.put("Payment_Type", "Voided trip");
         }
 
-//        final InputStream resourceAsStream = getClass().getResourceAsStream("/taxi_zones.json");
-//
-//        val.get("PULocationID");
-
-        JSONObject obj = new JSONObject(getClass().getResource("/taxi_zones.json").getFile());
-        String pageName = obj.getJSONObject("LocationID").getString("");
-
-//            System.out.println(val.get("vendor_name"));
-//            val.put("vendor_name", String.valueOf(System.currentTimeMillis()));
-        System.out.println(val.get(pageName));
-        String schema = val.getSchema().toString();
-        if (schema.contains("End_Lat")) {
-            System.out.println("End_Lat YAY!");
-        }
-        if (schema.contains("Passenger_Count")) {
-            System.out.println("Passenger_Count YAY!");
-        }
-        Iterator itr = val.getSchema().getFields().iterator();
-        while(itr.hasNext()) {
-            Schema.Field element = (Schema.Field) itr.next();
-            System.out.print(element.defaultVal() + "\n");
-            System.out.print(element.getObjectProp(element.name()) + "\n");
-        }
-        System.out.println(" ");
-
-//            System.out.println(val.get("Payment_Type").getClass().getName());
-
         return val;
     }
 
 
 }
-//
-// {"name": "PULocationID", "type": ["long", "null"], "default": 0},
-//          {"name": "Rate_Code", "type": ["double", "null"], "default": 0.0, "alias": "RatecodeID"},
-//          {"name": "store_and_forward", "type": ["double", "null"], "default": 0.0, "alias": "store_and_fwd_flag"},
-//          {"name": "DOLocationID", "type": ["long", "null"], "default": 0},
-//          {"name": "Payment_Type", "type": ["string", "null"], "default": "", "alias": "payment_type"},
-//          {"name": "Fare_Amt", "type": ["double", "null"], "default": 0.0, "alias": "fare_amount"},
-//          {"name": "extra", "type": ["double", "null"], "default": 0.0},
-//          {"name": "surcharge", "type": ["double", "null"], "default": 0.0, "alias": "improvement_surcharge"},
-//          {"name": "mta_tax", "type": ["double", "null"], "default": 0.0},
-//          {"name": "Tip_Amt", "type": ["double", "null"], "default": 0.0, "alias": "tip_amount"},
-//          {"name": "Tolls_Amt", "type": ["double", "null"], "default": 0.0, "alias": "tolls_amount"},
-//          {"name": "Total_Amt", "type": ["double", "null"], "default": 0.0, "alias": "total_amount"}
-//          ]
