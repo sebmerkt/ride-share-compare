@@ -53,6 +53,11 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
 
         if ( getClass().getResource("/taxi_zones.json").getFile().isEmpty() ){
             System.out.println("EMPTY");
+            System.out.println(getClass().getResource("/taxi_zones.json").getFile());
+        }
+        else{
+            System.out.println("Full");
+            System.out.println(getClass().getResource("/taxi_zones.json").getFile());
         }
 
         JSONObject obj = new JSONObject(getClass().getResource("/taxi_zones.json").getFile());
