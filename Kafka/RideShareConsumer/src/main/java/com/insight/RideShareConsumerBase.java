@@ -4,6 +4,9 @@ import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -105,6 +108,22 @@ abstract public class RideShareConsumerBase {
         }
         else{
             return 0;
+        }
+    }
+
+
+    public static DateTime InsertDateTime(final Object input){
+        if (input != null) {
+            try {
+                DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-MM-yyyy HH:mm:ss");
+                return formatter.parseDateTime(input.toString());
+            }
+            catch (NumberFormatException e) {
+                return null;
+            }
+        }
+        else{
+            return null;
         }
     }
 }

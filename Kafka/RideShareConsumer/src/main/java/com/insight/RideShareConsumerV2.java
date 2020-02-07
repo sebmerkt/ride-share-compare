@@ -4,6 +4,7 @@ import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.joda.time.DateTime;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -33,8 +34,8 @@ public class RideShareConsumerV2 extends RideShareConsumerBase {
                 for (final ConsumerRecord<String, GenericRecord> record : records) {
 
                     final String vendor_name = record.value().get("vendor_name").toString();
-                    final String Trip_Pickup_DateTime = InsertString(record.value().get("Trip_Pickup_DateTime"));
-                    final String Trip_Dropoff_DateTime = InsertString(record.value().get("Trip_Dropoff_DateTime"));
+                    final DateTime Trip_Pickup_DateTime = InsertDateTime(record.value().get("Trip_Pickup_DateTime"));
+                    final DateTime Trip_Dropoff_DateTime = InsertDateTime(record.value().get("Trip_Dropoff_DateTime"));
                     final int Passenger_Count = InsertInt(record.value().get("Passenger_Count"));
                     final double Trip_Distance = InsertDouble(record.value().get("Trip_Distance"));
                     final double Start_Lon = InsertDouble(record.value().get("Start_Lon"));

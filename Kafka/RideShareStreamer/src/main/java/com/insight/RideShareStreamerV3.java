@@ -17,30 +17,30 @@ public class RideShareStreamerV3 extends RideShareStreamerBase {
     GenericRecord processMessage(GenericRecord val) {
         // Newer schema has integer codes: 1= Creative Mobile Technologies (CMT), LLC; 2= VeriFone Inc. (VTS)
         if ( val.get("vendor_name") == "1" ) {
-            val.put("vendor_name", String.valueOf("CMT"));
+            val.put("vendor_name", "CMT");
         }
         else if ( val.get("vendor_name") == "2" ) {
-            val.put("vendor_name", String.valueOf("VTS"));
+            val.put("vendor_name", "VTS");
         }
 
         //Newer schema integer codes: 1= Credit card, 2= Cash, 3= No charge, 4= Dispute, 5= Unknown, 6= Voided trip
         if ( val.get("Payment_Type") == "1" ) {
-            val.put("Payment_Type", String.valueOf("Credit"));
+            val.put("Payment_Type", "Credit");
         }
         else if ( val.get("Payment_Type") == "2" ) {
-            val.put("Payment_Type", String.valueOf("CASH"));
+            val.put("Payment_Type", "CASH");
         }
         else if ( val.get("Payment_Type") == "3" ) {
-            val.put("Payment_Type", String.valueOf("No Charge"));
+            val.put("Payment_Type", "No Charge");
         }
         else if ( val.get("Payment_Type") == "4" ) {
-            val.put("Payment_Type", String.valueOf("Dispute"));
+            val.put("Payment_Type", "Dispute");
         }
         else if ( val.get("Payment_Type") == "5" ) {
-            val.put("Payment_Type", String.valueOf("Unknown"));
+            val.put("Payment_Type", "Unknown");
         }
         else if ( val.get("Payment_Type") == "5" ) {
-            val.put("Payment_Type", String.valueOf("Voided trip"));
+            val.put("Payment_Type", "Voided trip");
         }
 
 
@@ -59,8 +59,6 @@ public class RideShareStreamerV3 extends RideShareStreamerBase {
 
         return val;
     }
-
-
 }
 
 
