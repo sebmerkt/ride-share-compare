@@ -53,7 +53,7 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
         BufferedReader streamReader = new BufferedReader(new InputStreamReader(resourceAsStream, "UTF-8"));
         StringBuilder responseStrBuilder = new StringBuilder();
 
-        System.out.println(val.getSchema().toString());
+//        System.out.println(val.getSchema().toString());
 
         String inputStr;
         while ((inputStr = streamReader.readLine()) != null)
