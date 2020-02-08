@@ -50,9 +50,6 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
         }
 
         final InputStream resourceAsStream = getClass().getResourceAsStream("taxi_zones.json");
-
-        System.out.println(val.get("End_Lon"));
-
         BufferedReader streamReader = new BufferedReader(new InputStreamReader(resourceAsStream, "UTF-8"));
         StringBuilder responseStrBuilder = new StringBuilder();
 
@@ -73,7 +70,6 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
             val.put("End_Lat", obj.getJSONObject("Y").get(DOLocID));
         }
 
-        System.out.println(val.get("End_Lon"));
         System.out.println(val.get("vendor_name"));
         System.out.println(val.get("VendorID"));
 

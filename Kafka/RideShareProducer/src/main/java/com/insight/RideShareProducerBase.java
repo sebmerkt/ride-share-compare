@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class RideShareProducerBase <Ride> {
 
-    static String TOPIC = "taxitest5in";
+    static String TOPIC = "taxitest6in";
 
     // construct kafka producer.
     KafkaProducer<String, Ride> producer = null;
