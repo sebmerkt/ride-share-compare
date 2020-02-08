@@ -10,6 +10,7 @@
 		{"name": "Start_Lat", "type": ["double", "null"], "default": 0.0},
 		{"name": "End_Lon", "type": ["double", "null"], "default": 0.0},
 		{"name": "End_Lat", "type": ["double", "null"], "default": 0.0},
-		{"name": "Total_Amt", "type": ["double", "null"], "default": 0.0}
+		{"name": "Total_Amt", "type": ["double", "null"], "default": 0.0},
+		{"name": "Process_time", "type": ["string", "null"], "default": ""}
 	]
 }

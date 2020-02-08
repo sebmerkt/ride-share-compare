@@ -3,6 +3,8 @@ package com.insight;
 import org.apache.kafka.clients.producer.KafkaProducer;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Properties;
 
 public class RideShareProducerV5 extends RideShareProducerBase <Ride5> {
@@ -26,6 +28,10 @@ public class RideShareProducerV5 extends RideShareProducerBase <Ride5> {
 
     @Override
     void buildRecord( final String[] message) {
+
+        Date date= new Date();
+        Timestamp ts = new Timestamp( date.getTime() );
+
         ride.setVendorName( InsertString(message[0]) );
         ride.setTripPickupDateTime( InsertString(message[1]) );
         ride.setTripDropoffDateTime( InsertString(message[2]) );
@@ -47,5 +53,6 @@ public class RideShareProducerV5 extends RideShareProducerBase <Ride5> {
         ride.setTipAmt( InsertDouble(message[14]) );
         ride.setTollsAmt( InsertDouble(message[15]) );
         ride.setTotalAmt( InsertDouble(message[16]) );
+        ride.setProcessTime( InsertString(ts.toString()) );
     }
 }

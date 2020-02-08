@@ -15,6 +15,7 @@
 		{"name": "Fare_Amt", "type": ["double", "null"], "default": 0.0},
 		{"name": "Tip_Amt", "type": ["double", "null"], "default": 0.0},
 		{"name": "Tolls_Amt", "type": ["double", "null"], "default": 0.0},
-		{"name": "Total_Amt", "type": ["double", "null"], "default": 0.0}
+		{"name": "Total_Amt", "type": ["double", "null"], "default": 0.0},
+		{"name": "Process_time", "type": ["string", "null"], "default": ""}
 	]
 }
