@@ -33,7 +33,7 @@ public class RideShareConsumerV5 extends RideShareConsumerBase {
                 final ConsumerRecords<String, GenericRecord> records = consumer.poll(ofMillis(10));
                 for (final ConsumerRecord<String, GenericRecord> record : records) {
 
-                    final String uuid = record.key();
+                    final long uuid = Long.valueOf(record.key());
                     final String vendor_name = record.value().get("vendor_name").toString();
                     final String Trip_Pickup_DateTime = InsertString(record.value().get("Trip_Pickup_DateTime"));
                     final String Trip_Dropoff_DateTime = InsertString(record.value().get("Trip_Dropoff_DateTime"));
@@ -59,7 +59,7 @@ public class RideShareConsumerV5 extends RideShareConsumerBase {
                     Statement stmt = dbConn.createStatement();
 
                     String sql = "INSERT INTO ride_share_A_v4 " +
-                            "VALUES ( '"+uuid+"', '" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+Trip_Dropoff_DateTime+"', "+
+                            "VALUES ( "+uuid+", '" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+Trip_Dropoff_DateTime+"', "+
                             Passenger_Count+", "+Trip_Distance+", "+Start_Lon+", "+Start_Lat+", "+Rate_Code+", "+
                             store_and_forward+", "+End_Lon+", "+End_Lat+", '"+Payment_Type+"', "+
                             Fare_Amt+", "+surcharge+", "+mta_tax+", "+Tip_Amt+", "+Tolls_Amt+", "+Total_Amt+", "+Process_time+
