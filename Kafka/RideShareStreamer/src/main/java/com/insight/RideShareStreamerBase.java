@@ -12,6 +12,8 @@ import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.KStream;
 import org.json.JSONException;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
@@ -31,7 +33,7 @@ public abstract class RideShareStreamerBase {
         KStream<String, GenericRecord> processedStream = rideStream.mapValues(val -> {
             try {
                 return processMessage(val);
-            } catch (JSONException e) {
+            } catch (JSONException | IOException e) {
                 e.printStackTrace();
             }
             return val;
@@ -71,6 +73,6 @@ public abstract class RideShareStreamerBase {
         return new StreamsConfig(props);
     }
 
-    abstract GenericRecord processMessage(GenericRecord val) throws JSONException;
+    abstract GenericRecord processMessage(GenericRecord val) throws JSONException, IOException;
 
 }

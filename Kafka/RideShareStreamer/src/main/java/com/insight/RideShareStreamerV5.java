@@ -5,8 +5,7 @@ import org.apache.avro.generic.GenericRecord;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Iterator;
 
 public class RideShareStreamerV5 extends RideShareStreamerBase {
@@ -20,7 +19,7 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
     }
 
     @Override
-    GenericRecord processMessage(GenericRecord val) throws JSONException {
+    GenericRecord processMessage(GenericRecord val) throws JSONException, IOException {
         // Newer schema have integer codes: 1= Creative Mobile Technologies (CMT), LLC; 2= VeriFone Inc. (VTS)
         if ( val.get("vendor_name") == "1" ) {
             val.put("vendor_name", String.valueOf("CMT"));
@@ -53,13 +52,19 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
         final InputStream resourceAsStream = getClass().getResourceAsStream("taxi_zones.json");
 //        val.get("PULocationID");
 
-//        File file = new File(
-//                getClass().getClassLoader().getResource("taxi_zones.json").getFile()
-//        );
+
+        BufferedReader streamReader = new BufferedReader(new InputStreamReader(resourceAsStream, "UTF-8"));
+        StringBuilder responseStrBuilder = new StringBuilder();
+
+        String inputStr;
+        while ((inputStr = streamReader.readLine()) != null)
+            responseStrBuilder.append(inputStr);
+        JSONObject obj = new JSONObject(responseStrBuilder.toString());
+
 
 //        JSONObject obj = new JSONObject(getClass().getResource("/taxi_zones.json").getFile());
-//        System.out.println(file);
-//        String pageName = obj.getJSONObject("LocationID").getString("");
+        String pageName = obj.getJSONObject("LocationID").getString("");
+        System.out.println(pageName);
 
 //            System.out.println(val.get("vendor_name"));
 //            val.put("vendor_name", String.valueOf(System.currentTimeMillis()));
