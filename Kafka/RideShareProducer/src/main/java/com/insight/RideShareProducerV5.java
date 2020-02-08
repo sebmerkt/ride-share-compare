@@ -35,9 +35,9 @@ public class RideShareProducerV5 extends RideShareProducerBase <Ride5> {
         ride.setStartLat( 0.0 );
         ride.setPULocationID( InsertLong(message[5]) );
         ride.setRateCode( InsertDouble(message[6]) );
+        ride.setStoreAndForward( InsertDouble(message[7]) );
         ride.setEndLon( 0.0 );
         ride.setEndLat( 0.0 );
-        ride.setStoreAndForward( InsertDouble(message[7]) );
         ride.setDOLocationID( InsertLong(message[8]) );
         ride.setPaymentType( InsertString(message[9]) );
         ride.setFareAmt( InsertDouble(message[10]) );

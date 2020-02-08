@@ -39,12 +39,12 @@ public class RideShareConsumerV5 extends RideShareConsumerBase {
                     final double Trip_Distance = InsertDouble(record.value().get("Trip_Distance"));
                     final double Start_Lon = InsertDouble(record.value().get("Start_Lon"));
                     final double Start_Lat = InsertDouble(record.value().get("Start_Lat"));
-                    final long PULocationID = InsertLong(record.value().get("PULocationID"));
+//                    final long PULocationID = InsertLong(record.value().get("PULocationID"));
                     final double Rate_Code = InsertDouble(record.value().get("Rate_Code"));
                     final double store_and_forward = InsertDouble(record.value().get("store_and_forward"));
                     final double End_Lon = InsertDouble(record.value().get("End_Lon"));
                     final double End_Lat = InsertDouble(record.value().get("End_Lat"));
-                    final long DOLocationID = InsertLong(record.value().get("DOLocationID"));
+//                    final long DOLocationID = InsertLong(record.value().get("DOLocationID"));
                     final String Payment_Type = record.value().get("Payment_Type").toString();
                     final double Fare_Amt = InsertDouble(record.value().get("Fare_Amt"));
                     final double surcharge = InsertDouble(record.value().get("surcharge"));

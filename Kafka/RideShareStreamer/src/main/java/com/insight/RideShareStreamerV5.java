@@ -78,17 +78,3 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
 
 
 }
-//
-// {"name": "PULocationID", "type": ["long", "null"], "default": 0},
-//          {"name": "Rate_Code", "type": ["double", "null"], "default": 0.0, "alias": "RatecodeID"},
-//          {"name": "store_and_forward", "type": ["double", "null"], "default": 0.0, "alias": "store_and_fwd_flag"},
-//          {"name": "DOLocationID", "type": ["long", "null"], "default": 0},
-//          {"name": "Payment_Type", "type": ["string", "null"], "default": "", "alias": "payment_type"},
-//          {"name": "Fare_Amt", "type": ["double", "null"], "default": 0.0, "alias": "fare_amount"},
-//          {"name": "extra", "type": ["double", "null"], "default": 0.0},
-//          {"name": "surcharge", "type": ["double", "null"], "default": 0.0, "alias": "improvement_surcharge"},
-//          {"name": "mta_tax", "type": ["double", "null"], "default": 0.0},
-//          {"name": "Tip_Amt", "type": ["double", "null"], "default": 0.0, "alias": "tip_amount"},
-//          {"name": "Tolls_Amt", "type": ["double", "null"], "default": 0.0, "alias": "tolls_amount"},
-//          {"name": "Total_Amt", "type": ["double", "null"], "default": 0.0, "alias": "total_amount"}
-//          ]
