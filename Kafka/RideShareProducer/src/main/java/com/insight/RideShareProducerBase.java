@@ -66,7 +66,7 @@ public abstract class RideShareProducerBase <Ride> {
 
                     producer.send(new ProducerRecord<String, Ride>(TOPIC, uniqueID, ride));
                     try{
-                        TimeUnit.MILLISECONDS.sleep(1);
+                        TimeUnit.MILLISECONDS.sleep(10);
                     } catch (final InterruptedException e) {
                         break;
                     }
