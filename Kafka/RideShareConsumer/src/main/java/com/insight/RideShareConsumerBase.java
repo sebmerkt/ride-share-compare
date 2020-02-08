@@ -107,4 +107,18 @@ abstract public class RideShareConsumerBase {
             return 0;
         }
     }
+
+    public static long InsertLong(final Object input){
+        if (input != null) {
+            try {
+                return Long.parseLong(input.toString());
+            }
+            catch (NumberFormatException e) {
+                return 0;
+            }
+        }
+        else{
+            return 0;
+        }
+    }
 }

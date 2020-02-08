@@ -31,17 +31,21 @@ public class RideShareProducerV5 extends RideShareProducerBase <Ride5> {
         ride.setTripDropoffDateTime( InsertString(message[2]) );
         ride.setPassengerCount( InsertInt(message[3]) );
         ride.setTripDistance( InsertDouble(message[4]) );
-        ride.setPULocationID( InsertLong(message[5]) );
-        ride.setRateCode( InsertDouble(message[6]) );
-        ride.setStoreAndForward( InsertDouble(message[7]) );
-        ride.setDOLocationID( InsertLong(message[8]) );
-        ride.setPaymentType( InsertString(message[9]) );
-        ride.setFareAmt( InsertDouble(message[10]) );
-        ride.setExtra( InsertDouble(message[11]) );
-        ride.setSurcharge( InsertDouble(message[12]) );
-        ride.setMtaTax( InsertDouble(message[13]) );
-        ride.setTipAmt( InsertDouble(message[14]) );
-        ride.setTollsAmt( InsertDouble(message[15]) );
-        ride.setTotalAmt( InsertDouble(message[16]) );
+        ride.setStartLon( InsertDouble(message[5]) );
+        ride.setStartLat( InsertDouble(message[6]) );
+        ride.setPULocationID( InsertLong(message[7]) );
+        ride.setRateCode( InsertDouble(message[8]) );
+        ride.setEndLon( InsertDouble(message[9]) );
+        ride.setEndLat( InsertDouble(message[10]) );
+        ride.setStoreAndForward( InsertDouble(message[11]) );
+        ride.setDOLocationID( InsertLong(message[12]) );
+        ride.setPaymentType( InsertString(message[13]) );
+        ride.setFareAmt( InsertDouble(message[14]) );
+        ride.setExtra( InsertDouble(message[15]) );
+        ride.setSurcharge( InsertDouble(message[16]) );
+        ride.setMtaTax( InsertDouble(message[17]) );
+        ride.setTipAmt( InsertDouble(message[18]) );
+        ride.setTollsAmt( InsertDouble(message[19]) );
+        ride.setTotalAmt( InsertDouble(message[20]) );
     }
 }
