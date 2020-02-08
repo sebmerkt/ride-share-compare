@@ -63,13 +63,13 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
         System.out.println(val.toString());
 
         String PULocID = val.get("PULocationID").toString();
-        if ( Integer.parseInt(PULocID)<=263 ){
+        if ( Long.parseLong(PULocID)<=263 ){
             val.put("Start_Lon",obj.getJSONObject("X").get(PULocID));
             val.put("Start_Lat",obj.getJSONObject("Y").get(PULocID));
         }
 
         String DOLocID = val.get("DOLocationID").toString();
-        if ( Integer.parseInt(DOLocID)<=263 ){
+        if ( Long.parseLong(DOLocID)<=263 ){
             val.put("End_Lon", obj.getJSONObject("X").get(DOLocID));
             val.put("End_Lat", obj.getJSONObject("Y").get(DOLocID));
         }
