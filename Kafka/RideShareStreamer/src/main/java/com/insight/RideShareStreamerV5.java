@@ -61,25 +61,14 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
             responseStrBuilder.append(inputStr);
         JSONObject obj = new JSONObject(responseStrBuilder.toString());
 
-        String locID = val.get("DOLocationID").toString();
+        String PULocID = val.get("PULocationID").toString();
+        String DOLocID = val.get("DOLocationID").toString();
 
-//        JSONObject obj = new JSONObject(getClass().getResource("/taxi_zones.json").getFile());
-        String pageNameX = obj.getJSONObject("X").get(locID).toString();
-        String pageNameY = obj.getJSONObject("Y").get(locID).toString();
-        System.out.println(pageNameX);
-        System.out.println(pageNameY);
+        val.put("Start_Lon",obj.getJSONObject("X").get(PULocID));
+        val.put("Start_Lat",obj.getJSONObject("Y").get(PULocID));
 
-//            System.out.println(val.get("vendor_name"));
-//            val.put("vendor_name", String.valueOf(System.currentTimeMillis()));
-        Iterator itr = val.getSchema().getFields().iterator();
-        while(itr.hasNext()) {
-            Schema.Field element = (Schema.Field) itr.next();
-//            System.out.print(element.defaultVal() + "\n");
-//            System.out.print(element.getObjectProp(element.name()) + "\n");
-        }
-        System.out.println(" ");
-
-//            System.out.println(val.get("Payment_Type").getClass().getName());
+        val.put("End_Lon",obj.getJSONObject("X").get(DOLocID));
+        val.put("End_Lat",obj.getJSONObject("Y").get(DOLocID));
 
         return val;
     }
