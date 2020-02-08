@@ -20,8 +20,8 @@ import java.util.Properties;
 
 public abstract class RideShareStreamerBase {
 
-    static final String TOPICIN = "taxitest4in";
-    static final String TOPICOUT = "taxitest4out";
+    static final String TOPICIN = "taxitest5in";
+    static final String TOPICOUT = "taxitest5out";
 
     void processStream() {
         StreamsConfig config = initConfig();
