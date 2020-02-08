@@ -60,6 +60,8 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
             responseStrBuilder.append(inputStr);
         JSONObject obj = new JSONObject(responseStrBuilder.toString());
 
+        System.out.println(val.toString());
+
         String PULocID = val.get("PULocationID").toString();
         if ( Integer.parseInt(PULocID)<=263 ){
             val.put("Start_Lon",obj.getJSONObject("X").get(PULocID));
