@@ -63,23 +63,16 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
 
 
 //        JSONObject obj = new JSONObject(getClass().getResource("/taxi_zones.json").getFile());
-        String pageName = obj.getJSONObject("LocationID").getString("3");
+        String pageName = obj.getJSONObject("LocationID").toString();
         System.out.println(pageName);
 
 //            System.out.println(val.get("vendor_name"));
 //            val.put("vendor_name", String.valueOf(System.currentTimeMillis()));
-        String schema = val.getSchema().toString();
-        if (schema.contains("End_Lat")) {
-            System.out.println("End_Lat YAY!");
-        }
-        if (schema.contains("Passenger_Count")) {
-            System.out.println("Passenger_Count YAY!");
-        }
         Iterator itr = val.getSchema().getFields().iterator();
         while(itr.hasNext()) {
             Schema.Field element = (Schema.Field) itr.next();
-            System.out.print(element.defaultVal() + "\n");
-            System.out.print(element.getObjectProp(element.name()) + "\n");
+//            System.out.print(element.defaultVal() + "\n");
+//            System.out.print(element.getObjectProp(element.name()) + "\n");
         }
         System.out.println(" ");
 
