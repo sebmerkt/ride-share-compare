@@ -10,6 +10,8 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
@@ -54,12 +56,16 @@ public abstract class RideShareProducerBase <Ride> {
             br.readLine();
             while ((line = br.readLine()) != null) {
                 final String[] taxiTrip = line.split(cvsSplitBy, -18);
-                String uniqueID = UUID.randomUUID().toString();
+//                String uniqueID = UUID.randomUUID().toString();
+
+                Date date= new Date();
+                Timestamp ts = new Timestamp( date.getTime() );
+                System.out.println(ts.toString());
 
                 if (i > 0 && !line.contains("NULL")) {
                     buildRecord( taxiTrip );
 
-                    producer.send(new ProducerRecord<String, Ride>(TOPIC, uniqueID, ride));
+                    producer.send(new ProducerRecord<String, Ride>(TOPIC, ts.toString(), ride));
                     try{
                         TimeUnit.MILLISECONDS.sleep(10);
                     } catch (final InterruptedException e) {
