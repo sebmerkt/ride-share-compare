@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.Date;
 import java.util.Map;
 import java.util.Properties;
@@ -60,7 +61,10 @@ public abstract class RideShareProducerBase <Ride> {
 
                 Date date= new Date();
                 Timestamp ts = new Timestamp( date.getTime() );
-                System.out.println(ts.toString());
+
+                Instant instant = Instant.now();
+                long timeStampMillis = instant.toEpochMilli();
+                System.out.println(timeStampMillis);
 
                 if (i > 0 && !line.contains("NULL")) {
                     buildRecord( taxiTrip );
