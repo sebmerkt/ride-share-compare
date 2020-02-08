@@ -64,6 +64,7 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
         String PULocID = val.get("PULocationID").toString();
         String DOLocID = val.get("DOLocationID").toString();
 
+        System.out.println(val.getSchema().toString());
         val.put("Start_Lon",obj.getJSONObject("X").get(PULocID));
         val.put("Start_Lat",obj.getJSONObject("Y").get(PULocID));
 
