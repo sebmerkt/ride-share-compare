@@ -57,8 +57,9 @@ public abstract class RideShareProducerBase <Ride> {
             br.readLine();
             while ((line = br.readLine()) != null) {
                 final String[] taxiTrip = line.split(cvsSplitBy, -18);
+
 //                String uniqueID = UUID.randomUUID().toString();
-                String uniqueID = String.valueOf(UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE);
+                String uniqueID = Instant.now().getEpochSecond()+String.valueOf(UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE );
 
                 if (i > 0 && !line.contains("NULL")) {
                     buildRecord( taxiTrip );
