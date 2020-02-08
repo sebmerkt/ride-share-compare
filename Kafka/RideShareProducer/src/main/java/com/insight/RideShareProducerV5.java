@@ -31,12 +31,12 @@ public class RideShareProducerV5 extends RideShareProducerBase <Ride5> {
         ride.setTripDropoffDateTime( InsertString(message[2]) );
         ride.setPassengerCount( InsertInt(message[3]) );
         ride.setTripDistance( InsertDouble(message[4]) );
-        ride.setStartLon( 1.0 );
-        ride.setStartLat( 1.0 );
+        ride.setStartLon( 0.0 );
+        ride.setStartLat( 0.0 );
         ride.setPULocationID( InsertLong(message[5]) );
         ride.setRateCode( InsertDouble(message[6]) );
-        ride.setEndLon( 1.0 );
-        ride.setEndLat( 1.0 );
+        ride.setEndLon( 0.0 );
+        ride.setEndLat( 0.0 );
         ride.setStoreAndForward( InsertDouble(message[7]) );
         ride.setDOLocationID( InsertLong(message[7]) );
         ride.setPaymentType( InsertString(message[8]) );
