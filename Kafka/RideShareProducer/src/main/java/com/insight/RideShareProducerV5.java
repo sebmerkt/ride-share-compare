@@ -47,6 +47,7 @@ public class RideShareProducerV5 extends RideShareProducerBase <Ride5> {
         ride.setTipAmt( InsertDouble(message[14]) );
         ride.setTollsAmt( InsertDouble(message[15]) );
         ride.setTotalAmt( InsertDouble(message[16]) );
+        System.out.println(message.toString());
         System.out.println(ride.toString());
     }
 }
