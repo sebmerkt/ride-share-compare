@@ -22,14 +22,11 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
     GenericRecord processMessage(GenericRecord val) throws JSONException, IOException {
         // Newer schema have integer codes: 1= Creative Mobile Technologies (CMT), LLC; 2= VeriFone Inc. (VTS)
         if ( val.get("vendor_name") == "1" ) {
-            val.put("vendor_name", String.valueOf("CMT"));
+            val.put("vendor_name", "CMT");
         }
         else if ( val.get("vendor_name") == "2" ) {
-            val.put("vendor_name", String.valueOf("VTS"));
+            val.put("vendor_name", "VTS");
         }
-
-        System.out.println(val.get("vendor_name"));
-        System.out.println(val.get("VendorID"));
 
 
         //Newer schema integer codes: 1= Credit card, 2= Cash, 3= No charge, 4= Dispute, 5= Unknown, 6= Voided trip
@@ -53,8 +50,8 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
         }
 
         final InputStream resourceAsStream = getClass().getResourceAsStream("taxi_zones.json");
-//        val.get("PULocationID");
 
+        System.out.println(val.get("End_Lon"));
 
         BufferedReader streamReader = new BufferedReader(new InputStreamReader(resourceAsStream, "UTF-8"));
         StringBuilder responseStrBuilder = new StringBuilder();
@@ -75,6 +72,10 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
             val.put("End_Lon", obj.getJSONObject("X").get(DOLocID));
             val.put("End_Lat", obj.getJSONObject("Y").get(DOLocID));
         }
+
+        System.out.println(val.get("End_Lon"));
+        System.out.println(val.get("vendor_name"));
+        System.out.println(val.get("VendorID"));
 
         return val;
     }
