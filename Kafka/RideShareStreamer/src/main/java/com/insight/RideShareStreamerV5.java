@@ -61,10 +61,11 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
             responseStrBuilder.append(inputStr);
         JSONObject obj = new JSONObject(responseStrBuilder.toString());
 
+        String locID = val.get("DOLocationID").toString();
 
 //        JSONObject obj = new JSONObject(getClass().getResource("/taxi_zones.json").getFile());
-        String pageNameX = obj.getJSONObject("X").get("23").toString();
-        String pageNameY = obj.getJSONObject("Y").get("23").toString();
+        String pageNameX = obj.getJSONObject("X").get(locID).toString();
+        String pageNameY = obj.getJSONObject("Y").get(locID).toString();
         System.out.println(pageNameX);
         System.out.println(pageNameY);
 
