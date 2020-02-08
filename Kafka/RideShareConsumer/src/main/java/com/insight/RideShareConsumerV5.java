@@ -33,7 +33,8 @@ public class RideShareConsumerV5 extends RideShareConsumerBase {
                 final ConsumerRecords<String, GenericRecord> records = consumer.poll(ofMillis(10));
                 for (final ConsumerRecord<String, GenericRecord> record : records) {
 
-                    final long uuid = Long.valueOf(record.key());
+                    final String uuid = record.key().toString();
+//                    final long uuid = Long.valueOf(record.key());
                     final String vendor_name = record.value().get("vendor_name").toString();
                     final String Trip_Pickup_DateTime = InsertString(record.value().get("Trip_Pickup_DateTime"));
                     final String Trip_Dropoff_DateTime = InsertString(record.value().get("Trip_Dropoff_DateTime"));
@@ -56,7 +57,7 @@ public class RideShareConsumerV5 extends RideShareConsumerBase {
                     final double Total_Amt = InsertDouble(record.value().get("Total_Amt"));
                     final String Process_time = InsertString(record.value().get("Process_time"));
 
-//                    Statement stmt = dbConn.createStatement();
+                    Statement stmt = dbConn.createStatement();
 //
 //                    String sql = "INSERT INTO ride_share_A_v4 " +
 //                            "VALUES ( "+uuid+", '" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+Trip_Dropoff_DateTime+"', "+
