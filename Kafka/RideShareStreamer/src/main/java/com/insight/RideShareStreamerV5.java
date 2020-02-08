@@ -6,6 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.Iterator;
 
 public class RideShareStreamerV5 extends RideShareStreamerBase {
@@ -49,12 +50,12 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
             val.put("Payment_Type", "Voided trip");
         }
 
-//        final InputStream resourceAsStream = getClass().getResourceAsStream("/taxi_zones.json");
+        final InputStream resourceAsStream = getClass().getResourceAsStream("taxi_zones.json");
 //        val.get("PULocationID");
 
-        File file = new File(
-                getClass().getClassLoader().getResource("taxi_zones.json").getFile()
-        );
+//        File file = new File(
+//                getClass().getClassLoader().getResource("taxi_zones.json").getFile()
+//        );
 
 //        JSONObject obj = new JSONObject(getClass().getResource("/taxi_zones.json").getFile());
 //        System.out.println(file);
