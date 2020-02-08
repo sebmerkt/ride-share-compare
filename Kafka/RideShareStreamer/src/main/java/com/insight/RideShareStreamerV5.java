@@ -53,29 +53,25 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
         BufferedReader streamReader = new BufferedReader(new InputStreamReader(resourceAsStream, "UTF-8"));
         StringBuilder responseStrBuilder = new StringBuilder();
 
-        System.out.println(val.getSchema().toString());
-
         String inputStr;
         while ((inputStr = streamReader.readLine()) != null)
             responseStrBuilder.append(inputStr);
         JSONObject obj = new JSONObject(responseStrBuilder.toString());
-
-        System.out.println(val.toString());
 
         String PULocID = val.get("PULocationID").toString();
         if ( Long.parseLong(PULocID)<=263 ){
             val.put("Start_Lon",obj.getJSONObject("X").get(PULocID));
             val.put("Start_Lat",obj.getJSONObject("Y").get(PULocID));
         }
+        System.out.println(PULocID);
+        System.out.println(obj.getJSONObject("X").get(PULocID));
+        System.out.println(" ");
 
         String DOLocID = val.get("DOLocationID").toString();
         if ( Long.parseLong(DOLocID)<=263 ){
             val.put("End_Lon", obj.getJSONObject("X").get(DOLocID));
             val.put("End_Lat", obj.getJSONObject("Y").get(DOLocID));
         }
-
-        System.out.println(val.get("vendor_name"));
-        System.out.println(val.get("VendorID"));
 
         return val;
     }
