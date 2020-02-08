@@ -46,6 +46,6 @@ public class RideShareProducerV5 extends RideShareProducerBase <Ride5> {
         ride.setMtaTax( InsertDouble(message[12]) );
         ride.setTipAmt( InsertDouble(message[13]) );
         ride.setTollsAmt( InsertDouble(message[14]) );
-        ride.setTotalAmt( InsertDouble(message[25]) );
+        ride.setTotalAmt( InsertDouble(message[15]) );
     }
 }
