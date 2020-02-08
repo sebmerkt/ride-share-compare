@@ -63,9 +63,10 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
             val.put("Start_Lon",obj.getJSONObject("X").get(PULocID));
             val.put("Start_Lat",obj.getJSONObject("Y").get(PULocID));
         }
+        System.out.println(val.get("PULocationID").toString());
 //        System.out.println("PULocID: "+PULocID);
-//        System.out.println("X: "+obj.getJSONObject("X").get(PULocID));
-//        System.out.println("Y: "+obj.getJSONObject("Y").get(PULocID));
+        System.out.println("X: "+obj.getJSONObject("X").get(PULocID));
+        System.out.println("Y: "+obj.getJSONObject("Y").get(PULocID));
 
         String DOLocID = String.valueOf(Long.parseLong(val.get("DOLocationID").toString())-1);
         if ( Long.parseLong(DOLocID)<=262 ){
@@ -74,7 +75,7 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
         }
 
         System.out.println(val.get("DOLocationID").toString());
-        System.out.println("DOLocID: "+DOLocID);
+//        System.out.println("DOLocID: "+DOLocID);
         System.out.println("X: "+obj.getJSONObject("X").get(DOLocID));
         System.out.println("Y: "+obj.getJSONObject("Y").get(DOLocID));
 
