@@ -28,6 +28,9 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
             val.put("vendor_name", String.valueOf("VTS"));
         }
 
+        System.out.println(val.get("vendor_name"));
+        System.out.println(val.get("VendorID"));
+
 
         //Newer schema integer codes: 1= Credit card, 2= Cash, 3= No charge, 4= Dispute, 5= Unknown, 6= Voided trip
         if ( val.get("Payment_Type") == "1" ) {
