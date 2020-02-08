@@ -49,7 +49,7 @@ public class RideShareConsumerV1 extends RideShareConsumerBase {
                     String sql = "INSERT INTO ride_share_A_v1 " +
                             "VALUES ( "+uuid+", '" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+Trip_Dropoff_DateTime+
                             "', "+Trip_Distance+", "+Start_Lon+", "+Start_Lat+", "+End_Lon+", "+End_Lat+", "+
-                            Total_Amt+", "+Process_time+", 'SRID=4326;POINT("+Start_Lon+" "+Start_Lat+")', 'SRID=4326;POINT("+End_Lon+" "+End_Lat+")' "+")";
+                            Total_Amt+", '"+Process_time+"', 'SRID=4326;POINT("+Start_Lon+" "+Start_Lat+")', 'SRID=4326;POINT("+End_Lon+" "+End_Lat+")' "+")";
 
                     stmt.executeUpdate(sql);
                 }
