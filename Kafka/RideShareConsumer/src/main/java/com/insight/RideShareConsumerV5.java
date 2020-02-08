@@ -54,7 +54,7 @@ public class RideShareConsumerV5 extends RideShareConsumerBase {
                     final double Total_Amt = InsertDouble(record.value().get("Total_Amt"));
 
                     Statement stmt = dbConn.createStatement();
-                    
+
                     String sql = "INSERT INTO ride_share_A_v4 " +
                             "VALUES ('" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+Trip_Dropoff_DateTime+"', "+
                             Passenger_Count+", "+Trip_Distance+", "+Start_Lon+", "+Start_Lat+", "+Rate_Code+", "+

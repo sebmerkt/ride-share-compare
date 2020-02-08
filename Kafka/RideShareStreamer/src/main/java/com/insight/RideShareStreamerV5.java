@@ -70,9 +70,6 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
         val.put("End_Lon",obj.getJSONObject("X").get(DOLocID));
         val.put("End_Lat",obj.getJSONObject("Y").get(DOLocID));
 
-        System.out.println("End_Lon "+obj.getJSONObject("X").get(PULocID));
-        System.out.println("End_Lat "+obj.getJSONObject("Y").get(PULocID));
-
         return val;
     }
 
