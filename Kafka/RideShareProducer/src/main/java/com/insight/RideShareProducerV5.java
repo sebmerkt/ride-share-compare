@@ -38,14 +38,14 @@ public class RideShareProducerV5 extends RideShareProducerBase <Ride5> {
         ride.setEndLon( 0.0 );
         ride.setEndLat( 0.0 );
         ride.setStoreAndForward( InsertDouble(message[7]) );
-        ride.setDOLocationID( InsertLong(message[7]) );
-        ride.setPaymentType( InsertString(message[8]) );
-        ride.setFareAmt( InsertDouble(message[9]) );
-        ride.setExtra( InsertDouble(message[10]) );
-        ride.setSurcharge( InsertDouble(message[11]) );
-        ride.setMtaTax( InsertDouble(message[12]) );
-        ride.setTipAmt( InsertDouble(message[13]) );
-        ride.setTollsAmt( InsertDouble(message[14]) );
-        ride.setTotalAmt( InsertDouble(message[15]) );
+        ride.setDOLocationID( InsertLong(message[8]) );
+        ride.setPaymentType( InsertString(message[9]) );
+        ride.setFareAmt( InsertDouble(message[10]) );
+        ride.setExtra( InsertDouble(message[11]) );
+        ride.setSurcharge( InsertDouble(message[12]) );
+        ride.setMtaTax( InsertDouble(message[13]) );
+        ride.setTipAmt( InsertDouble(message[14]) );
+        ride.setTollsAmt( InsertDouble(message[15]) );
+        ride.setTotalAmt( InsertDouble(message[16]) );
     }
 }
