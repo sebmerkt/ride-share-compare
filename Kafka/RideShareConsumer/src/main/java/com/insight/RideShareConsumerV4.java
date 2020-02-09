@@ -33,7 +33,7 @@ public class RideShareConsumerV4 extends RideShareConsumerBase {
                 final ConsumerRecords<String, GenericRecord> records = consumer.poll(ofMillis(10));
                 for (final ConsumerRecord<String, GenericRecord> record : records) {
 
-                    final long uuid = Long.valueOf(record.key());
+                    final String uuid = record.key();
                     final String vendor_name = record.value().get("vendor_name").toString();
                     final String Trip_Pickup_DateTime = InsertString(record.value().get("Trip_Pickup_DateTime"));
                     final String Trip_Dropoff_DateTime = InsertString(record.value().get("Trip_Dropoff_DateTime"));
