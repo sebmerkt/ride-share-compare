@@ -76,8 +76,8 @@ def make_figure(n,coord):
       five_minutes_ago = now - timedelta(hours=0, minutes=0, seconds=10)
 
       radius=1000*multi
-      # create_table_query = '''SELECT * FROM ride_share_A_v4 WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND Process_time < '%s' AND Process_time > '%s'; '''%(lon, lat, radius, now, five_minutes_ago)
-      create_table_query = '''SELECT * FROM ride_share_A_v4 WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s); '''%(lon, lat, radius)
+      create_table_query = '''SELECT * FROM ride_share_A_v4 WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND Process_time < '%s' AND Process_time > '%s'; '''%(lon, lat, radius, now, five_minutes_ago)
+      # create_table_query = '''SELECT * FROM ride_share_A_v4 WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s); '''%(lon, lat, radius)
 
       df = pd.read_sql_query(create_table_query, connection)
 
