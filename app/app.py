@@ -131,7 +131,7 @@ def make_figure(n,coord):
     layout = go.Layout(
       autosize=True,
       # width=1000,
-      height=600, 
+      height=800, 
       mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=13, style=os.getenv("MAPBOX_STYLE") ),
       ) 
                       
