@@ -13,7 +13,7 @@ import java.util.Properties;
 
 abstract public class RideShareConsumerBase {
 
-    static final String TOPIC = "taxitest10out";
+    static final String TOPIC = "taxitest11out";
 
     static Map<String, String> env = System.getenv();
 
