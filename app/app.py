@@ -126,8 +126,6 @@ def make_figure(n,coord):
       )
       ]
 
-
-
     layout = go.Layout(
       autosize=True,
       # width=1000,

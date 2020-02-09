@@ -10,12 +10,8 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.util.Date;
 import java.util.Map;
 import java.util.Properties;
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 public abstract class RideShareProducerBase <Ride> {
@@ -65,7 +61,7 @@ public abstract class RideShareProducerBase <Ride> {
 
                     producer.send(new ProducerRecord<String, Ride>(TOPIC, uniqueID, ride));
                     try{
-                        TimeUnit.MILLISECONDS.sleep(100);
+                        TimeUnit.MILLISECONDS.sleep(1);
                     } catch (final InterruptedException e) {
                         break;
                     }
