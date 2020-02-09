@@ -9,7 +9,6 @@ import plotly.express as px
 import os
 from datetime import datetime, timedelta
 import geocoder
-import flask
 
 
 import plotly.graph_objects as go
@@ -148,9 +147,4 @@ def make_figure(n,coord):
 
 
 if __name__ == '__main__':
-    server = flask.Flask(__name__)
-    app = dash.Dash(__name__, server=server)
-    app.config.suppress_callback_exceptions = True
-
-
-    app.run_server(debug=False)
+    app.run_server(debug=True, host='0.0.0.0')
