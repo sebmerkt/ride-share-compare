@@ -58,7 +58,6 @@ public abstract class RideShareProducerBase <Ride> {
             while ((line = br.readLine()) != null) {
                 final String[] taxiTrip = line.split(cvsSplitBy, -18);
 
-//                String uniqueID = UUID.randomUUID().toString();
                 String uniqueID = String.valueOf(System.nanoTime())+String.valueOf(i);
 
                 if (i > 0 && !line.contains("NULL")) {
