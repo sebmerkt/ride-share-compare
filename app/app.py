@@ -56,6 +56,7 @@ def update_output_div(input_value):
 @app.callback(Output('graph', 'figure'),
               [Input('interval-component', 'n_intervals'),Input(component_id='my-div', component_property='children')])
 def make_figure(n,coord):
+    print("HERE0")
   # if not lon:
   lon = coord[0]
   # if not lat:
@@ -63,7 +64,7 @@ def make_figure(n,coord):
   # lon, lat = get_current_location()
   try:
     start = time.time()
-    print("HERE0")
+    print("HERE1")
     connection = psycopg2.connect(user = os.getenv("DB_USER"),
                                   password = os.getenv("DB_PW"),
                                   host = os.getenv("DB_SERVER"),
@@ -73,7 +74,7 @@ def make_figure(n,coord):
     cursor = connection.cursor()
 
 
-    print("HERE1")
+    print("HERE2")
     lendf=0
     multi=1
     while( lendf==0):
@@ -84,7 +85,7 @@ def make_figure(n,coord):
       # create_table_query = '''SELECT * FROM ride_share_A_v4 WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND Process_time < '%s' AND Process_time > '%s'; '''%(lon, lat, radius, now, five_minutes_ago)
       create_table_query = '''SELECT * FROM ride_share_A_v4 WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s); '''%(lon, lat, radius)
 
-      print("HERE1")
+      print("HERE3")
       df = pd.read_sql_query(create_table_query, connection)
 
       lendf=len(df)
@@ -153,4 +154,5 @@ def make_figure(n,coord):
 
 
 if __name__ == '__main__':
+    print("THERE0")
     app.run_server(debug=True, host='0.0.0.0')
