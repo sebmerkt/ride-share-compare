@@ -71,6 +71,8 @@ def make_figure(n,coord):
 
     cursor = connection.cursor()
 
+
+    print("HERE1")
     lendf=0
     multi=1
     while( lendf==0):
@@ -81,6 +83,7 @@ def make_figure(n,coord):
       # create_table_query = '''SELECT * FROM ride_share_A_v4 WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND Process_time < '%s' AND Process_time > '%s'; '''%(lon, lat, radius, now, five_minutes_ago)
       create_table_query = '''SELECT * FROM ride_share_A_v4 WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s); '''%(lon, lat, radius)
 
+      print("HERE1")
       df = pd.read_sql_query(create_table_query, connection)
 
       lendf=len(df)
