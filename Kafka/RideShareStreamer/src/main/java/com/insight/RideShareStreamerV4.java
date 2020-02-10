@@ -50,6 +50,8 @@ public class RideShareStreamerV4 extends RideShareStreamerBase {
             val.put("Payment_Type", "Voided trip");
         }
 
+        System.out.println(val.get("Payment_Type"));
+
         return val;
     }
 
