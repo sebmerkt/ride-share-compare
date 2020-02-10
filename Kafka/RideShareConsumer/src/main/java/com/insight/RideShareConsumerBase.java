@@ -1,3 +1,14 @@
+
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+//  Source file for abstract class RideShareConsumerBase                //
+//                                                                      //
+//  Description: Provides the base for the Kafka consumers              //
+//                                                                      //
+//  Author: Sebastian Merkt (@sebmerkt)                                 //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
 package com.insight;
 
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;

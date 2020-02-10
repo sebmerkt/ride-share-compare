@@ -1,3 +1,15 @@
+
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+//  Source file for class RideShareProducerV4                           //
+//                                                                      //
+//  Description: Producer V4 ingests data corresponding to schema       //
+//               version 4                                              //
+//                                                                      //
+//  Author: Sebastian Merkt (@sebmerkt)                                 //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
 package com.insight;
 
 import org.apache.kafka.clients.producer.KafkaProducer;

@@ -1,12 +1,25 @@
+
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+//  Source file for class RideShareStreamerV5                           //
+//                                                                      //
+//  Description: Streamer V5 processes messages corresponding to schema //
+//               version 5                                              //
+//                                                                      //
+//  Author: Sebastian Merkt (@sebmerkt)                                 //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
 package com.insight;
 
-import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.*;
-import java.util.Iterator;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class RideShareStreamerV5 extends RideShareStreamerBase {
 

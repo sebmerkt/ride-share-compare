@@ -1,13 +1,19 @@
+
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+//  Source file for class RideShareStreamerV4                           //
+//                                                                      //
+//  Description: Streamer V4 processes messages corresponding to schema //
+//               version 4                                              //
+//                                                                      //
+//  Author: Sebastian Merkt (@sebmerkt)                                 //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
 package com.insight;
 
-import jdk.nashorn.internal.parser.JSONParser;
-import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.InputStream;
-import java.util.Iterator;
 
 public class RideShareStreamerV4 extends RideShareStreamerBase {
 

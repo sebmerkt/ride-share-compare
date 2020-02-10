@@ -1,9 +1,18 @@
+
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+//  Source file for class RideShareStreamerV3                           //
+//                                                                      //
+//  Description: Streamer V3 processes messages corresponding to schema //
+//               version 3                                              //
+//                                                                      //
+//  Author: Sebastian Merkt (@sebmerkt)                                 //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
 package com.insight;
 
-import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
-
-import java.util.Iterator;
 
 public class RideShareStreamerV3 extends RideShareStreamerBase {
 

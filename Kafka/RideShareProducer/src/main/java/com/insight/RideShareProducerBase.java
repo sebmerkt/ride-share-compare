@@ -1,3 +1,14 @@
+
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+//  Source file for abstract class RideShareProducerBase                //
+//                                                                      //
+//  Description: Provides the base for the Kafka producers              //
+//                                                                      //
+//  Author: Sebastian Merkt (@sebmerkt)                                 //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
 package com.insight;
 
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
@@ -14,13 +25,24 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+// Definition of the producer base class producing messages of the generic schema class Ride
 public abstract class RideShareProducerBase <Ride> {
 
+    // Input topic
     static String TOPIC = "taxitest13in";
 
-    // construct kafka producer.
+    // Define kafka producer and basic accessors
     KafkaProducer<String, Ride> producer = null;
 
+    KafkaProducer<String, Ride> getProducer() {
+        return producer;
+    }
+
+    void setProducer ( final KafkaProducer<String, Ride> newProducer ) {
+        producer = newProducer;
+    }
+
+    // Define the schema class and basic accessors
     Ride ride = null;
 
     Ride getRide() {
@@ -31,28 +53,39 @@ public abstract class RideShareProducerBase <Ride> {
         ride = newRide;
     }
 
-    KafkaProducer<String, Ride> getProducer() {
-        return producer;
-    }
-
-    void setProducer ( final KafkaProducer<String, Ride> newProducer ) {
-        producer = newProducer;
-    }
-
+    // Method for sending messages
     public void sendRecords (String[] args) throws IOException {
+
+        // Variable for keeping track of the input files
         int batchNum = 0;
+
+        // Loop through the input files. Input files are given through command line arguments
         while (batchNum<args.length) {
+            // Keep track of lines in input file
             int i = 0;
+
             System.out.println("Streaming file: "+args[batchNum]);
+
+            // Initialize buffer reader
             BufferedReader br = null;
+
+            // Initialize string to store input line
             String line = "";
+
+            // Separator in CSV file
             final String cvsSplitBy = ",";
 
+            // Open file
             br = new BufferedReader(new FileReader(args[batchNum]));
-            //Read first line
+
+            //Read first line (Don't send headers as a message)
             br.readLine();
+
+            // Loop through the lines in the file
             while ((line = br.readLine()) != null) {
-                final String[] taxiTrip = line.split(cvsSplitBy, -18);
+
+                // Split each line
+                final String[] taxiTrip = line.split(cvsSplitBy, 0);
 
                 String uniqueID = String.valueOf(System.nanoTime())+String.valueOf(i);
 

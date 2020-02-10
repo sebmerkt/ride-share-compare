@@ -1,3 +1,14 @@
+
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+//  Source file for abstract class RideShareStreamerBase                //
+//                                                                      //
+//  Description: Provides the base for the Kafka stream processors      //
+//                                                                      //
+//  Author: Sebastian Merkt (@sebmerkt)                                 //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
 package com.insight;
 
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;

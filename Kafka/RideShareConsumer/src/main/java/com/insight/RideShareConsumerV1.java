@@ -1,3 +1,16 @@
+
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+//  Source file for class RideShareConsumerV1                           //
+//                                                                      //
+//  Description: Consumer V1 consumes messages corresponding to schema  //
+//               version 1 and stores the data in the PostGIS DB        //
+//               ride_share_A_v1                                        //
+//                                                                      //
+//  Author: Sebastian Merkt (@sebmerkt)                                 //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
 package com.insight;
 
 import org.apache.avro.generic.GenericRecord;
