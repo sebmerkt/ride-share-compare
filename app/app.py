@@ -56,7 +56,7 @@ def update_output_div(input_value):
 @app.callback(Output('graph', 'figure'),
               [Input('interval-component', 'n_intervals'),Input(component_id='my-div', component_property='children')])
 def make_figure(n,coord):
-    print("HERE0")
+  print("HERE0")
   # if not lon:
   lon = coord[0]
   # if not lat:
