@@ -13,7 +13,7 @@ import java.util.Properties;
 
 abstract public class RideShareConsumerBase {
 
-    static final String TOPIC = "taxitest11out";
+    static final String TOPIC = "taxitest12out";
 
     static Map<String, String> env = System.getenv();
 
@@ -35,7 +35,7 @@ abstract public class RideShareConsumerBase {
         String schemaUrl = "http://" + schemaDNS + ":8081";
 
         props = new Properties();
-                props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
                 brokerDNS1 + ":9092," + brokerDNS2 + ":9092," + brokerDNS3 + ":9092," + brokerDNS4 + ":9092");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "test-rides");
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
