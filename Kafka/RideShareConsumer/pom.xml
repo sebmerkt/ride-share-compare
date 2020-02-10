@@ -96,19 +96,24 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         </configuration>
       </plugin>
         <plugin>
-            <!-- Build an executable JAR -->
             <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-jar-plugin</artifactId>
-            <version>3.1.0</version>
-            <configuration>
-                <archive>
-                    <manifest>
-                        <addClasspath>true</addClasspath>
-                        <classpathPrefix>lib/</classpathPrefix>
-                        <mainClass>com.insight.RideShareConsumerV1</mainClass>
-                    </manifest>
-                </archive>
-            </configuration>
+            <artifactId>maven-shade-plugin</artifactId>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <shadedArtifactAttached>true</shadedArtifactAttached>
+                        <transformers>
+                            <transformer implementation=
+                                                 "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <mainClass>com.insight.RideShareConsumerV4</mainClass>
+                            </transformer>
+                        </transformers>
+                    </configuration>
+                </execution>
+            </executions>
         </plugin>
       <plugin>
           <groupId>io.confluent</groupId>

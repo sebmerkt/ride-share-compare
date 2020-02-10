@@ -89,39 +89,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
           </compilerArgs>
         </configuration>
       </plugin>
-<!--        <plugin>-->
-<!--            <groupId>org.apache.maven.plugins</groupId>-->
-<!--            <artifactId>maven-dependency-plugin</artifactId>-->
-<!--            <executions>-->
-<!--                <execution>-->
-<!--                    <id>copy-dependencies</id>-->
-<!--                    <phase>prepare-package</phase>-->
-<!--                    <goals>-->
-<!--                        <goal>copy-dependencies</goal>-->
-<!--                    </goals>-->
-<!--                    <configuration>-->
-<!--                        <outputDirectory>-->
-<!--                            ${project.build.directory}/libs-->
-<!--                        </outputDirectory>-->
-<!--                    </configuration>-->
-<!--                </execution>-->
-<!--            </executions>-->
-<!--        </plugin>-->
-<!--        <plugin>-->
-<!--            &lt;!&ndash; Build an executable JAR &ndash;&gt;-->
-<!--            <groupId>org.apache.maven.plugins</groupId>-->
-<!--            <artifactId>maven-jar-plugin</artifactId>-->
-<!--            <version>3.1.0</version>-->
-<!--            <configuration>-->
-<!--                <archive>-->
-<!--                    <manifest>-->
-<!--                        <addClasspath>true</addClasspath>-->
-<!--                        <classpathPrefix>lib/</classpathPrefix>-->
-<!--                        <mainClass>com.insight.RideShareProducerV4</mainClass>-->
-<!--                    </manifest>-->
-<!--                </archive>-->
-<!--            </configuration>-->
-<!--        </plugin>-->
+<!--        Create shade jar file-->
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-shade-plugin</artifactId>
