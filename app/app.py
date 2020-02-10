@@ -63,6 +63,7 @@ def make_figure(n,coord):
   # lon, lat = get_current_location()
   try:
     start = time.time()
+    print("HERE0")
     connection = psycopg2.connect(user = os.getenv("DB_USER"),
                                   password = os.getenv("DB_PW"),
                                   host = os.getenv("DB_SERVER"),
