@@ -9,6 +9,7 @@ import plotly.express as px
 import os
 from datetime import datetime, timedelta
 import geocoder
+import time
 
 
 import plotly.graph_objects as go
@@ -61,6 +62,7 @@ def make_figure(n,coord):
   lat = coord[1]
   # lon, lat = get_current_location()
   try:
+    start = time.time()
     connection = psycopg2.connect(user = os.getenv("DB_USER"),
                                   password = os.getenv("DB_PW"),
                                   host = os.getenv("DB_SERVER"),
@@ -136,6 +138,8 @@ def make_figure(n,coord):
 
     fig = go.Figure( data, layout)
 
+    end = time.time()
+    print("Time: "+str(end - start))
     return fig
   except:
     pass
