@@ -88,6 +88,9 @@ def make_figure(n,coord):
       # if radius>5000:
       #   df = pd.DataFrame([[0,0,0,0]],columns=["End_lat","End_Lon","vendor_name","fare_amt"])
       #   break
+
+      end = time.time()
+      print("Time: "+str(end - start))
     px.set_mapbox_access_token(token)
 
     lats1 = df.head(5)
@@ -137,9 +140,6 @@ def make_figure(n,coord):
                       
 
     fig = go.Figure( data, layout)
-
-    end = time.time()
-    print("Time: "+str(end - start))
     return fig
   except:
     pass
