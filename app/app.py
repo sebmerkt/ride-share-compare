@@ -93,7 +93,7 @@ def make_figure(n,coord):
 
     px.set_mapbox_access_token(token)
 
-    print(df.head(1))
+    print(df.columns)
 
     # print(df.head(1).vendor_name)
     # print(df.tail(1).End_Lon)
