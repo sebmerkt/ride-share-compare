@@ -95,6 +95,7 @@ def make_figure(n,coord):
 
     print(df.head(1).vendor_name)
     print(df.head(1).End_Lon)
+    print(df.head(1).End_Lat)
     lats1 = df.head(5)
     lons1 = df.head(5)
     lats2 = df.tail(5)
