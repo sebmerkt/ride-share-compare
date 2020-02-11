@@ -93,6 +93,7 @@ def make_figure(n,coord):
 
     px.set_mapbox_access_token(token)
 
+    print(df.columns)
     lats1 = df.head(5)
     lons1 = df.head(5)
     lats2 = df.tail(5)
@@ -130,7 +131,6 @@ def make_figure(n,coord):
       text=['You are here'],
       )
       ]
-    print("HERE")
 
     layout = go.Layout(
       autosize=True,
