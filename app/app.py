@@ -79,7 +79,7 @@ def make_figure(n,coord):
       five_minutes_ago = now - timedelta(hours=0, minutes=0, seconds=10)
 
       radius=1000*multi
-      create_table_query = '''SELECT * FROM ride_share_a_v1 WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND "Process_time" < '%s' AND "Process_time" > '%s'; '''%(lon, lat, radius, now, five_minutes_ago)
+      create_table_query = '''SELECT * FROM ride_share_a_v4 WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND "Process_time" < '%s' AND "Process_time" > '%s'; '''%(lon, lat, radius, now, five_minutes_ago)
       # create_table_query = '''SELECT * FROM ride_share_a_v1 WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s); '''%(lon, lat, radius)
       # create_table_query = '''SELECT * FROM ride_share_records_taxitest13out ORDER BY "Process_time" DESC FETCH FIRST 15 ROWS ONLY '''
 
@@ -96,6 +96,7 @@ def make_figure(n,coord):
     # print(df.head(1).vendor_name)
     # print(df.tail(1).End_Lon)
     # print(df.tail(1).End_Lat)
+    if CMTdf.vendor_name:
     lats1 = df.head(2)
     lons1 = df.head(2)
     lats2 = df[2:4]
@@ -103,8 +104,8 @@ def make_figure(n,coord):
 
     data = [
       go.Scattermapbox(
-      lat=lats1.end_lat,
-      lon=lons1.end_lon,
+      lat=lats1.End_lat,
+      lon=lons1.End_lon,
       mode='markers', name='Lyft', 
       marker=dict(
                   color='Magenta',
@@ -113,8 +114,8 @@ def make_figure(n,coord):
       text=lats1.vendor_name,
       ), 
       go.Scattermapbox(
-      lat=lats2.end_lat,
-      lon=lons2.end_lon,
+      lat=lats2.End_lat,
+      lon=lons2.End_lon,
       mode='markers', name='Uber', 
       marker=dict(
                   color='black',
@@ -137,7 +138,7 @@ def make_figure(n,coord):
     layout = go.Layout(
       autosize=True,
       # width=1000,
-      height=800, 
+      height=600, 
       mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=12, style=os.getenv("MAPBOX_STYLE") ),
       ) 
     end = time.time()
