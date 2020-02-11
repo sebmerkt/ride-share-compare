@@ -109,8 +109,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                         <finalName>RideShareProducerV1.jar</finalName>
                     </configuration>
                 </execution>
-            </executions>
-            <executions>
                 <execution>
                     <goals>
                         <goal>shade</goal>
@@ -126,8 +124,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                         <finalName>RideShareProducerV2.jar</finalName>
                     </configuration>
                 </execution>
-            </executions>
-            <executions>
                 <execution>
                     <goals>
                         <goal>shade</goal>
@@ -143,8 +139,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                         <finalName>RideShareProducerV3.jar</finalName>
                     </configuration>
                 </execution>
-            </executions>
-            <executions>
                 <execution>
                     <goals>
                         <goal>shade</goal>
@@ -160,7 +154,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                         <finalName>RideShareProducerV4.jar</finalName>
                     </configuration>
                 </execution>
-            <executions>
                 <execution>
                     <goals>
                         <goal>shade</goal>
