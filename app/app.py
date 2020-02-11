@@ -83,6 +83,7 @@ def make_figure(n,coord):
       create_table_query = '''SELECT * FROM ride_share_records_taxitest13out ORDER BY "Process_time" DESC FETCH FIRST 15 ROWS ONLY '''
 
       df = pd.read_sql_query(create_table_query, connection)
+      print(df)
 
       lendf=len(df)
       multi=2
