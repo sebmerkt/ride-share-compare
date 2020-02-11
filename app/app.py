@@ -93,9 +93,11 @@ def make_figure(n,coord):
 
     px.set_mapbox_access_token(token)
 
-    print(df.head(1).vendor_name)
-    print(df.tail(1).End_Lon)
-    print(df.tail(1).End_Lat)
+    print(df.head(1))
+
+    # print(df.head(1).vendor_name)
+    # print(df.tail(1).End_Lon)
+    # print(df.tail(1).End_Lat)
     lats1 = df.head(2)
     lons1 = df.head(2)
     lats2 = df[2:4]
