@@ -94,7 +94,7 @@ def make_figure(n,coord):
     px.set_mapbox_access_token(token)
 
     print(df.head(1).vendor_name)
-    print(df.head(1).Start_lon)
+    print(df.head(1).End_Lon)
     lats1 = df.head(5)
     lons1 = df.head(5)
     lats2 = df.tail(5)
@@ -102,8 +102,8 @@ def make_figure(n,coord):
 
     data = [
       go.Scattermapbox(
-      lat=lats1.Start_lat,
-      lon=lons1.Start_lon,
+      lat=lats1.End_Lat,
+      lon=lons1.End_Lon,
       mode='markers', name='Lyft', 
       marker=dict(
                   color='Magenta',
@@ -112,8 +112,8 @@ def make_figure(n,coord):
       text=lats1.vendor_name,
       ), 
       go.Scattermapbox(
-      lat=lats2.Start_lat,
-      lon=lons2.Start_lon,
+      lat=lats2.End_Lat,
+      lon=lons2.End_Lon,
       mode='markers', name='Uber', 
       marker=dict(
                   color='black',
