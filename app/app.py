@@ -42,6 +42,7 @@ app.layout = html.Div(
     [Input(component_id='my-id', component_property='value')]
 )
 def update_output_div(input_value):
+  print("HERE2")
   g = geocoder.osm(input_value)
   if not g.x or not g.y:
     # Set defaults to Empire State Building
@@ -136,7 +137,7 @@ def make_figure(n,coord):
       autosize=True,
       # width=1000,
       height=800, 
-      mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=13, style=os.getenv("MAPBOX_STYLE") ),
+      mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=12, style=os.getenv("MAPBOX_STYLE") ),
       ) 
                       
 
