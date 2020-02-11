@@ -80,7 +80,7 @@ def make_figure(n,coord):
       radius=1000*multi
       # create_table_query = '''SELECT * FROM 'ride_share_records_taxitest13out' WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND Process_time < '%s' AND Process_time > '%s'; '''%(lon, lat, radius, now, five_minutes_ago)
       # create_table_query = '''SELECT * FROM 'ride_share_records_taxitest13out' WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s); '''%(lon, lat, radius)
-      create_table_query = '''SELECT * FROM 'ride_share_records_taxitest13out' ORDER BY 'ride_share_records_taxitest13out'.Process_time DESC FETCH FIRST 10 ROWS ONLY '''
+      create_table_query = '''SELECT * FROM 'ride_share_records_taxitest13out' ORDER BY 'ride_share_records_taxitest13out.Process_time' DESC FETCH FIRST 10 ROWS ONLY '''
 
       df = pd.read_sql_query(create_table_query, connection)
 
