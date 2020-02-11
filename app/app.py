@@ -11,8 +11,9 @@ from datetime import datetime, timedelta
 import geocoder
 import time
 
-
 import plotly.graph_objects as go
+
+
 
 # get the mapbox token
 token = open(os.getenv("MAPBOX_TOKEN")).read()
@@ -56,7 +57,6 @@ def update_output_div(input_value):
 @app.callback(Output('graph', 'figure'),
               [Input('interval-component', 'n_intervals'),Input(component_id='my-div', component_property='children')])
 def make_figure(n,coord):
-  print("HERE2")
   # if not lon:
   lon = coord[0]
   # if not lat:
@@ -84,7 +84,7 @@ def make_figure(n,coord):
       create_table_query = '''SELECT * FROM ride_share_records_taxitest13out ORDER BY "Process_time" DESC FETCH FIRST 15 ROWS ONLY '''
 
       df = pd.read_sql_query(create_table_query, connection)
-      print(df)
+      # print(df.shape)
 
       lendf=len(df)
       multi=2
@@ -138,7 +138,8 @@ def make_figure(n,coord):
       height=800, 
       mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=12, style=os.getenv("MAPBOX_STYLE") ),
       ) 
-                      
+    end = time.time()
+    print("Time: "+str(end - start))        
 
     fig = go.Figure( data, layout)
     return fig
@@ -150,6 +151,4 @@ def make_figure(n,coord):
 
 
 if __name__ == '__main__':
-  print("HERE")
   app.run_server(debug=True, host='0.0.0.0')
-  print("HERE1")
