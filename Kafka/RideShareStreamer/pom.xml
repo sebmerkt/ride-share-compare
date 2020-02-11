@@ -104,6 +104,55 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <artifactId>maven-shade-plugin</artifactId>
             <executions>
                 <execution>
+                    <id>build-V1</id>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <shadedArtifactAttached>true</shadedArtifactAttached>
+                        <transformers>
+                            <transformer implementation=
+                                                 "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <mainClass>com.insight.RideShareStreamerV1</mainClass>
+                            </transformer>
+                        </transformers>
+                        <finalName>RideShareStreamerV1</finalName>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>build-V2</id>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <shadedArtifactAttached>true</shadedArtifactAttached>
+                        <transformers>
+                            <transformer implementation=
+                                                 "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <mainClass>com.insight.RideShareStreamerV2</mainClass>
+                            </transformer>
+                        </transformers>
+                        <finalName>RideShareStreamerV2</finalName>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>build-V3</id>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <shadedArtifactAttached>true</shadedArtifactAttached>
+                        <transformers>
+                            <transformer implementation=
+                                                 "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <mainClass>com.insight.RideShareStreamerV3</mainClass>
+                            </transformer>
+                        </transformers>
+                        <finalName>RideShareStreamerV3</finalName>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>build-V4</id>
                     <goals>
                         <goal>shade</goal>
                     </goals>
@@ -115,6 +164,23 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                                 <mainClass>com.insight.RideShareStreamerV4</mainClass>
                             </transformer>
                         </transformers>
+                        <finalName>RideShareStreamerV4</finalName>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>build-V5</id>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <shadedArtifactAttached>true</shadedArtifactAttached>
+                        <transformers>
+                            <transformer implementation=
+                                                 "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <mainClass>com.insight.RideShareStreamerV5</mainClass>
+                            </transformer>
+                        </transformers>
+                        <finalName>RideShareStreamerV5</finalName>
                     </configuration>
                 </execution>
             </executions>
