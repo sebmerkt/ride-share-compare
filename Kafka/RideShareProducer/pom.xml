@@ -103,9 +103,77 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                         <transformers>
                             <transformer implementation=
                                                  "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <mainClass>com.insight.RideShareProducerV1</mainClass>
+                            </transformer>
+                        </transformers>
+                        <finalName>RideShareProducerV1.jar</finalName>
+                    </configuration>
+                </execution>
+            </executions>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <shadedArtifactAttached>true</shadedArtifactAttached>
+                        <transformers>
+                            <transformer implementation=
+                                                 "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <mainClass>com.insight.RideShareProducerV2</mainClass>
+                            </transformer>
+                        </transformers>
+                        <finalName>RideShareProducerV2.jar</finalName>
+                    </configuration>
+                </execution>
+            </executions>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <shadedArtifactAttached>true</shadedArtifactAttached>
+                        <transformers>
+                            <transformer implementation=
+                                                 "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <mainClass>com.insight.RideShareProducerV3</mainClass>
+                            </transformer>
+                        </transformers>
+                        <finalName>RideShareProducerV3.jar</finalName>
+                    </configuration>
+                </execution>
+            </executions>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <shadedArtifactAttached>true</shadedArtifactAttached>
+                        <transformers>
+                            <transformer implementation=
+                                                 "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                 <mainClass>com.insight.RideShareProducerV4</mainClass>
                             </transformer>
                         </transformers>
+                        <finalName>RideShareProducerV4.jar</finalName>
+                    </configuration>
+                </execution>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <shadedArtifactAttached>true</shadedArtifactAttached>
+                        <transformers>
+                            <transformer implementation=
+                                                 "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <mainClass>com.insight.RideShareProducerV5</mainClass>
+                            </transformer>
+                        </transformers>
+                        <finalName>RideShareProducerV5.jar</finalName>
                     </configuration>
                 </execution>
             </executions>
