@@ -95,11 +95,13 @@ def make_figure(n,coord):
 
     print(len(df))
 
+    print(df.columns)
+
     # print(df.head(1).vendor_name)
-    print(df.end_Lon.tail(6))
-    print(df.end_Lat.tail(6))
-    print(df.end_Lon.head(6))
-    print(df.end_Lat.head(6))
+    # print(df.end_Lon.tail(6))
+    # print(df.end_Lat.tail(6))
+    # print(df.end_Lon.head(6))
+    # print(df.end_Lat.head(6))
     # if df.vendor_name:
     lats1 = df.head(6)
     lons1 = df.head(6)
