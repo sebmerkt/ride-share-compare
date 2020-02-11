@@ -107,7 +107,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                                 <mainClass>com.insight.RideShareProducerV1</mainClass>
                             </transformer>
                         </transformers>
-                        <finalName>RideShareProducerV1.jar</finalName>
+                        <finalName>RideShareProducerV1</finalName>
                     </configuration>
                 </execution>
                 <execution>
@@ -123,7 +123,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                                 <mainClass>com.insight.RideShareProducerV2</mainClass>
                             </transformer>
                         </transformers>
-                        <finalName>RideShareProducerV2.jar</finalName>
+                        <finalName>RideShareProducerV2</finalName>
                     </configuration>
                 </execution>
                 <execution>
@@ -139,7 +139,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                                 <mainClass>com.insight.RideShareProducerV3</mainClass>
                             </transformer>
                         </transformers>
-                        <finalName>RideShareProducerV3.jar</finalName>
+                        <finalName>RideShareProducerV3</finalName>
                     </configuration>
                 </execution>
                 <execution>
@@ -155,7 +155,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                                 <mainClass>com.insight.RideShareProducerV4</mainClass>
                             </transformer>
                         </transformers>
-                        <finalName>RideShareProducerV4.jar</finalName>
+                        <finalName>RideShareProducerV4</finalName>
                     </configuration>
                 </execution>
                 <execution>
@@ -171,7 +171,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                                 <mainClass>com.insight.RideShareProducerV5</mainClass>
                             </transformer>
                         </transformers>
-                        <finalName>RideShareProducerV5.jar</finalName>
+                        <finalName>RideShareProducerV5</finalName>
                     </configuration>
                 </execution>
             </executions>
