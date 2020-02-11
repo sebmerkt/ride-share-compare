@@ -72,7 +72,7 @@ def make_figure(n,coord):
                                   database = os.getenv("DB_NAME"))
 
     cursor = connection.cursor()
-  print("HERE1")
+    print("HERE1")
 
     lendf=0
     multi=1
