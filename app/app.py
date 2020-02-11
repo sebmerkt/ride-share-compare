@@ -151,4 +151,4 @@ def make_figure(n,coord):
 
 if __name__ == '__main__':
   print("HERE")
-    app.run_server(debug=True, host='0.0.0.0')
+  app.run_server(debug=True, host='0.0.0.0')
