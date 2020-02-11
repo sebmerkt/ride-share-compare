@@ -84,16 +84,22 @@ public abstract class RideShareProducerBase <Ride> {
             // Loop through the lines in the file
             while ((line = br.readLine()) != null) {
 
-                // Split each line
+                // Split each line into fields
                 final String[] taxiTrip = line.split(cvsSplitBy, 0);
 
+                // Generate a unique ID to use as message key. UID is a combination of the current timestamp and the input file line
                 String uniqueID = String.valueOf(System.nanoTime())+String.valueOf(i);
 
+                // Check if line is a valid input
                 if (i > 0 && !line.contains("NULL")) {
+
+                    // Build the record to be sent
                     buildRecord( taxiTrip );
 
+                    // Send the message to the Kafka input topic
                     producer.send(new ProducerRecord<String, Ride>(TOPIC, uniqueID, ride));
                     try{
+                        // Control the frequency of messages to be sent
                         TimeUnit.MILLISECONDS.sleep(100);
                     } catch (final InterruptedException e) {
                         break;
@@ -106,11 +112,13 @@ public abstract class RideShareProducerBase <Ride> {
         }
     }
 
-     abstract void buildRecord(final String[] message);
-//    abstract void sendRecords ( String[] args, Ride ride, KafkaProducer<String, Ride> producer ) throws IOException;
+    // Abstract definition of the build record class. The implementation depends on the used schema.
+    abstract void buildRecord(final String[] message);
 
+    // Initialize Kafka producer properties
     public static Properties initProperties() {
 
+        // Read out the Kafka specific environment variables
         Map<String, String> env = System.getenv();
         String schemaDNS = env.get("SCHEMA_REGISTRY");
         String brokerDNS1 = env.get("BROKER1");
@@ -118,21 +126,29 @@ public abstract class RideShareProducerBase <Ride> {
         String brokerDNS3 = env.get("BROKER3");
         String brokerDNS4 = env.get("BROKER4");
 
-
+        // Address of the schema registry
         String schemaUrl = "http://"+schemaDNS+":8081";
+
+        // Construct the properties
         Properties props = new Properties();
+
+        // Addresses of the Kafka Zookeeper and Brokers
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
                 brokerDNS1 + ":9092," + brokerDNS2 + ":9092," + brokerDNS3 + ":9092," + brokerDNS4 + ":9092");
+        // All messages require acknowledgement
         props.put(ProducerConfig.ACKS_CONFIG, "all");
+        // Do not retry
         props.put(ProducerConfig.RETRIES_CONFIG, 0);
+        // Define key and value serializers
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
+        // Point to schema registry
         props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, schemaUrl);
 
         return props;
     }
 
-
+    // Method to check string validity and catch any exceptions
     public static String InsertString(final String input){
         if (input != null && !input.isEmpty()) {
             return input;
@@ -142,6 +158,7 @@ public abstract class RideShareProducerBase <Ride> {
         }
     }
 
+    // Method to convert long to string and catch any exceptions
     public static long InsertLong(final String input){
         if (input != null && !input.isEmpty()) {
             try {
@@ -156,6 +173,7 @@ public abstract class RideShareProducerBase <Ride> {
         }
     }
 
+    // Method to convert double to string and catch any exceptions
     public static double InsertDouble(final String input){
         if (input != null && !input.isEmpty()) {
             try {
@@ -170,6 +188,7 @@ public abstract class RideShareProducerBase <Ride> {
         }
     }
 
+    // Method to convert int to string and catch any exceptions
     public static int InsertInt(final String input){
         if (input != null && !input.isEmpty()) {
             try {

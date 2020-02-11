@@ -21,13 +21,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+// Implementation of RideShareStreamerV5 that consumes messages of schema type 5
 public class RideShareStreamerV5 extends RideShareStreamerBase {
 
     public static void main(String[] args) {
 
-
+        // Initialize class instance and process stream
         RideShareStreamerV5 rideShareStreamer = new RideShareStreamerV5();
-
         rideShareStreamer.processStream();
     }
 
@@ -62,22 +62,26 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
             val.put("Payment_Type", "Voided trip");
         }
 
-        final InputStream resourceAsStream = getClass().getResourceAsStream("taxi_zones.json");
-        BufferedReader streamReader = new BufferedReader(new InputStreamReader(resourceAsStream, "UTF-8"));
-        StringBuilder responseStrBuilder = new StringBuilder();
-
+        // open file to translate between Location IDs and geographical coordinates
+        final InputStream inputStream = getClass().getResourceAsStream("taxi_zones.json");
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+        StringBuilder stringBuilder = new StringBuilder();
         String inputStr;
-        while ((inputStr = streamReader.readLine()) != null)
-            responseStrBuilder.append(inputStr);
-        JSONObject obj = new JSONObject(responseStrBuilder.toString());
+        while ((inputStr = bufferedReader.readLine()) != null)
+            stringBuilder.append(inputStr);
+        JSONObject obj = new JSONObject(stringBuilder.toString());
 
+        // Get Pickup Location ID from the message
         String PULocID = String.valueOf(Long.parseLong(val.get("PULocationID").toString())-1);
+        // Look up coordinates of this Location ID
         if ( Long.parseLong(PULocID)<=262 ){
             val.put("Start_Lon",obj.getJSONObject("X").get(PULocID));
             val.put("Start_Lat",obj.getJSONObject("Y").get(PULocID));
         }
 
+        // Get Dropoff Location ID from the message
         String DOLocID = String.valueOf(Long.parseLong(val.get("DOLocationID").toString())-1);
+        // Look up coordinates of this Location ID
         if ( Long.parseLong(DOLocID)<=262 ){
             val.put("End_Lon", obj.getJSONObject("X").get(DOLocID));
             val.put("End_Lat", obj.getJSONObject("Y").get(DOLocID));

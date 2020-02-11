@@ -15,13 +15,13 @@ package com.insight;
 import org.apache.avro.generic.GenericRecord;
 import org.json.JSONException;
 
+// Implementation of RideShareStreamerV4 that consumes messages of schema type 4
 public class RideShareStreamerV4 extends RideShareStreamerBase {
 
     public static void main(String[] args) {
 
-
+        // Initialize class instance and process stream
         RideShareStreamerV4 rideShareStreamer = new RideShareStreamerV4();
-
         rideShareStreamer.processStream();
     }
 

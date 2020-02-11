@@ -25,14 +25,20 @@ import java.util.UUID;
 
 import static java.time.Duration.ofMillis;
 
+// Implementation of RideShareConsumerV1 that consumes messages of schema type 1
 public class RideShareConsumerV1 extends RideShareConsumerBase {
 
     @SuppressWarnings("InfiniteLoopStatement")
     public static void main(final String[] args) {
 
+        // Initialize class instance
         RideShareConsumerV1 rideShareConsumer = new RideShareConsumerV1();
+
+        // Initialize properties and connect to database
         rideShareConsumer.connect();
         rideShareConsumer.initProperties();
+
+        // Send messages to database
         rideShareConsumer.writeToDB();
     }
 
@@ -42,9 +48,11 @@ public class RideShareConsumerV1 extends RideShareConsumerBase {
             consumer.subscribe(Collections.singletonList(TOPIC));
 
             while (true) {
-                final ConsumerRecords<String, GenericRecord> records = consumer.poll(ofMillis(10));
+                // Consumer will wait for 100ms if no records are found at broker
+                final ConsumerRecords<String, GenericRecord> records = consumer.poll(ofMillis(100));
                 for (final ConsumerRecord<String, GenericRecord> record : records) {
 
+                    // store intermediate values
                     final String uuid = record.key();
                     final String vendor_name = record.value().get("vendor_name").toString();
                     final String Trip_Pickup_DateTime = InsertString(record.value().get("Trip_Pickup_DateTime"));
@@ -57,13 +65,12 @@ public class RideShareConsumerV1 extends RideShareConsumerBase {
                     final double Total_Amt = InsertDouble(record.value().get("Total_Amt"));
                     final String Process_time = InsertString(record.value().get("Process_time"));
 
+                    // Create SQL statement to insert records an send request
                     Statement stmt = dbConn.createStatement();
-
                     String sql = "INSERT INTO ride_share_A_v1 " +
                             "VALUES ( "+uuid+", '" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+Trip_Dropoff_DateTime+
                             "', "+Trip_Distance+", "+Start_Lon+", "+Start_Lat+", "+End_Lon+", "+End_Lat+", "+
                             Total_Amt+", '"+Process_time+"', 'SRID=4326;POINT("+Start_Lon+" "+Start_Lat+")', 'SRID=4326;POINT("+End_Lon+" "+End_Lat+")' "+")";
-
                     stmt.executeUpdate(sql);
                 }
             }

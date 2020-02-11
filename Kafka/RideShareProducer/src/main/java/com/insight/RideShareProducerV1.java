@@ -20,20 +20,28 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.Properties;
 
+// Implementation of RideShareProducerV1 that produces messages of schema type 1
 public class RideShareProducerV1 extends RideShareProducerBase <Ride1> {
 
     @SuppressWarnings("InfiniteLoopStatement")
     public static void main(final String[] args) throws IOException {
 
+        // Initialize Kafka properties
         final Properties props = initProperties();
 
+        // Initialize class instance
         RideShareProducerV1 rideShareProducer = new RideShareProducerV1( );
 
+        // Initialize schema class instance
         rideShareProducer.setRide( new Ride1() );
 
+        // Initialize Kafka producer
         rideShareProducer.setProducer( new KafkaProducer<>(props));
 
+        // Send Kafka messages
         rideShareProducer.sendRecords(args);
+
+        // Flush and close the producer
         rideShareProducer.getProducer().flush();
         rideShareProducer.getProducer().close();
     }
@@ -41,9 +49,11 @@ public class RideShareProducerV1 extends RideShareProducerBase <Ride1> {
     @Override
     void buildRecord( final String[] message) {
 
+        // Create current timestamp to send with the message values
         Date date= new Date();
         Timestamp ts = new Timestamp( date.getTime() );
 
+        // Assign all schema fields with the input values
         ride.setVendorName( InsertString(message[0]) );
         ride.setTripPickupDateTime( InsertString(message[1]) );
         ride.setTripDropoffDateTime( InsertString(message[2]) );

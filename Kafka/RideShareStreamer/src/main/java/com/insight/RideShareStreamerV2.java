@@ -14,10 +14,12 @@ package com.insight;
 
 import org.apache.avro.generic.GenericRecord;
 
+// Implementation of RideShareStreamerV2 that consumes messages of schema type 2
 public class RideShareStreamerV2 extends RideShareStreamerBase {
 
     public static void main(String[] args) {
 
+        // Initialize class instance and process stream
         RideShareStreamerV2 rideShareStreamer = new RideShareStreamerV2();
         rideShareStreamer.processStream();
     }
