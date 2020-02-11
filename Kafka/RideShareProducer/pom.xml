@@ -95,6 +95,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <artifactId>maven-shade-plugin</artifactId>
             <executions>
                 <execution>
+                    <id>build-V1</id>
                     <goals>
                         <goal>shade</goal>
                     </goals>
@@ -110,6 +111,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     </configuration>
                 </execution>
                 <execution>
+                    <id>build-V2</id>
                     <goals>
                         <goal>shade</goal>
                     </goals>
@@ -125,6 +127,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     </configuration>
                 </execution>
                 <execution>
+                    <id>build-V3</id>
                     <goals>
                         <goal>shade</goal>
                     </goals>
@@ -140,6 +143,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     </configuration>
                 </execution>
                 <execution>
+                    <id>build-V4</id>
                     <goals>
                         <goal>shade</goal>
                     </goals>
@@ -155,6 +159,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     </configuration>
                 </execution>
                 <execution>
+                    <id>build-V5</id>
                     <goals>
                         <goal>shade</goal>
                     </goals>
