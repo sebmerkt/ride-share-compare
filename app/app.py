@@ -94,12 +94,12 @@ def make_figure(n,coord):
     px.set_mapbox_access_token(token)
 
     print(df.head(1).vendor_name)
-    print(df.head(1).End_Lon)
-    print(df.head(1).End_Lat)
+    print(df.tail(1).End_Lon)
+    print(df.tail(1).End_Lat)
     lats1 = df.head(5)
     lons1 = df.head(5)
-    lats2 = df.tail(5)
-    lons2 = df.tail(5)
+    lats2 = df[5:10]
+    lons2 = df[5:10]
 
     data = [
       go.Scattermapbox(
