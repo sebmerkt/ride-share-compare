@@ -57,6 +57,7 @@ def update_output_div(input_value):
 @app.callback(Output('graph', 'figure'),
               [Input('interval-component', 'n_intervals'),Input(component_id='my-div', component_property='children')])
 def make_figure(n,coord):
+  print("HERE")
   # if not lon:
   lon = coord[0]
   # if not lat:
@@ -71,6 +72,7 @@ def make_figure(n,coord):
                                   database = os.getenv("DB_NAME"))
 
     cursor = connection.cursor()
+  print("HERE1")
 
     lendf=0
     multi=1
@@ -84,7 +86,7 @@ def make_figure(n,coord):
       create_table_query = '''SELECT * FROM ride_share_records_taxitest13out ORDER BY "Process_time" DESC FETCH FIRST 15 ROWS ONLY '''
 
       df = pd.read_sql_query(create_table_query, connection)
-      # print(df.shape)
+      print(df)
 
       lendf=len(df)
       multi=2
