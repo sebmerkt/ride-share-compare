@@ -96,7 +96,7 @@ def make_figure(n,coord):
     # print(df.head(1).vendor_name)
     # print(df.tail(1).End_Lon)
     # print(df.tail(1).End_Lat)
-    if CMTdf.vendor_name:
+    # if df.vendor_name:
     lats1 = df.head(2)
     lons1 = df.head(2)
     lats2 = df[2:4]
