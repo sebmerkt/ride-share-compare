@@ -96,13 +96,13 @@ def make_figure(n,coord):
     print(len(df))
 
     # print(df.head(1).vendor_name)
-    # print(df.tail(1).End_Lon)
-    # print(df.tail(1).End_Lat)
+    print(df.tail(6).End_Lon)
+    print(df.tail(6).End_Lat)
     # if df.vendor_name:
-    lats1 = df.head(2)
-    lons1 = df.head(2)
-    lats2 = df[2:4]
-    lons2 = df[2:4]
+    lats1 = df.head(6)
+    lons1 = df.head(6)
+    lats2 = df.tail(6)
+    lons2 = df.tail(6)
 
     data = [
       go.Scattermapbox(
