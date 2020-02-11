@@ -42,7 +42,6 @@ app.layout = html.Div(
     [Input(component_id='my-id', component_property='value')]
 )
 def update_output_div(input_value):
-  print("HERE2")
   g = geocoder.osm(input_value)
   if not g.x or not g.y:
     # Set defaults to Empire State Building
@@ -57,7 +56,6 @@ def update_output_div(input_value):
 @app.callback(Output('graph', 'figure'),
               [Input('interval-component', 'n_intervals'),Input(component_id='my-div', component_property='children')])
 def make_figure(n,coord):
-  print("HERE1")
   # if not lon:
   lon = coord[0]
   # if not lat:
@@ -152,4 +150,4 @@ def make_figure(n,coord):
 
 if __name__ == '__main__':
   print("HERE")
-  app.run_server(debug=True, host='0.0.0.0')
+  app.run_server(debug=True)#, host='0.0.0.0')
