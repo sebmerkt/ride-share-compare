@@ -79,7 +79,7 @@ def make_figure(n,coord):
       five_minutes_ago = now - timedelta(hours=0, minutes=0, seconds=10)
 
       radius=1000*multi
-      create_table_query = '''SELECT * FROM 'ride_share_records_taxitest13out' WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND Process_time < '%s' AND Process_time > '%s'; '''%(lon, lat, radius, now, five_minutes_ago)
+      create_table_query = '''SELECT * FROM ride_share_a_v1 WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND Process_time < '%s' AND Process_time > '%s'; '''%(lon, lat, radius, now, five_minutes_ago)
       # create_table_query = '''SELECT * FROM 'ride_share_records_taxitest13out' WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s); '''%(lon, lat, radius)
       # create_table_query = '''SELECT * FROM ride_share_records_taxitest13out ORDER BY "Process_time" DESC FETCH FIRST 15 ROWS ONLY '''
 
