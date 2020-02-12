@@ -43,8 +43,8 @@ public class RideShareConsumerV1 extends RideShareConsumerBase {
     }
 
     @Override
-    void writeToDB(){
-         try (final KafkaConsumer<String, GenericRecord> consumer = new KafkaConsumer<>(props)) {
+    void writeToDB() {
+        try (final KafkaConsumer<String, GenericRecord> consumer = new KafkaConsumer<>(props)) {
             consumer.subscribe(Collections.singletonList(TOPIC));
 
             while (true) {
@@ -67,10 +67,13 @@ public class RideShareConsumerV1 extends RideShareConsumerBase {
 
                     // Create SQL statement to insert records an send request
                     Statement stmt = dbConn.createStatement();
-                    String sql = "INSERT INTO ride_share_A_v1 " +
-                            "VALUES ( "+uuid+", '" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+Trip_Dropoff_DateTime+
-                            "', "+Trip_Distance+", "+Start_Lon+", "+Start_Lat+", "+End_Lon+", "+End_Lat+", "+
-                            Total_Amt+", '"+Process_time+"', 'SRID=4326;POINT("+Start_Lon+" "+Start_Lat+")', 'SRID=4326;POINT("+End_Lon+" "+End_Lat+")' "+")";
+                    String sql = "INSERT INTO ride_share_data " +
+                            " ( uuid, vendor_name, Trip_Pickup_DateTime, Trip_Dropoff_DateTime, Trip_Distance, " +
+                                "Start_Lon, Start_Lat, End_Lon, End_Lat, Total_Amt, Process_time, geom_start, geom_end ) " +
+                                "VALUES ( " + uuid + ", '" + vendor_name + "', '" + Trip_Pickup_DateTime + "', '" +
+                            Trip_Dropoff_DateTime + "', " + Trip_Distance + ", " + Start_Lon + ", " + Start_Lat +
+                            ", " + End_Lon + ", " + End_Lat + ", " + Total_Amt + ", '" + Process_time +
+                            "', 'SRID=4326;POINT(" + Start_Lon + " " + Start_Lat + ")', 'SRID=4326;POINT(" + End_Lon + " " + End_Lat + ")' " + ")";
                     stmt.executeUpdate(sql);
                 }
             }

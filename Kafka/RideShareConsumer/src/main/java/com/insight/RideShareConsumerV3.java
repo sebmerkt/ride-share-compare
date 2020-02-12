@@ -74,10 +74,15 @@ public class RideShareConsumerV3 extends RideShareConsumerBase {
                     // Create SQL statement to insert records an send request
                     Statement stmt = dbConn.createStatement();
                     String sql = "INSERT INTO ride_share_A_v3 " +
+                            " ( uuid, vendor_name, Trip_Pickup_DateTime, Trip_Dropoff_DateTime, Passenger_Count, " +
+                            "Trip_Distance, Start_Lon, Start_Lat, End_Lon, End_Lat, Payment_Type, Fare_Amt, Tip_Amt, " +
+                            "Tolls_Amt, Total_Amt, Process_time, geom_start, geom_end, " +
+                                ", ) " +
                             "VALUES ( "+uuid+", '" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+Trip_Dropoff_DateTime+"', "+
-                            Passenger_Count+", "+Trip_Distance+", "+Start_Lon+", "+Start_Lat+", "+
-                            +End_Lon+", "+End_Lat+", '"+Payment_Type+"', "+Fare_Amt+", "+Tip_Amt+", "+Tolls_Amt+", '"+Total_Amt+", "+Process_time+
-                            "', 'SRID=4326;POINT("+Start_Lon+" "+Start_Lat+")', 'SRID=4326;POINT("+End_Lon+" "+End_Lat+")' "+")";
+                                Passenger_Count+", "+Trip_Distance+", "+Start_Lon+", "+Start_Lat+", "+
+                                +End_Lon+", "+End_Lat+", '"+Payment_Type+"', "+Fare_Amt+", "+Tip_Amt+", "+Tolls_Amt+", '"
+                                +Total_Amt+", "+Process_time+
+                                "', 'SRID=4326;POINT("+Start_Lon+" "+Start_Lat+")', 'SRID=4326;POINT("+End_Lon+" "+End_Lat+")' "+")";
                     stmt.executeUpdate(sql);
                 }
             }

@@ -146,6 +146,12 @@ def make_figure(n,coord):
       # width=1000,
       height=600, 
       mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=12, style=os.getenv("MAPBOX_STYLE") ),
+      margin=dict(
+        l=35,
+        r=35,
+        b=35,
+        t=45
+        ),
       ) 
     end = time.time()
     print("Time: "+str(end - start))        
