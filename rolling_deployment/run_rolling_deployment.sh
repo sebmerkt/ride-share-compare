@@ -29,8 +29,8 @@ echo "Producer V1 running with PID "$prod_v1_process_id
 
 # Let it run for a while
 
-# echo "Waiting for 1 minutes"
-# sleep 1m
+echo "Waiting for 1 minutes"
+sleep 1m
 
 
 
@@ -38,11 +38,11 @@ echo "Producer V1 running with PID "$prod_v1_process_id
 # Add new schema version 2
 # Evolve database to accomodate schema version 2: Ride2
 
-# echo "Evolving database"
-# python3 $SCRIPT_DIR/update_database.py "Passenger_Count" "int8" "Fare_Amt" "float8" "Tip_Amt" "float8" & db_process_id=$!
+echo "Evolving database"
+python3 $SCRIPT_DIR/update_database.py "Passenger_Count" "int8" "Fare_Amt" "float8" "Tip_Amt" "float8" & db_process_id=$!
 
-# wait $db_process_id
-# echo "Database schema evolved to V2 with status "$?
+wait $db_process_id
+echo "Database schema evolved to V2 with status "$?
 
 # Start new producer/streamer/consumer
 
@@ -78,3 +78,16 @@ kill -s 9 $cons_v1_process_id
 echo "Consumer V1 terminated with code "$?
 
 
+
+# Wait until schema 1 is "obsolete" and terminate code version 1
+
+echo "Waiting for 1 minuts"
+sleep 1m
+
+echo "Terminating code V2"
+kill -s 9 $prod_v2_process_id
+echo "Producer V2 terminated with code "$?
+kill -s 9 $stream_v2_process_id
+echo "Streamer V2 terminated with code "$?
+kill -s 9 $cons_v2_process_id
+echo "Consumer V2 terminated with code "$?
