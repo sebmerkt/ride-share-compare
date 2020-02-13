@@ -39,7 +39,7 @@ sleep 2m
 # Eveolve database to accomodate schema version 2: Ride2
 
 echo "Evolving database"
-python cd $SCRIPT_DIR"/update_database.py "Passenger_Count" "int8" "Fare_Amt" "float8" "Tip_Amt" "float8"
+python cd $SCRIPT_DIR/update_database.py "Passenger_Count" "int8" "Fare_Amt" "float8" "Tip_Amt" "float8"
 & db_process_id=$!
 
 wait $db_process_id
