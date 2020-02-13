@@ -4,6 +4,7 @@
 # ./update_database.py column1 type1 column2 type2
 
 import sys
+import os
 import psycopg2
 from psycopg2 import Error
 
@@ -27,6 +28,6 @@ for i in range(1,len(sys.argv),2):
     print ("Error while adding new fields to ride_share_data.", error)
   finally:
     #closing database connection.
-      if(connection):
-        cursor.close()
-        connection.close()
+    if(connection):
+      cursor.close()
+      connection.close()
