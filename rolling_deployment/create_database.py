@@ -14,7 +14,7 @@ try:
   cursor = connection.cursor()
   
   create_table_query = '''CREATE TABLE ride_share_data
-        ( uid uuid uuid_generate_v4 UNIQUE,
+        ( id SERIAL UNIQUE PRIMARY KEY,
           vendor_name TEXT,
           Trip_Pickup_DateTime timestamp,
           Trip_Dropoff_DateTime timestamp,
@@ -26,8 +26,7 @@ try:
           Total_Amt float8,
           Process_time timestamp,
           geom_start geometry(Point, 4326),
-          geom_end geometry(Point, 4326),
-          PRIMARY KEY (uuid)); '''
+          geom_end geometry(Point, 4326)); '''
 
   cursor.execute(create_table_query)
   connection.commit()
