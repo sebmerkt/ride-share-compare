@@ -23,6 +23,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Properties;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 // Definition of the producer base class producing messages of the generic schema class Ride
@@ -88,7 +89,8 @@ public abstract class RideShareProducerBase <Ride> {
                 final String[] taxiTrip = line.split(cvsSplitBy, 0);
 
                 // Generate a unique ID to use as message key. UID is a combination of the current timestamp and the input file line
-                String uniqueID = String.valueOf(System.nanoTime())+String.valueOf(i);
+//                String uniqueID = String.valueOf(System.nanoTime())+String.valueOf(i);
+                String uniqueID = UUID.randomUUID().toString();
 
                 // Check if line is a valid input
                 if (i > 0 && !line.contains("NULL")) {
