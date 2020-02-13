@@ -36,13 +36,13 @@ sleep 1m
 
 
 # Add new schema version 2
-# Eveolve database to accomodate schema version 2: Ride2
+# Evolve database to accomodate schema version 2: Ride2
 
 echo "Evolving database"
-# python3 $SCRIPT_DIR/update_database.py "Passenger_Count" "int8" "Fare_Amt" "float8" "Tip_Amt" "float8" & db_process_id=$!
+python3 $SCRIPT_DIR/update_database.py "Passenger_Count" "int8" "Fare_Amt" "float8" "Tip_Amt" "float8" & db_process_id=$!
 
-# wait $db_process_id
-# echo "Database schema evolved to V2 with status "$?
+wait $db_process_id
+echo "Database schema evolved to V2 with status "$?
 
 # Start new producer/streamer/consumer
 
