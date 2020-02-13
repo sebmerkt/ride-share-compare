@@ -56,8 +56,8 @@ public class RideShareConsumerV5 extends RideShareConsumerBase {
                 for (final ConsumerRecord<String, GenericRecord> record : records) {
 
                     // store intermediate values
-                    final UUID uuid = UUID.fromString(record.key());
-                    final String vendor_name = record.value().get("vendor_name").toString();
+                    final String uuid = InsertString(record.key());
+                    final String vendor_name = InsertString(record.value().get("vendor_name"));
                     final String Trip_Pickup_DateTime = InsertString(record.value().get("Trip_Pickup_DateTime"));
                     final String Trip_Dropoff_DateTime = InsertString(record.value().get("Trip_Dropoff_DateTime"));
                     final int Passenger_Count = InsertInt(record.value().get("Passenger_Count"));
