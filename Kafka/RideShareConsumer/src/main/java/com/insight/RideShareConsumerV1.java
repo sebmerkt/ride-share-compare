@@ -71,7 +71,7 @@ public class RideShareConsumerV1 extends RideShareConsumerBase {
                     String sql = "INSERT INTO ride_share_data " +
                             " ( uuid, vendor_name, Trip_Pickup_DateTime, Trip_Dropoff_DateTime, Trip_Distance, " +
                                 "Start_Lon, Start_Lat, End_Lon, End_Lat, Total_Amt, Process_time, geom_start, geom_end ) " +
-                                "VALUES ( " + uuid + ", '" + vendor_name + "', '" + Trip_Pickup_DateTime + "', '" +
+                                "VALUES ( '" + uuid + "', '" + vendor_name + "', '" + Trip_Pickup_DateTime + "', '" +
                             Trip_Dropoff_DateTime + "', " + Trip_Distance + ", " + Start_Lon + ", " + Start_Lat +
                             ", " + End_Lon + ", " + End_Lat + ", " + Total_Amt + ", '" + Process_time +
                             "', 'SRID=4326;POINT(" + Start_Lon + " " + Start_Lat + ")', 'SRID=4326;POINT(" + End_Lon + " " + End_Lat + ")' " + ")";

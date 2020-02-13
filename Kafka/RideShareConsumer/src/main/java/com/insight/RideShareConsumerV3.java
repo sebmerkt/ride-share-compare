@@ -78,7 +78,7 @@ public class RideShareConsumerV3 extends RideShareConsumerBase {
                             "Trip_Distance, Start_Lon, Start_Lat, End_Lon, End_Lat, Payment_Type, Fare_Amt, Tip_Amt, " +
                             "Tolls_Amt, Total_Amt, Process_time, geom_start, geom_end, " +
                                 ", ) " +
-                            "VALUES ( "+uuid+", '" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+Trip_Dropoff_DateTime+"', "+
+                            "VALUES ( '"+uuid+"', '" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+Trip_Dropoff_DateTime+"', "+
                                 Passenger_Count+", "+Trip_Distance+", "+Start_Lon+", "+Start_Lat+", "+
                                 +End_Lon+", "+End_Lat+", '"+Payment_Type+"', "+Fare_Amt+", "+Tip_Amt+", "+Tolls_Amt+", '"
                                 +Total_Amt+", "+Process_time+
