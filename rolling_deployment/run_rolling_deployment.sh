@@ -14,7 +14,7 @@ echo "Sreamer V1 running with PID "$stream_v1_process_id
 
 cd $SCRIPT_DIR"/../Kafka/RideShareConsumer/target/"
 
-nohup java -jar RideShareConsumer1.jar > ~/log/RideShareConsumer1.log 2>&1 & cons_v1_process_id=$! &
+nohup java -jar RideShareConsumerV1.jar > ~/log/RideShareConsumer1.log 2>&1 & cons_v1_process_id=$! &
 echo "Consumer V1 running with PID "$cons_v1_process_id
 
 # Start producer
@@ -54,7 +54,7 @@ echo "Streamer V2 running with PID "$stream_v2_process_id
 
 cd $SCRIPT_DIR"/../Kafka/RideShareConsumer/target/"
 
-nohup java -jar RideShareConsumer2.jar > ~/log/RideShareConsumer2.log 2>&1 &  cons_v2_process_id=$!
+nohup java -jar RideShareConsumerV2.jar > ~/log/RideShareConsumer2.log 2>&1 &  cons_v2_process_id=$!
 echo "Consumer V2 running with PID "$cons_v2_process_id
 
 cd $SCRIPT_DIR"/../Kafka/RideShareProducer/target/"
