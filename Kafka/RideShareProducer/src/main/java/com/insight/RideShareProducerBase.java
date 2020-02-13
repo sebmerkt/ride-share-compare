@@ -88,8 +88,7 @@ public abstract class RideShareProducerBase <Ride> {
                 // Split each line into fields
                 final String[] taxiTrip = line.split(cvsSplitBy, 0);
 
-                // Generate a unique ID to use as message key. UID is a combination of the current timestamp and the input file line
-//                String uniqueID = String.valueOf(System.nanoTime())+String.valueOf(i);
+                // Generate a unique ID as key
                 String uniqueID = UUID.randomUUID().toString();
 
                 // Check if line is a valid input

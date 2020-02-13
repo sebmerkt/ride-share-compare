@@ -54,7 +54,7 @@ public class RideShareConsumerV2 extends RideShareConsumerBase {
                 for (final ConsumerRecord<String, GenericRecord> record : records) {
 
                     // store intermediate values
-                    final  UUID uuid = UUID.fromString(record.key());
+                    final UUID uuid = UUID.fromString(record.key());
                     final String vendor_name = record.value().get("vendor_name").toString();
                     final String Trip_Pickup_DateTime = InsertString(record.value().get("Trip_Pickup_DateTime"));
                     final String Trip_Dropoff_DateTime = InsertString(record.value().get("Trip_Dropoff_DateTime"));
@@ -72,10 +72,10 @@ public class RideShareConsumerV2 extends RideShareConsumerBase {
                     // Create SQL statement to insert records an send request
                     Statement stmt = dbConn.createStatement();
                     String sql = "INSERT INTO ride_share_data " +
-                            " ( vendor_name, Trip_Pickup_DateTime, Trip_Dropoff_DateTime, Trip_Distance, " +
+                            " ( uuid, vendor_name, Trip_Pickup_DateTime, Trip_Dropoff_DateTime, Trip_Distance, " +
                                 "Start_Lon, Start_Lat, End_Lon, End_Lat, Total_Amt, Process_time, geom_start, geom_end, " +
                                 "Passenger_Count, Fare_Amt, Tip_Amt ) " +
-                            "VALUES ( '" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+
+                            "VALUES ( '"+uuid+"', '" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+
                                 Trip_Dropoff_DateTime+"', "+Trip_Distance+", "+Start_Lon+", "+Start_Lat+", "+
                                 +End_Lon+", "+End_Lat+", "+Total_Amt+", '"+Process_time+
                                 "', 'SRID=4326;POINT("+Start_Lon+" "+Start_Lat+")', 'SRID=4326;POINT("+End_Lon+" "+End_Lat+")', "+
