@@ -56,7 +56,7 @@ public class RideShareConsumerV5 extends RideShareConsumerBase {
                 for (final ConsumerRecord<String, GenericRecord> record : records) {
 
                     // store intermediate values
-                    final String uuid = record.key();
+                    final UUID uuid = UUID.fromString(record.key());
                     final String vendor_name = record.value().get("vendor_name").toString();
                     final String Trip_Pickup_DateTime = InsertString(record.value().get("Trip_Pickup_DateTime"));
                     final String Trip_Dropoff_DateTime = InsertString(record.value().get("Trip_Dropoff_DateTime"));
@@ -86,7 +86,7 @@ public class RideShareConsumerV5 extends RideShareConsumerBase {
                             "Trip_Distance, Start_Lon, Start_Lat, Rate_Code, store_and_forward, End_Lon, End_Lat, " +
                             "Payment_Type, Fare_Amt, surcharge, mta_tax, Tip_Amt, Tolls_Amt, Total_Amt, " +
                             "Process_time, geom_start, geom_end, ) " +
-                            "VALUES ( '"+uuid+"', '" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+Trip_Dropoff_DateTime+"', "+
+                            "VALUES ( "+uuid+", '" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+Trip_Dropoff_DateTime+"', "+
                             Passenger_Count+", "+Trip_Distance+", "+Start_Lon+", "+Start_Lat+", "+Rate_Code+", "+
                             store_and_forward+", "+End_Lon+", "+End_Lat+", '"+Payment_Type+"', "+
                             Fare_Amt+", "+surcharge+", "+mta_tax+", "+Tip_Amt+", "+Tolls_Amt+", "+Total_Amt+", '"+Process_time+
