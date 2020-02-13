@@ -80,6 +80,7 @@ public class RideShareConsumerV2 extends RideShareConsumerBase {
                                 +End_Lon+", "+End_Lat+", "+Total_Amt+", '"+Process_time+
                                 "', 'SRID=4326;POINT("+Start_Lon+" "+Start_Lat+")', 'SRID=4326;POINT("+End_Lon+" "+End_Lat+")' "+
                                 Passenger_Count+", "+Fare_Amt+", "+Tip_Amt+")";
+                    System.out.println(sql);
                     stmt.executeUpdate(sql);
                 }
             }
