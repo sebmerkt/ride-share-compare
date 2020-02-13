@@ -71,10 +71,10 @@ sleep 1m
 
 echo "Terminating code V1"
 kill -s 9 $prod_v1_process_id
-echo "Producer V1 terminated with code "&?
+echo "Producer V1 terminated with code "$?
 kill -s 9 $stream_v1_process_id
-echo "Streamer V1 terminated with code "&?
-kill -s 9 $scons_v1_process_id
-echo "Consumer V1 terminated with code "&?
+echo "Streamer V1 terminated with code "$?
+kill -s 9 $cons_v1_process_id
+echo "Consumer V1 terminated with code "$?
 
 
