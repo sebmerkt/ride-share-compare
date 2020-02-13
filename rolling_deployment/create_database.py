@@ -2,6 +2,7 @@
 
 import psycopg2
 from psycopg2 import Error
+import os
 
 try:
   connection = psycopg2.connect(user = os.getenv("DB_USER"),
@@ -13,7 +14,7 @@ try:
   cursor = connection.cursor()
   
   create_table_query = '''CREATE TABLE ride_share_data
-        ( uuid uuid uuid_generate_v4 UNIQUE,
+        ( uuid uuid UNIQUE,
           vendor_name TEXT,
           Trip_Pickup_DateTime timestamp,
           Trip_Dropoff_DateTime timestamp,
