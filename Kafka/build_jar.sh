@@ -8,14 +8,14 @@ git pull
 
 # Build producers
 
-cd $SCRIPT_DIR"/Kafka/RideShareProducer/"
+cd $SCRIPT_DIR"/RideShareProducer/"
 
 mvn clean compile package
 
-cd $SCRIPT_DIR"/Kafka/RideShareStreamer/"
+cd $SCRIPT_DIR"/RideShareStreamer/"
 
 mvn clean compile package
 
-cd $SCRIPT_DIR"/Kafka/RideShareConsumer/"
+cd $SCRIPT_DIR"/RideShareConsumer/"
 
 mvn clean compile package
