@@ -64,8 +64,8 @@ public class RideShareConsumerV2 extends RideShareConsumerBase {
                     final double Start_Lat = InsertDouble(record.value().get("Start_Lat"));
                     final double End_Lon = InsertDouble(record.value().get("End_Lon"));
                     final double End_Lat = InsertDouble(record.value().get("End_Lat"));
-                    final double Fare_Amt = (double) record.value().get("Fare_Amt");
-                    final double Tip_Amt = (double) record.value().get("Tip_Amt");
+                    final double Fare_Amt = InsertDouble(record.value().get("Fare_Amt"));
+                    final double Tip_Amt = InsertDouble(record.value().get("Tip_Amt"));
                     final double Total_Amt = InsertDouble(record.value().get("Total_Amt"));
                     final String Process_time = InsertString(record.value().get("Process_time"));
 
