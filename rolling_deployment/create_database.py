@@ -14,7 +14,7 @@ try:
   cursor = connection.cursor()
   
   create_table_query = '''CREATE TABLE ride_share_data
-        ( uuid uuid UNIQUE,
+        ( uid uuid uuid_generate_v4 UNIQUE,
           vendor_name TEXT,
           Trip_Pickup_DateTime timestamp,
           Trip_Dropoff_DateTime timestamp,

@@ -31,8 +31,8 @@ echo "Producer V1 running with PID "$prod_v1_process_id
 
 # Let it run for a while
 
-echo "Waiting for 1 minutes"
-sleep 1m
+echo "Waiting for 0.5 minutes"
+sleep 30s
 
 
 
@@ -70,8 +70,8 @@ echo "Producer V2 running with PID "$prod_v2_process_id
 
 # Wait until schema 1 is "obsolete" and terminate code version 1
 
-echo "Waiting for 1 minuts"
-sleep 1m
+echo "Waiting for 0.5 minuts"
+sleep 30s
 
 echo "Terminating code V1"
 kill -s 9 $prod_v1_process_id
@@ -85,8 +85,8 @@ echo "Consumer V1 terminated with code "$?
 
 # Wait until schema 1 is "obsolete" and terminate code version 1
 
-echo "Waiting for 1 minuts"
-sleep 1m
+echo "Waiting for 0.5 minuts"
+sleep 30s
 
 echo "Terminating code V2"
 kill -s 9 $prod_v2_process_id
