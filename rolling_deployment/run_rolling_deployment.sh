@@ -58,7 +58,7 @@ echo "Consumer V2 running with PID "$cons_v2_process_id
 
 cd $SCRIPT_DIR"/../Kafka/RideShareProducer/target/"
 
-nohup java -jar RideShareProducerV2.jar ~/nyc-taxi-rideshare/schema_evolution_data/yellow_tripdata_2009-02_V2_full.csv > ~/log/RideShareProducerV2.log 2>&1 & & prod_v2_process_id=$!
+nohup java -jar RideShareProducerV2.jar ~/nyc-taxi-rideshare/schema_evolution_data/yellow_tripdata_2009-02_V2_full.csv > ~/log/RideShareProducerV2.log 2>&1 & prod_v2_process_id=$!
 echo "Producer V2 running with PID "$prod_v2_process_id
 
 
