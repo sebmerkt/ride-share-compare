@@ -19,7 +19,7 @@ for i in range(1,len(sys.argv),2):
     cursor = connection.cursor()
     
     create_table_query = '''ALTER TABLE "ride_share_data"
-                            ADD %s %s;; '''%(sys.argv[i],sys.argv[i+1])
+                            ADD COLUMN %s %s; '''%(sys.argv[i],sys.argv[i+1])
 
     cursor.execute(create_table_query)
     connection.commit()
