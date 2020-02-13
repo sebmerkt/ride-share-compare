@@ -18,7 +18,7 @@ for i in range(1,len(sys.argv),2):
 
     cursor = connection.cursor()
     
-    create_table_query = '''ALTER TABLE "ride_share_data"
+    create_table_query = '''ALTER TABLE ride_share_data
                             ADD COLUMN %s %s; '''%(sys.argv[i],sys.argv[i+1])
 
     cursor.execute(create_table_query)
