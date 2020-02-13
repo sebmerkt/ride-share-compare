@@ -13,7 +13,6 @@ package com.insight;
 
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import io.confluent.kafka.streams.serdes.avro.GenericAvroSerde;
-import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
@@ -24,8 +23,6 @@ import org.apache.kafka.streams.kstream.KStream;
 import org.json.JSONException;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 
@@ -74,7 +71,7 @@ public abstract class RideShareStreamerBase {
 
         Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "ride-share-stream-processing");
-        props.put(StreamsConfig.CLIENT_ID_CONFIG, "test-rides");
+        props.put(StreamsConfig.CLIENT_ID_CONFIG, "rides");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, brokerDNS1 + ":9092," + brokerDNS2 + ":9092,"
                 + brokerDNS3 + ":9092," + brokerDNS4 + ":9092");
         props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, schemaUrl);
