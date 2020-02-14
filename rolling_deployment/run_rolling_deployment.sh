@@ -73,7 +73,7 @@ echo "Evolving database"
 python3 $SCRIPT_DIR/update_database.py "tripduration" "int8" "start_station_id" "int8" "start_station_name" "text" "end_station_id" "int8" "end_station_name" "text" "bikeid" "int8"  "usertype" "text""birth_year" "int8" "gender" "int8" & db_process_id=$!
 
 wait $db_process_id
-echo "Database schema evolved to V$i with status "$?
+echo "Database schema evolved to bike V1 with status "$?
 
 
 
@@ -81,14 +81,14 @@ echo "Database schema evolved to V$i with status "$?
 cd $SCRIPT_DIR"/../Kafka/RideShareStreamer/target/"
 
 nohup java -jar BikeShareStreamerV1.jar > "$LOG_DIR/BikeShareStreamerV1.log" 2>&1 & PIDS+=( "$!" )
-echo "Bike sreamer V$i running with PID $!"
+echo "Bike sreamer V1 running with PID $!"
 
 # Start consumer
 
 cd $SCRIPT_DIR"/../Kafka/RideShareConsumer/target/"
 
 nohup java -jar BikeShareConsumerV1.jar > "$LOG_DIR/BikeShareConsumerV1.log" 2>&1 & PIDS+=( "$!" )
-echo "Bike consumer V$i running with PID $!"
+echo "Bike consumer V1 running with PID $!"
 
 # Start producer
 
@@ -97,19 +97,11 @@ cd $SCRIPT_DIR"/../Kafka/RideShareProducer/target/"
 BIKE_DATA="/home/$USER/nyc-taxi-rideshare/schema_evolution_data/202001-citibike-tripdata.csv"
 
 nohup java -jar BikeShareProducerV1.jar "$BIKE_DATA" > "$LOG_DIR/BikeShareProducerV1.log" 2>&1 &  PIDS+=( "$!" )
-echo "Bike producer V$i running with PID $!"
+echo "Bike producer V1 running with PID $!"
 
 
 echo "Waiting for 0.5 minutes"
 sleep 30s
-
-
-
-
-
-
-
-
 
 
 
