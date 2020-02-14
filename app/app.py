@@ -108,7 +108,7 @@ def make_figure(n,coord):
       lat=lats_citibike,
       lon=lons_citibike,
       mode='markers', name='Citi Bike', 
-      marker={'color': 'Red', 'size': 15, 'symbol': "bicycle"},
+      marker={'color': 'Gray', 'size': 15, 'symbol': "bicycle"},
       text=["Citi Bike"],
       ), 
 
