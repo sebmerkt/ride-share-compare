@@ -76,12 +76,12 @@ def make_figure(n,coord):
     multi=1
     while( lendf<12):
       now = datetime.utcnow()
-      five_minutes_ago = now - timedelta(hours=0, minutes=0, seconds=10)
+      five_minutes_ago = now - timedelta(hours=0, minutes=0, seconds=30)
 
       radius=100*multi
-      # create_table_query = '''SELECT * FROM ride_share_a_v4 WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND "Process_time" < '%s' AND "Process_time" > '%s'; '''%(lon, lat, radius, now, five_minutes_ago)
-      create_table_query = '''SELECT * FROM ride_share_a_v4 WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s); '''%(lon, lat, radius)
-      # create_table_query = '''SELECT * FROM ride_share_records_taxitest13out ORDER BY "Process_time" DESC FETCH FIRST 15 ROWS ONLY '''
+      create_table_query = '''SELECT * FROM ride_share_data WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND "Process_time" < '%s' AND "Process_time" > '%s'; '''%(lon, lat, radius, now, five_minutes_ago)
+      # create_table_query = '''SELECT * FROM ride_share_data WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s); '''%(lon, lat, radius)
+      # create_table_query = '''SELECT * FROM ride_share_data ORDER BY "Process_time" DESC FETCH FIRST 15 ROWS ONLY '''
 
       df = pd.read_sql_query(create_table_query, connection)
 
@@ -133,10 +133,11 @@ def make_figure(n,coord):
       lat=[lat],
       lon=[lon],
       mode='markers', name='You are here', 
-      marker=dict(
-                  color='red',
-                  size=10
-              ),
+      # marker=dict(
+      #             color='red',
+      #             size=10
+      #         ),
+      marker=['car'],
       text=['You are here'],
       )
       ]
