@@ -139,7 +139,8 @@ for i in `seq 1 2`;
     STREAMER="RideShareStreamerV$i"
     CONSUMER="RideShareConsumerV$i"
 
-    echo nohup java -jar "$STREAMER.jar" > "$LOG_DIR/RideShare$PRODUCER.log" 2>&1 & "$STRE_PID$i"=$!
+    echo "$STREAMER.jar"
+    nohup java -jar "$STREAMER.jar" > "$LOG_DIR/RideShare$PRODUCER.log" 2>&1 & "$STRE_PID$i"=$!
     echo "Sreamer V$i running with PID "$stream_v1_process_id
 
     # Start consumer
