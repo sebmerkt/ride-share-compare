@@ -124,7 +124,7 @@ CONS_PID5="prod_v5_process_id"
 
 for i in `seq 1 2`;
   do
-    if i!=1; then
+    if [i!=1] then
       echo "Evolving database"
       python3 $SCRIPT_DIR/update_database.py "Passenger_Count" "int8" "Fare_Amt" "float8" "Tip_Amt" "float8" & db_process_id=$!
 
@@ -139,7 +139,7 @@ for i in `seq 1 2`;
     STREAMER="RideShareStreamerV$i"
     CONSUMER="RideShareConsumerV$i"
 
-    nohup java -jar "$STREAMER.jar" > "$LOG_DIR/RideShare$PRODUCER.log" 2>&1 & "$STRE_PID$i"=$!
+    echo nohup java -jar "$STREAMER.jar" > "$LOG_DIR/RideShare$PRODUCER.log" 2>&1 & "$STRE_PID$i"=$!
     echo "Sreamer V$i running with PID "$stream_v1_process_id
 
     # Start consumer
