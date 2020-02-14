@@ -90,7 +90,7 @@ public class RideShareConsumerV5 extends RideShareConsumerBase {
                             Passenger_Count+", "+Trip_Distance+", "+Start_Lon+", "+Start_Lat+", "+Rate_Code+", "+
                             store_and_forward+", "+End_Lon+", "+End_Lat+", '"+Payment_Type+"', "+
                             Fare_Amt+", "+surcharge+", "+mta_tax+", "+Tip_Amt+", "+Tolls_Amt+", "+Total_Amt+", '"+Process_time+
-                            "', 'SRID=4326;POINT("+Start_Lon+" "+Start_Lat+")', 'SRID=4326;POINT("+End_Lon+" "+End_Lat+")' "+")";
+                            "', 'SRID=4326;POINT("+Start_Lon+" "+Start_Lat+")', 'SRID=4326;POINT("+End_Lon+" "+End_Lat+")' )";
                     stmt.executeUpdate(sql);
                 }
             }
