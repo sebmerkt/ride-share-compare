@@ -85,7 +85,7 @@ def make_figure(n,coord):
 
       df = pd.read_sql_query(create_table_query, connection)
 
-      print(len(df))
+      print("LENDF="+str(len(df)))
       lendf=len(df)
       multi=2
       # if radius>5000:
