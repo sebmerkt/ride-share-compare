@@ -30,7 +30,7 @@ app.layout = html.Div(
         html.Div(id='my-div'),
         dcc.Interval(
             id='interval-component',
-            interval=5*1000, # in milliseconds
+            interval=3*1000, # in milliseconds
             n_intervals=0
         ),
         dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
@@ -57,6 +57,7 @@ def update_output_div(input_value):
 @app.callback(Output('graph', 'figure'),
               [Input('interval-component', 'n_intervals'),Input(component_id='my-div', component_property='children')])
 def make_figure(n,coord):
+  print(n)
   # if not lon:
   lon = coord[0]
   # if not lat:
@@ -167,4 +168,5 @@ def make_figure(n,coord):
 
 
 if __name__ == '__main__':
+  print("START")
   app.run_server(debug=True, host='0.0.0.0')
