@@ -146,7 +146,7 @@ def make_figure(n,coord):
         ),
       ) 
     end = time.time()
-    print("Time: "+str(end - start))        
+    # print("Time: "+str(end - start))        
 
     fig = go.Figure( data, layout)
     return fig
