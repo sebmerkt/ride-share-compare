@@ -5,11 +5,7 @@ LOG_DIR="/home/"$USER"/log_rsc/"
 mkdir -p $LOG_DIR
 
 # Define input files
-INPUT_FILE1="~/nyc-taxi-rideshare/schema_evolution_data/yellow_tripdata_2009-01_V1_full.csv"
-INPUT_FILE2="~/nyc-taxi-rideshare/schema_evolution_data/yellow_tripdata_2009-02_V2_full.csv"
-INPUT_FILE3="~/nyc-taxi-rideshare/schema_evolution_data/yellow_tripdata_2009-03_V3_full.csv"
-INPUT_FILE4="~/nyc-taxi-rideshare/schema_evolution_data/yellow_tripdata_2009-04_V4_full.csv"
-INPUT_FILE5="~/nyc-taxi-rideshare/schema_evolution_data/yellow_tripdata_2017-01_V5_full.csv"
+INPUT_FILE=( "~/nyc-taxi-rideshare/schema_evolution_data/yellow_tripdata_2009-01_V1_full.csv" "~/nyc-taxi-rideshare/schema_evolution_data/yellow_tripdata_2009-02_V2_full.csv" "~/nyc-taxi-rideshare/schema_evolution_data/yellow_tripdata_2009-03_V3_full.csv" "~/nyc-taxi-rideshare/schema_evolution_data/yellow_tripdata_2009-04_V4_full.csv" "~/nyc-taxi-rideshare/schema_evolution_data/yellow_tripdata_2017-01_V5_full.csv" )
 
 # List to store PIDs
 declare -n PIDS="PID$i"
@@ -43,8 +39,7 @@ for i in `seq 1 5`;
     STREAMER="RideShareStreamerV$i"
     CONSUMER="RideShareConsumerV$i"
 
-    INPUT_FILE="INPUT_FILE$i"
-    echo "$INPUT_FILE"
+    echo "${INPUT_FILE[i]}"
     nohup java -jar "$STREAMER.jar" > "$LOG_DIR/$STREAMER.log" 2>&1 & PIDS+=( "$!" )
     echo "Sreamer V$i running with PID $!"
 
