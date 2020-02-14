@@ -66,7 +66,7 @@ public class RideShareConsumerV4 extends RideShareConsumerBase {
                     final double store_and_forward = InsertDouble(record.value().get("store_and_forward"));
                     final double End_Lon = InsertDouble(record.value().get("End_Lon"));
                     final double End_Lat = InsertDouble(record.value().get("End_Lat"));
-                    final String Payment_Type = record.value().get("Payment_Type").toString();
+                    final String Payment_Type = InsertString(record.value().get("Payment_Type"));
                     final double Fare_Amt = InsertDouble(record.value().get("Fare_Amt"));
                     final double surcharge = InsertDouble(record.value().get("surcharge"));
                     final double mta_tax = InsertDouble(record.value().get("mta_tax"));
