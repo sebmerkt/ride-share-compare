@@ -39,7 +39,6 @@ for i in `seq 1 5`;
     STREAMER="RideShareStreamerV$i"
     CONSUMER="RideShareConsumerV$i"
 
-    echo "${INPUT_FILE[i]}"
     nohup java -jar "$STREAMER.jar" > "$LOG_DIR/$STREAMER.log" 2>&1 & PIDS+=( "$!" )
     echo "Sreamer V$i running with PID $!"
 
@@ -54,7 +53,7 @@ for i in `seq 1 5`;
 
     cd $SCRIPT_DIR"/../Kafka/RideShareProducer/target/"
 
-    nohup java -jar "$PRODUCER.jar" $INPUT_FILE > "$LOG_DIR/$PRODUCER.log" 2>&1 &  PIDS+=( "$!" )
+    nohup java -jar "$PRODUCER.jar" "${INPUT_FILE[i]}" > "$LOG_DIR/$PRODUCER.log" 2>&1 &  PIDS+=( "$!" )
     echo "Producer V$i running with PID $!"
 
 
