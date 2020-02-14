@@ -57,7 +57,6 @@ def update_output_div(input_value):
 @app.callback(Output('graph', 'figure'),
               [Input('interval-component', 'n_intervals'),Input(component_id='my-div', component_property='children')])
 def make_figure(n,coord):
-  print(n)
   # if not lon:
   lon = coord[0]
   # if not lat:
@@ -75,6 +74,7 @@ def make_figure(n,coord):
 
     lendf=0
     multi=1
+    print("HERE1")
     while( lendf<12):
       now = datetime.utcnow()
       five_minutes_ago = now - timedelta(hours=0, minutes=0, seconds=30)
