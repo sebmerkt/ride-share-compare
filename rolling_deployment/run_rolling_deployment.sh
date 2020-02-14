@@ -43,9 +43,8 @@ for i in `seq 1 5`;
     STREAMER="RideShareStreamerV$i"
     CONSUMER="RideShareConsumerV$i"
 
-    INPUT_FILE="INPUT_FILE"
-    let "$INPUT_FILE"+"$i"
-    echo "$INPUT_FILE$i"
+    INPUT_FILE="INPUT_FILE$i"
+    echo "$INPUT_FILE"
     nohup java -jar "$STREAMER.jar" > "$LOG_DIR/$STREAMER.log" 2>&1 & PIDS+=( "$!" )
     echo "Sreamer V$i running with PID $!"
 
