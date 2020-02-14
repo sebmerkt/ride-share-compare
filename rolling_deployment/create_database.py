@@ -15,7 +15,7 @@ try:
   
   create_table_query = '''CREATE TABLE ride_share_data
         ( id SERIAL UNIQUE PRIMARY KEY,
-          uuid UUID,
+          uuid TEXT,
           vendor_name TEXT,
           Trip_Pickup_DateTime timestamp,
           Trip_Dropoff_DateTime timestamp,
