@@ -94,14 +94,14 @@ def make_figure(n,coord):
     px.set_mapbox_access_token(token)
 
     # if df.vendor_name:
-    lats_lyft = df[ (df.vendor_name.contains("CMT")) | df.vendor_name.contains("1") ]["end_lat"]
-    lons_lyft = df[ (df.vendor_name.contains("CMT")) | df.vendor_name.contains("1") ]["end_lon"]
+    lats_lyft = df[ (df["vendor_name"].str.contains("CMT")) | (df["vendor_name"].str.contains("1")) ]["end_lat"]
+    lons_lyft = df[ (df["vendor_name"].str.contains("CMT")) | (df["vendor_name"].str.contains("1")) ]["end_lon"]
 
-    lats_uber = df[ (df.vendor_name.contains("VTS")) | df.vendor_name.contains("2") ]["end_lat"]
-    lons_uber = df[ (df.vendor_name.contains("VTS")) | df.vendor_name.contains("2") ]["end_lon"]
+    lats_uber = df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ]["end_lat"]
+    lons_uber = df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ]["end_lon"]
 
-    lats_citibike = df[ df.vendor_name.contains("Citi Bike") ]["end_lat"]
-    lons_citibike = df[ df.vendor_name.contains("Citi Bike") ]["end_lon"]
+    lats_citibike = df[ df["vendor_name"].str.contains("Citi Bike") ]["end_lat"]
+    lons_citibike = df[ df["vendor_name"].str.contains("Citi Bike") ]["end_lon"]
 
     data = [
       go.Scattermapbox(
