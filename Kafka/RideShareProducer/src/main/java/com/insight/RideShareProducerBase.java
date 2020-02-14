@@ -204,4 +204,8 @@ public abstract class RideShareProducerBase <Ride> {
         }
     }
 
+    public String AssignProvider() {
+        String provider = "";
+        return provider;
+    }
 }

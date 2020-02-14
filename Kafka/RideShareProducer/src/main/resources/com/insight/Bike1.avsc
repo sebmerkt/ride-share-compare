@@ -1,0 +1,23 @@
+{"namespace": "com.insight",
+  "type": "record",
+  "name": "Bike1",
+  "fields": [
+    {"name": "vendor_name", "type": "string", "default": ""},
+    {"name": "tripduration", "type": "long", "default": 0},
+    {"name": "Trip_Pickup_DateTime", "type": "string", "default": ""},
+    {"name": "Trip_Dropoff_DateTime", "type": "string", "default": ""},
+    {"name": "start_station_id", "type": "long", "default": 0},
+    {"name": "start_station_name", "type": "string", "default": ""},
+    {"name": "Start_Lat", "type": "double", "default": 0.0},
+    {"name": "Start_Lon", "type": "double", "default": 0.0},
+    {"name": "end_station_id", "type": "long", "default": 0},
+    {"name": "end_station_name", "type": "string", "default": ""},
+    {"name": "End_Lat", "type": "double", "default": 0.0},
+    {"name": "End_Lon", "type": "double", "default": 0.0},
+    {"name": "bikeid", "type": "long", "default": 0},
+    {"name": "usertype", "type": "string", "default": ""},
+    {"name": "birth_year", "type": "long", "default": 0},
+    {"name": "gender", "type": "long", "default": 0},
+    {"name": "Process_time", "type": "string", "default": ""}
+  ]
+}
