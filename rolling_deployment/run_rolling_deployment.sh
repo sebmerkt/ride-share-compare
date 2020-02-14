@@ -121,6 +121,8 @@ PROD_PID5="stream_v5_process_id"
 STRE_PID5="cons_v5_process_id"
 CONS_PID5="prod_v5_process_id"
 
+declare -n PIDS="PID$i"
+
 
 for i in `seq 1 2`;
   do
@@ -142,21 +144,21 @@ for i in `seq 1 2`;
     echo "$STREAMER.jar"
     echo "$LOG_DIR/$STREAMER.log"
     echo "$STRE_PID$i"
-    nohup java -jar "$STREAMER.jar" > "$LOG_DIR/$STREAMER.log" 2>&1 & "$STRE_PID$i"=$!
+    nohup java -jar "$STREAMER.jar" > "$LOG_DIR/$STREAMER.log" 2>&1 & PIDS+=( "$!" )
     echo "Sreamer V$i running with PID $STRE_PID$i"
 
     # Start consumer
 
     cd $SCRIPT_DIR"/../Kafka/RideShareConsumer/target/"
 
-    nohup java -jar "$CONSUMER.jar" > "$LOG_DIR/$CONSUMER.log" 2>&1 & "$CONS_PID$i"=$!
+    nohup java -jar "$CONSUMER.jar" > "$LOG_DIR/$CONSUMER.log" 2>&1 & PIDS+=( "$!" )
     echo "Consumer V$i running with PID $CONS_PID$i"
 
     # Start producer
 
     cd $SCRIPT_DIR"/../Kafka/RideShareProducer/target/"
 
-    nohup java -jar "$PRODUCER.jar" "$INPUT_FILE$i" > "$LOG_DIR/$PRODUCER.log" 2>&1 &  "$PROD_PID$i"=$!
+    nohup java -jar "$PRODUCER.jar" "$INPUT_FILE$i" > "$LOG_DIR/$PRODUCER.log" 2>&1 &  PIDS+=( "$!" )
     echo "Producer V$i running with PID $STRE_PID$i"
 
 
@@ -170,14 +172,9 @@ for i in `seq 1 2`;
 
 
 
-for i in `seq 1 2`;
-  do
-    kill -s 9 "$PROD_PID$i"
-    echo "$PROD_PID$i terminated with code "$?
+for EACH in "${PIDS[@]}"
+do
+    kill -s 9 "$EACH"
+    echo "$EACH terminated with code "$?
+done
 
-    kill -s 9 "$CONS_PID$i"
-    echo "$PROD_PID$i terminated with code "$?
-
-    kill -s 9 "$STRE_PID$i"
-    echo "$CONS_PID$i terminated with code "$?
-  done
