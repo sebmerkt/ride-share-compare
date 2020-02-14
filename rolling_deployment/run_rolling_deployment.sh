@@ -124,7 +124,7 @@ CONS_PID5="prod_v5_process_id"
 
 for i in `seq 1 2`;
   do
-    if [i!=1] then
+    if [[ "$i" != "1" ]]; then
       echo "Evolving database"
       python3 $SCRIPT_DIR/update_database.py "Passenger_Count" "int8" "Fare_Amt" "float8" "Tip_Amt" "float8" & db_process_id=$!
 
