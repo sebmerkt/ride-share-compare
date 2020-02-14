@@ -87,40 +87,53 @@ def make_figure(n,coord):
 
       lendf=len(df)
       multi=2
-      # if radius>5000:
-      #   df = pd.DataFrame([[0,0,0,0]],columns=["End_lat","End_Lon","vendor_name","fare_amt"])
-      #   break
+      if radius>5000:
+        df = pd.DataFrame([[0,0,0,0]],columns=["End_lat","End_Lon","vendor_name","fare_amt"])
+        break
 
     px.set_mapbox_access_token(token)
 
     # if df.vendor_name:
-    lats1 = df.head(6)
-    lons1 = df.head(6)
-    lats2 = df.tail(6)
-    lons2 = df.tail(6)
+    lats_lyft = df[ (df.vendor_name.contains("CMT")) | df.vendor_name.contains("1") ]["end_lat"]
+    lons_lyft = df[ (df.vendor_name.contains("CMT")) | df.vendor_name.contains("1") ]["end_lon"]
+
+    lats_uber = df[ (df.vendor_name.contains("VTS")) | df.vendor_name.contains("2") ]["end_lat"]
+    lons_uber = df[ (df.vendor_name.contains("VTS")) | df.vendor_name.contains("2") ]["end_lon"]
+
+    lats_citibike = df[ df.vendor_name.contains("Citi Bike") ]["end_lat"]
+    lons_citibike = df[ df.vendor_name.contains("Citi Bike") ]["end_lon"]
 
     data = [
       go.Scattermapbox(
-      lat=lats1.end_lat,
-      lon=lons1.end_lon,
-      mode='markers', name='Lyft', 
-      # marker=dict(
-      #             color='Magenta',
-      #             size=10
-      #         ),
-      marker={'color': 'Magenta', 'size': 10, 'symbol': "bicycle"},
-      text=lats1.vendor_name,
+      lat=lats_citibike,
+      lon=lons_citibike,
+      mode='markers', name='Citi Bike', 
+      marker={'color': 'Magenta', 'size': 15, 'symbol': "bicycle"},
+      text=["Citi Bike"],
       ), 
+
       go.Scattermapbox(
-      lat=lats2.end_lat,
-      lon=lons2.end_lon,
+      lat=lats_uber,
+      lon=lons_uber,
       mode='markers', name='Uber', 
       marker=dict(
                   color='black',
                   size=10
               ),
-      text=lats2.vendor_name,
+      text=["Uber"],
       ), 
+
+      go.Scattermapbox(
+      lat=lats_lyft,
+      lon=lons_lyft,
+      mode='markers', name='Lyft', 
+      marker=dict(
+                  color='Magenta',
+                  size=10
+              ),
+      text=["Lyft"],
+      ), 
+
       go.Scattermapbox(
       lat=[lat],
       lon=[lon],
