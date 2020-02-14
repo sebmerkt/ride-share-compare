@@ -74,7 +74,7 @@ def make_figure(n,coord):
 
     lendf=0
     multi=1
-    while( lendf>5):
+    while( lendf<12):
       now = datetime.utcnow()
       five_minutes_ago = now - timedelta(hours=0, minutes=2, seconds=0)
 
@@ -108,7 +108,7 @@ def make_figure(n,coord):
       lat=lats_citibike,
       lon=lons_citibike,
       mode='markers', name='Citi Bike', 
-      marker={'color': 'gray', 'size': 15, 'symbol': "bicycle"},
+      marker={'color': 'Red', 'size': 15, 'symbol': "bicycle"},
       text=["Citi Bike"],
       ), 
 
