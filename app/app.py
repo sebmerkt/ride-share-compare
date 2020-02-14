@@ -124,11 +124,11 @@ def make_figure(n,coord):
       lat=[lat],
       lon=[lon],
       mode='markers', name='You are here', 
-      marker=dict(
-                  color='red',
-                  size=10
-              ),
-      # marker=['car'],
+      # marker=dict(
+      #             color='red',
+      #             size=10
+      #         ),
+      marker={'size': 10, 'symbol': "car"}
       text=['You are here'],
       )
       ]
