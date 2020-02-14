@@ -76,7 +76,7 @@ def make_figure(n,coord):
     multi=1
     while( lendf<12):
       now = datetime.utcnow()
-      five_minutes_ago = now - timedelta(hours=0, minutes=0, seconds=30)
+      five_minutes_ago = now - timedelta(hours=0, minutes=2, seconds=0)
 
       radius=100*multi
       create_table_query = '''SELECT * FROM ride_share_data WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND Process_time < '%s' AND Process_time > '%s'; '''%(lon, lat, radius, now, five_minutes_ago)
