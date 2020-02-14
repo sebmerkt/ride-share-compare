@@ -140,21 +140,23 @@ for i in `seq 1 2`;
     CONSUMER="RideShareConsumerV$i"
 
     echo "$STREAMER.jar"
-    nohup java -jar "$STREAMER.jar" > "$LOG_DIR/RideShare$PRODUCER.log" 2>&1 & "$STRE_PID$i"=$!
+    echo "$LOG_DIR/$STREAMER.log"
+    echo "$STRE_PID$i"
+    nohup java -jar "$STREAMER.jar" > "$LOG_DIR/$STREAMER.log" 2>&1 & "$STRE_PID$i"=$!
     echo "Sreamer V$i running with PID "$stream_v1_process_id
 
     # Start consumer
 
     cd $SCRIPT_DIR"/../Kafka/RideShareConsumer/target/"
 
-    nohup java -jar "$CONSUMER.jar" > "$LOG_DIR/RideShareConsumerV1.log" 2>&1 & "$CONS_PID$i"=$!
+    nohup java -jar "$CONSUMER.jar" > "$LOG_DIR/$CONSUMER.log" 2>&1 & "$CONS_PID$i"=$!
     echo "Consumer V$i running with PID "$cons_v1_process_id
 
     # Start producer
 
     cd $SCRIPT_DIR"/../Kafka/RideShareProducer/target/"
 
-    nohup java -jar "$PRODUCER.jar" "$INPUT_FILE$i" > "$LOG_DIR/RideShareProducerV1.log" 2>&1 &  "$PROD_PID$i"=$!
+    nohup java -jar "$PRODUCER.jar" "$INPUT_FILE$i" > "$LOG_DIR/$PRODUCER.log" 2>&1 &  "$PROD_PID$i"=$!
     echo "Producer V$i running with PID "$prod_v1_process_id
 
 
