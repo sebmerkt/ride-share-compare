@@ -74,7 +74,6 @@ def make_figure(n,coord):
 
     lendf=0
     multi=1
-    print("HERE1")
     while( lendf<12):
       now = datetime.utcnow()
       five_minutes_ago = now - timedelta(hours=0, minutes=0, seconds=30)
@@ -86,6 +85,7 @@ def make_figure(n,coord):
 
       df = pd.read_sql_query(create_table_query, connection)
 
+      print(len(df))
       lendf=len(df)
       multi=2
       # if radius>5000:
@@ -94,7 +94,6 @@ def make_figure(n,coord):
 
     px.set_mapbox_access_token(token)
 
-    print(len(df))
 
     # print(df.columns)
 
