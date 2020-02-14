@@ -104,10 +104,11 @@ def make_figure(n,coord):
       lat=lats1.end_lat,
       lon=lons1.end_lon,
       mode='markers', name='Lyft', 
-      marker=dict(
-                  color='Magenta',
-                  size=10
-              ),
+      # marker=dict(
+      #             color='Magenta',
+      #             size=10
+      #         ),
+      marker={'size': 10, 'symbol': "car", 'color': 'Magenta'}
       text=lats1.vendor_name,
       ), 
       go.Scattermapbox(
@@ -124,11 +125,10 @@ def make_figure(n,coord):
       lat=[lat],
       lon=[lon],
       mode='markers', name='You are here', 
-      # marker=dict(
-      #             color='red',
-      #             size=10
-      #         ),
-      marker={'size': 10, 'symbol': "car"}
+      marker=dict(
+                  color='red',
+                  size=10
+              ),
       text=['You are here'],
       )
       ]
