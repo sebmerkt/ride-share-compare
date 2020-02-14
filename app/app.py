@@ -108,7 +108,7 @@ def make_figure(n,coord):
       #             color='Magenta',
       #             size=10
       #         ),
-      marker={'color': 'Magenta', 'size': 10, 'symbol': "bike"},
+      marker={'color': 'Magenta', 'size': 10, 'symbol': "bicycle"},
       text=lats1.vendor_name,
       ), 
       go.Scattermapbox(
