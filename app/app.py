@@ -85,7 +85,6 @@ def make_figure(n,coord):
 
       df = pd.read_sql_query(create_table_query, connection)
 
-      print("LENDF="+str(len(df)))
       lendf=len(df)
       multi=2
       # if radius>5000:
@@ -94,14 +93,6 @@ def make_figure(n,coord):
 
     px.set_mapbox_access_token(token)
 
-
-    # print(df.columns)
-
-    # print(df.head(1).vendor_name)
-    print(df.end_lon.tail(6))
-    print(df.end_lat.tail(6))
-    print(df.end_lon.head(6))
-    print(df.end_lat.head(6))
     # if df.vendor_name:
     lats1 = df.head(6)
     lons1 = df.head(6)
@@ -133,11 +124,11 @@ def make_figure(n,coord):
       lat=[lat],
       lon=[lon],
       mode='markers', name='You are here', 
-      # marker=dict(
-      #             color='red',
-      #             size=10
-      #         ),
-      marker=['car'],
+      marker=dict(
+                  color='red',
+                  size=10
+              ),
+      # marker=['car'],
       text=['You are here'],
       )
       ]
