@@ -100,15 +100,15 @@ def make_figure(n,coord):
     lats_uber = df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ]["end_lat"]
     lons_uber = df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ]["end_lon"]
 
-    lats_citibike = df[ df["vendor_name"].str.contains("Citi Bike") ]["end_lat"]
-    lons_citibike = df[ df["vendor_name"].str.contains("Citi Bike") ]["end_lon"]
+    lats_citibike = df[ df["vendor_name"].str.contains("Citi") ]["end_lat"]
+    lons_citibike = df[ df["vendor_name"].str.contains("Citi") ]["end_lon"]
 
     data = [
       go.Scattermapbox(
       lat=lats_citibike,
       lon=lons_citibike,
       mode='markers', name='Citi Bike', 
-      marker={'color': 'Magenta', 'size': 15, 'symbol': "bicycle"},
+      marker={'color': 'Red', 'size': 15, 'symbol': "bicycle"},
       text=["Citi Bike"],
       ), 
 
@@ -150,7 +150,7 @@ def make_figure(n,coord):
       autosize=True,
       # width=1000,
       height=600, 
-      mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=12, style=os.getenv("MAPBOX_STYLE") ),
+      mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=10, style=os.getenv("MAPBOX_STYLE") ),
       margin=dict(
         l=35,
         r=35,
