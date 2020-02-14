@@ -53,7 +53,7 @@ for i in `seq 1 5`;
 
     cd $SCRIPT_DIR"/../Kafka/RideShareProducer/target/"
 
-    nohup java -jar "$PRODUCER.jar" "${INPUT_FILE[i]}" > "$LOG_DIR/$PRODUCER.log" 2>&1 &  PIDS+=( "$!" )
+    nohup java -jar "$PRODUCER.jar" "${INPUT_FILE[i-1]}" > "$LOG_DIR/$PRODUCER.log" 2>&1 &  PIDS+=( "$!" )
     echo "Producer V$i running with PID $!"
 
 
