@@ -150,7 +150,7 @@ def make_figure(n,coord):
       autosize=True,
       # width=1000,
       height=600, 
-      mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=11, style=os.getenv("MAPBOX_STYLE") ),
+      mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=13, style=os.getenv("MAPBOX_STYLE") ),
       margin=dict(
         l=35,
         r=35,
