@@ -101,7 +101,7 @@ public abstract class RideShareProducerBase <Ride> {
                     producer.send(new ProducerRecord<String, Ride>(TOPIC, uniqueID, ride));
                     try{
                         // Control the frequency of messages to be sent
-                        TimeUnit.MILLISECONDS.sleep(10);
+                        TimeUnit.MILLISECONDS.sleep(100);
                     } catch (final InterruptedException e) {
                         break;
                     }
