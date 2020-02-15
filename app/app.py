@@ -64,6 +64,7 @@ app.layout = html.Div(
     ]
 )
 
+import json
 @app.callback(
     Output('click-data', 'children'),
     [Input('graph', 'clickData')])
