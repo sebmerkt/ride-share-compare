@@ -77,7 +77,7 @@ def display_click_data(clickData):
   # if clickData:
   #   for i in clickData:
   #     ret = ret + str(i) + ": " + str(clickData[i]) + "\n"
-    ret='''Fare: %s \n
+  ret='''Fare: %s \n
            Trip distance: %s '''%( clickData['customdata'][0], clickData['customdata'][1] )
   # return json.dumps(clickData, indent=2)
   return ret
@@ -180,7 +180,7 @@ def make_figure(n,input_value):
     layout = go.Layout(
       autosize=True,
       # width=1000,
-      height=500, 
+      height=450, 
       mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=13, style=os.getenv("MAPBOX_STYLE") ),
       margin=dict(
         l=15,
