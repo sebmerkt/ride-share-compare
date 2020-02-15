@@ -52,15 +52,19 @@ app.layout = html.Div(
             interval=3*1000, # in milliseconds
             n_intervals=0
         ),
-        html.Div([
-            dcc.Markdown("""
-                **Click Data**
+        html.Div(className='row', children=[
+          html.Div([
+              dcc.Markdown("""
+                  **Click Data**
 
-                Click on points in the graph.
-            """),
-            html.Pre(id='click-data', style=styles['pre']),
-        ], className='three columns'),
-        dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
+                  Click on points in the graph.
+              """),
+              html.Pre(id='click-data', style=styles['pre']),
+          ], className='three columns'),
+          html.Div([]
+            dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
+          ], className='three columns'),
+        ]),
     ]
 )
 
