@@ -68,14 +68,16 @@ app.layout = html.Div(
     ]
 )
 
-import json
+# import json
 @app.callback(
     Output('click-data', 'children'),
     [Input('graph', 'clickData')])
 def display_click_data(clickData):
-  print(clickData)
-  print(type(clickData))
-  return json.dumps(clickData, indent=2)
+  # print(clickData)
+  # print(type(clickData))
+  ret='''Click data: %s '''%clickData
+  # return json.dumps(clickData, indent=2)
+  return ret
 
 
 @app.callback(Output('graph', 'figure'),
