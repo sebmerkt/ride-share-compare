@@ -81,7 +81,7 @@ def display_click_data(clickData):
   #          Trip distance: %s '''%( clickData['customdata'][0], clickData['customdata'][1] )
   # return json.dumps(clickData, indent=2)
     ret2 = clickData
-  return ret + " - - " + ret2
+  return ret
 
 
 @app.callback(Output('graph', 'figure'),
