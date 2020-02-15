@@ -56,9 +56,7 @@ app.layout = html.Div(
         html.Div(className='row', children=[
           html.Div([
               dcc.Markdown("""
-                  **Ride Information**
-
-                  Select a ride for more information.
+                  **Select a ride for more information**
               """),
               html.Pre(id='click-data'),
           ],  style={'width': '30%', 'display': 'inline-block'}),
