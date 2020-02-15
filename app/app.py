@@ -66,7 +66,7 @@ app.layout = html.Div(
 
 @app.callback(
     Output('click-data', 'children'),
-    [Input('basic-interactions', 'clickData')])
+    [Input('graph', 'clickData')])
 def display_click_data(clickData):
     return json.dumps(clickData, indent=2)
 
