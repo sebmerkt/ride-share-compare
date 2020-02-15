@@ -17,6 +17,8 @@ import plotly.graph_objects as go
 
 # get the mapbox token
 token = open(os.getenv("MAPBOX_TOKEN")).read()
+
+# connect to database
 try:
   connection = psycopg2.connect(user = os.getenv("DB_USER"),
                                 password = os.getenv("DB_PW"),
@@ -25,6 +27,7 @@ try:
                                 database = os.getenv("DB_NAME"))
 except (Exception, psycopg2.DatabaseError) as error:
     print(error)
+
 
 app = dash.Dash(
     __name__, external_stylesheets=["https://codepen.io/chriddyp/pen/bWLwgP.css"]
@@ -47,7 +50,7 @@ app.layout = html.Div(
 
 
 @app.callback(
-    Output(component_id='my-div', component_property='children'),
+    Output(component_id='my-div'),#, component_property='children'),
     [Input(component_id='my-id', component_property='value')]
 )
 def update_output_div(input_value):
