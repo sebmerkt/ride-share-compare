@@ -75,7 +75,7 @@ def make_figure(n,coord):
 
     lendf=0
     multi=1
-    while( lendf<4):
+    while( lendf==0):
       now = datetime.utcnow()
       five_minutes_ago = now - timedelta(hours=0, minutes=0, seconds=10)
 
