@@ -37,7 +37,10 @@ app = dash.Dash(
 app.layout = html.Div(
     [
         html.H1("Ride-Share-Compare"),
-        dcc.Input(id='my-id', value='11 Wall Street, New York', type='text'),
+        html.P([
+          tml.B("Filter the titles:  "),
+            dcc.Input(id='my-id', value='11 Wall Street, New York', type='text'),
+            ]),
         # html.Div(id='my-div'),
         dcc.Interval(
             id='interval-component',
