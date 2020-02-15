@@ -169,11 +169,10 @@ def make_figure(n,input_value):
 
 def get_fare_per_distance(fare,dist):
   # try:
-    fare=fare.astype('float')
-    dist=dist.astype('float')
+    fare_per_dist=fare.astype('float')/dist.astype('float')
     # if dist>0:
-    print(fare/dist)
-    return fare/dist
+    print(fare_per_dist)
+    return fare_per_dist.to_frame()
     # else:
     #   return "No expected fare available"
     # except:
