@@ -50,7 +50,7 @@ app.layout = html.Div(
 
 
 @app.callback(
-    Output('graph', 'figure'),
+    Output(component_id='my-div', component_property='children'),
     [Input(component_id='my-id', component_property='value')]
 )
 def update_output_div(input_value):
@@ -66,10 +66,18 @@ def update_output_div(input_value):
 
 
 @app.callback(Output('graph', 'figure'),
-              [Input('interval-component', 'n_intervals'),Input(component_id='my-div', component_property='children')])
+              [Input('interval-component', 'n_intervals'),Input(component_id='my-id', component_property='value')])
 def make_figure(n,coord):
-  lon = coord[0]
-  lat = coord[1]
+    g = geocoder.osm(input_value)
+  if not g.x or not g.y:
+    # Set defaults to Empire State Building
+    lon = -73.984892
+    lat = 40.748121
+  else:
+    lon = g.x
+    lat = g.y
+  # lon = coord[0]
+  # lat = coord[1]
   # print(str(lat)+", "+str(lon))
   try:
     start = time.time()
