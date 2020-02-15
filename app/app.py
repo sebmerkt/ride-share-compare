@@ -118,7 +118,7 @@ def make_figure(n,input_value):
                   color='black',
                   size=10
               ),
-      text=["Uber",fare_per_distance],
+      text=[fare_per_distance],
       ), 
 
       go.Scattermapbox(
@@ -129,7 +129,7 @@ def make_figure(n,input_value):
                   color='Magenta',
                   size=10
               ),
-      text=["Lyft",fare_per_distance],
+      text=[fare_per_distance],
       ), 
 
       go.Scattermapbox(
