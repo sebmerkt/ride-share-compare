@@ -43,7 +43,7 @@ styles = {
 
 app.layout = html.Div(
     [
-        html.H1(dcc.Markdown("<span style="color:blue"> **Ride-Share-Compare** </span>")),
+        html.H1(dcc.Markdown(" **Ride-Share-Compare** ")),
         html.P([
           html.B("Enter your pickup location:  "),
             dcc.Input(id='my-id', value='11 Wall Street, New York', type='text'),
