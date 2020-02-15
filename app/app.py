@@ -38,10 +38,9 @@ app.layout = html.Div(
     [
         html.H1("Ride-Share-Compare"),
         html.P([
-          html.B("Filter the titles:  "),
+          html.B("Enter your pickup location:  "),
             dcc.Input(id='my-id', value='11 Wall Street, New York', type='text'),
             ]),
-        # html.Div(id='my-div'),
         dcc.Interval(
             id='interval-component',
             interval=3*1000, # in milliseconds
@@ -52,25 +51,10 @@ app.layout = html.Div(
 )
 
 
-# @app.callback(
-#     Output(component_id='my-div', component_property='children'),
-#     [Input(component_id='my-id', component_property='value')]
-# )
-# def update_output_div(input_value):
-#   g = geocoder.osm(input_value)
-#   if not g.x or not g.y:
-#     # Set defaults to Empire State Building
-#     lon = -73.984892
-#     lat = 40.748121
-#   else:
-#     lon = g.x
-#     lat = g.y
-#   return lon, lat
-
-
 @app.callback(Output('graph', 'figure'),
               [Input('interval-component', 'n_intervals'),Input(component_id='my-id', component_property='value')])
 def make_figure(n,input_value):
+  
   g = geocoder.osm(input_value)
   if not g.x or not g.y:
     # Set defaults to Empire State Building
@@ -79,9 +63,7 @@ def make_figure(n,input_value):
   else:
     lon = g.x
     lat = g.y
-  # lon = coord[0]
-  # lat = coord[1]
-  # print(str(lat)+", "+str(lon))
+    
   try:
     start = time.time()
 
@@ -117,6 +99,8 @@ def make_figure(n,input_value):
     lats_citibike = df[ df["vendor_name"].str.contains("Citi") ]["end_lat"]
     lons_citibike = df[ df["vendor_name"].str.contains("Citi") ]["end_lon"]
 
+    fare_per_distance=df.total_amt/df.trip_distance
+
     data = [
       go.Scattermapbox(
       lat=lats_citibike,
@@ -134,7 +118,7 @@ def make_figure(n,input_value):
                   color='black',
                   size=10
               ),
-      text=["Uber"],
+      text=["Uber",fare_per_distance],
       ), 
 
       go.Scattermapbox(
@@ -145,7 +129,7 @@ def make_figure(n,input_value):
                   color='Magenta',
                   size=10
               ),
-      text=["Lyft"],
+      text=["Lyft",fare_per_distance],
       ), 
 
       go.Scattermapbox(
@@ -182,6 +166,8 @@ def make_figure(n,input_value):
   else:
     return pd.DataFrame()
 
+def get_fare_per_distance(fare,dist):
+  return fare/distance
   
 
 
