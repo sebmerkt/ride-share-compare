@@ -61,7 +61,7 @@ app.layout = html.Div(
               """),
               html.Pre(id='click-data', style=styles['pre']),
           ], className='three columns'),
-          html.Div([]
+          html.Div([
             dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
           ], className='three columns'),
         ]),
