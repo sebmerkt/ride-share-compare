@@ -17,7 +17,7 @@ import plotly.graph_objects as go
 
 # get the mapbox token
 token = open(os.getenv("MAPBOX_TOKEN")).read()
-try
+try:
   connection = psycopg2.connect(user = os.getenv("DB_USER"),
                                 password = os.getenv("DB_PW"),
                                 host = os.getenv("DB_SERVER"),
