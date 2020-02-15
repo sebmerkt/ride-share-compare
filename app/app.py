@@ -56,11 +56,11 @@ app.layout = html.Div(
         html.Div(className='row', children=[
           html.Div([
               dcc.Markdown("""
-                  **Click Data**
+                  **Ride Information**
 
-                  Click on points in the graph.
+                  Select a ride for more information.
               """),
-              html.Pre(id='click-data', style=styles['pre']),
+              html.Pre(id='click-data'),
           ],  style={'width': '30%', 'display': 'inline-block'}),
           html.Div([
             dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
@@ -81,7 +81,7 @@ def display_click_data(clickData):
     else:
       fare_per_dist = "not available"
     
-    return '''Expected fare per mile: %s '''%( fare_per_dist )
+    return '''Expected fare per mile: $ %s '''%( fare_per_dist )
   else:
     return "Please select a ride"
 
