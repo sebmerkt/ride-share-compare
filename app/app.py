@@ -38,7 +38,7 @@ app.layout = html.Div(
     [
         html.H1("Ride-Share-Compare"),
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text'),
-        html.Div(id='my-div'),
+        # html.Div(id='my-div'),
         dcc.Interval(
             id='interval-component',
             interval=3*1000, # in milliseconds
@@ -49,20 +49,20 @@ app.layout = html.Div(
 )
 
 
-@app.callback(
-    Output(component_id='my-div', component_property='children'),
-    [Input(component_id='my-id', component_property='value')]
-)
-def update_output_div(input_value):
-  g = geocoder.osm(input_value)
-  if not g.x or not g.y:
-    # Set defaults to Empire State Building
-    lon = -73.984892
-    lat = 40.748121
-  else:
-    lon = g.x
-    lat = g.y
-  return lon, lat
+# @app.callback(
+#     Output(component_id='my-div', component_property='children'),
+#     [Input(component_id='my-id', component_property='value')]
+# )
+# def update_output_div(input_value):
+#   g = geocoder.osm(input_value)
+#   if not g.x or not g.y:
+#     # Set defaults to Empire State Building
+#     lon = -73.984892
+#     lat = 40.748121
+#   else:
+#     lon = g.x
+#     lat = g.y
+#   return lon, lat
 
 
 @app.callback(Output('graph', 'figure'),
