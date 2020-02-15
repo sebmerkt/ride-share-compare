@@ -172,6 +172,7 @@ def get_fare_per_distance(fare,dist):
     fare=fare.astype('float')
     dist=dist.astype('float')
     # if dist>0:
+    print(fare/dist)
     return fare/dist
     # else:
     #   return "No expected fare available"
