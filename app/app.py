@@ -76,12 +76,13 @@ app.layout = html.Div(
 def display_click_data(clickData):
   ret = ""
   if clickData:
-    if clickData["points"][0]["customdata"][1] >0:
-      fare_per_dist = round( clickData["points"][0]["customdata"][0]/clickData["points"][0]["customdata"][1], decimals=2 )
-    else:
-      fare_per_dist = "not available"
-    
-    return '''Expected fare per mile: $ %s '''%( fare_per_dist )
+    if clickData["points"][0]["customdata"]:
+      if clickData["points"][0]["customdata"][1] >0:
+        fare_per_dist = round( clickData["points"][0]["customdata"][0]/clickData["points"][0]["customdata"][1], decimals=2 )
+      else:
+        fare_per_dist = "not available"
+      
+      return '''Expected fare per mile: $ %s '''%( fare_per_dist )
   else:
     return "Please select a ride"
 
