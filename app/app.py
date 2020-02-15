@@ -76,11 +76,11 @@ def display_click_data(clickData):
   ret = ""
   if clickData:
     for i in clickData:
-      ret = ret + str(i) + ": " + str(clickData[i]) + "\n"
+      ret = ret + str(i) + "::::: " + str(clickData[i]) + "\n"
   # ret='''Fare: %s \n
   #          Trip distance: %s '''%( clickData['customdata'][0], clickData['customdata'][1] )
   # return json.dumps(clickData, indent=2)
-    ret2 = clickData[0]['customdata'][0]
+    ret2 = clickData
   return ret + " - - " + ret2
 
 
