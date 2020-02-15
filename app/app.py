@@ -51,7 +51,7 @@ def update_output_div(input_value):
   else:
     lon = g.x
     lat = g.y
-  # return lon, lat
+  return "Your location: "+input_value #lon, lat
 
 
 @app.callback(Output('graph', 'figure'),
