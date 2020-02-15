@@ -75,7 +75,7 @@ app.layout = html.Div(
 def display_click_data(clickData):
   # print(clickData)
   # print(type(clickData))
-  ret='''Click data: %s '''%clickData
+  ret='''Click data: %s '''%type(clickData)
   # return json.dumps(clickData, indent=2)
   return ret
 
