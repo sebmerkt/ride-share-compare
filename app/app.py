@@ -51,15 +51,15 @@ def update_output_div(input_value):
   else:
     lon = g.x
     lat = g.y
-  return "Your location: "+input_value #lon, lat
+  return lon, lat
 
 
 @app.callback(Output('graph', 'figure'),
               [Input('interval-component', 'n_intervals'),Input(component_id='my-div', component_property='children')])
 def make_figure(n,coord):
-  # lon = coord[0]
-  # lat = coord[1]
-  print(str(lat)+", "+str(lon))
+  lon = coord[0]
+  lat = coord[1]
+  # print(str(lat)+", "+str(lon))
   try:
     start = time.time()
     connection = psycopg2.connect(user = os.getenv("DB_USER"),
@@ -168,7 +168,5 @@ def make_figure(n,coord):
 
 
 if __name__ == '__main__':
-  lon = -73.984892
-  lat = 40.748121
   
   app.run_server(debug=True, host='0.0.0.0')
