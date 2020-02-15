@@ -60,10 +60,10 @@ app.layout = html.Div(
                   Click on points in the graph.
               """),
               html.Pre(id='click-data', style=styles['pre']),
-          ],  style={'width': '49%', 'display': 'inline-block', 'padding': '0 20'}),
+          ],  style={'width': '30%', 'display': 'inline-block'}),
           html.Div([
             dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
-          ],  style={'width': '49%', 'display': 'inline-block', 'padding': '0 20'}),
+          ],  style={'width': '70%', 'display': 'inline-block'}),
         ]),
     ]
 )
