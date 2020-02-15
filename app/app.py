@@ -168,7 +168,7 @@ def make_figure(n,input_value):
                   color='Magenta',
                   size=10
               ),
-      hoverinfo="none",
+      hoverinfo=["Lyft"],
       customdata=df[["total_amt","trip_distance"]],
       text=["Lyft"],
       ), 
