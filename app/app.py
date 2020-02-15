@@ -80,7 +80,7 @@ def display_click_data(clickData):
     else:
       fare_per_dist = "not available"
     
-    return '''Expected fare per mile: %s '''%(  )
+    return '''Expected fare per mile: %s '''%( fare_per_dist )
   else:
     return "Please select a ride"
 
