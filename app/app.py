@@ -67,7 +67,7 @@ def update_output_div(input_value):
 
 @app.callback(Output('graph', 'figure'),
               [Input('interval-component', 'n_intervals'),Input(component_id='my-id', component_property='value')])
-def make_figure(n,coord):
+def make_figure(n,input_value):
   g = geocoder.osm(input_value)
   if not g.x or not g.y:
     # Set defaults to Empire State Building
