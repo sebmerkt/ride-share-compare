@@ -75,7 +75,7 @@ def make_figure(n,coord):
 
     lendf=0
     multi=1
-    while( lendf<6):
+    while( lendf==0):
       now = datetime.utcnow()
       five_minutes_ago = now - timedelta(hours=0, minutes=0, seconds=10)
 
@@ -88,7 +88,7 @@ def make_figure(n,coord):
 
       lendf=len(df)
       multi=2
-      if radius>5000:
+      if radius>4000:
         df = pd.DataFrame([[0,0,0,0]],columns=["End_lat","End_Lon","vendor_name","fare_amt"])
         break
 
