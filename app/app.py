@@ -77,7 +77,7 @@ def display_click_data(clickData):
   if clickData:
     for i in clickData:
       ret = ret + str(i) + ": " + str(clickData[i]) + "\n"
-    ret='''Click data: %s '''%type(clickData)
+    # ret='''Click data: %s '''%type(clickData)
   # return json.dumps(clickData, indent=2)
   return ret
 
