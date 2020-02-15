@@ -155,6 +155,8 @@ def make_figure(n,input_value):
                   color='black',
                   size=10
               ),
+      hoverinfo=none
+      customdata=df[["total_amt","trip_distance"]],
       text=["Uber"],
       ), 
 
@@ -166,6 +168,7 @@ def make_figure(n,input_value):
                   color='Magenta',
                   size=10
               ),
+      hoverinfo=none
       customdata=df[["total_amt","trip_distance"]],
       text=["Lyft"],
       ), 
@@ -178,6 +181,7 @@ def make_figure(n,input_value):
                   color='red',
                   size=10
               ),
+      hoverinfo=none
       )
       ]
 
