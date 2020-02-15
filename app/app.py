@@ -146,7 +146,7 @@ def make_figure(n,input_value):
                   color='black',
                   size=10
               ),
-      text=[get_fare_per_distance(uber_data.total_amt,uber_data.trip_distance)],
+      text=["Uber"],
       ), 
 
       go.Scattermapbox(
@@ -157,7 +157,8 @@ def make_figure(n,input_value):
                   color='Magenta',
                   size=10
               ),
-      text=[get_fare_per_distance(lyft_data.total_amt,lyft_data.trip_distance)],
+      customdata=df[["total_amt","trip_distance"]],
+      text=["Lyft"],
       ), 
 
       go.Scattermapbox(
