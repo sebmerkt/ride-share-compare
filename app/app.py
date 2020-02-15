@@ -125,7 +125,7 @@ def make_figure(n,input_value):
       go.Scattermapbox(
       lat=lats_lyft,
       lon=lons_lyft,
-      mode='markers', name='Lyft name', 
+      mode='markers', name='Lyft', 
       marker=dict(
                   color='Magenta',
                   size=10
