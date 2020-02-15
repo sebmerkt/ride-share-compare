@@ -60,7 +60,7 @@ app.layout = html.Div(
                   Click on points in the graph.
               """),
               html.Pre(id='click-data', style=styles['pre']),
-          ],  style={'width': '30%'}),
+          ],  style={'width': '30%', 'display': 'inline-block'}),
           html.Div([
             dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
           ],  style={'width': '70%', 'display': 'inline-block'}),
@@ -174,13 +174,13 @@ def make_figure(n,input_value):
     layout = go.Layout(
       autosize=True,
       # width=1000,
-      height=600, 
+      height=500, 
       mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=13, style=os.getenv("MAPBOX_STYLE") ),
       margin=dict(
         l=15,
         r=15,
         b=15,
-        t=15
+        t=20
         ),
       ) 
     end = time.time()
