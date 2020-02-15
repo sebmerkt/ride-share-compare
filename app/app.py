@@ -56,12 +56,9 @@ def update_output_div(input_value):
 
 @app.callback(Output('graph', 'figure'),
               [Input('interval-component', 'n_intervals'),Input(component_id='my-div', component_property='children')])
-def make_figure(n):#,coord):
-  # if not lon:
-  lon = coord[0]
-  # if not lat:
-  lat = coord[1]
-  # lon, lat = get_current_location()
+def make_figure(n,coord):
+  # lon = coord[0]
+  # lat = coord[1]
   try:
     start = time.time()
     connection = psycopg2.connect(user = os.getenv("DB_USER"),
