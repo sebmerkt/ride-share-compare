@@ -46,9 +46,23 @@ app.layout = html.Div(
             interval=3*1000, # in milliseconds
             n_intervals=0
         ),
+        html.Div([
+            dcc.Markdown(d("""
+                **Click Data**
+
+                Click on points in the graph.
+            """)),
+            html.Pre(id='click-data', style=styles['pre']),
+        ], className='three columns'),
         dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
     ]
 )
+
+@app.callback(
+    Output('click-data', 'children'),
+    [Input('basic-interactions', 'clickData')])
+def display_click_data(clickData):
+    return json.dumps(clickData, indent=2)
 
 
 @app.callback(Output('graph', 'figure'),
