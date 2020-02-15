@@ -51,6 +51,7 @@ def update_output_div(input_value):
   else:
     lon = g.x
     lat = g.y
+    print("New lat: "+str(lat)+", new lon: "+str(lon))
   return lon, lat
 
 
