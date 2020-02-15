@@ -90,16 +90,17 @@ def make_figure(n,input_value):
     px.set_mapbox_access_token(token)
 
     # if df.vendor_name:
-    lats_lyft = df[ (df["vendor_name"].str.contains("CMT")) | (df["vendor_name"].str.contains("1")) ]["end_lat"]
-    lons_lyft = df[ (df["vendor_name"].str.contains("CMT")) | (df["vendor_name"].str.contains("1")) ]["end_lon"]
+    lyft_data = df[ (df["vendor_name"].str.contains("CMT")) | (df["vendor_name"].str.contains("1")) ]
+    lats_lyft = lyft_data["end_lat"]
+    lons_lyft = lyft_data["end_lon"]
 
-    lats_uber = df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ]["end_lat"]
-    lons_uber = df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ]["end_lon"]
+    uber_data = df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ]
+    lats_uber = uber_data["end_lat"]
+    lons_uber = uber_data["end_lon"]
 
-    lats_citibike = df[ df["vendor_name"].str.contains("Citi") ]["end_lat"]
-    lons_citibike = df[ df["vendor_name"].str.contains("Citi") ]["end_lon"]
-
-    fare_per_distance=get_fare_per_distance(df.total_amt,df.trip_distance)
+    citibike_data = df[ df["vendor_name"].str.contains("Citi") ]
+    lats_citibike = citibike_data["end_lat"]
+    lons_citibike = citibike_data["end_lon"]
 
     data = [
       go.Scattermapbox(
@@ -118,7 +119,7 @@ def make_figure(n,input_value):
                   color='black',
                   size=10
               ),
-      text=[fare_per_distance],
+      text=[get_fare_per_distance(uber_data.total_amt,uber_data.trip_distance)],
       ), 
 
       go.Scattermapbox(
@@ -129,7 +130,7 @@ def make_figure(n,input_value):
                   color='Magenta',
                   size=10
               ),
-      text=[fare_per_distance],
+      text=[get_fare_per_distance(lyft_data.total_amt,lyft_data.trip_distance)],
       ), 
 
       go.Scattermapbox(
