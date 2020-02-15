@@ -17,6 +17,14 @@ import plotly.graph_objects as go
 
 # get the mapbox token
 token = open(os.getenv("MAPBOX_TOKEN")).read()
+try
+  connection = psycopg2.connect(user = os.getenv("DB_USER"),
+                                password = os.getenv("DB_PW"),
+                                host = os.getenv("DB_SERVER"),
+                                port = os.getenv("DB_PORT"),
+                                database = os.getenv("DB_NAME"))
+except (Exception, psycopg2.DatabaseError) as error:
+    print(error)
 
 app = dash.Dash(
     __name__, external_stylesheets=["https://codepen.io/chriddyp/pen/bWLwgP.css"]
@@ -62,13 +70,8 @@ def make_figure(n,coord):
   # print(str(lat)+", "+str(lon))
   try:
     start = time.time()
-    connection = psycopg2.connect(user = os.getenv("DB_USER"),
-                                  password = os.getenv("DB_PW"),
-                                  host = os.getenv("DB_SERVER"),
-                                  port = os.getenv("DB_PORT"),
-                                  database = os.getenv("DB_NAME"))
 
-    cursor = connection.cursor()
+    # cursor = connection.cursor()
 
     lendf=0
     multi=1
@@ -164,9 +167,9 @@ def make_figure(n,coord):
     pass
   else:
     return pd.DataFrame()
+
   
 
 
 if __name__ == '__main__':
-  
   app.run_server(debug=True, host='0.0.0.0')
