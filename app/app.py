@@ -51,13 +51,12 @@ def update_output_div(input_value):
   else:
     lon = g.x
     lat = g.y
-    print("New lat: "+str(lat)+", new lon: "+str(lon))
-  return lon, lat
+  # return lon, lat
 
 
 @app.callback(Output('graph', 'figure'),
               [Input('interval-component', 'n_intervals'),Input(component_id='my-div', component_property='children')])
-def make_figure(n,coord):
+def make_figure(n):#,coord):
   # if not lon:
   lon = coord[0]
   # if not lat:
@@ -80,9 +79,8 @@ def make_figure(n,coord):
       five_minutes_ago = now - timedelta(hours=0, minutes=0, seconds=10)
 
       radius=500*multi
-      create_table_query = '''SELECT * FROM ride_share_data WHERE ST_DWithin(geom_end, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND Process_time < '%s' AND Process_time > '%s'; '''%(lon, lat, radius, now, five_minutes_ago)
-      # create_table_query = '''SELECT * FROM ride_share_data WHERE ST_DWithin(geom_start, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s); '''%(lon, lat, radius)
-      # create_table_query = '''SELECT * FROM ride_share_data ORDER BY Process_time DESC FETCH FIRST 15 ROWS ONLY '''
+      # create_table_query = '''SELECT * FROM ride_share_data WHERE ST_DWithin(geom_end, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND Process_time < '%s' AND Process_time > '%s'; '''%(lon, lat, radius, now, five_minutes_ago)
+      create_table_query = '''SELECT * FROM ride_share_data ORDER BY Process_time DESC FETCH FIRST 15 ROWS ONLY '''
 
       df = pd.read_sql_query(create_table_query, connection)
 
@@ -172,4 +170,7 @@ def make_figure(n,coord):
 
 
 if __name__ == '__main__':
+  lon = -73.984892
+  lat = 40.748121
+  
   app.run_server(debug=True, host='0.0.0.0')
