@@ -69,7 +69,9 @@ import json
     Output('click-data', 'children'),
     [Input('graph', 'clickData')])
 def display_click_data(clickData):
-    return json.dumps(clickData, indent=2)
+  print(clickData)
+  print(type(clickData))
+  return json.dumps(clickData, indent=2)
 
 
 @app.callback(Output('graph', 'figure'),
