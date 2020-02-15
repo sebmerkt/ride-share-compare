@@ -73,8 +73,9 @@ app.layout = html.Div(
     Output('click-data', 'children'),
     [Input('graph', 'clickData')])
 def display_click_data(clickData):
-  # print(clickData)
-  # print(type(clickData))
+  ret = ""
+  for i in clickData:
+    ret = ret + str(i) + ": " + str(clickData[i]) + "\n"
   ret='''Click data: %s '''%type(clickData)
   # return json.dumps(clickData, indent=2)
   return ret
