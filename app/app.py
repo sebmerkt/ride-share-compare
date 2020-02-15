@@ -50,7 +50,7 @@ app.layout = html.Div(
 
 
 @app.callback(
-    Output(component_id='my-div'),#, component_property='children'),
+    Output('graph', 'figure'),
     [Input(component_id='my-id', component_property='value')]
 )
 def update_output_div(input_value):
