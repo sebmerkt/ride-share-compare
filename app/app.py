@@ -77,7 +77,7 @@ def display_click_data(clickData):
   ret = ""
   if clickData:
     if clickData["points"][0]["customdata"][1] >0:
-      fare_per_dist = numpy.round( clickData["points"][0]["customdata"][0]/clickData["points"][0]["customdata"][1], decimals=2 )
+      fare_per_dist = round( clickData["points"][0]["customdata"][0]/clickData["points"][0]["customdata"][1], decimals=2 )
     else:
       fare_per_dist = "not available"
     
