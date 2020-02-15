@@ -99,7 +99,7 @@ def make_figure(n,input_value):
     lats_citibike = df[ df["vendor_name"].str.contains("Citi") ]["end_lat"]
     lons_citibike = df[ df["vendor_name"].str.contains("Citi") ]["end_lon"]
 
-    fare_per_distance=df.total_amt/df.trip_distance
+    fare_per_distance=get_fare_per_distance(df.total_amt,df.trip_distance)
 
     data = [
       go.Scattermapbox(
@@ -150,10 +150,10 @@ def make_figure(n,input_value):
       height=600, 
       mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=13, style=os.getenv("MAPBOX_STYLE") ),
       margin=dict(
-        l=35,
-        r=35,
-        b=35,
-        t=45
+        l=15,
+        r=15,
+        b=15,
+        t=15
         ),
       ) 
     end = time.time()
@@ -167,7 +167,15 @@ def make_figure(n,input_value):
     return pd.DataFrame()
 
 def get_fare_per_distance(fare,dist):
-  return fare/distance
+  # try:
+    fare=fare.astype('float')
+    dist=dist.astype('float')
+    # if dist>0:
+    return fare/dist
+    # else:
+    #   return "No expected fare available"
+    # except:
+    #   return "No expected fare available"
   
 
 
