@@ -38,7 +38,7 @@ app.layout = html.Div(
     [
         html.H1("Ride-Share-Compare"),
         html.P([
-          tml.B("Filter the titles:  "),
+          html.B("Filter the titles:  "),
             dcc.Input(id='my-id', value='11 Wall Street, New York', type='text'),
             ]),
         # html.Div(id='my-div'),
