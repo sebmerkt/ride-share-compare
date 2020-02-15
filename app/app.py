@@ -59,6 +59,7 @@ def update_output_div(input_value):
 def make_figure(n,coord):
   # lon = coord[0]
   # lat = coord[1]
+  print(str(lat)+", "+str(lon))
   try:
     start = time.time()
     connection = psycopg2.connect(user = os.getenv("DB_USER"),
