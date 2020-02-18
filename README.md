@@ -8,7 +8,7 @@ Ride-Share-Compare is presented [here](https://docs.google.com/presentation/d/1t
 
 ## How to install and get it up and running
 
-Install the Confluent Platform using the Ansible Playbook from
+Install the Confluent Platform using the Ansible Playbooks. Instructions can be found [here](https://docs.confluent.io/current/installation/installing_cp/cp-ansible.html).
 
 # Kafka
 
