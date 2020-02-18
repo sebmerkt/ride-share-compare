@@ -1,8 +1,5 @@
-# ride-share-compare
-Insight Data Engineering project 2020A
-
-
-Ride-Share-Compare is presented [here](https://docs.google.com/presentation/d/1tzfh4vnOFDyHu2FrjZmUu_YrsaVfcyU1XYJdBHj6pCk/edit#slide=id.p).
+# Ride-Share-Compare
+Insight Data Engineering project 2020A. Ride-Share-Compare is presented [here](https://docs.google.com/presentation/d/1tzfh4vnOFDyHu2FrjZmUu_YrsaVfcyU1XYJdBHj6pCk/edit#slide=id.p).
 
 <hr/>
 
@@ -10,7 +7,7 @@ Ride-Share-Compare is presented [here](https://docs.google.com/presentation/d/1t
 
 Install the Confluent Platform using the Ansible Playbooks. Instructions can be found [here](https://docs.confluent.io/current/installation/installing_cp/cp-ansible.html).
 
-# Kafka
+### Kafka
 
 Build all versions of the Kafka producers, consumers and stream processing java applications. Run the
 
@@ -28,7 +25,7 @@ Run the producers
 
 ```java -jar RideShareProducer/target/RideShareProducerV<version>.jar /path/to/input-file.csv```
 
-where the input file is a csv file from the NYC taxi data or Citi bike data.
+where the input file is a csv file from the NYC taxi data or Citi bike data, see below.
 
 Run the stream processing application
 
@@ -39,36 +36,35 @@ Run the consumer
 ```java -jar RideShareConsumer/target/RideShareConsumerV<version>.jar```
 
 
-# Database
+### Database
 
-Create the required table
+Install PostGIS. Create the required table in PostGIS by running 
 
-```XXXX```
+```./rolling_deployment/create_database.py```
 
-# Dash
+### Dash
 
 Run the Dash application
 
-```python
-python app.py
-```
+```./app.py```
 
 <hr/>
 
 ## Introduction
 
-Ride-share providers like Lyft and Uber are getting more and more popular. As their popularity increases, so does the number of available ride-share providers. Ride-share users 
+Ride-share providers like Lyft and Uber are getting more and more popular. As their popularity increases, so does the number of available ride-share providers. Ride-share users want to be able to compare different providers according to their cirrent needs. Whether they need their ride to arrive fast or be cheap, Ride-Share-Compare will give users all the information to make an informated choice.
 
 
 ## Architecture
 
-The data resides in a Amazon S3 bucket from where it is streamed into Apache Kafka. A Confluent Kafka cluster is set up on 4 Amazon EC2 nodes. 
-
-A PostGIS server resides on an additional EC2 node
-
-The Plotly Dash web application is hosted on another EC2 node.
-
 ![alt text](/images/pipeline.png "Pipeline")
+
+The data resides in a Amazon S3 bucket from where it is streamed into Apache Kafka. A Confluent Kafka cluster is set up on 4 Amazon EC2 nodes. The cluster consists of 4 Zookeepers and Kafka Brokers. In additiona, a schema registry is configured that handles the evolution of the data schema. Avro is chosen as a serialization format to work with the schema registry.
+
+A PostGIS server resides on an additional EC2 node. PostGIS was chosen to allow for spatial queries. This allows to filter the data by proximity of a users position.
+
+The Plotly Dash web application is hosted on another EC2 node. Dash was chosen since it easily integrates Mapbox. Custom Mapbox layers display the different New York locations used in later versions of the NYC TLC dataset.
+
 
 ## Dataset
 
@@ -80,7 +76,7 @@ In addition, Citi Bike data is used. The data is published by [Citi Bike](https:
 
 ## Engineering challenges
 
-The ride-share data evolves over time. New versions of the Kafka applications account for the change in the data's schema. In order to not cause downtime of the pipeline, the update to newer code versions needs to happen during production time. Confluent Kafka uses a schema registry that allows the evolution of the data schema. Adding default values to the data schema allows for full backward and forward compatibility between old and new versions of the Kafka applications. These versions can then run in simultaneously
+The ride-share data evolves over time. New versions of the Kafka applications account for the change in the data's schema. In order to not cause downtime of the pipeline, the update to newer code versions needs to happen during production time. Confluent Kafka uses a schema registry that allows the evolution of the data schema. Adding default values to the data schema allows for full backward and forward compatibility between old and new versions of the Kafka applications. These versions can then run in simultaneously and process and consume messages of all schema versions.
 
 
 ## Trade-offs
@@ -90,9 +86,13 @@ Trade-off had to be made in storing the incoming data.
 
 ## Rolling deployment
 
-The Kafka applications can be started and stopped when desired. New versions of the applications can be started at any time. A script that subsequently runs new versions of the producers, consumers and stream processors, thereby evolving the schema can by run
+The Kafka java applications can be started and stopped when desired. New versions of the applications can be started at any time. A script that simulates schema evolution by subsequently running new versions of the producers, consumers and stream processors can be found in `rolling_deployment`. Before running the script, a clean database table should be created
 
-```bash run_rolling_deployment.sh```
+```./rolling_deployment/create_database.py```
+
+Afterwards,schema evolution can be simulated by running
+
+```./run_rolling_deployment.sh```
 
 The script also evolves the database to accommodate the evolving data.
 
