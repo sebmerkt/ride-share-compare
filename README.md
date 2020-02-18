@@ -20,7 +20,7 @@ Add two new Kafka topics
 
 ```/usr/bin/kafka-topics --create --zookeeper <broker-address> --topic <topic-name> --partitions <num-partitions> --replication-factor <num-replications>```
 
-where <topic-name> is replaced with the two topic names ride-share-input and ride-share-output.
+where `<topic-name>` is replaced with the two topic names ride-share-input and ride-share-output.
 
 
 
