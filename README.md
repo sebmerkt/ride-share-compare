@@ -71,12 +71,10 @@ The Plotly Dash web application is hosted on another EC2 node.
 
 ## Dataset
 
-Real-time ride-share data is not easily available. Therefore, the New York City taxi dataset is used. The dataset is available at
-XXX
+Real-time ride-share data is not easily available. Therefore, the New York City taxi dataset is used. The dataset is published by the [NYC Taxi and Limousine Commission (TLC)](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 Using a pre-existing dataset instead of real-time data also allows for the simulation of an evolving schema. 
 
-In addition, Citi Bike data is used. The data is available at
-XXX
+In addition, Citi Bike data is used. The data is published by [Citi Bike](https://www.citibikenyc.com/system-data)
 
 
 ## Engineering challenges
