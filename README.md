@@ -68,6 +68,7 @@ A PostGIS server resides on an additional EC2 node
 
 The Plotly Dash web application is hosted on another EC2 node.
 
+![alt text](/images/pipeline.png "Pipeline")
 
 ## Dataset
 
