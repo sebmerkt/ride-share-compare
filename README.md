@@ -16,11 +16,11 @@ Build all versions of the Kafka producers, consumers and stream processing java 
 
 ```bash build_jar.sh```
 
-Add two new Kafka topic
+Add two new Kafka topics
 
-```/usr/bin/kafka-topics --create --zookeeper <broker-address> --topic XXXX --partitions <num-partitions> --replication-factor <num-replications>```
+```/usr/bin/kafka-topics --create --zookeeper <broker-address> --topic <topic-name> --partitions <num-partitions> --replication-factor <num-replications>```
 
-where XXXX is replaced with the two topic names XXXX and XXXX.
+where <topic-name> is replaced with the two topic names ride-share-input and ride-share-output.
 
 
 
