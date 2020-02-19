@@ -31,14 +31,10 @@ try:
 except (Exception, psycopg2.DatabaseError) as error:
     print(error)
 
-    
-
 
 app = dash.Dash(
-    __name__#, external_stylesheets=["./dash-style.css"]
-    # __name__, external_stylesheets=["https://github.com/plotly/dash-app-stylesheets/blob/master/dash-hello-world.css"]
+    __name__, external_stylesheets=["https://codepen.io/chriddyp/pen/bWLwgP.css"]
 )
-
 
 styles = {
     'pre': {
@@ -227,14 +223,4 @@ def get_fare_per_distance(fare,dist):
 
 
 if __name__ == '__main__':
-  app.config.suppress_callback_exceptions = True
-  app.css.config.serve_locally = True
-  app.scripts.config.serve_locally = True
   app.run_server(debug=True, host='0.0.0.0')
-
-
-
-@app.server.route('/<path:path>')
-def static_file(path):
-    static_folder = os.path.join(os.getcwd(), '/')
-    return send_from_directory(static_folder, path)
