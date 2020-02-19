@@ -11,9 +11,7 @@ Install the Confluent Platform using the Ansible Playbooks. Instructions can be 
 
 Before installation a few environment variables should be set. Edit the file `setup_env.sh` to match your current setup. Then on each node execute
 
-```
-source setup_env.sh
-```
+```source setup_env.sh```
 
 
 ### Kafka
