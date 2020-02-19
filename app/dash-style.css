@@ -6,6 +6,7 @@ html {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  background: #000000;
 }
 
 /* plotly.js's modebar's z-index is outta the roof by default - lower it down */
@@ -23,7 +24,6 @@ div {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background: #000000;
 }
 
 ._dash-loading {
