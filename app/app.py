@@ -34,7 +34,7 @@ except (Exception, psycopg2.DatabaseError) as error:
 
 app = dash.Dash(
     # __name__, external_stylesheets=["https://codepen.io/chriddyp/pen/bWLwgP.css"]
-    __name__, external_stylesheets=[" https://github.com/plotly/dash-app-stylesheets/blob/master/dash-analytics-report.css"]
+    __name__, external_stylesheets=["https://github.com/plotly/dash-app-stylesheets/blob/master/dash-docs-base.css"]
 )
 
 styles = {
