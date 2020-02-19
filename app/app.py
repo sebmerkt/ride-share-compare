@@ -31,11 +31,6 @@ try:
 except (Exception, psycopg2.DatabaseError) as error:
     print(error)
 
-
-@app.server.route('/<path:path>')
-def static_file(path):
-    static_folder = os.path.join(os.getcwd(), '/')
-    return send_from_directory(static_folder, path)
     
 
 
@@ -236,3 +231,10 @@ if __name__ == '__main__':
   app.css.config.serve_locally = True
   app.scripts.config.serve_locally = True
   app.run_server(debug=True, host='0.0.0.0')
+
+
+
+@app.server.route('/<path:path>')
+def static_file(path):
+    static_folder = os.path.join(os.getcwd(), '/')
+    return send_from_directory(static_folder, path)
