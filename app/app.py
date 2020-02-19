@@ -32,10 +32,21 @@ except (Exception, psycopg2.DatabaseError) as error:
     print(error)
 
 
+@app.server.route('/<path:path>')
+def static_file(path):
+    static_folder = os.path.join(os.getcwd(), '/')
+    return send_from_directory(static_folder, path)
+    
+
+
 app = dash.Dash(
-    __name__, external_stylesheets=["./dash-style.css"]
+    __name__#, external_stylesheets=["./dash-style.css"]
     # __name__, external_stylesheets=["https://github.com/plotly/dash-app-stylesheets/blob/master/dash-hello-world.css"]
 )
+app.config.suppress_callback_exceptions = True
+app.css.config.serve_locally = True
+app.scripts.config.serve_locally = True
+
 
 styles = {
     'pre': {
