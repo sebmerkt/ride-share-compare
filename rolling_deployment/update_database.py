@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # Example: Add two new columns column1, column2 with data types type1, type2
 # ./update_database.py column1 type1 column2 type2

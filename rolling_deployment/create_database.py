@@ -1,4 +1,4 @@
-#!/bin/python
+#!/bin/python3
 
 import psycopg2
 from psycopg2 import Error
