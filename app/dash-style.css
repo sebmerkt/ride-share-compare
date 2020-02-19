@@ -23,6 +23,7 @@ div {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  background: #000000;
 }
 
 ._dash-loading {
@@ -47,7 +48,7 @@ div {
   height: 50px;
   width: 50px;
   transform: translateX(-4px);
-  background: #000000;/*url('https://plot.ly/static/webapp/images/plotly-logo-loop.gif') no-repeat center center;*/
+  background: url('https://plot.ly/static/webapp/images/plotly-logo-loop.gif') no-repeat center center;
   background-size: cover;
   margin-bottom: 10px;
 }
