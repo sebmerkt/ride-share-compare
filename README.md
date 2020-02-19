@@ -7,6 +7,15 @@ Insight Data Engineering project 2020A. Ride-Share-Compare is presented [here](h
 
 Install the Confluent Platform using the Ansible Playbooks. Instructions can be found [here](https://docs.confluent.io/current/installation/installing_cp/cp-ansible.html).
 
+### Environment
+
+Before installation a few environment variables should be set. Edit the file `setup_env.sh` to match your current setup. Then on each node execute
+
+```
+source setup_env.sh
+```
+
+
 ### Kafka
 
 Build all versions of the Kafka producers, consumers and stream processing java applications. Run the
