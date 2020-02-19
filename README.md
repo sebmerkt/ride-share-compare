@@ -18,7 +18,7 @@ Before installation a few environment variables should be set. Edit the file `se
 
 Build all versions of the Kafka producers, consumers and stream processing java applications. Run the
 
-```bash build_jar.sh```
+```./build_jar.sh```
 
 Add two new Kafka topics
 
