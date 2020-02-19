@@ -32,7 +32,7 @@ Run the producers
 
 ```java -jar RideShareProducer/target/RideShareProducerV<version>.jar /path/to/input-file.csv```
 
-where the input file is a csv file from the NYC taxi data or Citi bike data, see below.
+where the arguments are input files from the NYC taxi data or Citi bike data, see in section [Dataset](#dataset).
 
 Run the stream processing application
 
@@ -45,7 +45,7 @@ Run the consumer
 
 ### Database
 
-Install PostGIS. Create the required table in PostGIS by running 
+Install PostGIS on one of the nodes. Create the required table in PostGIS by running 
 
 ```./rolling_deployment/create_database.py```
 
@@ -88,7 +88,7 @@ The ride-share data evolves over time. New versions of the Kafka applications ac
 
 ## Trade-offs
 
-Trade-off had to be made in storing the incoming data. 
+Trade-off had to be made in storing the incoming data. One PostGIS database is used for storing the data. This is sufficient for stroring the amount of data coming in in this test version. For an increasing number of ride-share providers as well as when including locations other than just New York City the database will not be able to handle the input. In this case the data should not be put in a SQL database like PostGIS for permanent storage, but rather saved in a NoSQL database. The incoming data should then be processed directly for usage in the web app.
 
 
 ## Rolling deployment
