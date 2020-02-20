@@ -97,7 +97,9 @@ def display_click_data(clickData):
         fare_per_dist = "not available"
       
       # Return the ride info
-      return '''Expected fare per mile: $ %s '''%( fare_per_dist )
+      return ret+="Expected fare per mile: $ %s "%( fare_per_dist )
+
+      ret+="\nDistance from your location: %s mi"%( round( clickData["points"][0]["customdata"][2], decimals=2 ) )
     except:
       # If data is not accessible, do nothing
       return "Please select a ride"
@@ -196,7 +198,7 @@ def make_figure(n,input_value):
             opacity=1
         ),
       hovertemplate = ['Uber' for i in range(len(lons_lyft))],
-      customdata=df[["total_amt","trip_distance"]],
+      customdata=df[["total_amt", "trip_distance", "distance"]],
       text=["Uber"],
       ), 
 
@@ -210,7 +212,7 @@ def make_figure(n,input_value):
             opacity=1
         ),
       hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
-      customdata=df[["total_amt","trip_distance"]],
+      customdata=df[["total_amt","trip_distance", "distance"]],
       text=["Lyft"],
       ),
 
