@@ -147,13 +147,14 @@ def make_figure(n,input_value):
 
       # fetch data from PostGIS and save in pandas dataframe
       df = pd.read_sql_query(create_table_query, connection)
-
+      
       # Save number of rides found
       lendf=len(df)
       
       # Increase multiplication factor to increase search radius
       multi=2
 
+    print(df.columns)
     # Import mapbox token
     px.set_mapbox_access_token(token)
 
