@@ -217,7 +217,7 @@ def make_figure(n,input_value):
             opacity=0.7
         ),
       hovertemplate = [input_value],
-      )
+      ),
       go.Scattermapbox(
       lat=[lat],
       lon=[lon],
