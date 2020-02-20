@@ -139,7 +139,11 @@ def make_figure(n,input_value):
       # Live streaming query
       # create_table_query = '''SELECT * FROM ride_share_data WHERE ST_DWithin(geom_end, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND Process_time < '%s' AND Process_time > '%s'; '''%(lon, lat, radius, now, some_time_ago)
       # Test query for static data
-      create_table_query = '''SELECT * FROM ride_share_data WHERE ST_DWithin(geom_end, ST_GeographyFromText('SRID=4326;POINT( %s %s  )'), %s)  FETCH FIRST 15 ROWS ONLY'''%(lon, lat, radius)
+      # create_table_query = '''SELECT * FROM ride_share_data WHERE ST_DWithin(geom_end, ST_GeographyFromText('SRID=4326;POINT( %s %s  )'), %s)  FETCH FIRST 15 ROWS ONLY'''%(lon, lat, radius)
+
+      create_table_query = '''SELECT vendor_name, total_amt, trip_distance, ST_Distance(ST_Transform(geom_end::geometry, 3857), ST_Transform('SRID=4326;POINT( %s %s )'::geometry, 3857))
+        AS vendor_name, total_amt, trip_distance, distance
+        FROM ride_share_data WHERE ST_DWithin(geom_end, ST_GeographyFromText('SRID=4326;POINT( %s %s  )'), %s) '''%(lon, lat, lon, lat, radius)
 
       # fetch data from PostGIS and save in pandas dataframe
       df = pd.read_sql_query(create_table_query, connection)
@@ -182,7 +186,7 @@ def make_figure(n,input_value):
       lon=lons_uber,
       mode='markers', name='Uber', 
       marker=go.scattermapbox.Marker(
-            size=12,
+            size=10,
             color='black',
             opacity=1
         ),
@@ -196,7 +200,7 @@ def make_figure(n,input_value):
       lon=lons_lyft,
       mode='markers', name='Lyft', 
       marker=go.scattermapbox.Marker(
-            size=12,
+            size=10,
             color='Magenta',
             opacity=1
         ),
@@ -210,7 +214,7 @@ def make_figure(n,input_value):
       lon=[lon],
       mode='markers', name='You are here', 
       marker=go.scattermapbox.Marker(
-            size=12,
+            size=10,
             color='red',
             opacity=1
         ),
