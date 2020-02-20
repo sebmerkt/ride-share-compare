@@ -194,18 +194,10 @@ def make_figure(n,input_value):
       lat=lats_lyft,
       lon=lons_lyft,
       mode='markers', name='Lyft', 
-      # marker=dict(
-      #             color='Magenta',
-      #             size=10
-      #         ),
       marker=dict(
-            color='Magenta',
-            size=12,
-            line=dict(
-                color='white',
-                width=2
-            )
-          ),
+                  color='Magenta',
+                  size=10
+              ),
       hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
       customdata=df[["total_amt","trip_distance"]],
       text=["Lyft"],
@@ -215,10 +207,15 @@ def make_figure(n,input_value):
       lat=[lat],
       lon=[lon],
       mode='markers', name='You are here', 
-      marker=dict(
-                  color='black',
-                  size=10
-              ),
+      # marker=dict(
+      #             color='red',
+      #             size=10
+      #         ),
+      marker=go.scattermapbox.Marker(
+            size=8,
+            color='rgb(242, 177, 172)',
+            opacity=0.7
+        ),
       hovertemplate = [input_value],
       )
       ]
