@@ -233,7 +233,7 @@ def make_figure(n,input_value):
       go.Scattermapbox(
       lat=[lat],
       lon=[lon],
-      mode='markers', name='You are here'
+      mode='markers', name='You are here',
       marker=go.scattermapbox.Marker(
             size=8,
             color='red',
