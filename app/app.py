@@ -181,30 +181,16 @@ def make_figure(n,input_value):
       lat=lats_uber,
       lon=lons_uber,
       mode='markers', name='Uber', 
-      marker=dict(
-                  color='black',
-                  size=10
-              ),
+      marker=go.scattermapbox.Marker(
+            size=12,
+            color='black',
+            opacity=1
+        ),
       hovertemplate = ['Uber' for i in range(len(lons_lyft))],
       customdata=df[["total_amt","trip_distance"]],
       text=["Uber"],
       ), 
 
-
-
-      go.Scattermapbox(
-      lat=lats_lyft,
-      lon=lons_lyft,
-      mode='markers', name='Lyft', 
-      marker=go.scattermapbox.Marker(
-            size=12,
-            color='black',
-            opacity=0.7
-        ),
-      hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
-      customdata=df[["total_amt","trip_distance"]],
-      text=["Lyft"],
-      ),
       go.Scattermapbox(
       lat=lats_lyft,
       lon=lons_lyft,
@@ -212,12 +198,12 @@ def make_figure(n,input_value):
       marker=go.scattermapbox.Marker(
             size=12,
             color='Magenta',
-            opacity=0.7
+            opacity=1
         ),
-      hovertemplate = 'none'
-      ), 
-
-
+      hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
+      customdata=df[["total_amt","trip_distance"]],
+      text=["Lyft"],
+      ),
 
       go.Scattermapbox(
       lat=[lat],
@@ -225,22 +211,11 @@ def make_figure(n,input_value):
       mode='markers', name='You are here', 
       marker=go.scattermapbox.Marker(
             size=12,
-            color='black',
-            opacity=0.7
+            color='red',
+            opacity=1
         ),
       hovertemplate = [input_value],
       ),
-      go.Scattermapbox(
-      lat=[lat],
-      lon=[lon],
-      mode='markers', name='You are here',
-      marker=go.scattermapbox.Marker(
-            size=8,
-            color='red',
-            opacity=0.7
-        ),
-      hovertemplate = 'none',
-      )
       ]
 
     # Define map layout
