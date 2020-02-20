@@ -194,10 +194,11 @@ def make_figure(n,input_value):
       lat=lats_lyft,
       lon=lons_lyft,
       mode='markers', name='Lyft', 
-      marker=dict(
-                  color='Magenta',
-                  size=10
-              ),
+      # marker=dict(
+      #             color='Magenta',
+      #             size=10
+      #         ),
+      marker = list(symbol=~2,size = 15, opacity = 0.5, colors="white")
       hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
       customdata=df[["total_amt","trip_distance"]],
       text=["Lyft"],
@@ -223,12 +224,47 @@ def make_figure(n,input_value):
       # Center around user position
       mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=13, style=os.getenv("MAPBOX_STYLE") ),
       margin=dict(
-        l=15,
-        r=15,
-        b=15,
-        t=20
+          l=15,
+          r=15,
+          b=15,
+          t=20
         ),
-      ) 
+    )
+
+    layout(
+        images = list(
+          list(source = "https://images.plot.ly/language-icons/api-home/python-logo.png",
+              xref = "x",
+              yref = "y",
+              x= 1,
+              y= 1,
+              sizex = 0.2,
+              sizey = 0.2,
+              opacity = 0.8,
+              layer = "above"
+          ),
+
+          list(source = "https://images.plot.ly/language-icons/api-home/matlab-logo.png",
+              xref = "x",
+              yref = "y",
+              x = 2,
+              y = 2,
+              sizex = 0.5,
+              sizey = 0.5,
+              opacity = 0.8
+          ),
+
+          list(source =  "https://images.plot.ly/language-icons/api-home/r-logo.png",
+              xref = "x",
+              yref = "y",
+              x = 2.5,
+              y = 3.5,
+              sizex = 1,
+              sizey = 1,
+              opacity = 0.8
+          )
+        )
+      )
 
     # Return the map
     fig = go.Figure( data, layout)
