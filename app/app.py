@@ -198,7 +198,7 @@ def make_figure(n,input_value):
       #             color='Magenta',
       #             size=10
       #         ),
-      marker=dict(size=10, line=dict(width=2, color='DarkSlateGrey'))
+      marker=dict(size=10, line=dict(width=2, color='DarkSlateGrey')),
       hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
       customdata=df[["total_amt","trip_distance"]],
       text=["Lyft"],
