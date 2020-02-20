@@ -198,7 +198,7 @@ def make_figure(n,input_value):
       #             color='Magenta',
       #             size=10
       #         ),
-      marker = list(symbol=~2,size = 15, opacity = 0.5, colors="white")
+      marker = list(symbol=~2,size = 15, opacity = 0.5, colors="white"),
       hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
       customdata=df[["total_amt","trip_distance"]],
       text=["Lyft"],
@@ -242,26 +242,6 @@ def make_figure(n,input_value):
               sizey = 0.2,
               opacity = 0.8,
               layer = "above"
-          ),
-
-          list(source = "https://images.plot.ly/language-icons/api-home/matlab-logo.png",
-              xref = "x",
-              yref = "y",
-              x = 2,
-              y = 2,
-              sizex = 0.5,
-              sizey = 0.5,
-              opacity = 0.8
-          ),
-
-          list(source =  "https://images.plot.ly/language-icons/api-home/r-logo.png",
-              xref = "x",
-              yref = "y",
-              x = 2.5,
-              y = 3.5,
-              sizex = 1,
-              sizey = 1,
-              opacity = 0.8
           )
         )
       )
