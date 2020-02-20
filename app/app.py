@@ -97,9 +97,11 @@ def display_click_data(clickData):
         fare_per_dist = "not available"
       
       # Return the ride info
-      return ret+="Expected fare per mile: $ %s "%( fare_per_dist )
+      ret+="Expected fare per mile: $ %s "%( fare_per_dist )
 
       ret+="\nDistance from your location: %s mi"%( round( clickData["points"][0]["customdata"][2], decimals=2 ) )
+
+      return ret
     except:
       # If data is not accessible, do nothing
       return "Please select a ride"
