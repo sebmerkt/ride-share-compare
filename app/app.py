@@ -206,28 +206,28 @@ def make_figure(n,input_value):
       go.Scattermapbox(
       lat=[lat],
       lon=[lon],
-      mode='markers', 
-      marker=go.scattermapbox.Marker(
-            size=12,
-            color='red',
-            opacity=0.7
-        ),
-      hovertemplate = 'none',
-      )
-      go.Scattermapbox(
-      lat=[lat],
-      lon=[lon],
       mode='markers', name='You are here', 
       # marker=dict(
       #             color='red',
       #             size=10
       #         ),
       marker=go.scattermapbox.Marker(
-            size=8,
+            size=12,
             color='rgb(242, 177, 172)',
             opacity=0.7
         ),
       hovertemplate = [input_value],
+      )
+      go.Scattermapbox(
+      lat=[lat],
+      lon=[lon],
+      mode='markers', 
+      marker=go.scattermapbox.Marker(
+            size=8,
+            color='red',
+            opacity=0.7
+        ),
+      hovertemplate = 'none',
       )
       ]
 
