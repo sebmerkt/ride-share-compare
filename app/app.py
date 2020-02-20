@@ -4,17 +4,20 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
+
 import pandas as pd
+from numpy import round
+
 import psycopg2
 from psycopg2 import Error
+
 import plotly.express as px
+import plotly.graph_objects as go
+
 import os
 from datetime import datetime, timedelta
 import geocoder
 import time
-from numpy import round
-
-import plotly.graph_objects as go
 
 
 
@@ -31,17 +34,17 @@ try:
 except (Exception, psycopg2.DatabaseError) as error:
     print(error)
 
-
+# Initialize app
 app = dash.Dash(
     __name__, external_stylesheets=["https://codepen.io/chriddyp/pen/bWLwgP.css"]
 )
 
-styles = {
-    'pre': {
-        'border': 'thin lightgrey solid',
-        'overflowX': 'scroll'
-    }
-}
+# styles = {
+#     'pre': {
+#         'border': 'thin lightgrey solid',
+#         'overflowX': 'scroll'
+#     }
+# }
 
 app.layout = html.Div(
     [
@@ -114,7 +117,9 @@ def make_figure(n,input_value):
       five_minutes_ago = now - timedelta(hours=0, minutes=0, seconds=10)
 
       radius=500*multi
+      # Live streaming query
       # create_table_query = '''SELECT * FROM ride_share_data WHERE ST_DWithin(geom_end, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND Process_time < '%s' AND Process_time > '%s'; '''%(lon, lat, radius, now, five_minutes_ago)
+      # Test query for static data
       create_table_query = '''SELECT * FROM ride_share_data WHERE ST_DWithin(geom_end, ST_GeographyFromText('SRID=4326;POINT( %s %s  )'), %s)  FETCH FIRST 15 ROWS ONLY'''%(lon, lat, radius)
 
       df = pd.read_sql_query(create_table_query, connection)
@@ -180,7 +185,7 @@ def make_figure(n,input_value):
       lon=[lon],
       mode='markers', name='You are here', 
       marker=dict(
-                  color='red',
+                  color='black',
                   size=10
               ),
       hovertemplate = [input_value],
@@ -209,16 +214,6 @@ def make_figure(n,input_value):
   else:
     return pd.DataFrame()
 
-def get_fare_per_distance(fare,dist):
-  # try:
-    fare_per_dist=fare.astype('float')/dist.astype('float')
-    # if dist>0:
-    print(fare_per_dist)
-    return fare_per_dist.to_frame()
-    # else:
-    #   return "No expected fare available"
-    # except:
-    #   return "No expected fare available"
   
 
 
