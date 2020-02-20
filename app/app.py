@@ -173,7 +173,7 @@ def make_figure(n,input_value):
       lat=lats_citibike,
       lon=lons_citibike,
       mode='markers', name='Citi Bike', 
-      marker={'color': 'Gray', 'size': 15, 'symbol': "bicycle"},
+      marker={'color': 'Gray', 'size': 15, 'symbol': "bicycle-share-11"}, #bicycle-share-15, bicycle-11, bicycle-15
       text=["Citi Bike"],
       ), 
 
@@ -198,7 +198,7 @@ def make_figure(n,input_value):
       #             color='Magenta',
       #             size=10
       #         ),
-      marker = list(symbol=~1,size = 15, opacity = 0.5, colors="white"),
+      marker=dict(size=10, line=dict(width=2, color='DarkSlateGrey'))
       hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
       customdata=df[["total_amt","trip_distance"]],
       text=["Lyft"],
@@ -230,21 +230,6 @@ def make_figure(n,input_value):
           t=20
         ),
     )
-
-    layout(
-        images = list(
-          list(source = "https://images.plot.ly/language-icons/api-home/python-logo.png",
-              xref = "x",
-              yref = "y",
-              x= 1,
-              y= 1,
-              sizex = 0.2,
-              sizey = 0.2,
-              opacity = 0.8,
-              layer = "above"
-          )
-        )
-      )
 
     # Return the map
     fig = go.Figure( data, layout)
