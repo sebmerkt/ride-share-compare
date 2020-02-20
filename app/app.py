@@ -99,7 +99,7 @@ def display_click_data(clickData):
       # Return the ride info
       ret+="Expected fare per mile: $ %s "%( fare_per_dist )
 
-      ret+="\nDistance from your location: %s mi"%( round( clickData["points"][0]["customdata"][2], decimals=2 ) )
+      ret+="\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
 
       return ret
     except:
