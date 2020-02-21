@@ -182,6 +182,7 @@ def make_figure(n,input_value):
     lats_citibike = citibike_data["end_lat"]
     lons_citibike = citibike_data["end_lon"]
 
+    print("HERE1")
     # Define the data
     data = [
       go.Scattermapbox(
@@ -235,6 +236,7 @@ def make_figure(n,input_value):
       ),
       ]
 
+    print("HERE2")
     # Define map layout
     layout = go.Layout(
       autosize=True,
@@ -249,6 +251,7 @@ def make_figure(n,input_value):
           t=20
         ),
     )
+    print("HERE3")
 
     # Return the map
     fig = go.Figure( data, layout)
