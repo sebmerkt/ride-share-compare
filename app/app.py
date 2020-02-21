@@ -54,7 +54,7 @@ app.layout = html.Div(
     # Automatically refresh map to get up-to-date ride data
     dcc.Interval(
       id='interval-component',
-      interval=10*1000, # in milliseconds
+      interval=20*1000, # in milliseconds
       n_intervals=0
     ),
 
@@ -174,7 +174,6 @@ def make_figure(n,input_value):
       # Increase multiplication factor to increase search radius
       multi=2
 
-    print(df.head(1))
     # Import mapbox token
     px.set_mapbox_access_token(token)
 
