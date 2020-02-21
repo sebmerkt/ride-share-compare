@@ -88,6 +88,7 @@ def display_click_data(clickData):
   # Check if clickdata is empty
   if clickData:
     try:
+      print(clickData)
       if not "Citi" in clickData["points"][0]["customdata"][3]:
         # Check if trip distance is greater zero
         if clickData["points"][0]["customdata"][1] >0:
