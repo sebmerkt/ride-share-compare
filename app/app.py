@@ -174,7 +174,7 @@ def make_figure(n,input_value):
       # Increase multiplication factor to increase search radius
       multi=2
 
-
+    print(df.head(1))
     # Import mapbox token
     px.set_mapbox_access_token(token)
 
