@@ -80,7 +80,7 @@ public class BikeShareConsumerV1 extends RideShareConsumerBase {
                                 "End_Station_Name, Bike_Id, User_Type, Birth_Year, Gender, " +
                             "Process_time, geom_start, geom_end ) " +
                             "VALUES ( '"+uuid+"', '" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+Trip_Dropoff_DateTime+"', "+
-                                Trip_Duration+", "+Start_Station_Id+", "+Start_Lon+", "+Start_Lat+", "+Start_Station_Name+", "+
+                                Trip_Duration+", "+Start_Station_Id+", "+Start_Lon+", "+Start_Lat+", '"+Start_Station_Name+"', "+
                                 End_Station_Id+", "+End_Lon+", "+End_Lat+", '"+End_Station_Name+"', "+
                                 Bike_Id+", "+User_Type+", "+Birth_Year+", "+Gender+", '"+Process_time+
                                 "', 'SRID=4326;POINT("+Start_Lon+" "+Start_Lat+")', 'SRID=4326;POINT("+End_Lon+" "+End_Lat+")' )";
