@@ -168,7 +168,7 @@ def make_figure(n,input_value):
     # Import mapbox token
     px.set_mapbox_access_token(token)
 
-    print(df.columns)
+    print(df.head(1))
     # Assign the data to each ride-share provider according to the vendor name:
     lyft_data = df[ (df["vendor_name"].str.contains("CMT")) | (df["vendor_name"].str.contains("1")) ]
     lats_lyft = lyft_data["end_lat"]
