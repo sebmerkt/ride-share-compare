@@ -168,23 +168,19 @@ def make_figure(n,input_value):
     # Import mapbox token
     px.set_mapbox_access_token(token)
 
-    print(df.head(1))
     # Assign the data to each ride-share provider according to the vendor name:
     lyft_data = df[ (df["vendor_name"].str.contains("CMT")) | (df["vendor_name"].str.contains("1")) ]
     lats_lyft = lyft_data["end_lat"]
     lons_lyft = lyft_data["end_lon"]
 
-    print("HERE0.1")
     uber_data = df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ]
     lats_uber = uber_data["end_lat"]
     lons_uber = uber_data["end_lon"]
 
-    print("HERE0.1")
     citibike_data = df[ df["vendor_name"].str.contains("Citi") ]
     lats_citibike = citibike_data["end_lat"]
     lons_citibike = citibike_data["end_lon"]
 
-    print("HERE1")
     # Define the data
     data = [
       go.Scattermapbox(
@@ -238,7 +234,6 @@ def make_figure(n,input_value):
       ),
       ]
 
-    print("HERE2")
     # Define map layout
     layout = go.Layout(
       autosize=True,
@@ -253,7 +248,6 @@ def make_figure(n,input_value):
           t=20
         ),
     )
-    print("HERE3")
 
     # Return the map
     fig = go.Figure( data, layout)
