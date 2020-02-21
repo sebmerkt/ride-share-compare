@@ -26,7 +26,7 @@ for i in `seq 1 5`;
       echo "Database schema evolved to V$i with status "$?
     elif [[ "$i" == "4" ]]; then
       echo "Evolving database"
-      python3 $SCRIPT_DIR/update_database.py "Rate_Code" "float8" "store_and_forward" "float8" "surcharge" "float8" "mta_tax" "float8" & db_process_id=$!
+      python3 $SCRIPT_DIR/update_database.py "Rate_Code" "float8" "store_and_forward" "float8" "surcharge" "float8" "mta_tax" "float8" "extra" "float8"& db_process_id=$!
 
       wait $db_process_id
       echo "Database schema evolved to V$i with status "$?

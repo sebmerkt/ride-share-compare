@@ -101,11 +101,11 @@ def display_click_data(clickData):
         # Return the ride info
         ret+="Expected fare per km: %s "%( fare_per_dist )
         
-        ret+="\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
+        ret+="\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2], decimals=2 ) )
         
         return ret
       else:
-        return "Distance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
+        return "Distance from your location: %s km"%( round( clickData["points"][0]["customdata"][2], decimals=2 ) )
     except:
       # If data is not accessible, do nothing
       return "Please select a ride"
