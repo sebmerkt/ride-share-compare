@@ -162,8 +162,8 @@ def make_figure(n,input_value):
       #   FROM ride_share_data ORDER BY ST_Distance(ST_Transform(geom_end::geometry, 3857), ST_Transform('SRID=4326;POINT( %s %s )'::geometry, 3857)) ASC FETCH FIRST 15 ROWS ONLY;'''%(lon, lat, lon, lat)
 
 
-      create_table_query = '''SELECT vendor_name, total_amt, trip_distance, end_lon, end_lat, ST_Distance(ST_Transform(geom_end::geometry, 3857), ST_Transform('SRID=4326;POINT( %s %s )'::geometry, 3857))
-        FROM ride_share_data  WHERE Process_time < '%s' AND Process_time > '%s' ORDER BY ST_Distance(ST_Transform(geom_end::geometry, 3857), ST_Transform('SRID=4326;POINT( %s %s )'::geometry, 3857)) ASC FETCH FIRST 10 ROWS ONLY;'''%(lon, lat, now, some_time_ago, lon, lat)
+      create_table_query = '''SELECT vendor_name, total_amt, trip_distance, end_lon, end_lat, ST_Distance(geom_end::geometry, 'SRID=4326;POINT( %s %s )'::geometry)
+        FROM ride_share_data  WHERE Process_time < '%s' AND Process_time > '%s' ORDER BY ST_Distance(geom_end::geometry, 'SRID=4326;POINT( %s %s )'::geometry) ASC FETCH FIRST 10 ROWS ONLY;'''%(lon, lat, now, some_time_ago, lon, lat)
 
       # fetch data from PostGIS and save in pandas dataframe
       df = pd.read_sql_query(create_table_query, connection)
@@ -174,7 +174,6 @@ def make_figure(n,input_value):
       # Increase multiplication factor to increase search radius
       multi=2
 
-    print(len(df))
 
     # Import mapbox token
     px.set_mapbox_access_token(token)
