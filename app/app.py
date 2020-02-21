@@ -189,6 +189,7 @@ def make_figure(n,input_value):
       lon=lons_citibike,
       mode='markers', name='Citi Bike', 
       marker={'color': 'Gray', 'size': 15, 'symbol': "bicycle-share-11"}, #bicycle-share-15, bicycle-11, bicycle-15
+      hovertemplate = ['Citi Bike' for i in range(len(lons_citibike))],
       customdata=df[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
       text=["Citi Bike"],
       ), 
