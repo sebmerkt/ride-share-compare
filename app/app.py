@@ -87,22 +87,24 @@ def display_click_data(clickData):
   
   # Check if clickdata is empty
   if clickData:
-    print(clickData["points"][0]["customdata"])
     try:
-      # Check if trip distance is greater zero
-      if clickData["points"][0]["customdata"][1] >0:
-        # calculate ride fare per distance
-        fare_per_dist = "$ "+str( round( clickData["points"][0]["customdata"][0]/clickData["points"][0]["customdata"][1], decimals=2 ) )
+      if not "Citi" in clickData["points"][0]["customdata"][3]:
+        # Check if trip distance is greater zero
+        if clickData["points"][0]["customdata"][1] >0:
+          # calculate ride fare per distance
+          fare_per_dist = "$ "+str( round( clickData["points"][0]["customdata"][0]/clickData["points"][0]["customdata"][1], decimals=2 ) )
+        else:
+          # If distance is zero, not value can be displayed
+          fare_per_dist = "not available"
+        
+        # Return the ride info
+        ret+="Expected fare per mile: %s "%( fare_per_dist )
+        
+        ret+="\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
+        
+        return ret
       else:
-        # If distance is zero, not value can be displayed
-        fare_per_dist = "not available"
-      
-      # Return the ride info
-      ret+="Expected fare per mile: %s "%( fare_per_dist )
-      
-      ret+="\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
-      
-      return ret
+        return "Distance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
     except:
       # If data is not accessible, do nothing
       return "Please select a ride"
@@ -182,12 +184,12 @@ def make_figure(n,input_value):
 
     # Define the data
     data = [
-      # Rides are displayed as scatterplot
       go.Scattermapbox(
       lat=lats_citibike,
       lon=lons_citibike,
       mode='markers', name='Citi Bike', 
       marker={'color': 'Gray', 'size': 15, 'symbol': "bicycle-share-11"}, #bicycle-share-15, bicycle-11, bicycle-15
+      customdata=df[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
       text=["Citi Bike"],
       ), 
 
@@ -201,7 +203,7 @@ def make_figure(n,input_value):
             opacity=1
         ),
       hovertemplate = ['Uber' for i in range(len(lons_lyft))],
-      customdata=df[["total_amt", "trip_distance", "distance"]],
+      customdata=df[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
       text=["Uber"],
       ), 
 
@@ -215,7 +217,7 @@ def make_figure(n,input_value):
             opacity=1
         ),
       hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
-      customdata=df[["total_amt","trip_distance", "distance"]],
+      customdata=df[["total_amt", "trip_distance", "st_distance", "vendor_name"],
       text=["Lyft"],
       ),
 
