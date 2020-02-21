@@ -71,7 +71,6 @@ public class RideShareProducerV4 extends RideShareProducerBase <Ride4> {
         ride.setMtaTax( InsertDouble(message[14]) );
         ride.setTipAmt( InsertDouble(message[15]) );
         ride.setTollsAmt( InsertDouble(message[16]) );
-        ride.setTotalAmt( InsertDouble(message[17]) );
         ride.setProcessTime( InsertString(ts.toString()) );
     }
 }
