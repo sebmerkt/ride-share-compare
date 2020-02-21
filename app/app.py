@@ -84,9 +84,10 @@ app.layout = html.Div(
 def display_click_data(clickData):
   # Create output string
   ret = ""
-  print(clickData["points"][0]["customdata"])
+  
   # Check if clickdata is empty
   if clickData:
+    print(clickData["points"][0]["customdata"])
     try:
       # Check if trip distance is greater zero
       if clickData["points"][0]["customdata"][1] >0:
