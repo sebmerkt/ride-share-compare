@@ -74,7 +74,6 @@ public class RideShareConsumerV1 extends RideShareConsumerBase {
                             Trip_Dropoff_DateTime + "', " + Trip_Distance + ", " + Start_Lon + ", " + Start_Lat +
                             ", " + End_Lon + ", " + End_Lat + ", " + Total_Amt + ", '" + Process_time +
                             "', 'SRID=4326;POINT(" + Start_Lon + " " + Start_Lat + ")', 'SRID=4326;POINT(" + End_Lon + " " + End_Lat + ")' " + ")";
-                    System.out.println(sql);
                     stmt.executeUpdate(sql);
                 }
             }
