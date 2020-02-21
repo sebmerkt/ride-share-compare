@@ -15,10 +15,11 @@
     {"name": "End_Lat", "type": "double", "default": 0.0},
     {"name": "Payment_Type", "type": "string", "default": ""},
     {"name": "Fare_Amt", "type": "double", "default": 0.0},
-    {"name": "surcharge", "type": "double", "default": 0.0},
+    {"name": "Extra", "type": "double", "default": 0.0},
     {"name": "mta_tax", "type": "double", "default": 0.0},
     {"name": "Tip_Amt", "type": "double", "default": 0.0},
     {"name": "Tolls_Amt", "type": "double", "default": 0.0},
+    {"name": "surcharge", "type": "double", "default": 0.0},
     {"name": "Total_Amt", "type": "double", "default": 0.0},
     {"name": "Process_time", "type": "string", "default": ""}
   ]
