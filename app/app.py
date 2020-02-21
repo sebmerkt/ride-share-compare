@@ -91,7 +91,7 @@ def display_click_data(clickData):
       print(clickData)
       if not "Citi" in clickData["points"][0]["customdata"][3]:
         # Check if trip distance is greater zero
-        if clickData["points"][0]["customdata"][1] >0:
+        if clickData["points"][0]["customdata"][1] >0 and clickData["points"][0]["customdata"][0]>0:
           # calculate ride fare per distance
           fare_per_dist = "$ "+str( round( clickData["points"][0]["customdata"][0]/clickData["points"][0]["customdata"][1]/1000, decimals=2 ) )
         else:
