@@ -93,7 +93,7 @@ def display_click_data(clickData):
         # Check if trip distance is greater zero
         if clickData["points"][0]["customdata"][1] >0 and clickData["points"][0]["customdata"][0]>0:
           # calculate ride fare per distance
-          fare_per_dist = "$ "+str( round( clickData["points"][0]["customdata"][0]/clickData["points"][0]["customdata"][1]/1000, decimals=2 ) )
+          fare_per_dist = "$ "+str( round( clickData["points"][0]["customdata"][0]/clickData["points"][0]["customdata"][1], decimals=2 ) )
         else:
           # If distance is zero, not value can be displayed
           fare_per_dist = "not available"
@@ -101,11 +101,11 @@ def display_click_data(clickData):
         # Return the ride info
         ret+="Expected fare per km: %s "%( fare_per_dist )
         
-        ret+="\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2], decimals=2 ) )
+        ret+="\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
         
         return ret
       else:
-        return "Distance from your location: %s km"%( round( clickData["points"][0]["customdata"][2], decimals=2 ) )
+        return "Distance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
     except:
       # If data is not accessible, do nothing
       return "Please select a ride"
