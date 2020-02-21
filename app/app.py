@@ -67,7 +67,7 @@ app.layout = html.Div(
             **Select a ride for more information**
         """),
         html.Pre(id='click-data'),
-      ],  style={'width': '30%', 'display': 'inline-block'}),
+      ],  style={'width': '30%'}),
 
       # Show the map
       html.Div([
@@ -91,13 +91,13 @@ def display_click_data(clickData):
       # Check if trip distance is greater zero
       if clickData["points"][0]["customdata"][1] >0:
         # calculate ride fare per distance
-        fare_per_dist = round( clickData["points"][0]["customdata"][0]/clickData["points"][0]["customdata"][1], decimals=2 )
+        fare_per_dist = "$ "+str( round( clickData["points"][0]["customdata"][0]/clickData["points"][0]["customdata"][1], decimals=2 ) )
       else:
         # If distance is zero, not value can be displayed
         fare_per_dist = "not available"
       
       # Return the ride info
-      ret+="Expected fare per mile: $ %s "%( fare_per_dist )
+      ret+="Expected fare per mile: %s "%( fare_per_dist )
 
       ret+="\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
 
