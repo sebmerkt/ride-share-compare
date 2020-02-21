@@ -64,10 +64,10 @@ app.layout = html.Div(
       # Information about individual rides
       html.Div([
         dcc.Markdown("""
-            **Select a ride for more information**
+            **Ride information**
         """),
         html.Pre(id='click-data'),
-      ],  style={'width': '30%'}),
+      ],  style={'width': '30%', 'display': 'inline-block', 'vertical-align': 'middle'}),
 
       # Show the map
       html.Div([
