@@ -138,7 +138,7 @@ def make_figure(n,input_value):
     while( lendf==0):
       # Save time window between now and window start
       now = datetime.utcnow()
-      some_time_ago = now - timedelta(hours=0, minutes=0, seconds=10)
+      some_time_ago = now - timedelta(hours=0, minutes=0, seconds=20)
 
       # Extend search radius
       radius=500*multi
@@ -163,7 +163,7 @@ def make_figure(n,input_value):
 
 
       create_table_query = '''SELECT vendor_name, total_amt, trip_distance, end_lon, end_lat, ST_Distance(geom_end::geometry, 'SRID=4326;POINT( %s %s )'::geometry)
-        FROM ride_share_data  WHERE Process_time < '%s' AND Process_time > '%s' ORDER BY ST_Distance(geom_end::geometry, 'SRID=4326;POINT( %s %s )'::geometry) DESC FETCH FIRST 10 ROWS ONLY;'''%(lon, lat, now, some_time_ago, lon, lat)
+        FROM ride_share_data  WHERE Process_time < '%s' AND Process_time > '%s' ORDER BY ST_Distance(geom_end::geometry, 'SRID=4326;POINT( %s %s )'::geometry) ASC FETCH FIRST 10 ROWS ONLY;'''%(lon, lat, now, some_time_ago, lon, lat)
 
       # fetch data from PostGIS and save in pandas dataframe
       df = pd.read_sql_query(create_table_query, connection)
