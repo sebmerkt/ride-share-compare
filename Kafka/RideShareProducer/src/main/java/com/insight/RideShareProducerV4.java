@@ -67,7 +67,7 @@ public class RideShareProducerV4 extends RideShareProducerBase <Ride4> {
         ride.setEndLat( InsertDouble(message[10]) );
         ride.setPaymentType( InsertString(message[11]) );
         ride.setFareAmt( InsertDouble(message[12]) );
-        ride.setExtra( InsertDouble(message[13) );
+        ride.setExtra( InsertDouble(message[13]) );
         ride.setMtaTax( InsertDouble(message[14]) );
         ride.setTipAmt( InsertDouble(message[15]) );
         ride.setTollsAmt( InsertDouble(message[16]) );
