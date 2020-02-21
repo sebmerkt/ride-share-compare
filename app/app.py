@@ -165,10 +165,10 @@ def make_figure(n,input_value):
       # Increase multiplication factor to increase search radius
       multi=2
 
-    print(df.shape)
     # Import mapbox token
     px.set_mapbox_access_token(token)
 
+    print(df.columns)
     # Assign the data to each ride-share provider according to the vendor name:
     lyft_data = df[ (df["vendor_name"].str.contains("CMT")) | (df["vendor_name"].str.contains("1")) ]
     lats_lyft = lyft_data["end_lat"]
