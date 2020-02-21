@@ -82,34 +82,34 @@ app.layout = html.Div(
     Output('click-data', 'children'),
     [Input('graph', 'clickData')])
 def display_click_data(clickData):
-  # Create output string
-  ret = ""
+  # # Create output string
+  # ret = ""
   
-  # Check if clickdata is empty
-  if clickData:
-    try:
-      if not "Citi" in clickData["points"][0]["customdata"][3]:
-        # Check if trip distance is greater zero
-        if clickData["points"][0]["customdata"][1] >0:
-          # calculate ride fare per distance
-          fare_per_dist = "$ "+str( round( clickData["points"][0]["customdata"][0]/clickData["points"][0]["customdata"][1], decimals=2 ) )
-        else:
-          # If distance is zero, not value can be displayed
-          fare_per_dist = "not available"
+  # # Check if clickdata is empty
+  # if clickData:
+  #   try:
+  #     if not "Citi" in clickData["points"][0]["customdata"][3]:
+  #       # Check if trip distance is greater zero
+  #       if clickData["points"][0]["customdata"][1] >0:
+  #         # calculate ride fare per distance
+  #         fare_per_dist = "$ "+str( round( clickData["points"][0]["customdata"][0]/clickData["points"][0]["customdata"][1], decimals=2 ) )
+  #       else:
+  #         # If distance is zero, not value can be displayed
+  #         fare_per_dist = "not available"
         
-        # Return the ride info
-        ret+="Expected fare per mile: %s "%( fare_per_dist )
+  #       # Return the ride info
+  #       ret+="Expected fare per mile: %s "%( fare_per_dist )
         
-        ret+="\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
+  #       ret+="\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
         
-        return ret
-      else:
-        return "Distance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
-    except:
-      # If data is not accessible, do nothing
-      return "Please select a ride"
-  else:
-    # If ride data does not exist, do nothing
+  #       return ret
+  #     else:
+  #       return "Distance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
+  #   except:
+  #     # If data is not accessible, do nothing
+  #     return "Please select a ride"
+  # else:
+  #   # If ride data does not exist, do nothing
     return "Please select a ride"
 
 
