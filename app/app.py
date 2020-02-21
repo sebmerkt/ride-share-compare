@@ -217,7 +217,7 @@ def make_figure(n,input_value):
             opacity=1
         ),
       hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
-      customdata=df[["total_amt", "trip_distance", "st_distance", "vendor_name"],
+      customdata=df[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
       text=["Lyft"],
       ),
 
