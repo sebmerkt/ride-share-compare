@@ -150,8 +150,8 @@ def make_figure(n,input_value):
       #   AS distance
       #   FROM ride_share_data WHERE ST_DWithin(geom_end, ST_GeographyFromText('SRID=4326;POINT( %s %s  )'), %s) '''%(lon, lat, lon, lat, radius)
 
-      create_table_query = '''SELECT vendor_name, total_amt, trip_distance, end_lon, end_lat, ST_Distance(ST_Transform(geom_end::geometry, 3857), ST_Transform('SRID=4326;POINT( %s %s )'::geometry, 3857))
-        AS distance
+      create_table_query = '''SELECT vendor_name total_amt, trip_distance, end_lon, end_lat, ST_Distance(ST_Transform(geom_end::geometry, 3857), ST_Transform('SRID=4326;POINT( %s %s )'::geometry, 3857))
+        
         FROM ride_share_data WHERE ST_DWithin(geom_end, ST_GeographyFromText('SRID=4326;POINT( %s %s  )'), %s)  FETCH FIRST 15 ROWS ONLY '''%(lon, lat, lon, lat, radius)
 
       # fetch data from PostGIS and save in pandas dataframe
