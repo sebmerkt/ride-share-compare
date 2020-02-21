@@ -174,10 +174,12 @@ def make_figure(n,input_value):
     lats_lyft = lyft_data["end_lat"]
     lons_lyft = lyft_data["end_lon"]
 
+    print("HERE0.1")
     uber_data = df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ]
     lats_uber = uber_data["end_lat"]
     lons_uber = uber_data["end_lon"]
 
+    print("HERE0.1")
     citibike_data = df[ df["vendor_name"].str.contains("Citi") ]
     lats_citibike = citibike_data["end_lat"]
     lons_citibike = citibike_data["end_lon"]
