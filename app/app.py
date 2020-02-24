@@ -263,7 +263,7 @@ def make_figure(n,input_value):
           b=15,
           t=20
         ),
-      clickmode='select',
+      clickmode='event',
       hovermode='closest'
     )
 
