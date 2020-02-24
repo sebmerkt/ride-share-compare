@@ -250,7 +250,7 @@ def make_figure(n,input_value):
       # width=1000,
       height=450, 
       # Center around user position
-      mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=13, style=os.getenv("MAPBOX_STYLE") ),
+      mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=11, style=os.getenv("MAPBOX_STYLE") ),
       margin=dict(
           l=15,
           r=15,

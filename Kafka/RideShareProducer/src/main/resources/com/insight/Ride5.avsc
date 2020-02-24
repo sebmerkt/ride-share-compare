@@ -23,6 +23,6 @@
     {"name": "Tip_Amt", "type": "double", "default": 0.0, "alias": "tip_amount"},
     {"name": "Tolls_Amt", "type": "double", "default": 0.0, "alias": "tolls_amount"},
     {"name": "Total_Amt", "type": "double", "default": 0.0, "alias": "total_amount"},
-    {"name": "Process_time", "type": ["string", "null"], "default": ""}
+    {"name": "Process_time", "type": "string", "default": ""}
   ]
 }
