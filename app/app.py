@@ -165,7 +165,7 @@ def make_figure(n,input_value):
       # Increase multiplication factor to increase search radius
       multi=2
       if multi==4:
-        df=pd.DataFrame(, columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "st_distance"])
+        df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "st_distance"])
 
     # Import mapbox token
     px.set_mapbox_access_token(token)
