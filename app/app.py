@@ -266,7 +266,10 @@ def make_figure(n,input_value):
     )
 
     # Return the map
-    fig = go.Figure( data, layout)
+    fig = go.Figure( data, layout,
+      'layout': {
+          'clickmode': 'event+select'
+      })
     return fig
   except:
     # If fetching data failed, do nothing
