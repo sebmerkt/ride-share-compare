@@ -1,5 +1,6 @@
 # Ride-Share-Compare
-Insight Data Engineering project 2020A. Ride-Share-Compare is presented [here](https://docs.google.com/presentation/d/1tzfh4vnOFDyHu2FrjZmUu_YrsaVfcyU1XYJdBHj6pCk/edit#slide=id.p).
+### Your ride on your terms
+Ride-Share-Compare was my Insight Data Engineering project in the Winter 2020 session. Ride-Share-Compare is presented [here](https://docs.google.com/presentation/d/1tzfh4vnOFDyHu2FrjZmUu_YrsaVfcyU1XYJdBHj6pCk/edit#slide=id.p).
 
 <hr/>
 
