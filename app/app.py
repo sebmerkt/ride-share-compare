@@ -54,7 +54,7 @@ app.layout = html.Div(
     # Automatically refresh map to get up-to-date ride data
     dcc.Interval(
       id='interval-component',
-      interval=5*1000, # in milliseconds
+      interval=30*1000, # in milliseconds
       n_intervals=0
     ),
 
@@ -185,10 +185,13 @@ def make_figure(n,input_value):
     lats_citibike = citibike_data["end_lat"]
     lons_citibike = citibike_data["end_lon"]
 
+    print("LYFT")
     print(lyft_data)
     print("____________________")
+    print("UBER")
     print(uber_data)
     print("____________________")
+    print("CITI BIKE")
     print(citibike_data)
     print("____________________")
 
