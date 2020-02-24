@@ -85,6 +85,8 @@ def display_click_data(clickData):
   
   # Check if clickdata is empty
   if clickData:
+    print(clickdata)
+    print("")
     try:
       if not "Citi" in clickData["points"][0]["customdata"][3]:
         # Create output string
@@ -185,15 +187,15 @@ def make_figure(n,input_value):
     lats_citibike = citibike_data["end_lat"]
     lons_citibike = citibike_data["end_lon"]
 
-    print("LYFT")
-    print(lyft_data)
-    print("____________________")
-    print("UBER")
-    print(uber_data)
-    print("____________________")
-    print("CITI BIKE")
-    print(citibike_data)
-    print("____________________")
+    # print("LYFT")
+    # print(lyft_data)
+    # print("____________________")
+    # print("UBER")
+    # print(uber_data)
+    # print("____________________")
+    # print("CITI BIKE")
+    # print(citibike_data)
+    # print("____________________")
 
     # Define the data
     data = [
