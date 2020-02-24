@@ -85,7 +85,6 @@ def display_click_data(clickData):
   
   # Check if clickdata is empty
   if clickData:
-    print(clickData)
     try:
       if not "Citi" in clickData["points"][0]["customdata"][3]:
         # Create output string
@@ -185,6 +184,13 @@ def make_figure(n,input_value):
     citibike_data = df[ df["vendor_name"].str.contains("Citi") ]
     lats_citibike = citibike_data["end_lat"]
     lons_citibike = citibike_data["end_lon"]
+
+    print(lyft_data)
+    print("____________________")
+    print(uber_data)
+    print("____________________")
+    print(citibike_data)
+    print("____________________")
 
     # Define the data
     data = [
