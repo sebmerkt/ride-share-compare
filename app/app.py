@@ -85,7 +85,7 @@ def display_click_data(clickData):
   
   # Check if clickdata is empty
   if clickData:
-    print(clickdata)
+    print(clickData)
     print("")
     try:
       if not "Citi" in clickData["points"][0]["customdata"][3]:
