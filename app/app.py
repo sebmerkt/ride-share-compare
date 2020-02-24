@@ -89,6 +89,7 @@ def display_click_data(clickData):
   if clickData:
     try:
       print(clickData)
+      print(clickData)
       if not "Citi" in clickData["points"][0]["customdata"][3]:
         # Check if trip distance is greater zero
         if clickData["points"][0]["customdata"][1] >0 and clickData["points"][0]["customdata"][0]>0:
