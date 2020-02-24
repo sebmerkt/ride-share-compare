@@ -85,6 +85,7 @@ def display_click_data(clickData):
   
   # Check if clickdata is empty
   if clickData:
+    print(clickData)
     try:
       if not "Citi" in clickData["points"][0]["customdata"][3]:
         # Create output string
@@ -104,7 +105,9 @@ def display_click_data(clickData):
           ride_type = "Uber"
         
         # Return the ride info
-        ret+="Ride type: %s\nExpected fare per km: %s "%( ride_type, fare_per_dist )
+        ret+="Ride type: %s"%( ride_type )
+        
+        ret+="\nExpected fare per km: %s "%( fare_per_dist )
         
         ret+="\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
         
