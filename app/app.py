@@ -205,7 +205,7 @@ def make_figure(n,input_value):
       mode='markers', name='Citi Bike', 
       marker={'color': 'Gray', 'size': 10, 'symbol': "bicycle"}, #bicycle-share-15, bicycle-11, bicycle-15
       hovertemplate = ['Citi Bike' for i in range(len(lons_citibike))],
-      customdata=df[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
+      customdata=citibike_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
       text=["Citi Bike"],
       ), 
 
@@ -219,7 +219,7 @@ def make_figure(n,input_value):
             opacity=1
         ),
       hovertemplate = ['Uber' for i in range(len(lons_uber))],
-      customdata=df[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
+      customdata=uber_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
       text=["Uber"],
       ), 
 
@@ -233,7 +233,7 @@ def make_figure(n,input_value):
             opacity=1
         ),
       hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
-      customdata=df[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
+      customdata=lyft_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
       text=["Lyft"],
       ),
 
