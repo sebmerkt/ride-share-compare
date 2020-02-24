@@ -82,15 +82,14 @@ app.layout = html.Div(
     Output('click-data', 'children'),
     [Input('graph', 'clickData')])
 def display_click_data(clickData):
-  # Create output string
-  ret = ""
   
   # Check if clickdata is empty
   if clickData:
     try:
-      print(clickData)
-      print(clickData)
       if not "Citi" in clickData["points"][0]["customdata"][3]:
+        # Create output string
+        ret = "" 
+
         # Check if trip distance is greater zero
         if clickData["points"][0]["customdata"][1] >0 and clickData["points"][0]["customdata"][0]>0:
           # calculate ride fare per distance
