@@ -71,7 +71,7 @@ app.layout = html.Div(
 
       # Show the map
       html.Div([
-        dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
+        dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}, clickmode='select'),
       ], style={'width': '70%', 'display': 'inline-block'}),
     ]),
   ]
@@ -266,10 +266,7 @@ def make_figure(n,input_value):
     )
 
     # Return the map
-    fig = go.Figure( data, layout,
-      'layout': {
-          'clickmode': 'event+select'
-      })
+    fig = go.Figure( data, layout)
     return fig
   except:
     # If fetching data failed, do nothing
