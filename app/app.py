@@ -104,7 +104,7 @@ def display_click_data(clickData):
           ride_type = "Uber"
         
         # Return the ride info
-        ret+="Ride type: Citi Bike\nExpected fare per km: %s "%( fare_per_dist )
+        ret+="Ride type: Citi Bike\nExpected fare per km: %s "%( ride_type, fare_per_dist )
         
         ret+="\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
         
