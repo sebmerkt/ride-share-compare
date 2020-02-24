@@ -263,6 +263,8 @@ def make_figure(n,input_value):
           b=15,
           t=20
         ),
+      clickmode='select',
+      hovermode='closest'
     )
 
     # Return the map
