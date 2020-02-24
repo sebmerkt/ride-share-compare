@@ -97,15 +97,20 @@ def display_click_data(clickData):
         else:
           # If distance is zero, not value can be displayed
           fare_per_dist = "not available"
+
+        if "CMT" in clickData["points"][0]["customdata"][3] or "1" in clickData["points"][0]["customdata"][3]:
+          ride_type = "Lyft"
+        else:
+          ride_type = "Uber"
         
         # Return the ride info
-        ret+="Expected fare per km: %s "%( fare_per_dist )
+        ret+="Ride type: Citi Bike\nExpected fare per km: %s "%( fare_per_dist )
         
         ret+="\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
         
         return ret
       else:
-        return "Distance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
+        return "Ride type: Citi Bike\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
     except:
       # If data is not accessible, do nothing
       return "Please select a ride"
@@ -143,26 +148,11 @@ def make_figure(n,input_value):
 
       # Extend search radius
       radius=500*multi
-
-      # Live streaming query
-      # create_table_query = '''SELECT * FROM ride_share_data WHERE ST_DWithin(geom_end, ST_GeographyFromText('SRID=4326;POINT(  %s %s  )'), %s) AND Process_time < '%s' AND Process_time > '%s'; '''%(lon, lat, radius, now, some_time_ago)
-      # Test query for static data
-      # create_table_query = '''SELECT * FROM ride_share_data WHERE ST_DWithin(geom_end, ST_GeographyFromText('SRID=4326;POINT( %s %s  )'), %s)  FETCH FIRST 15 ROWS ONLY'''%(lon, lat, radius)
-
-      # create_table_query = '''SELECT vendor_name, total_amt, trip_distance, ST_Distance(ST_Transform(geom_end::geometry, 3857), ST_Transform('SRID=4326;POINT( %s %s )'::geometry, 3857))
-      #   AS distance
-      #   FROM ride_share_data WHERE ST_DWithin(geom_end, ST_GeographyFromText('SRID=4326;POINT( %s %s  )'), %s) '''%(lon, lat, lon, lat, radius)
-
-      # create_table_query = '''SELECT vendor_name, total_amt, trip_distance, end_lon, end_lat, ST_Distance(ST_Transform(geom_end::geometry, 3857), ST_Transform('SRID=4326;POINT( %s %s )'::geometry, 3857))
-      #   FROM ride_share_data WHERE ST_DWithin(geom_end, ST_GeographyFromText('SRID=4326;POINT( %s %s  )'), %s)  FETCH FIRST 15 ROWS ONLY '''%(lon, lat, lon, lat, radius)
-
-
-
-
+      # Static query
       # create_table_query = '''SELECT vendor_name, total_amt, trip_distance, end_lon, end_lat, ST_Distance(ST_Transform(geom_end::geometry, 3857), ST_Transform('SRID=4326;POINT( %s %s )'::geometry, 3857))
       #   FROM ride_share_data ORDER BY ST_Distance(ST_Transform(geom_end::geometry, 3857), ST_Transform('SRID=4326;POINT( %s %s )'::geometry, 3857)) ASC FETCH FIRST 15 ROWS ONLY;'''%(lon, lat, lon, lat)
 
-
+      # Streaming query
       create_table_query = '''SELECT vendor_name, total_amt, trip_distance, end_lon, end_lat, ST_Distance(geom_end::geography, 'SRID=4326;POINT( %s %s )'::geography)
       FROM ride_share_data  WHERE Process_time < '%s' AND Process_time > '%s' ORDER BY ST_Distance(geom_end::geography, 'SRID=4326;POINT( %s %s )'::geography) ASC FETCH FIRST 10 ROWS ONLY;'''%(lon, lat, now, some_time_ago, lon, lat)
 
@@ -174,6 +164,8 @@ def make_figure(n,input_value):
       
       # Increase multiplication factor to increase search radius
       multi=2
+      if multi==4:
+        df=pd.DataFrame(, columns=["vendor_name", "total_amt", "trip_distance", "end_lon, end_lat", "st_distance"])
 
     # Import mapbox token
     px.set_mapbox_access_token(token)
@@ -191,7 +183,6 @@ def make_figure(n,input_value):
     lats_citibike = citibike_data["end_lat"]
     lons_citibike = citibike_data["end_lon"]
 
-    print(citibike_data)
     # Define the data
     data = [
       go.Scattermapbox(
