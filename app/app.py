@@ -197,7 +197,7 @@ def make_figure(n,input_value):
       lat=lats_citibike,
       lon=lons_citibike,
       mode='markers', name='Citi Bike', 
-      marker={'color': 'Gray', 'size': 15, 'symbol': "bicycle-share-11"}, #bicycle-share-15, bicycle-11, bicycle-15
+      marker={'color': 'Gray', 'size': 10, 'symbol': "bicycle-share-11"}, #bicycle-share-15, bicycle-11, bicycle-15
       hovertemplate = ['Citi Bike' for i in range(len(lons_citibike))],
       customdata=df[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
       text=["Citi Bike"],
@@ -250,7 +250,7 @@ def make_figure(n,input_value):
       # width=1000,
       height=450, 
       # Center around user position
-      mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=11, style=os.getenv("MAPBOX_STYLE") ),
+      mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=12, style=os.getenv("MAPBOX_STYLE") ),
       margin=dict(
           l=15,
           r=15,
