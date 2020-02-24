@@ -25,7 +25,7 @@ import java.util.Properties;
 abstract public class RideShareConsumerBase {
 
     // output topic
-    static final String TOPIC = "ride-share-output-test2";
+    static final String TOPIC = "ride-share-output-test3";
 
     // get environment variables
     static Map<String, String> env = System.getenv();
