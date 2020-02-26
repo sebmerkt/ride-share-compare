@@ -182,15 +182,10 @@ def make_figure(n,input_value):
 
     # Assign the data to each ride-share provider according to the vendor name:
     lyft_data = df[ (df["vendor_name"].str.contains("CMT")) | (df["vendor_name"].str.contains("1")) ]
-    print("HERE1")
     df_lyft_new = lyft_data[lyft_data.dolocationid.astype("float")>0]
-    print("HERE2")
     df_lyft_old = lyft_data[(lyft_data.dolocationid.isna()) | (lyft_data.dolocationid.astype("float")==0)]
-    print("HERE3")
     lats_lyft = df_lyft_old["end_lat"]
-    print("HERE4")
     lons_lyft = df_lyft_old["end_lon"]
-    print("HERE5")
 
     print("lyft_data")
     print(lyft_data)
@@ -205,12 +200,14 @@ def make_figure(n,input_value):
     lats_uber = df_uber_old["end_lat"]
     lons_uber = df_uber_old["end_lon"]
 
+    print("HERE1")
 
     citibike_data = df[ df["vendor_name"].str.contains("Citi") ]
     lats_citibike = citibike_data["end_lat"]
     lons_citibike = citibike_data["end_lon"]
 
 
+    print("HERE2")
 
 
     # Define the data
