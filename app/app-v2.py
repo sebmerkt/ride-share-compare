@@ -195,19 +195,22 @@ def make_figure(n,input_value):
     print(df_lyft_old)
 
     uber_data = df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ]
-    df_uber_new = uber_data[uber_data.dolocationid.astype("float")>0]
-    df_lyft_old = uber_data[(uber_data.dolocationid.isna()) | (uber_data.dolocationid.astype("float")==0)]
-    lats_uber = df_uber_old["end_lat"]
-    lons_uber = df_uber_old["end_lon"]
-
     print("HERE1")
+    df_uber_new = uber_data[uber_data.dolocationid.astype("float")>0]
+    print("HERE2")
+    df_lyft_old = uber_data[(uber_data.dolocationid.isna()) | (uber_data.dolocationid.astype("float")==0)]
+    print("HERE3")
+    lats_uber = df_uber_old["end_lat"]
+    print("HERE4")
+    lons_uber = df_uber_old["end_lon"]
+    print("HERE5")
+
 
     citibike_data = df[ df["vendor_name"].str.contains("Citi") ]
     lats_citibike = citibike_data["end_lat"]
     lons_citibike = citibike_data["end_lon"]
 
 
-    print("HERE2")
 
 
     # Define the data
