@@ -71,20 +71,24 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
             stringBuilder.append(inputStr);
         JSONObject obj = new JSONObject(stringBuilder.toString());
 
-        // Get Pickup Location ID from the message
-        String PULocID = String.valueOf(Long.parseLong(val.get("PULocationID").toString())-1);
-        // Look up coordinates of this Location ID
-        if ( Long.parseLong(PULocID)<=262 ){
-            val.put("Start_Lon",obj.getJSONObject("X").get(PULocID));
-            val.put("Start_Lat",obj.getJSONObject("Y").get(PULocID));
+        if ( val.get("PULocationID").toString()!="") {
+            // Get Pickup Location ID from the message
+            String PULocID = String.valueOf(Long.parseLong(val.get("PULocationID").toString()) - 1);
+            // Look up coordinates of this Location ID
+            if (Long.parseLong(PULocID) <= 262) {
+                val.put("Start_Lon", obj.getJSONObject("X").get(PULocID));
+                val.put("Start_Lat", obj.getJSONObject("Y").get(PULocID));
+            }
         }
 
-        // Get Dropoff Location ID from the message
-        String DOLocID = String.valueOf(Long.parseLong(val.get("DOLocationID").toString())-1);
-        // Look up coordinates of this Location ID
-        if ( Long.parseLong(DOLocID)<=262 ){
-            val.put("End_Lon", obj.getJSONObject("X").get(DOLocID));
-            val.put("End_Lat", obj.getJSONObject("Y").get(DOLocID));
+        if ( val.get("DOLocationID").toString()!="") {
+            // Get Dropoff Location ID from the message
+            String DOLocID = String.valueOf(Long.parseLong(val.get("DOLocationID").toString()) - 1);
+            // Look up coordinates of this Location ID
+            if (Long.parseLong(DOLocID) <= 262) {
+                val.put("End_Lon", obj.getJSONObject("X").get(DOLocID));
+                val.put("End_Lat", obj.getJSONObject("Y").get(DOLocID));
+            }
         }
 
         return val;
