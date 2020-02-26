@@ -74,7 +74,7 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
 
         System.out.println(val.get("PULocationID"));
         System.out.println(val.get("DOLocationID"));
-        if ( val.get("PULocationID").toString()!="") {
+        if ( val.get("PULocationID") != null ) {
             // Get Pickup Location ID from the message
             String PULocID = String.valueOf(Long.parseLong(val.get("PULocationID").toString()) - 1);
             // Look up coordinates of this Location ID
@@ -84,7 +84,7 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
             }
         }
 
-        if ( val.get("DOLocationID").toString()!="") {
+        if ( val.get("DOLocationID") != null ) {
             // Get Dropoff Location ID from the message
             String DOLocID = String.valueOf(Long.parseLong(val.get("DOLocationID").toString()) - 1);
             // Look up coordinates of this Location ID
