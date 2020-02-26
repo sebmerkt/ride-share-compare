@@ -173,7 +173,7 @@ def make_figure(n,input_value):
       # Increase multiplication factor to increase search radius
       multi=2
       if multi==4:
-        df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "st_distance"])
+        df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "st_distance", "dolocationid"])
 
     # Import mapbox token
     px.set_mapbox_access_token(token)
@@ -182,14 +182,14 @@ def make_figure(n,input_value):
 
     # Assign the data to each ride-share provider according to the vendor name:
     lyft_data = df[ (df["vendor_name"].str.contains("CMT")) | (df["vendor_name"].str.contains("1")) ]
-    df_lyft_new = lyft_data[ (lyft_data.DOLocationID>0) ]
-    df_lyft_old = lyft_data[ (lyft_data.DOLocationID==0) | (lyft_data.DOLocationID==None) ]
+    df_lyft_new = lyft_data[ (lyft_data.dolocationid>0) ]
+    df_lyft_old = lyft_data[ (lyft_data.dolocationid==0) | (lyft_data.dolocationid==None) ]
     lats_lyft = df_lyft_old["end_lat"]
     lons_lyft = df_lyft_old["end_lon"]
 
     uber_data = df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ]
-    df_uber_new = uber_data[ (uber_data.DOLocationID>0) ]
-    df_lyft_old = lyft_data[ (uber_data.DOLocationID==0) | (uber_data.DOLocationID==None) ]
+    df_uber_new = uber_data[ (uber_data.dolocationid>0) ]
+    df_lyft_old = lyft_data[ (uber_data.dolocationid==0) | (uber_data.dolocationid==None) ]
     lats_uber = df_uber_old["end_lat"]
     lons_uber = df_uber_old["end_lon"]
 
