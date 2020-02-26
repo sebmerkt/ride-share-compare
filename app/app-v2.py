@@ -266,11 +266,12 @@ def make_figure(n,input_value):
       ),
 
       go.choroplethmapbox(geojson=locations, color=df_lyft_new.groupby("DOLocationID")["DOLocationID"].transform("count"),
-                           locations="DOLocationID", featureidkey="properties.LocationID"#,
+                           locations=df_lyft_new.dolocations, featureidkey="properties.LocationID"#,
                           #  center={"lat": lat, "lon": lon},
                           #  mapbox_style="carto-positron", zoom=9)
                           ),
-
+      # go.Choroplethmapbox(geojson=africa_geo, locations=data.country_name, z=data.ranking,
+      #                               colorscale="Viridis"))
       # go.choroplethmapbox(df_uber_new, geojson=locations, color=df_uber_new.groupby("DOLocationID")["DOLocationID"].transform("count"),
       #                      locations="DOLocationID", featureidkey="properties.LocationID"
       #                     ),
