@@ -30,7 +30,6 @@ for i in `seq 1 5`;
 
       wait $db_process_id
       echo "Database schema evolved to V$i with status "$?
-    fi
     elif [[ "$i" == "5" ]]; then
       echo "Evolving database"
       python3 $SCRIPT_DIR/update_database.py "PULocationID" "int8" "PULocationID" "int8"& db_process_id=$!
