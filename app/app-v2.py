@@ -178,30 +178,24 @@ def make_figure(n,input_value):
     px.set_mapbox_access_token(token)
 
     # Check for new data with LocationID
-    df_old = df[ df ]
 
     # Assign the data to each ride-share provider according to the vendor name:
     lyft_data = df[ (df["vendor_name"].str.contains("CMT")) | (df["vendor_name"].str.contains("1")) ]
-    lats_lyft = lyft_data["end_lat"]
-    lons_lyft = lyft_data["end_lon"]
+    df_lyft_new = lyft_data[ (lyft_data.DOLocationID>0) ]
+    df_lyft_old = lyft_data[ !(lyft_data.DOLocationID>0) ]
+    lats_lyft = df_lyft_old["end_lat"]
+    lons_lyft = df_lyft_old["end_lon"]
 
     uber_data = df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ]
-    lats_uber = uber_data["end_lat"]
-    lons_uber = uber_data["end_lon"]
+    df_uber_new = uber_data[ (uber_data.DOLocationID>0) ]
+    df_uber_old = uber_data[ !(uber_data.DOLocationID>0) ]
+    lats_uber = df_uber_old["end_lat"]
+    lons_uber = df_uber_old["end_lon"]
 
     citibike_data = df[ df["vendor_name"].str.contains("Citi") ]
     lats_citibike = citibike_data["end_lat"]
     lons_citibike = citibike_data["end_lon"]
 
-    # print("LYFT")
-    # print(lyft_data)
-    # print("____________________")
-    # print("UBER")
-    # print(uber_data)
-    # print("____________________")
-    # print("CITI BIKE")
-    # print(citibike_data)
-    # print("____________________")
 
     # Define the data
     data = [
@@ -255,10 +249,15 @@ def make_figure(n,input_value):
       hovertemplate = [input_value],
       ),
 
-      go.choroplethmapbox(df_g2019, geojson=locations, color="trip_distance",
-                           locations="DOLocationID", featureidkey="properties.LocationID")#,
+      go.choroplethmapbox(df_lyft_new, geojson=locations, color=df_lyft_new.groupby("DOLocationID")["DOLocationID"].transform("count"),
+                           locations="DOLocationID", featureidkey="properties.LocationID"#,
                           #  center={"lat": lat, "lon": lon},
                           #  mapbox_style="carto-positron", zoom=9)
+                          ),
+
+      go.choroplethmapbox(df_uber_new, geojson=locations, color=df_uber_new.groupby("DOLocationID")["DOLocationID"].transform("count"),
+                           locations="DOLocationID", featureidkey="properties.LocationID"
+                          ),
       ]
 
     # Define map layout

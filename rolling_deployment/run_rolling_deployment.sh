@@ -76,7 +76,7 @@ for i in `seq 1 5`;
 # Add Citi Bikes
 
 echo "Evolving database"
-python3 $SCRIPT_DIR/update_database.py "trip_duration" "int8" "start_station_id" "int8" "start_station_name" "text" "end_station_id" "int8" "end_station_name" "text" "bikeid" "int8"  "usertype" "text" "birth_year" "int8" "gender" "int8" & db_process_id=$!
+python3 $SCRIPT_DIR/update_database.py "trip_duration" "int8" "start_station_id" "int8" "start_station_name" "text" "end_station_id" "int8" "end_station_name" "text" "bike_id" "int8"  "usertype" "text" "birth_year" "int8" "gender" "int8" & db_process_id=$!
 
 wait $db_process_id
 echo "Database schema evolved to bike V1 with status "$?
