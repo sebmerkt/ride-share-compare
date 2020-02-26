@@ -198,7 +198,7 @@ def make_figure(n,input_value):
     print("HERE1")
     df_uber_new = uber_data[uber_data.dolocationid.astype("float")>0]
     print("HERE2")
-    df_lyft_old = uber_data[(uber_data.dolocationid.isna()) | (uber_data.dolocationid.astype("float")==0)]
+    df_uber_old = uber_data[(uber_data.dolocationid.isna()) | (uber_data.dolocationid.astype("float")==0)]
     print("HERE3")
     lats_uber = df_uber_old["end_lat"]
     print("HERE4")
