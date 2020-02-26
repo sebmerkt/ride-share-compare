@@ -192,8 +192,11 @@ def make_figure(n,input_value):
     lons_lyft = df_lyft_old["end_lon"]
     print("HERE5")
 
+    print("lyft_data")
     print(lyft_data)
+    print("df_lyft_new")
     print(df_lyft_new)
+    print("df_lyft_old")
     print(df_lyft_old)
 
     uber_data = df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ]
