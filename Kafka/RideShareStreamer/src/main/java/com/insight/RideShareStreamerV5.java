@@ -71,6 +71,9 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
             stringBuilder.append(inputStr);
         JSONObject obj = new JSONObject(stringBuilder.toString());
 
+
+        System.out.println(val.get("PULocationID"));
+        System.out.println(val.get("DOLocationID"));
         if ( val.get("PULocationID").toString()!="") {
             // Get Pickup Location ID from the message
             String PULocID = String.valueOf(Long.parseLong(val.get("PULocationID").toString()) - 1);
