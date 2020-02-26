@@ -151,8 +151,8 @@ def make_figure(n,input_value):
       # Extend search radius
       radius=500*multi
       # Static query
-      create_table_query = '''SELECT vendor_name, total_amt, trip_distance, end_lon, end_lat, ST_Distance(ST_Transform(geom_end::geometry, 3857), ST_Transform('SRID=4326;POINT( %s %s )'::geometry, 3857))
-        FROM ride_share_data ORDER BY ST_Distance(ST_Transform(geom_end::geometry, 3857), ST_Transform('SRID=4326;POINT( %s %s )'::geometry, 3857)) ASC FETCH FIRST 15 ROWS ONLY;'''%(lon, lat, lon, lat)
+      create_table_query = '''SELECT vendor_name, total_amt, trip_distance, end_lon, end_lat, ST_Distance(geom_end::geography, ST_Transform('SRID=4326;POINT( %s %s )'::geography, 3857))
+        FROM ride_share_data ORDER BY ST_Distance(geom_end::geography, ST_Transform('SRID=4326;POINT( %s %s )'::geography, 3857)) ASC FETCH FIRST 15 ROWS ONLY;'''%(lon, lat, lon, lat)
 
       # Streaming query
       # create_table_query = '''SELECT vendor_name, total_amt, trip_distance, end_lon, end_lat, ST_Distance(geom_end::geography, 'SRID=4326;POINT( %s %s )'::geography)
