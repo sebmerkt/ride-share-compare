@@ -265,7 +265,7 @@ def make_figure(n,input_value):
       hovertemplate = [input_value],
       ),
 
-      go.choroplethmapbox(geojson=city_locations, colorscale="Viridis", z=df_lyft_new.total_amt,#df_lyft_new.groupby("dolocationid")["dolocationid"].transform("count"),
+      go.Choroplethmapbox(geojson=city_locations, colorscale="Viridis", z=df_lyft_new.total_amt,#df_lyft_new.groupby("dolocationid")["dolocationid"].transform("count"),
                           locations=df_lyft_new.dolocationid, featureidkey="properties.LocationID"#,
                           #  center={"lat": lat, "lon": lon},
                           #  mapbox_style="carto-positron", zoom=9)
