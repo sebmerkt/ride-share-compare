@@ -198,6 +198,11 @@ def make_figure(n,input_value):
     lons_citibike = citibike_data["end_lon"]
 
 
+    print(lyft_data)
+    print(df_lyft_new)
+    print(df_lyft_old)
+
+
     # Define the data
     data = [
       go.Scattermapbox(
