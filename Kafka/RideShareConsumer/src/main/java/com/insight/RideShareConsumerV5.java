@@ -83,12 +83,12 @@ public class RideShareConsumerV5 extends RideShareConsumerBase {
                     Statement stmt = dbConn.createStatement();
                     String sql = "INSERT INTO ride_share_data " +
                             " ( uuid, vendor_name, Trip_Pickup_DateTime, Trip_Dropoff_DateTime, Passenger_Count, " +
-                            "Trip_Distance, Start_Lon, Start_Lat, Rate_Code, store_and_forward, End_Lon, End_Lat, " +
+                            "Trip_Distance, Start_Lon, Start_Lat, PULocationID, Rate_Code, store_and_forward, End_Lon, End_Lat, DOLocationID," +
                             "Payment_Type, Fare_Amt, surcharge, mta_tax, Tip_Amt, Tolls_Amt, Total_Amt, " +
                             "Process_time, geom_start, geom_end ) " +
                             "VALUES ( '"+uuid+"', '" + vendor_name+"', '"+Trip_Pickup_DateTime+"', '"+Trip_Dropoff_DateTime+"', "+
-                            Passenger_Count+", "+Trip_Distance+", "+Start_Lon+", "+Start_Lat+", "+Rate_Code+", "+
-                            store_and_forward+", "+End_Lon+", "+End_Lat+", '"+Payment_Type+"', "+
+                            Passenger_Count+", "+Trip_Distance+", "+Start_Lon+", "+Start_Lat+", "+PULocationID+", "+Rate_Code+", "+
+                            store_and_forward+", "+End_Lon+", "+End_Lat+", "+DOLocationID+", '"+Payment_Type+"', "+
                             Fare_Amt+", "+surcharge+", "+mta_tax+", "+Tip_Amt+", "+Tolls_Amt+", "+Total_Amt+", '"+Process_time+
                             "', 'SRID=4326;POINT("+Start_Lon+" "+Start_Lat+")', 'SRID=4326;POINT("+End_Lon+" "+End_Lat+")' )";
                     stmt.executeUpdate(sql);
