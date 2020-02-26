@@ -17,7 +17,8 @@ import plotly.graph_objects as go
 import os
 from datetime import datetime, timedelta
 import geocoder
-import timeimport json
+import time
+import json
 
 
 # Import taxi zones
