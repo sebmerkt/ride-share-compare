@@ -198,7 +198,10 @@ def make_figure(n,input_value):
     df_loc=df_lyft_new.append(df_uber_new)
     rides_per_loc=df_loc.groupby("dolocationid")["dolocationid"].transform("count")
 
-    print(['rgba(%s,%s,255,0.3)'%( int(100+i/rides_per_loc.max()*145), int(i/rides_per_loc.max()*255)) for i in np.arange(rides_per_loc.min(), rides_per_loc.max(), (rides_per_loc.max() - rides_per_loc.min())/len(rides_per_loc))])
+    if rides_per_loc.max() - rides_per_loc.min() == 0:
+      color_range='rgba(215,162,255,0.3)'
+    else:  
+      color_range=['rgba(%s,%s,255,0.3)'%( int(100+i/rides_per_loc.max()*145), int(i/rides_per_loc.max()*255)) for i in np.arange(rides_per_loc.min(), rides_per_loc.max(), (rides_per_loc.max() - rides_per_loc.min())/len(rides_per_loc))])
 
     # Define the data
     data = [
