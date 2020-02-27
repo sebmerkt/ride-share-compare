@@ -226,7 +226,7 @@ def make_figure(n,input_value):
                           z=rides_per_loc,
                           locations=df_loc.dolocationid, featureidkey="properties.LocationID",
                           hovertemplate = ['%s rides in neighborhoods'%i for i in df_loc],
-                          customdata=get_num_rides(df_loc),
+                          custom_data=get_num_rides(df_loc),
                           text=["Rides"],
                           # showscale=True,
                           name=''
