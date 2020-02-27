@@ -195,7 +195,7 @@ def make_figure(n,input_value):
     lats_citibike = citibike_data["end_lat"]
     lons_citibike = citibike_data["end_lon"]
 
-    df_loc=df_lyft_new.apend(df_uber_new)
+    df_loc=df_lyft_new.append(df_uber_new)
     print("HERE1")
     rides_per_loc=df_loc.groupby("dolocationid")["dolocationid"].transform("count")
 
