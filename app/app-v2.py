@@ -187,30 +187,15 @@ def make_figure(n,input_value):
     lats_lyft = df_lyft_old["end_lat"]
     lons_lyft = df_lyft_old["end_lon"]
 
-    print("lyft_data")
-    print(lyft_data)
-    print("df_lyft_new")
-    print(df_lyft_new)
-    print("df_lyft_old")
-    print(df_lyft_old)
-
     uber_data = df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ]
-    print("HERE1")
     df_uber_new = uber_data[uber_data.dolocationid.astype("float")>0]
-    print("HERE2")
     df_uber_old = uber_data[(uber_data.dolocationid.isna()) | (uber_data.dolocationid.astype("float")==0)]
-    print("HERE3")
     lats_uber = df_uber_old["end_lat"]
-    print("HERE4")
     lons_uber = df_uber_old["end_lon"]
-    print("HERE5")
-
 
     citibike_data = df[ df["vendor_name"].str.contains("Citi") ]
     lats_citibike = citibike_data["end_lat"]
     lons_citibike = citibike_data["end_lon"]
-
-
 
 
     # Define the data
@@ -265,12 +250,13 @@ def make_figure(n,input_value):
       hovertemplate = [input_value],
       ),
 
-      go.Choroplethmapbox(geojson=city_locations, colorscale="Viridis", z=df_lyft_new.groupby("dolocationid")["dolocationid"].transform("count"),
-                          locations=df_lyft_new.dolocationid, featureidkey="properties.LocationID"
-                          ),
-                          
-      go.Choroplethmapbox(geojson=city_locations, colorscale="Viridis", z=df_uber_new.groupby("dolocationid")["dolocationid"].transform("count"),
-                          locations=df_uber_new.dolocationid, featureidkey="properties.LocationID"
+      df_loc=df_lyft_new.apend(df_uber_new)
+      rides_per_loc=df_loc.groupby("dolocationid")["dolocationid"].transform("count")
+      go.Choroplethmapbox(geojson=city_locations, colorscale="Viridis", z=,
+                          locations=df_loc.dolocationid, featureidkey="properties.LocationID"
+                          hovertemplate = ['%s rides in this location' for i in rides_per_loc],
+                          customdata=lyft_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
+                          text=["Rides"],
                           ),
       ]
 
