@@ -204,6 +204,7 @@ def make_figure(n,input_value):
     else:  
       color_range=['rgba(%s,%s,%s,0.3)'%(int(i/max(rides_per_loc)*200), int(i/max(rides_per_loc)*255), int(100+i/max(rides_per_loc)*155)) for i in list(reversed(sorted(rides_per_loc.unique())))]
 
+    print(df_loc)
     # Define the data
     data = [
       go.Choroplethmapbox(geojson=city_locations, colorscale=color_range,
