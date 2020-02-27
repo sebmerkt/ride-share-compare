@@ -202,6 +202,13 @@ def make_figure(n,input_value):
     print("HERE2")
     # Define the data
     data = [
+      go.Choroplethmapbox(geojson=city_locations, colorscale="Bluered", z=rides_per_loc,
+                          locations=df_loc.dolocationid, featureidkey="properties.LocationID",
+                          hovertemplate = ['%s rides in this area'%s for i in rides_per_loc],
+                          customdata=lyft_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
+                          text=["Rides"]
+                          ),
+
       go.Scattermapbox(
       lat=lats_citibike,
       lon=lons_citibike,
@@ -252,12 +259,6 @@ def make_figure(n,input_value):
       hovertemplate = [input_value],
       ),
 
-      go.Choroplethmapbox(geojson=city_locations, colorscale="Viridis", z=rides_per_loc,
-                          locations=df_loc.dolocationid, featureidkey="properties.LocationID",
-                          hovertemplate = ['%s rides in this location' for i in rides_per_loc],
-                          customdata=lyft_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
-                          text=["Rides"]
-                          ),
       ]
 
     # Define map layout
