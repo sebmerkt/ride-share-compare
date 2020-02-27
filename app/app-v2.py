@@ -207,7 +207,7 @@ def make_figure(n,input_value):
                           customdata=lyft_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
                           text=["Rides"],
                           showscale=False,
-                          name=''
+                          # name=''
                           ),
 
       go.Scattermapbox(
