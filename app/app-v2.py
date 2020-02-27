@@ -211,7 +211,7 @@ def make_figure(n,input_value):
                           hovertemplate = ['%s rides in neighborhoods'%i for i in rides_per_loc],
                           customdata=lyft_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
                           text=["Rides"],
-                          showscale=True,
+                          # showscale=True,
                           name=''
                           ),
 
@@ -273,7 +273,7 @@ def make_figure(n,input_value):
       # width=1000,
       # height=450, 
       # Center around user position
-      mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=13, style=os.getenv("MAPBOX_STYLE") ),
+      mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=12, style=os.getenv("MAPBOX_STYLE") ),
       margin=dict(
           l=15,
           r=15,
