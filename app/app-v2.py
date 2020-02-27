@@ -6,7 +6,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 
 import pandas as pd
-from numpy import round
+from numpy import round,arange
 
 import psycopg2
 from psycopg2 import Error
@@ -200,8 +200,7 @@ def make_figure(n,input_value):
 
     # Define the data
     data = [
-      # ['rgba(%s,%s,255,0.3)'%( int(100+i/rides_per_loc.max()*145), int(i/rides_per_loc.max()*255)) for i in range(rides_per_loc.min(), rides_per_loc.max(), (rides_per_loc.max() - rides_per_loc.min())/len(rides_per_loc))]
-      go.Choroplethmapbox(geojson=city_locations, colorscale="Blues",
+      go.Choroplethmapbox(geojson=city_locations, colorscale=['rgba(%s,%s,255,0.3)'%( int(100+i/rides_per_loc.max()*145), int(i/rides_per_loc.max()*255)) for i in np.arange(rides_per_loc.min(), rides_per_loc.max(), (rides_per_loc.max() - rides_per_loc.min())/len(rides_per_loc))],
                           z=rides_per_loc,
                           locations=df_loc.dolocationid, featureidkey="properties.LocationID",
                           hovertemplate = ['%s rides in neighborhoods'%i for i in rides_per_loc],
