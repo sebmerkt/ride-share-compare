@@ -197,6 +197,8 @@ def make_figure(n,input_value):
     lats_citibike = citibike_data["end_lat"]
     lons_citibike = citibike_data["end_lon"]
 
+    df_loc=df_lyft_new.apend(df_uber_new)
+    rides_per_loc=df_loc.groupby("dolocationid")["dolocationid"].transform("count")
 
     # Define the data
     data = [
@@ -250,8 +252,6 @@ def make_figure(n,input_value):
       hovertemplate = [input_value],
       ),
 
-      df_loc=df_lyft_new.apend(df_uber_new)
-      rides_per_loc=df_loc.groupby("dolocationid")["dolocationid"].transform("count")
       go.Choroplethmapbox(geojson=city_locations, colorscale="Viridis", z=,
                           locations=df_loc.dolocationid, featureidkey="properties.LocationID"
                           hovertemplate = ['%s rides in this location' for i in rides_per_loc],
