@@ -204,7 +204,9 @@ def make_figure(n,input_value):
                           locations=df_loc.dolocationid, featureidkey="properties.LocationID",
                           hovertemplate = ['%s rides in neighborhoods'%i for i in rides_per_loc],
                           customdata=lyft_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
-                          text=["Rides"]
+                          text=["Rides"],
+                          showscale=False,
+                          name=''
                           ),
 
       go.Scattermapbox(
