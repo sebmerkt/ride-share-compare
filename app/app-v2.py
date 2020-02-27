@@ -94,8 +94,9 @@ def display_click_data(clickData):
     print(clickData)
     try:
       if 'z' in clickData["points"][0]:
-        num_lyft=clickData["points"][0]["customdata"][0]
-        num_uber=clickData["points"][0]["customdata"][0]
+        # num_lyft=clickData["points"][0]["customdata"][0]
+        # num_uber=clickData["points"][0]["customdata"][0]
+        print( clickData["points"][0])
         return "There are %s Lyft rides and %s Uber rides in this neighborhood."%(num_lyft, num_uber)
       else:
         if not "Citi" in clickData["points"][0]["customdata"][3]:
@@ -210,13 +211,14 @@ def make_figure(n,input_value):
       color_range=['rgba(%s,%s,%s,0.3)'%(int(i/max(rides_per_loc)*200), int(i/max(rides_per_loc)*255), int(100+i/max(rides_per_loc)*155)) for i in list(reversed(sorted(rides_per_loc.unique())))]
 
     print(df_loc)
+    pd.DataFrame(df_loc)
     # Define the data
     data = [
       go.Choroplethmapbox(geojson=city_locations, colorscale=color_range,
                           z=rides_per_loc,
                           locations=df_loc.dolocationid, featureidkey="properties.LocationID",
                           hovertemplate = ['%s rides in neighborhoods'%i for i in rides_per_loc],
-                          custom_data=[len(df_lyft_new), len(df_uber_new)],
+                          custom_data=df_loc[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
                           text=["Rides"],
                           # showscale=True,
                           name=''
