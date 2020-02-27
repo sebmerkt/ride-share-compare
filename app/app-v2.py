@@ -200,7 +200,7 @@ def make_figure(n,input_value):
 
     # Define the data
     data = [
-      go.Choroplethmapbox(geojson=city_locations, colorscale=['rgba(%s, %s,  255, 0.3)'%( int(i/len(rides_per_loc)*255), int(145+i/len(rides_per_loc)*100) ) for i in range(rides_per_loc.min(), rides_per_loc.max(), len(rides_per_loc) )],
+      go.Choroplethmapbox(geojson=city_locations, colorscale=[ 'rgba(%s, %s,  255, 0.3)'%( int(i/len(rides_per_loc)*255), int(145+i/len(rides_per_loc)*100) ) for i in range(rides_per_loc.min(), rides_per_loc.max(), len(rides_per_loc)) ],
                           z=rides_per_loc,
                           locations=df_loc.dolocationid, featureidkey="properties.LocationID",
                           hovertemplate = ['%s rides in neighborhoods'%i for i in rides_per_loc],
