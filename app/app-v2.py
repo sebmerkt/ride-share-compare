@@ -178,8 +178,6 @@ def make_figure(n,input_value):
     # Import mapbox token
     px.set_mapbox_access_token(token)
 
-    print(df)
-
     # Assign the data to each ride-share provider according to the vendor name:
     lyft_data = df[ (df["vendor_name"].str.contains("CMT")) | (df["vendor_name"].str.contains("1")) ]
     df_lyft_new = lyft_data[lyft_data.dolocationid.astype("float")>0]
@@ -200,6 +198,7 @@ def make_figure(n,input_value):
     df_loc=df_lyft_new.apend(df_uber_new)
     rides_per_loc=df_loc.groupby("dolocationid")["dolocationid"].transform("count")
 
+    print(df)
     # Define the data
     data = [
       go.Scattermapbox(
