@@ -40,6 +40,13 @@ try:
 except (Exception, psycopg2.DatabaseError) as error:
     print(error)
 
+
+# Get number of Lyft and Uber in case of LocationID
+def get_num_rides(df):
+  num_lyft=len(df[ (df["vendor_name"].str.contains("CMT")) | (df["vendor_name"].str.contains("1")) ])
+  num_uber=len(df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ])
+  return ['%s Lyft rides and %s Uber rides in neighborhoods'%(num_lyft, num_uber) for i in df]
+
 # Initialize app
 app = dash.Dash(
     __name__, external_stylesheets=["https://codepen.io/chriddyp/pen/bWLwgP.css"]
@@ -82,6 +89,7 @@ app.layout = html.Div(
     ]),
   ]
 )
+
 
 # Define data of individual rides
 @app.callback(
@@ -217,8 +225,8 @@ def make_figure(n,input_value):
       go.Choroplethmapbox(geojson=city_locations, colorscale=color_range,
                           z=rides_per_loc,
                           locations=df_loc.dolocationid, featureidkey="properties.LocationID",
-                          hovertemplate = ['%s rides in neighborhoods'%i for i in rides_per_loc],
-                          customdata=df_loc.vendor_name.values,
+                          hovertemplate = ['%s rides in neighborhoods'%i for i in df_loc],
+                          customdata=get_num_rides(df_loc),
                           text=["Rides"],
                           # showscale=True,
                           name=''
