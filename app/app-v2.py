@@ -93,12 +93,12 @@ def display_click_data(clickData):
   if clickData:
     print(clickData)
     try:
-      if 'z' in clickData["points"][0]:
-        # num_lyft=clickData["points"][0]["customdata"][0]
-        # num_uber=clickData["points"][0]["customdata"][0]
-        print( clickData["points"][0])
-        return "There are %s Lyft rides and %s Uber rides in this neighborhood."%(num_lyft, num_uber)
-      else:
+      # if 'z' in clickData["points"][0]:
+      #   # num_lyft=clickData["points"][0]["customdata"][0]
+      #   # num_uber=clickData["points"][0]["customdata"][0]
+      #   print( clickData["points"][0])
+      #   return "There are %s Lyft rides and %s Uber rides in this neighborhood."%(num_lyft, num_uber)
+      # else:
         if not "Citi" in clickData["points"][0]["customdata"][3]:
           # Create output string
           ret = "" 
