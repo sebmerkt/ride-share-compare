@@ -211,7 +211,7 @@ def make_figure(n,input_value):
                           hovertemplate = ['%s rides in neighborhoods'%i for i in rides_per_loc],
                           customdata=lyft_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
                           text=["Rides"],
-                          showscale=False,
+                          showscale=True,
                           name=''
                           ),
 
