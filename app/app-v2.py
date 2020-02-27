@@ -201,7 +201,7 @@ def make_figure(n,input_value):
     if rides_per_loc.max() - rides_per_loc.min() == 0:
       color_range='rgba(215,162,255,0.3)'
     else:  
-      color_range=['rgba(%s,%s,255,0.3)'%(int(i/max(rides_per_loc)*255), int(100+i/max(rides_per_loc)*155)) for i in rides_per_loc.reverse()]
+      color_range=['rgba(%s,%s,255,0.3)'%(int(i/max(rides_per_loc)*255), int(100+i/max(rides_per_loc)*155)) for i in sorted(rides_per_loc.unique())]
 
     # Define the data
     data = [
