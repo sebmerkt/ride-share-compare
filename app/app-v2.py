@@ -83,7 +83,7 @@ app.layout = html.Div(
       ], style={'width': '75%', 'display': 'inline-block'}),
     ],
     style={ "background": "#333432"},),
-  ]
+  ],style={ "background": "#191a1a"},
 )
 
 
