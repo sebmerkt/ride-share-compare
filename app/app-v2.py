@@ -42,7 +42,7 @@ except (Exception, psycopg2.DatabaseError) as error:
 app = dash.Dash( 
     # __name__, external_stylesheets=["https://codepen.io/chriddyp/pen/bWLwgP.css"]
     # __name__, external_stylesheets=["https://bootswatch.com/4/darkly/bootstrap.min.css"]
-    __name__, external_stylesheets=["/assets/bootstrap.css"]
+    __name__, external_stylesheets=["/assets/solar.bootstrap.css"]
 )
 
 # Define the layout
