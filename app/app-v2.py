@@ -285,6 +285,7 @@ def make_figure(n,input_value):
                   #  style="streets" ),
                    style="black" ),
       margin=dict(
+      margin=dict(
           l=15,
           r=15,
           b=15,
