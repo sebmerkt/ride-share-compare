@@ -222,7 +222,7 @@ def make_figure(n,input_value):
                           text=["Rides"],
                           # showscale=True,
                           name='',
-                          legendgroup="choroleth",
+                          legendgroup="scatter",
                           ),
 
       go.Scattermapbox(
