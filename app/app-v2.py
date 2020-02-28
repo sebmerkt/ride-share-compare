@@ -183,19 +183,19 @@ def make_figure(n,input_value):
       # Extend search radius
       radius+=300
       if radius<=600:
-        zl.set_zoom_level(13)
+        zoomlevel = 13
       elif radius<=1200:
-        zl.set_zoom_level(11)
+        zoomlevel = 11
       elif radius<=3400:
-        zl.set_zoom_level(9)
+        zoomlevel = 9
       else:
-        zl.set_zoom_level(7)
+        zoomlevel = 7
 
       if radius>4000:
-        zl.set_zoom_level(13)
+       zoomlevel = 13
         df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
         break
-    
+      
     # Import mapbox token
     px.set_mapbox_access_token(token)
 
@@ -316,7 +316,7 @@ def make_figure(n,input_value):
       # Center around user position
       mapbox=dict( accesstoken=token,
                    center=dict( lat=lat, lon=lon ),
-                   zoom=zl.get_zoom_level(),
+                   zoom=zoomlevel,
                   #  style=os.getenv("MAPBOX_STYLE") ),
                   #  style="streets" ),
                    style="dark" ),
