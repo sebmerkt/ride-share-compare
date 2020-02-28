@@ -272,8 +272,8 @@ def make_figure(n,input_value):
         showlegend=False,
         ),
 
-        ]
-      else:
+      ]
+    else:
       data = [
         go.Scattermapbox(
         lat=[lat],
@@ -288,7 +288,7 @@ def make_figure(n,input_value):
         showlegend=False,
         ),
 
-        ]
+      ]
     print("HERE7")
 
     # Define map layout
