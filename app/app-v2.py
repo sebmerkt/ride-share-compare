@@ -81,7 +81,8 @@ app.layout = html.Div(
       html.Div([
         dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
       ], style={'width': '75%', 'display': 'inline-block'}),
-    ]),
+    ],
+    style={ "background": "#333432"},),
   ]
 )
 
