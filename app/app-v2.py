@@ -175,6 +175,7 @@ def make_figure(n,input_value):
 
       if radius>=2000:
         df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
+        break
     
     # Import mapbox token
     px.set_mapbox_access_token(token)
