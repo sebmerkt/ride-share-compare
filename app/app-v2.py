@@ -180,7 +180,6 @@ def make_figure(n,input_value):
     # Import mapbox token
     px.set_mapbox_access_token(token)
 
-    print("HERE1")
     # Assign the data to each ride-share provider according to the vendor name:
     lyft_data = df[ (df["vendor_name"].str.contains("CMT")) | (df["vendor_name"].str.contains("1")) ]
     df_lyft_new = lyft_data[lyft_data.dolocationid.astype("float")>0]
@@ -188,95 +187,109 @@ def make_figure(n,input_value):
     lats_lyft = df_lyft_old["end_lat"]
     lons_lyft = df_lyft_old["end_lon"]
 
-    print("HERE2")
     uber_data = df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ]
     df_uber_new = uber_data[uber_data.dolocationid.astype("float")>0]
     df_uber_old = uber_data[(uber_data.dolocationid.isna()) | (uber_data.dolocationid.astype("float")==0)]
     lats_uber = df_uber_old["end_lat"]
     lons_uber = df_uber_old["end_lon"]
 
-    print("HERE3")
     citibike_data = df[ df["vendor_name"].str.contains("Citi") ]
     lats_citibike = citibike_data["end_lat"]
     lons_citibike = citibike_data["end_lon"]
 
-    print("HERE4")
     df_loc=df_lyft_new.append(df_uber_new)
     rides_per_loc=df_loc.groupby("dolocationid")["dolocationid"].transform("count")
 
-    print("HERE5")
     if rides_per_loc.max() - rides_per_loc.min() == 0:
       color_range=['rgba(0,0,100,0.3)']
     else:  
       color_range=['rgba(%s,%s,%s,0.3)'%(int(i/max(rides_per_loc)*200), int(i/max(rides_per_loc)*255), int(100+i/max(rides_per_loc)*155)) for i in list(reversed(sorted(rides_per_loc.unique())))]
     
-    print("HERE6")
+    print("HERE1")
+    if lendf>0:
     # Define the data
-    data = [
-      go.Choroplethmapbox(geojson=city_locations, colorscale=color_range,
-                          z=rides_per_loc,
-                          locations=df_loc.dolocationid, featureidkey="properties.LocationID",
-                          hovertemplate = ['%s rides in neighborhoods'%i for i in rides_per_loc],
-                          text=["Rides"],
-                          name='',
-                          # showscale=False,
-                          ),
+      data = [
+        go.Choroplethmapbox(geojson=city_locations, colorscale=color_range,
+                            z=rides_per_loc,
+                            locations=df_loc.dolocationid, featureidkey="properties.LocationID",
+                            hovertemplate = ['%s rides in neighborhoods'%i for i in rides_per_loc],
+                            text=["Rides"],
+                            name='',
+                            # showscale=False,
+                            ),
 
-      go.Scattermapbox(
-      lat=lats_citibike,
-      lon=lons_citibike,
-      mode='markers', name='Citi Bike', 
-      marker={'color': 'Blue', 'size': 10, 'symbol': "bicycle"}, #bicycle-share-15, bicycle-11, bicycle-15
-      hovertemplate = ['Citi Bike' for i in range(len(lons_citibike))],
-      customdata=citibike_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
-      text=["Citi Bike"],
-      showlegend=False,
-      ), 
+        go.Scattermapbox(
+        lat=lats_citibike,
+        lon=lons_citibike,
+        mode='markers', name='Citi Bike', 
+        marker={'color': 'Blue', 'size': 10, 'symbol': "bicycle"}, #bicycle-share-15, bicycle-11, bicycle-15
+        hovertemplate = ['Citi Bike' for i in range(len(lons_citibike))],
+        customdata=citibike_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
+        text=["Citi Bike"],
+        showlegend=False,
+        ), 
 
-      go.Scattermapbox(
-      lat=lats_uber,
-      lon=lons_uber,
-      mode='markers', name='Uber', 
-      marker=go.scattermapbox.Marker(
-            size=10,
-            color='white',
-            opacity=1
+        go.Scattermapbox(
+        lat=lats_uber,
+        lon=lons_uber,
+        mode='markers', name='Uber', 
+        marker=go.scattermapbox.Marker(
+              size=10,
+              color='white',
+              opacity=1
+          ),
+        hovertemplate = ['Uber' for i in range(len(lons_uber))],
+        customdata=uber_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
+        text=["Uber"],
+        showlegend=False,
+        ), 
+
+        go.Scattermapbox(
+        lat=lats_lyft,
+        lon=lons_lyft,
+        mode='markers', name='Lyft', 
+        marker=go.scattermapbox.Marker(
+              size=10,
+              color='Magenta',
+              opacity=1
+          ),
+        hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
+        customdata=lyft_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
+        text=["Lyft"],
+        showlegend=False,
         ),
-      hovertemplate = ['Uber' for i in range(len(lons_uber))],
-      customdata=uber_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
-      text=["Uber"],
-      showlegend=False,
-      ), 
 
-      go.Scattermapbox(
-      lat=lats_lyft,
-      lon=lons_lyft,
-      mode='markers', name='Lyft', 
-      marker=go.scattermapbox.Marker(
-            size=10,
-            color='Magenta',
-            opacity=1
+        go.Scattermapbox(
+        lat=[lat],
+        lon=[lon],
+        mode='markers', name='You are here', 
+        marker=go.scattermapbox.Marker(
+              size=10,
+              color='red',
+              opacity=1
+          ),
+        hovertemplate = [input_value],
+        showlegend=False,
         ),
-      hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
-      customdata=lyft_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
-      text=["Lyft"],
-      showlegend=False,
-      ),
 
-      go.Scattermapbox(
-      lat=[lat],
-      lon=[lon],
-      mode='markers', name='You are here', 
-      marker=go.scattermapbox.Marker(
-            size=10,
-            color='red',
-            opacity=1
+        ]
+      else:
+      data = [
+        go.Scattermapbox(
+        lat=[lat],
+        lon=[lon],
+        mode='markers', name='You are here', 
+        marker=go.scattermapbox.Marker(
+              size=10,
+              color='red',
+              opacity=1
+          ),
+        hovertemplate = [input_value],
+        showlegend=False,
         ),
-      hovertemplate = [input_value],
-      showlegend=False,
-      ),
 
-      ]
+        ]
+    print("HERE7")
 
     # Define map layout
     layout = go.Layout(
@@ -299,7 +312,6 @@ def make_figure(n,input_value):
       clickmode='event',
       hovermode='closest'
     )
-    print("HERE7")
 
     # Return the map
     fig = go.Figure( data, layout)
