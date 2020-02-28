@@ -149,15 +149,13 @@ def make_figure(n,input_value):
   try:
     # Define number of rides found and a multiplication factor to extend search radius if necessary
     lendf=0
-    multi=1
+    radius=500
     # If no rides found, extend radius and keep looking
     while( lendf==0):
       # Save time window between now and window start
       now = datetime.utcnow()
       some_time_ago = now - timedelta(hours=0, minutes=0, seconds=20)
 
-      # Extend search radius
-      radius=500*multi
       # Static query
       # create_table_query = '''SELECT vendor_name, total_amt, trip_distance, end_lon, end_lat, dolocationid, ST_Distance(geom_end::geography, 'SRID=4326;POINT( %s %s )'::geography)
       # FROM ride_share_data ORDER BY ST_Distance(geom_end::geography, 'SRID=4326;POINT( %s %s )'::geography) ASC FETCH FIRST 10 ROWS ONLY;'''%(lon, lat, lon, lat)
@@ -172,9 +170,9 @@ def make_figure(n,input_value):
       # Save number of rides found
       lendf=len(df)
       
-      print(radius)
-      # Increase multiplication factor to increase search radius
-      multi=2
+      # Extend search radius
+      radius+=500
+      
       if radius>=2000:
         df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
     
