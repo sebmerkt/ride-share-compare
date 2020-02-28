@@ -73,12 +73,12 @@ app.layout = html.Div(
             **Ride information**
         """),
         html.Pre(id='click-data'),
-      ],  style={'width': '20%', 'display': 'inline-block', 'vertical-align': 'top'}),
+      ],  style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
       # Show the map
       html.Div([
-        dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
-      ], style={'width': '70%', 'display': 'inline-block'}),
+        dcc.Graph(id="graph", style={"width": "90%", "display": "inline-block"}),
+      ], style={'width': '75%', 'display': 'inline-block'}),
     ]),
   ]
 )
