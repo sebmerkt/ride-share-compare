@@ -279,7 +279,7 @@ def make_figure(n,input_value):
                    center=dict( lat=lat, lon=lon ),
                    zoom=12,
                   #  style=os.getenv("MAPBOX_STYLE") ),
-                   style="basic" ),
+                   style="streets" ),
       margin=dict(
           l=15,
           r=15,
