@@ -47,7 +47,9 @@ app = dash.Dash(
 app.layout = html.Div(
   [ 
     # Title
-    html.H1(" Ride-Share-Compare "),
+    html.H1(" Ride-Share-Compare ",
+            style={ 'textAlign': 'center',
+                   "background": "yellow"},)
 
     # Input field for address search
     html.P([
