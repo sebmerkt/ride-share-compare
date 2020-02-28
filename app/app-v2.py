@@ -220,7 +220,7 @@ def make_figure(n,input_value):
       lat=lats_citibike,
       lon=lons_citibike,
       mode='markers', name='Citi Bike', 
-      marker={'color': 'Gray', 'size': 10, 'symbol': "bicycle"}, #bicycle-share-15, bicycle-11, bicycle-15
+      marker={'color': 'blue', 'size': 10, 'symbol': "bicycle"}, #bicycle-share-15, bicycle-11, bicycle-15
       hovertemplate = ['Citi Bike' for i in range(len(lons_citibike))],
       customdata=citibike_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
       text=["Citi Bike"],
@@ -233,7 +233,7 @@ def make_figure(n,input_value):
       mode='markers', name='Uber', 
       marker=go.scattermapbox.Marker(
             size=10,
-            color='black',
+            color='white',
             opacity=1
         ),
       hovertemplate = ['Uber' for i in range(len(lons_uber))],
@@ -282,7 +282,8 @@ def make_figure(n,input_value):
                    center=dict( lat=lat, lon=lon ),
                    zoom=12,
                   #  style=os.getenv("MAPBOX_STYLE") ),
-                   style="streets" ),
+                  #  style="streets" ),
+                   style="black" ),
       margin=dict(
           l=15,
           r=15,
