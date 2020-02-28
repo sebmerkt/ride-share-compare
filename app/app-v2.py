@@ -75,7 +75,7 @@ app.layout = html.Div(
 
       # Show the map
       html.Div([
-        dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block", "background": "#FFFFFF"}),
+        dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block", "background": "#FF00FF"}),
       ], style={'width': '75%', 'display': 'inline-block'}),
     ]),
   ]
