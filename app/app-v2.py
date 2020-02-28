@@ -41,9 +41,9 @@ except (Exception, psycopg2.DatabaseError) as error:
     print(error)
 
 # Initialize app
-app = dash.Dash(
+app = dash.Dash( __name__ 
     # __name__, external_stylesheets=["https://codepen.io/chriddyp/pen/bWLwgP.css"]
-    __name__, external_stylesheets=["https://bootswatch.com/4/darkly/bootstrap.min.css"]
+    # __name__, external_stylesheets=["https://bootswatch.com/4/darkly/bootstrap.min.css"]
 )
 
 # Define the layout
