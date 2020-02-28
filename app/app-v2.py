@@ -40,7 +40,7 @@ except (Exception, psycopg2.DatabaseError) as error:
 
 # Initialize app
 app = dash.Dash( 
-    __name__, external_stylesheets=["/assets/spacelab.bootstrap.min.css"]
+    __name__, external_stylesheets=["/assets/darkly.bootstrap.css"]
 )
 
 # Define the layout
@@ -75,7 +75,7 @@ app.layout = html.Div(
 
       # Show the map
       html.Div([
-        dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
+        dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block", "background": "#FFFFFF"}),
       ], style={'width': '75%', 'display': 'inline-block'}),
     ]),
   ]
@@ -307,10 +307,10 @@ def make_figure(n,input_value):
                   #  style="streets" ),
                    style="dark" ),
       margin=dict(
-          l=0,
-          r=0,
-          b=0,
-          t=0
+          l=5,
+          r=5,
+          b=5,
+          t=5
         ),
       clickmode='event',
       hovermode='closest'
