@@ -169,10 +169,10 @@ def make_figure(n,input_value):
       
       # Save number of rides found
       lendf=len(df)
-      
+      print(radius)
       # Extend search radius
       radius+=500
-      
+
       if radius>=2000:
         df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
     
