@@ -169,7 +169,6 @@ def make_figure(n,input_value):
       
       # Save number of rides found
       lendf=len(df)
-      print(radius)
       # Extend search radius
       radius+=500
 
@@ -205,7 +204,6 @@ def make_figure(n,input_value):
     else:  
       color_range=['rgba(%s,%s,%s,0.3)'%(int(i/max(rides_per_loc)*200), int(i/max(rides_per_loc)*255), int(100+i/max(rides_per_loc)*155)) for i in list(reversed(sorted(rides_per_loc.unique())))]
     
-    print("HERE1")
     if lendf>0:
     # Define the data
       data = [
@@ -289,8 +287,7 @@ def make_figure(n,input_value):
         ),
 
       ]
-    print("HERE7")
-
+    
     # Define map layout
     layout = go.Layout(
       autosize=True,
@@ -299,7 +296,7 @@ def make_figure(n,input_value):
       # Center around user position
       mapbox=dict( accesstoken=token,
                    center=dict( lat=lat, lon=lon ),
-                   zoom=12,
+                  #  zoom=12,
                   #  style=os.getenv("MAPBOX_STYLE") ),
                   #  style="streets" ),
                    style="dark" ),
