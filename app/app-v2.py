@@ -174,7 +174,7 @@ def make_figure(n,input_value):
       
       # Increase multiplication factor to increase search radius
       multi=2
-      if multi==4:
+      if radius>=2000:
         df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
 
     # Import mapbox token
