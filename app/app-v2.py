@@ -99,41 +99,34 @@ def display_click_data(clickData):
   
   # Check if clickdata is empty
   if clickData:
-    print(clickData)
     try:
-      # if 'z' in clickData["points"][0]:
-      #   # num_lyft=clickData["points"][0]["customdata"][0]
-      #   # num_uber=clickData["points"][0]["customdata"][0]
-      #   print( clickData["points"][0])
-      #   return "There are %s Lyft rides and %s Uber rides in this neighborhood."%(num_lyft, num_uber)
-      # else:
-        if not "Citi" in clickData["points"][0]["customdata"][3]:
-          # Create output string
-          ret = "" 
+      if not "Citi" in clickData["points"][0]["customdata"][3]:
+        # Create output string
+        ret = "" 
 
-          # Check if trip distance is greater zero
-          if clickData["points"][0]["customdata"][1] >0 and clickData["points"][0]["customdata"][0]>0:
-            # calculate ride fare per distance
-            fare_per_dist = "$ "+str( round( clickData["points"][0]["customdata"][0]/clickData["points"][0]["customdata"][1], decimals=2 ) )
-          else:
-            # If distance is zero, not value can be displayed
-            fare_per_dist = "not available"
-
-          if "CMT" in clickData["points"][0]["customdata"][3] or "1" in clickData["points"][0]["customdata"][3]:
-            ride_type = "Lyft"
-          else:
-            ride_type = "Uber"
-          
-          # Return the ride info
-          ret+="Ride type: %s"%( ride_type )
-          
-          ret+="\nExpected fare per km: %s "%( fare_per_dist )
-          
-          ret+="\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
-          
-          return ret
+        # Check if trip distance is greater zero
+        if clickData["points"][0]["customdata"][1] >0 and clickData["points"][0]["customdata"][0]>0:
+          # calculate ride fare per distance
+          fare_per_dist = "$ "+str( round( clickData["points"][0]["customdata"][0]/clickData["points"][0]["customdata"][1], decimals=2 ) )
         else:
-          return "Ride type: Citi Bike\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
+          # If distance is zero, not value can be displayed
+          fare_per_dist = "not available"
+
+        if "CMT" in clickData["points"][0]["customdata"][3] or "1" in clickData["points"][0]["customdata"][3]:
+          ride_type = "Lyft"
+        else:
+          ride_type = "Uber"
+        
+        # Return the ride info
+        ret+="Ride type: %s"%( ride_type )
+        
+        ret+="\nExpected fare per km: %s "%( fare_per_dist )
+        
+        ret+="\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
+        
+        return ret
+      else:
+        return "Ride type: Citi Bike\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
     except:
       # If data is not accessible, do nothing
       return "Please select a ride"
@@ -217,9 +210,7 @@ def make_figure(n,input_value):
       color_range=['rgba(0,0,100,0.3)']
     else:  
       color_range=['rgba(%s,%s,%s,0.3)'%(int(i/max(rides_per_loc)*200), int(i/max(rides_per_loc)*255), int(100+i/max(rides_per_loc)*155)) for i in list(reversed(sorted(rides_per_loc.unique())))]
-
-    print(df_loc)
-    print(get_num_rides(df_loc))
+    
     pd.DataFrame(df_loc)
     # Define the data
     data = [
@@ -289,7 +280,7 @@ def make_figure(n,input_value):
     layout = go.Layout(
       autosize=True,
       # width=1000,
-      # height=450, 
+      height=600, 
       # Center around user position
       mapbox=dict( accesstoken=token, center=dict( lat=lat, lon=lon ), zoom=12, style=os.getenv("MAPBOX_STYLE") ),
       margin=dict(
