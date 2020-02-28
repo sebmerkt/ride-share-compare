@@ -180,6 +180,7 @@ def make_figure(n,input_value):
     # Import mapbox token
     px.set_mapbox_access_token(token)
 
+    print("HERE1")
     # Assign the data to each ride-share provider according to the vendor name:
     lyft_data = df[ (df["vendor_name"].str.contains("CMT")) | (df["vendor_name"].str.contains("1")) ]
     df_lyft_new = lyft_data[lyft_data.dolocationid.astype("float")>0]
@@ -187,25 +188,29 @@ def make_figure(n,input_value):
     lats_lyft = df_lyft_old["end_lat"]
     lons_lyft = df_lyft_old["end_lon"]
 
+    print("HERE2")
     uber_data = df[ (df["vendor_name"].str.contains("VTS")) | (df["vendor_name"].str.contains("2")) ]
     df_uber_new = uber_data[uber_data.dolocationid.astype("float")>0]
     df_uber_old = uber_data[(uber_data.dolocationid.isna()) | (uber_data.dolocationid.astype("float")==0)]
     lats_uber = df_uber_old["end_lat"]
     lons_uber = df_uber_old["end_lon"]
 
+    print("HERE3")
     citibike_data = df[ df["vendor_name"].str.contains("Citi") ]
     lats_citibike = citibike_data["end_lat"]
     lons_citibike = citibike_data["end_lon"]
 
+    print("HERE4")
     df_loc=df_lyft_new.append(df_uber_new)
     rides_per_loc=df_loc.groupby("dolocationid")["dolocationid"].transform("count")
 
+    print("HERE5")
     if rides_per_loc.max() - rides_per_loc.min() == 0:
       color_range=['rgba(0,0,100,0.3)']
     else:  
       color_range=['rgba(%s,%s,%s,0.3)'%(int(i/max(rides_per_loc)*200), int(i/max(rides_per_loc)*255), int(100+i/max(rides_per_loc)*155)) for i in list(reversed(sorted(rides_per_loc.unique())))]
     
-    pd.DataFrame(df_loc)
+    print("HERE6")
     # Define the data
     data = [
       go.Choroplethmapbox(geojson=city_locations, colorscale=color_range,
@@ -294,6 +299,7 @@ def make_figure(n,input_value):
       clickmode='event',
       hovermode='closest'
     )
+    print("HERE7")
 
     # Return the map
     fig = go.Figure( data, layout)
