@@ -49,7 +49,7 @@ app.layout = html.Div(
     # Title
     html.H1(" Ride-Share-Compare ",
             style={ 'textAlign': 'center',
-                   "background": "yellow"},)
+                   "background": "yellow"},),
 
     # Input field for address search
     html.P([
