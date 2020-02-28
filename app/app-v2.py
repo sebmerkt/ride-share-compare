@@ -28,19 +28,6 @@ with open('./taxi_zones.geojson') as zones:
 # Import the mapbox token
 token = open(os.getenv("MAPBOX_TOKEN")).read()
 
-class ZoomLevel:
-
-  def __init__(self, new_zl=12):
-    self.zoom_level = new_zl
-
-  def set_zoom_level(new_zl):
-    self.zoom_level = new_zl
-
-  def get_zoom_level():
-    return self.zoom_level
-
-zl = ZoomLevel()
-
 # connect to database
 try:
   connection = psycopg2.connect(user = os.getenv("DB_USER"),
@@ -52,9 +39,9 @@ except (Exception, psycopg2.DatabaseError) as error:
     print(error)
 
 # Initialize app
-app = dash.Dash( __name__ 
+app = dash.Dash( 
     # __name__, external_stylesheets=["https://codepen.io/chriddyp/pen/bWLwgP.css"]
-    # __name__, external_stylesheets=["https://bootswatch.com/4/darkly/bootstrap.min.css"]
+    __name__, external_stylesheets=["https://bootswatch.com/4/darkly/bootstrap.min.css"]
 )
 
 # Define the layout
