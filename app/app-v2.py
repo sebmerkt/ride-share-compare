@@ -192,7 +192,7 @@ def make_figure(n,input_value):
         zoomlevel = 7
 
       if radius>4000:
-       zoomlevel = 13
+        zoomlevel = 13
         df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
         break
       
