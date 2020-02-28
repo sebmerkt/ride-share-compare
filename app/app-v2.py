@@ -25,10 +25,21 @@ import json
 with open('./taxi_zones.geojson') as zones:
     city_locations = json.load(zones)
 
-
-
 # Import the mapbox token
 token = open(os.getenv("MAPBOX_TOKEN")).read()
+
+class ZoomLevel:
+
+  def __init__(self, new_zl=12):
+    self.zoom_level = new_zl
+
+  def set_zoom_level(new_zl):
+    self.zoom_level = new_zl
+
+  def get_zoom_level():
+    return self.zoom_level
+
+zl = ZoomLevel()
 
 # connect to database
 try:
@@ -149,7 +160,7 @@ def make_figure(n,input_value):
   try:
     # Define number of rides found and a multiplication factor to extend search radius if necessary
     lendf=0
-    radius=500
+    radius=300
     # If no rides found, extend radius and keep looking
     while( lendf==0):
       # Save time window between now and window start
@@ -170,9 +181,18 @@ def make_figure(n,input_value):
       # Save number of rides found
       lendf=len(df)
       # Extend search radius
-      radius+=500
+      radius+=300
+      if radius<=600:
+        zl.set_zoom_level(13)
+      elif radius<=1200:
+        zl.set_zoom_level(11)
+      elif radius<=3400:
+        zl.set_zoom_level(9)
+      else:
+        zl.set_zoom_level(7)
 
       if radius>4000:
+        zl.set_zoom_level(13)
         df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
         break
     
@@ -296,7 +316,7 @@ def make_figure(n,input_value):
       # Center around user position
       mapbox=dict( accesstoken=token,
                    center=dict( lat=lat, lon=lon ),
-                  #  zoom=12,
+                   zoom=zl.get_zoom_level(),
                   #  style=os.getenv("MAPBOX_STYLE") ),
                   #  style="streets" ),
                    style="dark" ),
