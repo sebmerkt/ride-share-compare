@@ -233,7 +233,7 @@ def make_figure(n,input_value):
       mode='markers', name='Uber', 
       marker=go.scattermapbox.Marker(
             size=10,
-            color='white',
+            color='black',
             opacity=1
         ),
       hovertemplate = ['Uber' for i in range(len(lons_uber))],
