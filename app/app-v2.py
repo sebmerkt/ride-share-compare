@@ -42,14 +42,14 @@ except (Exception, psycopg2.DatabaseError) as error:
 app = dash.Dash( 
     # __name__, external_stylesheets=["https://codepen.io/chriddyp/pen/bWLwgP.css"]
     # __name__, external_stylesheets=["https://bootswatch.com/4/darkly/bootstrap.min.css"]
-    __name__, external_stylesheets=["/assets/darly.bootstrap.css"]
+    __name__, external_stylesheets=["/assets/darkly.bootstrap.css"]
 )
 
 # Define the layout
 app.layout = html.Div(
   [ 
     # Title
-    html.H1(" **Ride-Share-Compare** "),
+    html.H1("Ride-Share-Compare"),
 
     # Input field for address search
     html.P([
