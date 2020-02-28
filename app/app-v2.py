@@ -222,6 +222,7 @@ def make_figure(n,input_value):
                           text=["Rides"],
                           # showscale=True,
                           name=''
+                          legendgroup="choroleth",
                           ),
 
       go.Scattermapbox(
@@ -232,7 +233,7 @@ def make_figure(n,input_value):
       hovertemplate = ['Citi Bike' for i in range(len(lons_citibike))],
       customdata=citibike_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
       text=["Citi Bike"],
-      showscale=False,
+      legendgroup="scatter",
       ), 
 
       go.Scattermapbox(
@@ -247,7 +248,7 @@ def make_figure(n,input_value):
       hovertemplate = ['Uber' for i in range(len(lons_uber))],
       customdata=uber_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
       text=["Uber"],
-      showscale=False,
+      legendgroup="scatter",
       ), 
 
       go.Scattermapbox(
@@ -262,7 +263,7 @@ def make_figure(n,input_value):
       hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
       customdata=lyft_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
       text=["Lyft"],
-      showscale=False,
+      legendgroup="scatter",
       ),
 
       go.Scattermapbox(
@@ -275,7 +276,7 @@ def make_figure(n,input_value):
             opacity=1
         ),
       hovertemplate = [input_value],
-      showscale=False,
+      legendgroup="scatter",
       ),
 
       ]
