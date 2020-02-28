@@ -47,11 +47,11 @@ app = dash.Dash(
 app.layout = html.Div(
   [ 
     # Title
-    html.H1("Ride-Share-Compare"),
+    html.H1(" Ride-Share-Compare"),
 
     # Input field for address search
     html.P([
-      html.B("Enter your pickup location:  "),
+      html.B(" Enter your pickup location:  "),
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text'),
         ]),
 
