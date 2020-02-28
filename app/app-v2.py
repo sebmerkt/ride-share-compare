@@ -55,7 +55,7 @@ app.layout = html.Div(
     html.P([
       html.B(" Enter your pickup location:  "),
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text'),
-        ]
+        ],
         style={ 'textAlign': 'left',
                 "background": "yellow"},),
 
