@@ -277,9 +277,9 @@ def make_figure(n,input_value):
       # Center around user position
       mapbox=dict( accesstoken=token,
                    center=dict( lat=lat, lon=lon ),
-                   zoom=12,
+                   zoom=12,)
                   #  style=os.getenv("MAPBOX_STYLE") ),
-                   style="streets" ),
+                  #  style="streets" ),
       margin=dict(
           l=15,
           r=15,
