@@ -213,7 +213,7 @@ def make_figure(n,input_value):
                           hovertemplate = ['%s rides in neighborhoods'%i for i in rides_per_loc],
                           text=["Rides"],
                           name='',
-                          # showscale=False,
+                          showscale=False,
                           ),
 
       go.Scattermapbox(
