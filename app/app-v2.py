@@ -49,7 +49,7 @@ app = dash.Dash(
 app.layout = html.Div(
   [ 
     # Title
-    html.H1(dcc.Markdown(" **Ride-Share-Compare** ")),
+    html.H1(" **Ride-Share-Compare** "),
 
     # Input field for address search
     html.P([
@@ -309,10 +309,10 @@ def make_figure(n,input_value):
                   #  style="streets" ),
                    style="dark" ),
       margin=dict(
-          l=15,
-          r=15,
-          b=15,
-          t=20
+          l=0,
+          r=0,
+          b=0,
+          t=0
         ),
       clickmode='event',
       hovermode='closest'
