@@ -221,7 +221,7 @@ def make_figure(n,input_value):
                           # custom_data=get_num_rides(df_loc),
                           text=["Rides"],
                           # showscale=True,
-                          name=''
+                          name='',
                           legendgroup="choroleth",
                           ),
 
