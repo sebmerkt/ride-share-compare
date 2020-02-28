@@ -223,6 +223,7 @@ def make_figure(n,input_value):
                           # showscale=True,
                           name='',
                           legendgroup="scatter",
+                          showlegend=False,
                           ),
 
       go.Scattermapbox(
@@ -234,6 +235,7 @@ def make_figure(n,input_value):
       customdata=citibike_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
       text=["Citi Bike"],
       legendgroup="scatter",
+
       ), 
 
       go.Scattermapbox(
