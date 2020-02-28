@@ -173,7 +173,7 @@ def make_figure(n,input_value):
       # Extend search radius
       radius+=500
 
-      if radius>=2000:
+      if radius>4000:
         df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
         break
     
