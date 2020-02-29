@@ -57,7 +57,7 @@ app.layout = html.Div(
       html.B(" Enter your pickup location:  "),
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', style={ 'textAlign': 'left',
                     'color': '#B58900', "background": "#333432"}),
-        html.Button('Click Me', id='button'),
+        html.Button('Update', id='button', style={'color': '#B58900'}),
         ],
         style={ 'textAlign': 'left',
                     'color': '#B58900',
