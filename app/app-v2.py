@@ -230,65 +230,65 @@ def make_figure(n_interval, n_clicks, input_value):
         go.Choroplethmapbox(geojson=city_locations, colorscale=color_range,
                             z=rides_per_loc,
                             locations=df_loc.dolocationid, featureidkey="properties.LocationID",
-                            # hovertemplate = ['%s rides in neighborhood'%i for i in rides_per_loc],
+                            hovertemplate = ['%s rides in neighborhood'%i for i in rides_per_loc],
                             text=["Rides"],
                             name='',
                             # showscale=False,
                             ),
 
-        go.Scattermapbox(
-        lat=lats_citibike,
-        lon=lons_citibike,
-        mode='markers', name='Citi Bike', 
-        marker={'color': 'Blue', 'size': 10, 'symbol': "bicycle"}, #bicycle-share-15, bicycle-11, bicycle-15
-        hovertemplate = ['Citi Bike' for i in range(len(lons_citibike))],
-        customdata=citibike_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
-        text=["Citi Bike"],
-        showlegend=False,
-        ), 
+        # go.Scattermapbox(
+        # lat=lats_citibike,
+        # lon=lons_citibike,
+        # mode='markers', name='Citi Bike', 
+        # marker={'color': 'Blue', 'size': 10, 'symbol': "bicycle"}, #bicycle-share-15, bicycle-11, bicycle-15
+        # hovertemplate = ['Citi Bike' for i in range(len(lons_citibike))],
+        # customdata=citibike_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
+        # text=["Citi Bike"],
+        # showlegend=False,
+        # ), 
 
-        go.Scattermapbox(
-        lat=lats_uber,
-        lon=lons_uber,
-        mode='markers', name='Uber', 
-        marker=go.scattermapbox.Marker(
-              size=10,
-              color='white',
-              opacity=1
-          ),
-        hovertemplate = ['Uber' for i in range(len(lons_uber))],
-        customdata=uber_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
-        text=["Uber"],
-        showlegend=False,
-        ), 
+        # go.Scattermapbox(
+        # lat=lats_uber,
+        # lon=lons_uber,
+        # mode='markers', name='Uber', 
+        # marker=go.scattermapbox.Marker(
+        #       size=10,
+        #       color='white',
+        #       opacity=1
+        #   ),
+        # hovertemplate = ['Uber' for i in range(len(lons_uber))],
+        # customdata=uber_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
+        # text=["Uber"],
+        # showlegend=False,
+        # ), 
 
-        go.Scattermapbox(
-        lat=lats_lyft,
-        lon=lons_lyft,
-        mode='markers', name='Lyft', 
-        marker=go.scattermapbox.Marker(
-              size=10,
-              color='Magenta',
-              opacity=1
-          ),
-        hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
-        customdata=lyft_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
-        text=["Lyft"],
-        showlegend=False,
-        ),
+        # go.Scattermapbox(
+        # lat=lats_lyft,
+        # lon=lons_lyft,
+        # mode='markers', name='Lyft', 
+        # marker=go.scattermapbox.Marker(
+        #       size=10,
+        #       color='Magenta',
+        #       opacity=1
+        #   ),
+        # hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
+        # customdata=lyft_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
+        # text=["Lyft"],
+        # showlegend=False,
+        # ),
 
-        go.Scattermapbox(
-        lat=[lat],
-        lon=[lon],
-        mode='markers', name='You are here', 
-        marker=go.scattermapbox.Marker(
-              size=10,
-              color='red',
-              opacity=1
-          ),
-        hovertemplate = [input_value],
-        showlegend=False,
-        ),
+        # go.Scattermapbox(
+        # lat=[lat],
+        # lon=[lon],
+        # mode='markers', name='You are here', 
+        # marker=go.scattermapbox.Marker(
+        #       size=10,
+        #       color='red',
+        #       opacity=1
+        #   ),
+        # hovertemplate = [input_value],
+        # showlegend=False,
+        # ),
 
       ]
     else:
