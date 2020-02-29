@@ -42,6 +42,7 @@ except (Exception, psycopg2.DatabaseError) as error:
 app = dash.Dash( 
     __name__, external_stylesheets=["/assets/solar.bootstrap.css"]
 )
+app.scripts.config.serve_locally = True
 
 # Define the layout
 app.layout = html.Div(
@@ -56,8 +57,7 @@ app.layout = html.Div(
     html.P([
       html.B(" Enter your pickup location:  "),
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', style={ 'textAlign': 'left',
-                    'color': '#B58900',
-               "background": "#333432"}),
+                    'color': '#B58900', "background": "#333432"}),
         ],
         style={ 'textAlign': 'left',
                     'color': '#B58900',
