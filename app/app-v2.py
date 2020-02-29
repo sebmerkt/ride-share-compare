@@ -160,9 +160,11 @@ def make_figure(n_interval, n_clicks, input_value):
   try:
     # Define number of rides found and a multiplication factor to extend search radius if necessary
     lendf=0
-    radius=300
+    radius=0
     # If no rides found, extend radius and keep looking
     while( lendf==0):
+      radius+=300
+
       # Save time window between now and window start
       now = datetime.utcnow()
       some_time_ago = now - timedelta(hours=0, minutes=0, seconds=20)
@@ -190,7 +192,6 @@ def make_figure(n_interval, n_clicks, input_value):
       else:
         zoomlevel = 7
         
-      radius+=300
 
       if radius>4000:
         zoomlevel = 13
