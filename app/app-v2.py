@@ -131,7 +131,7 @@ def display_click_data(clickData):
         
         return ret
       else:
-        return " Ride type: Citi Bike\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
+        return " Ride type: Citi Bike\n Distance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
     except:
       # If data is not accessible, do nothing
       return " Please select a ride"
@@ -219,15 +219,12 @@ def make_figure(n_interval, n_clicks, input_value):
     df_loc=df_lyft_new.append(df_uber_new)
     rides_per_loc=df_loc.groupby("dolocationid")["dolocationid"].transform("count")
 
-    print(len(df_loc))
-    print(df_loc)
     if lendf>0:
       # Define color scale
       if len(rides_per_loc.unique())>1:
         color_range=['rgba(%s,%s,%s,0.3)'%(int(i/max(rides_per_loc)*200), int(i/max(rides_per_loc)*255), int(100+i/max(rides_per_loc)*155)) for i in list(reversed(sorted(rides_per_loc.unique())))]
       else:
         color_range=['rgba(200,255,255,0.3)','rgba(100,127,177,0.3)']
-      print(color_range)
 
       # Define the data
       data = [
@@ -332,6 +329,8 @@ def make_figure(n_interval, n_clicks, input_value):
         ),
       clickmode='event',
       hovermode='closest',
+      paper_bgcolor='rgba(0,0,0,0)',
+      plot_bgcolor='rgba(0,0,0,0)'
     )
 
     # Return the map
