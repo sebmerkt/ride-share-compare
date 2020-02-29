@@ -187,19 +187,19 @@ def make_figure(n_interval, n_clicks, input_value):
       # Adjust zoom level to distance of the rides to the user location
       if largest_distance<=700:
         zoomlevel = 14
-      elif largest_distance<=2000:
+      elif largest_distance<=2000 and largest_distance>700:
         zoomlevel = 13
-      elif largest_distance<=10000:
+      elif largest_distance<=10000 and largest_distance>2000:
         zoomlevel = 12
-      elif largest_distance<=15000:
+      elif largest_distance<=15000 and largest_distance>10000:
         zoomlevel = 11
-      elif largest_distance<=20000:
+      elif largest_distance<=20000 and largest_distance>15000:
         zoomlevel = 10
       else:
-        zoomlevel = 7
+        zoomlevel = 9
 
-      if largest_distance>25000:
-        zoomlevel = 13
+      if largest_distance>30000:
+        zoomlevel = 14
         df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
         break
     
