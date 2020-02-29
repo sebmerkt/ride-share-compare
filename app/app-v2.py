@@ -187,18 +187,18 @@ def make_figure(n_interval, n_clicks, input_value):
         zoomlevel = 14
       elif largest_distance<=1500:
         zoomlevel = 13
-      elif largest_distance<=5000:
+      elif largest_distance<=4000:
         zoomlevel = 12
-      elif largest_distance<=10000:
+      elif largest_distance<=8000:
         zoomlevel = 11
-      elif largest_distance<=15000:
+      elif largest_distance<=12000:
         zoomlevel = 10
       else:
         zoomlevel = 7
       print("Current zl: "+str(zoomlevel))
 
-      if largest_distance>20000:
-        zoomlevel = 13
+      if largest_distance>15000:
+        zoomlevel = 14
         df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
         break
     print(largest_distance)
