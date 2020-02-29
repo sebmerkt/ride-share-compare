@@ -323,7 +323,7 @@ def make_figure(n_interval, n_clicks, input_value):
           t=5
         ),
       clickmode='event',
-      hovermode='closest'
+      hovermode='closest',
       style={'background': '#119dff'}
     )
 
