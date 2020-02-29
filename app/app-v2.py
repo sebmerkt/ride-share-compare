@@ -83,7 +83,7 @@ app.layout = html.Div(
             **Ride information**
         """),
         html.Pre(id='click-data', style={'color': colors['plotly_blue']}),
-      ],  style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top'}),
+      ],  style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top', 'padding': '10'}),
 
       # Show the map
       html.Div([
