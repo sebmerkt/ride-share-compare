@@ -61,7 +61,7 @@ app.layout = html.Div(
       html.B(" Enter your pickup location:  "),
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', style={ 'textAlign': 'left',
                     'color': colors['plotly_blue'], "background": "#333432"}),
-        html.Button('Update', id='button', style={'color': colors['plotly_blue']}),
+        html.Button('Update', id='button', style={'color': colors['plotly_blue'], 'padding': '10'}),
         ],
         style={ 'textAlign': 'left',
                     'color': colors['plotly_blue'],
@@ -81,9 +81,9 @@ app.layout = html.Div(
       html.Div([
         dcc.Markdown("""
             **Ride information**
-        """),
-        html.Pre(id='click-data', style={'color': colors['plotly_blue']}),
-      ],  style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top', 'padding': '10'}),
+        """, style={'padding': '10'}),
+        html.Pre(id='click-data', style={'color': colors['plotly_blue', 'padding': '10']}),
+      ],  style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
       # Show the map
       html.Div([
