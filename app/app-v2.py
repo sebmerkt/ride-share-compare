@@ -324,7 +324,6 @@ def make_figure(n_interval, n_clicks, input_value):
         ),
       clickmode='event',
       hovermode='closest',
-      style={'background': '#119dff'}
     )
 
     # Return the map
