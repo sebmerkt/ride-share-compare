@@ -58,7 +58,7 @@ app.layout = html.Div(
 
     # Input field for address search
     html.P([
-      html.B("\tEnter your pickup location:  "),
+      html.Pre("Enter your pickup location:  "),
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', style={ 'textAlign': 'left',
                     'color': colors['plotly_blue'], "background": "#333432"}),
         html.Button('Update', id='button', style={'color': colors['plotly_blue']}),
@@ -80,7 +80,7 @@ app.layout = html.Div(
       # Information about individual rides
       html.Div([
         dcc.Markdown("""
-            \t**Ride information**
+            **Ride information**
         """),
         html.Pre(id='click-data', style={'color': colors['plotly_blue']}),
       ],  style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top'}),
