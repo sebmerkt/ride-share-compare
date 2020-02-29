@@ -191,9 +191,9 @@ def make_figure(n_interval, n_clicks, input_value):
         zoomlevel = 9
       else:
         zoomlevel = 7
-        
+      print("Current zl: "+str(zoomlevel))
 
-      if radius>4000:
+      if radius>6000:
         zoomlevel = 13
         df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
         break
