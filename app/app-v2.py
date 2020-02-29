@@ -87,7 +87,7 @@ app.layout = html.Div(
 
       # Show the map
       html.Div([
-        dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
+        dcc.Graph(id="graph", config={'editable': True}, style={"width": "100%", "display": "inline-block"}),
       ], style={'width': '75%', 'display': 'inline-block'}),
     ],
     style={ "background": "#333432", 'color': colors['plotly_blue'],},
@@ -336,6 +336,8 @@ def make_figure(n_interval, n_clicks, input_value):
         color=colors['plotly_blue']
     )
     )
+
+    config={'displayModeBar': True}
 
     # Return the map
     fig = go.Figure( data, layout)
