@@ -43,24 +43,28 @@ app = dash.Dash(
     __name__, external_stylesheets=["/assets/bootstrap.css"]
 )
 
+colors = { 'plotly_blue': '#119dff',
+           'yellow': '#B58900'
+}
+
 # Define the layout
 app.layout = html.Div(
   [ 
     # Title
     html.H1(" Ride-Share-Compare ",
             style={ 'textAlign': 'center',
-                    'color': '#B58900',
+                    'color': colors['plotly_blue'],
                    "background": "#333432"},),
 
     # Input field for address search
     html.P([
       html.B(" Enter your pickup location:  "),
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', style={ 'textAlign': 'left',
-                    'color': '#B58900', "background": "#333432"}),
-        html.Button('Update', id='button', style={'color': '#B58900'}),
+                    'color': colors['plotly_blue'], "background": "#333432"}),
+        html.Button('Update', id='button', style={'color': colors['plotly_blue']}),
         ],
         style={ 'textAlign': 'left',
-                    'color': '#B58900',
+                    'color': colors['plotly_blue'],
                "background": "#333432"},),
 
     # Automatically refresh map to get up-to-date ride data
@@ -78,7 +82,7 @@ app.layout = html.Div(
         dcc.Markdown("""
             **Ride information**
         """),
-        html.Pre(id='click-data', style={'color': '#B58900'}),
+        html.Pre(id='click-data', style={'color': colors['plotly_blue']}),
       ],  style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
       # Show the map
@@ -86,7 +90,7 @@ app.layout = html.Div(
         dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
       ], style={'width': '75%', 'display': 'inline-block'}),
     ],
-    style={ "background": "#333432", 'color': '#B58900',},
+    style={ "background": "#333432", 'color': colors['plotly_blue'],},
     ),
   ],style={ "background": "#191a1a"},
 )
