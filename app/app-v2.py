@@ -58,10 +58,10 @@ app.layout = html.Div(
 
     # Input field for address search
     html.P([
-      html.B(" Enter your pickup location:  "),
+      html.B("\tEnter your pickup location:  "),
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', style={ 'textAlign': 'left',
                     'color': colors['plotly_blue'], "background": "#333432"}),
-        html.Button('Update', id='button', style={'color': colors['plotly_blue'], 'padding': '10'}),
+        html.Button('Update', id='button', style={'color': colors['plotly_blue']}),
         ],
         style={ 'textAlign': 'left',
                     'color': colors['plotly_blue'],
@@ -80,9 +80,9 @@ app.layout = html.Div(
       # Information about individual rides
       html.Div([
         dcc.Markdown("""
-            **Ride information**
-        """, style={'padding': '10'}),
-        html.Pre(id='click-data', style={'color': colors['plotly_blue'], 'padding': '10'}),
+            \t**Ride information**
+        """),
+        html.Pre(id='click-data', style={'color': colors['plotly_blue']}),
       ],  style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
       # Show the map
@@ -123,21 +123,21 @@ def display_click_data(clickData):
           ride_type = "Uber"
         
         # Return the ride info
-        ret+="Ride type: %s"%( ride_type )
+        ret+=" Ride type: %s"%( ride_type )
         
-        ret+="\nExpected fare per km: %s "%( fare_per_dist )
+        ret+="\n Expected fare per km: %s "%( fare_per_dist )
         
-        ret+="\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
+        ret+="\n Distance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
         
         return ret
       else:
-        return "Ride type: Citi Bike\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
+        return " Ride type: Citi Bike\nDistance from your location: %s km"%( round( clickData["points"][0]["customdata"][2]/1000, decimals=2 ) )
     except:
       # If data is not accessible, do nothing
-      return "Please select a ride"
+      return " Please select a ride"
   else:
     # If ride data does not exist, do nothing
-    return "Please select a ride"
+    return " Please select a ride"
 
 
 # Draw the map if 1) refresh signal received 2) New user position is entered
