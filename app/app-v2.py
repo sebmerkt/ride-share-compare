@@ -90,7 +90,7 @@ app.layout = html.Div(
         dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
       ], style={'width': '75%', 'display': 'inline-block'}),
     ],
-    style={ "background": "#333432", 'color': colors['yellow'],},
+    style={ "background": "#333432", 'color': colors['plotly_blue'],},
     ),
   ],style={ "background": "#191a1a"},
 )
@@ -330,7 +330,12 @@ def make_figure(n_interval, n_clicks, input_value):
       clickmode='event',
       hovermode='closest',
       paper_bgcolor='rgba(0,0,0,0)',
-      plot_bgcolor='rgba(0,0,0,0)'
+      plot_bgcolor='rgba(0,0,0,0)',
+      font=dict(
+        family="Courier New, monospace",
+        size=18,
+        color="#7f7f7f"
+    )
     )
 
     # Return the map
