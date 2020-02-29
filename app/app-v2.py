@@ -57,6 +57,7 @@ app.layout = html.Div(
       html.B(" Enter your pickup location:  "),
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', style={ 'textAlign': 'left',
                     'color': '#B58900', "background": "#333432"}),
+        html.Button('Click Me', id='button'),
         ],
         style={ 'textAlign': 'left',
                     'color': '#B58900',
@@ -136,8 +137,8 @@ def display_click_data(clickData):
 
 # Draw the map if 1) refresh signal received 2) New user position is entered
 @app.callback(Output('graph', 'figure'),
-              [Input('interval-component', 'n_intervals'),Input(component_id='my-id', component_property='value')])
-def make_figure(n,input_value):
+              [Input('interval-component', 'n_intervals'),Input('button', 'n_clicks')],state=[State(component_id='my-id', component_property='value')])
+def make_figure(n_interval, n_clicks, input_value):
   
   # Translate address to geographical coordinates
   g = geocoder.osm(input_value)
