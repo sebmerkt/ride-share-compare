@@ -181,7 +181,6 @@ def make_figure(n_interval, n_clicks, input_value):
       # Save number of rides found
       lendf=len(df)
       # Extend search radius
-      radius+=300
       if radius<=600:
         zoomlevel = 13
       elif radius<=1200:
@@ -190,6 +189,8 @@ def make_figure(n_interval, n_clicks, input_value):
         zoomlevel = 9
       else:
         zoomlevel = 7
+        
+      radius+=300
 
       if radius>4000:
         zoomlevel = 13
