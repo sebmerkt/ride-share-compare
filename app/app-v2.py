@@ -195,7 +195,8 @@ def make_figure(n_interval, n_clicks, input_value):
         zoomlevel = 13
         df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
         break
-      
+    print(radius)
+    print(zoomlevel)  
     # Import mapbox token
     px.set_mapbox_access_token(token)
 
