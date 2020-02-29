@@ -87,7 +87,7 @@ app.layout = html.Div(
 
       # Show the map
       html.Div([
-        dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block", 'color': colors['plotly_blue'], "background": "#333432"}),
+        dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
       ], style={'width': '75%', 'display': 'inline-block'}),
     ],
     style={ "background": "#333432", 'color': colors['plotly_blue'],},
@@ -234,7 +234,7 @@ def make_figure(n_interval, n_clicks, input_value):
         go.Choroplethmapbox(geojson=city_locations, colorscale=color_range, #"Blues"
                             z=rides_per_loc,
                             locations=df_loc.dolocationid, featureidkey="properties.LocationID",
-                            hovertemplate = ['%s ride(s) in neighborhood'%i for i in rides_per_loc],
+                            hovertemplate = ['%s rides in neighborhood'%i if i>1 else '%s ride in neighborhood'%i for i in rides_per_loc],
                             text=["Rides"],
                             name='',
                             showscale=False,
