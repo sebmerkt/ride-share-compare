@@ -82,7 +82,7 @@ app.layout = html.Div(
         dcc.Markdown("""
             **Ride information**
         """, style={'padding': '10'}),
-        html.Pre(id='click-data', style={'color': colors['plotly_blue', 'padding': '10']}),
+        html.Pre(id='click-data', style={'color': colors['plotly_blue'], 'padding': '10'}),
       ],  style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
       # Show the map
