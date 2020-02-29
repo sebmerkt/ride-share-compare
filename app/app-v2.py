@@ -219,6 +219,8 @@ def make_figure(n_interval, n_clicks, input_value):
     df_loc=df_lyft_new.append(df_uber_new)
     rides_per_loc=df_loc.groupby("dolocationid")["dolocationid"].transform("count")
 
+    print(len(df_loc))
+    print(df_loc)
     if len(df_loc)==0:
       color_range="Blues"
     else:  
