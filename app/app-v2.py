@@ -105,6 +105,7 @@ def display_click_data(clickData):
   # Check if clickdata is empty
   if clickData:
     try:
+      # Decide if Bike of car
       if not "Citi" in clickData["points"][0]["customdata"][3]:
         # Create output string
         ret = "" 
@@ -117,6 +118,7 @@ def display_click_data(clickData):
           # If distance is zero, not value can be displayed
           fare_per_dist = "not available"
 
+        # Decide if Lyft or Uber
         if "CMT" in clickData["points"][0]["customdata"][3] or "1" in clickData["points"][0]["customdata"][3]:
           ride_type = "Lyft"
         else:
@@ -167,7 +169,7 @@ def make_figure(n_interval, n_clicks, input_value):
       now = datetime.utcnow()
       some_time_ago = now - timedelta(hours=0, minutes=0, seconds=20)
 
-      # Static query
+      # Static query for testing
       # create_table_query = '''SELECT vendor_name, total_amt, trip_distance, end_lon, end_lat, dolocationid, ST_Distance(geom_end::geography, 'SRID=4326;POINT( %s %s )'::geography)
       # FROM ride_share_data ORDER BY ST_Distance(geom_end::geography, 'SRID=4326;POINT( %s %s )'::geography) ASC FETCH FIRST 10 ROWS ONLY;'''%(lon, lat, lon, lat)
 
@@ -182,10 +184,10 @@ def make_figure(n_interval, n_clicks, input_value):
       
       # Save number of rides found
       lendf=len(df)
-      # Adjust zoom level to ditance of the rides to the user location
+      # Adjust zoom level to distance of the rides to the user location
       if largest_distance<=700:
         zoomlevel = 14
-      elif largest_distance<=200:
+      elif largest_distance<=2000:
         zoomlevel = 13
       elif largest_distance<=10000:
         zoomlevel = 12
@@ -195,14 +197,12 @@ def make_figure(n_interval, n_clicks, input_value):
         zoomlevel = 10
       else:
         zoomlevel = 7
-      print("Current zl: "+str(zoomlevel))
 
       if largest_distance>25000:
         zoomlevel = 13
         df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
         break
-    print(largest_distance)
-    print(zoomlevel)  
+    
     # Import mapbox token
     px.set_mapbox_access_token(token)
 
@@ -223,11 +223,12 @@ def make_figure(n_interval, n_clicks, input_value):
     lats_citibike = citibike_data["end_lat"]
     lons_citibike = citibike_data["end_lon"]
 
+    # Get the number of rides per location ID
     df_loc=df_lyft_new.append(df_uber_new)
     rides_per_loc=df_loc.groupby("dolocationid")["dolocationid"].transform("count")
 
     if lendf>0:
-      # Define color scale
+      # Define color scale for the ride locations IDs
       if len(rides_per_loc.unique())>1:
         color_range=['rgba(%s,%s,%s,0.3)'%(int(i/max(rides_per_loc)*200), int(i/max(rides_per_loc)*255), int(100+i/max(rides_per_loc)*155)) for i in list(reversed(sorted(rides_per_loc.unique())))]
       else:
@@ -235,7 +236,7 @@ def make_figure(n_interval, n_clicks, input_value):
 
       # Define the data
       data = [
-        go.Choroplethmapbox(geojson=city_locations, colorscale=color_range, #"Blues"
+        go.Choroplethmapbox(geojson=city_locations, colorscale=color_range,
                             z=rides_per_loc,
                             locations=df_loc.dolocationid, featureidkey="properties.LocationID",
                             hovertemplate = ['%s rides in neighborhood'%i if i>1 else '%s ride in neighborhood'%i for i in rides_per_loc],
@@ -248,7 +249,7 @@ def make_figure(n_interval, n_clicks, input_value):
         lat=lats_citibike,
         lon=lons_citibike,
         mode='markers', name='Citi Bike', 
-        marker={'color': 'Blue', 'size': 10, 'symbol': "bicycle"}, #bicycle-share-15, bicycle-11, bicycle-15
+        marker={'color': 'Blue', 'size': 10, 'symbol': "bicycle"},
         hovertemplate = ['Citi Bike' for i in range(len(lons_citibike))],
         customdata=citibike_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
         text=["Citi Bike"],
