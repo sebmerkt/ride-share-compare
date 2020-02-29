@@ -160,11 +160,9 @@ def make_figure(n_interval, n_clicks, input_value):
   try:
     # Define number of rides found and a multiplication factor to extend search radius if necessary
     lendf=0
-    radius=0
+    largest_distance=0
     # If no rides found, extend radius and keep looking
     while( lendf==0):
-      radius+=300
-
       # Save time window between now and window start
       now = datetime.utcnow()
       some_time_ago = now - timedelta(hours=0, minutes=0, seconds=20)
@@ -179,25 +177,27 @@ def make_figure(n_interval, n_clicks, input_value):
 
       # fetch data from PostGIS and save in pandas dataframe
       df = pd.read_sql_query(create_table_query, connection)
+
+      largest_distance=df.st_distance.max()
       
       # Save number of rides found
       lendf=len(df)
-      # Extend search radius
-      if radius<=600:
+      # Adjust zoom level to ditance of the rides to the user location
+      if largest_distance<=700:
         zoomlevel = 13
-      elif radius<=1200:
+      elif largest_distance<=1000:
         zoomlevel = 11
-      elif radius<=3400:
+      elif largest_distance<=1500:
         zoomlevel = 9
       else:
         zoomlevel = 7
       print("Current zl: "+str(zoomlevel))
 
-      if radius>6000:
+      if largest_distance>6000:
         zoomlevel = 13
         df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
         break
-    print(radius)
+    print(largest_distance)
     print(zoomlevel)  
     # Import mapbox token
     px.set_mapbox_access_token(token)
