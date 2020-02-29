@@ -223,15 +223,18 @@ def make_figure(n_interval, n_clicks, input_value):
     print(df_loc)
     if lendf>0:
       # Define color scale
-      color_range=['rgba(%s,%s,%s,0.3)'%(int(i/max(rides_per_loc)*200), int(i/max(rides_per_loc)*255), int(100+i/max(rides_per_loc)*155)) for i in list(reversed(sorted(rides_per_loc.unique())))]
+      if (rides_per_loc.unique()>1:
+        color_range=['rgba(%s,%s,%s,0.3)'%(int(i/max(rides_per_loc)*200), int(i/max(rides_per_loc)*255), int(100+i/max(rides_per_loc)*155)) for i in list(reversed(sorted(rides_per_loc.unique())))]
+      else:
+        color_range=['rgba(200,255,255,0.3)','rgba(100,127,177,0.3)']
       print(color_range)
 
       # Define the data
       data = [
-        go.Choroplethmapbox(geojson=city_locations, colorscale="Blues",#color_range,
+        go.Choroplethmapbox(geojson=city_locations, colorscale=color_range, #"Blues"
                             z=rides_per_loc,
                             locations=df_loc.dolocationid, featureidkey="properties.LocationID",
-                            hovertemplate = ['%s rides in neighborhood'%i for i in rides_per_loc],
+                            hovertemplate = ['%s ride(s) in neighborhood'%i for i in rides_per_loc],
                             text=["Rides"],
                             name='',
                             # showscale=False,
