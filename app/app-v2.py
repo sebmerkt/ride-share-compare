@@ -49,7 +49,7 @@ app.layout = html.Div(
     # Title
     html.H1(" Ride-Share-Compare ",
             style={ 'textAlign': 'center',
-                    'color': 'yellow',
+                    'color': '#B58900',
                    "background": "#333432"},),
 
     # Input field for address search
@@ -58,7 +58,7 @@ app.layout = html.Div(
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text'),
         ],
         style={ 'textAlign': 'left',
-                    'color': 'yellow',
+                    'color': '#B58900',
                "background": "#333432"},),
 
     # Automatically refresh map to get up-to-date ride data
