@@ -90,7 +90,7 @@ app.layout = html.Div(
         dcc.Graph(id="graph", style={"width": "100%", "display": "inline-block"}),
       ], style={'width': '75%', 'display': 'inline-block'}),
     ],
-    style={ "background": "#333432", 'color': colors['plotly_blue'],},
+    style={ "background": "#333432", 'color': colors['yellow'],},
     ),
   ],style={ "background": "#191a1a"},
 )
