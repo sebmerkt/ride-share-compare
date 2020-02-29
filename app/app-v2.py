@@ -42,7 +42,6 @@ except (Exception, psycopg2.DatabaseError) as error:
 app = dash.Dash( 
     __name__, external_stylesheets=["/assets/darkly.bootstrap.css"]
 )
-app.scripts.config.serve_locally = True
 
 # Define the layout
 app.layout = html.Div(
