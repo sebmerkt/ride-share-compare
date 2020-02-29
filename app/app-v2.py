@@ -224,18 +224,17 @@ def make_figure(n_interval, n_clicks, input_value):
     else:  
       color_range=['rgba(%s,%s,%s,0.3)'%(int(i/max(rides_per_loc)*200), int(i/max(rides_per_loc)*255), int(100+i/max(rides_per_loc)*155)) for i in list(reversed(sorted(rides_per_loc.unique())))]
     
-    print("HERE1")
     if lendf>0:
     # Define the data
       data = [
-        # go.Choroplethmapbox(geojson=city_locations, colorscale=color_range,
-        #                     z=rides_per_loc,
-        #                     locations=df_loc.dolocationid, featureidkey="properties.LocationID",
-        #                     hovertemplate = ['%s rides in neighborhood'%i for i in rides_per_loc],
-        #                     text=["Rides"],
-        #                     name='',
-        #                     # showscale=False,
-        #                     ),
+        go.Choroplethmapbox(geojson=city_locations, colorscale=color_range,
+                            z=rides_per_loc,
+                            locations=df_loc.dolocationid, featureidkey="properties.LocationID",
+                            # hovertemplate = ['%s rides in neighborhood'%i for i in rides_per_loc],
+                            text=["Rides"],
+                            name='',
+                            # showscale=False,
+                            ),
 
         go.Scattermapbox(
         lat=lats_citibike,
@@ -309,7 +308,6 @@ def make_figure(n_interval, n_clicks, input_value):
 
       ]
     
-    print("HERE2")
     # Define map layout
     layout = go.Layout(
       autosize=True,
