@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
 public abstract class RideShareProducerBase <Ride> {
 
     // Input topic
-    static String TOPIC = "ride-share-input-test7";
+    static String TOPIC = "ride-share-input-test8";
 
     // Define kafka producer and basic accessors
     KafkaProducer<String, Ride> producer = null;

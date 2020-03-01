@@ -25,7 +25,7 @@ import java.util.Properties;
 abstract public class RideShareConsumerBase {
 
     // output topic
-    static final String TOPIC = "ride-share-output-test7";
+    static final String TOPIC = "ride-share-output-test8";
 
     // get environment variables
     static Map<String, String> env = System.getenv();
@@ -53,7 +53,7 @@ abstract public class RideShareConsumerBase {
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
                 brokerDNS1 + ":9092," + brokerDNS2 + ":9092," + brokerDNS3 + ":9092," + brokerDNS4 + ":9092");
         // consumer group ID
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, "rides-test7");
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, "rides-test8");
         // Consume from earliest offset
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         // Point to schema registry
