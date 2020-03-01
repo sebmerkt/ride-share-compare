@@ -28,8 +28,8 @@ import java.util.Properties;
 
 public abstract class RideShareStreamerBase {
 
-    static final String TOPICIN = "ride-share-input";
-    static final String TOPICOUT = "ride-share-output";
+    static final String TOPICIN = "ride-share-input-test7";
+    static final String TOPICOUT = "ride-share-output-test7";
 
     void processStream() {
         StreamsConfig config = initConfig();
@@ -71,7 +71,7 @@ public abstract class RideShareStreamerBase {
 
         Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "ride-share-stream-processing");
-        props.put(StreamsConfig.CLIENT_ID_CONFIG, "rides");
+        props.put(StreamsConfig.CLIENT_ID_CONFIG, "rides-test7");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, brokerDNS1 + ":9092," + brokerDNS2 + ":9092,"
                 + brokerDNS3 + ":9092," + brokerDNS4 + ":9092");
         props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, schemaUrl);
