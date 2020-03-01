@@ -284,7 +284,7 @@ def make_figure(n_interval, n_clicks, input_value):
         mode='markers', name='Lyft', 
         marker=go.scattermapbox.Marker(
               size=10,
-              color=colors['Lyft],
+              color=colors['Lyft'],
               opacity=1
           ),
         hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
