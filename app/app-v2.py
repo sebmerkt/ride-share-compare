@@ -255,7 +255,7 @@ def make_figure(n_interval, n_clicks, input_value):
         lon=lons_citibike,
         mode='markers', name='Citi Bike', 
         # marker={'color': colors['CitiBike'], 'size': 10, 'symbol': "bicycle"},
-        marker_symbol='bicycle'
+        marker_symbol='bicycle',
         marker_color=colors['CitiBike'],
         # marker_line_color="lightskyblue",
         hovertemplate = ['Citi Bike' for i in range(len(lons_citibike))],
