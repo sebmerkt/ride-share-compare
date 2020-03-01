@@ -48,7 +48,7 @@ colors = { 'plotly_blue': '#119dff',
            'UserLocation': '#E6E600',
            'Lyft': 'Magenta',
            'Uber': 'white',
-           'CitiBike': 'Blue'
+           'CitiBike': '#0066ff'
 
 }
 
@@ -254,7 +254,10 @@ def make_figure(n_interval, n_clicks, input_value):
         lat=lats_citibike,
         lon=lons_citibike,
         mode='markers', name='Citi Bike', 
-        marker={'color': colors['CitiBike'], 'size': 10, 'symbol': "bicycle"},
+        # marker={'color': colors['CitiBike'], 'size': 10, 'symbol': "bicycle"},
+        marker_symbol='bicycle'
+        marker_color=colors['CitiBike'],
+        # marker_line_color="lightskyblue",
         hovertemplate = ['Citi Bike' for i in range(len(lons_citibike))],
         customdata=citibike_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
         text=["Citi Bike"],
