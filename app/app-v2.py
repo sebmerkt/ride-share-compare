@@ -43,8 +43,13 @@ app = dash.Dash(
     __name__, external_stylesheets=["/assets/bootstrap.css"]
 )
 
+# Define colors
 colors = { 'plotly_blue': '#119dff',
-           'yellow': '#B58900'
+           'UserLocation': '#B58900',
+           'Lyft': 'Magenta',
+           'Uber': 'white',
+           'CitiBike': 'Blue'
+
 }
 
 # Define the layout
@@ -249,7 +254,9 @@ def make_figure(n_interval, n_clicks, input_value):
         lat=lats_citibike,
         lon=lons_citibike,
         mode='markers', name='Citi Bike', 
-        marker={'color': 'Blue', 'size': 10, 'symbol': "bicycle"},
+        marker={'color': colors['CitiBike'], 'size': 10, 'symbol': "bicycle"},
+        marker_color=colors['CitiBike'],
+        marker_line_color="lightskyblue",
         hovertemplate = ['Citi Bike' for i in range(len(lons_citibike))],
         customdata=citibike_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
         text=["Citi Bike"],
@@ -262,7 +269,7 @@ def make_figure(n_interval, n_clicks, input_value):
         mode='markers', name='Uber', 
         marker=go.scattermapbox.Marker(
               size=10,
-              color='white',
+              color=colors['Uber'],
               opacity=1
           ),
         hovertemplate = ['Uber' for i in range(len(lons_uber))],
@@ -277,7 +284,7 @@ def make_figure(n_interval, n_clicks, input_value):
         mode='markers', name='Lyft', 
         marker=go.scattermapbox.Marker(
               size=10,
-              color='Magenta',
+              color=colors['Lyft],
               opacity=1
           ),
         hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
@@ -292,7 +299,7 @@ def make_figure(n_interval, n_clicks, input_value):
         mode='markers', name='You are here', 
         marker=go.scattermapbox.Marker(
               size=10,
-              color='red',
+              color=colors['UserLocation'],
               opacity=1
           ),
         hovertemplate = [input_value],
@@ -308,7 +315,7 @@ def make_figure(n_interval, n_clicks, input_value):
         mode='markers', name='You are here', 
         marker=go.scattermapbox.Marker(
               size=10,
-              color='red',
+              color=colors['UserLocation'],
               opacity=1
           ),
         hovertemplate = [input_value],
