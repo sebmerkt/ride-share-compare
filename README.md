@@ -60,12 +60,19 @@ Run the Dash application
 
 ## Introduction
 
-Ride-share providers like Lyft and Uber are getting more and more popular. As their popularity increases, so does the number of available ride-share providers. Ride-share users want to be able to compare different providers according to their cirrent needs. Whether they need their ride to arrive fast or be cheap, Ride-Share-Compare will give users all the information to make an informated choice.
+Ride-share providers like Lyft and Uber are getting more and more popular. As their popularity increases, so does the number of available ride-share providers. Ride-share users want to be able to compare different providers according to their current needs. Whether they need their ride to arrive fast or be cheap, Ride-Share-Compare will give users all the information to make an informated choice. 
 
+![User interface](/images/application.png "Application")
+
+The Ride-Share-Compare user interface allows the user the enter their pickup location. The cosest available rides are then dispayed around the user's location. Selecting individual rides shows additional information about the expected fare per distance and the distance of the ride from the user's location.
+
+Early NYC taxi data provided the taxi location in the form of geographical coordinates. Therefore, these rides are displayed as points on the map. Newer taxi data only provides a location ID that corresponds to a neighborhood. Therefore, for the newer taxi data, instead of showing a point on the map, the neighborhood is is highlighted and a mouse-over reveals the number of available rides in that neighborhood.
+
+Further, Citi Bike data is displayed as bicycles on the map. The locations correspond to the location of the bike station where the bike has been dropped off.
 
 ## Architecture
 
-![alt text](/images/pipeline.png "Pipeline")
+![Data pipeline](/images/pipeline.png "Pipeline")
 
 The data resides in a Amazon S3 bucket from where it is streamed into Apache Kafka. A Confluent Kafka cluster is set up on 4 Amazon EC2 nodes. The cluster consists of 4 Zookeepers and Kafka Brokers. In additiona, a schema registry is configured that handles the evolution of the data schema. Avro is chosen as a serialization format to work with the schema registry.
 
