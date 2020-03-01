@@ -75,7 +75,7 @@ app.layout = html.Div(
     # Automatically refresh map to get up-to-date ride data
     dcc.Interval(
       id='interval-component',
-      interval=3*1000, # in milliseconds
+      interval=4*1000, # in milliseconds
       n_intervals=0
     ),
 
