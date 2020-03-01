@@ -45,7 +45,7 @@ app = dash.Dash(
 
 # Define colors
 colors = { 'plotly_blue': '#119dff',
-           'UserLocation': '#B58900',
+           'UserLocation': '#E6E600',
            'Lyft': 'Magenta',
            'Uber': 'white',
            'CitiBike': 'Blue'
