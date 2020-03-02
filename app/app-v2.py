@@ -254,7 +254,7 @@ def make_figure(n_interval, n_clicks, input_value):
         lat=lats_citibike,
         lon=lons_citibike,
         mode='markers', name='Citi Bike', 
-        marker={'color': colors['CitiBike'], 'size': 11, 'symbol': "bicycle"},
+        marker={'color': colors['CitiBike'], 'size': 12, 'symbol': "bicycle"},
         line_color="lightskyblue",
         hovertemplate = ['Citi Bike' for i in range(len(lons_citibike))],
         customdata=citibike_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
@@ -267,7 +267,7 @@ def make_figure(n_interval, n_clicks, input_value):
         lon=lons_uber,
         mode='markers', name='Uber', 
         marker=go.scattermapbox.Marker(
-              size=10,
+              size=11,
               color=colors['Uber'],
               opacity=1
           ),
@@ -282,7 +282,7 @@ def make_figure(n_interval, n_clicks, input_value):
         lon=lons_lyft,
         mode='markers', name='Lyft', 
         marker=go.scattermapbox.Marker(
-              size=10,
+              size=11,
               color=colors['Lyft'],
               opacity=1
           ),
@@ -297,7 +297,7 @@ def make_figure(n_interval, n_clicks, input_value):
         lon=[lon],
         mode='markers', name='You are here', 
         marker=go.scattermapbox.Marker(
-              size=10,
+              size=11,
               color=colors['UserLocation'],
               opacity=1
           ),
@@ -313,7 +313,7 @@ def make_figure(n_interval, n_clicks, input_value):
         lon=[lon],
         mode='markers', name='You are here', 
         marker=go.scattermapbox.Marker(
-              size=10,
+              size=11,
               color=colors['UserLocation'],
               opacity=1
           ),
