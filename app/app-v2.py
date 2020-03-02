@@ -75,7 +75,7 @@ app.layout = html.Div(
     # Automatically refresh map to get up-to-date ride data
     dcc.Interval(
       id='interval-component',
-      interval=4*1000, # in milliseconds
+      interval=6*1000, # in milliseconds
       n_intervals=0
     ),
 
@@ -207,7 +207,9 @@ def make_figure(n_interval, n_clicks, input_value):
         zoomlevel = 14
         df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
         break
-      
+    print(zoomlevel)
+    print(largest_distance)
+    print( " ")
     # Import mapbox token
     px.set_mapbox_access_token(token)
 
