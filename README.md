@@ -43,18 +43,27 @@ Run the consumer
 
 ```java -jar RideShareConsumer/target/RideShareConsumerV<version>.jar```
 
+To get started, a script that runs a few producers ingesting different ride-share data as well as the respective consumers and stream processing apps can be found in
+
+```./helpers/start_pipeline.sh```
+
+Make sure to update the input data location. Use the script
+
+```./helpers/stop_pipeline.sh```
+
+to stop the pipeline.
 
 ### Database
 
 Install PostGIS on one of the nodes. Create the required table in PostGIS by running 
 
-```./rolling_deployment/create_database.py```
+```./helpers/create_database.py```
 
 ### Dash
 
 Run the Dash application
 
-```./app.py```
+```./app/app.py```
 
 <hr/>
 
@@ -101,7 +110,7 @@ Trade-off had to be made in storing the incoming data. One PostGIS database is u
 
 ## Rolling deployment
 
-The Kafka java applications can be started and stopped when desired. New versions of the applications can be started at any time. A script that simulates schema evolution by subsequently running new versions of the producers, consumers and stream processors can be found in `rolling_deployment`. Before running the script, a clean database table should be created
+The Kafka java applications can be started and stopped when desired. New versions of the applications can be started at any time. A script that simulates schema evolution by subsequently running new versions of the producers, consumers and stream processors can be found in `rolling_deployment/`. Before running the script, a clean database table should be created
 
 ```./rolling_deployment/create_database.py```
 
@@ -109,5 +118,5 @@ Afterwards,schema evolution can be simulated by running
 
 ```./run_rolling_deployment.sh```
 
-The script also evolves the database to accommodate the evolving data.
+The script also evolves the database to accommodate the evolving schema. Sample data with the proper schema versions can be found in `rolling_deployment/sample_data/`.
 
