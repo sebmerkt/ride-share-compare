@@ -5,7 +5,7 @@ LOG_DIR="/home/"$USER"/log_rsc/"
 mkdir -p $LOG_DIR
 
 # Define input files
-INPUT_FILE=( "/home/$USER/nyc-taxi-rideshare/schema_evolution_data/yellow_tripdata_2009-01_V1_full.csv" "/home/$USER/nyc-taxi-rideshare/schema_evolution_data/yellow_tripdata_2009-02_V2_full.csv" "/home/$USER/nyc-taxi-rideshare/schema_evolution_data/yellow_tripdata_2009-03_V3_full.csv" "/home/$USER/nyc-taxi-rideshare/trip_data/yellow_tripdata_2015-04.csv" "/home/$USER/nyc-taxi-rideshare/schema_evolution_data/yellow_tripdata_2017-01_V5_full.csv" )
+INPUT_FILE=( "rolling_deployment/sample_data/yellow_tripdata_2009-01_V1.csv" "rolling_deployment/sample_data/yellow_tripdata_2009-01_V2.csv" "rolling_deployment/sample_data/yellow_tripdata_2009-01_V3.csv" "rolling_deployment/sample_data/yellow_tripdata_2009-01_V4.csv" "rolling_deployment/sample_data/yellow_tripdata_2017-01_V5.csv" )
 
 # List to store PIDs
 declare -n PIDS="PID$i"
@@ -100,7 +100,7 @@ echo "Bike consumer V1 running with PID $!"
 
 cd $SCRIPT_DIR"/../Kafka/RideShareProducer/target/"
 
-BIKE_DATA="/home/$USER/nyc-taxi-rideshare/schema_evolution_data/202001-citibike-tripdata.csv"
+BIKE_DATA="rolling_deployment/sample_data/202001-citibike-tripdata_V1.csv"
 
 nohup java -jar BikeShareProducerV1.jar "$BIKE_DATA" > "$LOG_DIR/BikeShareProducerV1.log" 2>&1 &  PIDS+=( "$!" )
 echo "Bike producer V1 running with PID $!"
