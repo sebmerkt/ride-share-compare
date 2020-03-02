@@ -190,9 +190,9 @@ def make_figure(n_interval, n_clicks, input_value):
       # Save number of rides found
       lendf=len(df)
       # Adjust zoom level to distance of the rides to the user location
-      if largest_distance<=1000:
+      if largest_distance<=1200:
         zoomlevel = 14
-      elif largest_distance<=2000 and largest_distance>1000:
+      elif largest_distance<=2000 and largest_distance>1200:
         zoomlevel = 13
       elif largest_distance<=10000 and largest_distance>2000:
         zoomlevel = 12
