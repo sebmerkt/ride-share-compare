@@ -112,7 +112,7 @@ Trade-off had to be made in storing the incoming data. One PostGIS database is u
 
 The Kafka java applications can be started and stopped when desired. New versions of the applications can be started at any time. A script that simulates schema evolution by subsequently running new versions of the producers, consumers and stream processors can be found in `rolling_deployment/`. Before running the script, a clean database table should be created
 
-```./rolling_deployment/create_database.py```
+```./rolling_deployment/create_minimal_database.py```
 
 Afterwards,schema evolution can be simulated by running
 
