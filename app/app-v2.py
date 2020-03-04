@@ -80,12 +80,11 @@ app.layout = html.Div(
     html.P([
       html.B("Enter your pickup location:  "),
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', style={ 'textAlign': 'left',
-                    'color': colors['plotly_blue'], "background": colors['background']}),
+                    'color': colors['plotly_blue']}),
         html.Button('Update', id='button', className='btn', style={'color': colors['plotly_blue']}),
         ],
         style={ 'textAlign': 'left',
-                    'color': colors['plotly_blue'],
-               "background": colors['background']},),
+                    'color': colors['plotly_blue']},),
 
     # Automatically refresh map to get up-to-date ride data
     dcc.Interval(
@@ -216,7 +215,6 @@ def make_figure(n_interval, n_clicks, input_value):
       zoomlevel = 10
     else:
       zoomlevel = 9
-    print("HERE")
     
     # Import mapbox token
     px.set_mapbox_access_token(token)
