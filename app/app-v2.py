@@ -100,7 +100,7 @@ app.layout = html.Div(
         html.Pre(id='click-data'),
       ],  className="card text-white bg-primary mb-3", style={'width': '20%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
-      html.Div(style={'width': '4%', 'display': 'inline-block', 'vertical-align': 'top'})
+      html.Div(style={'width': '4%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
       # Show the map
       html.Div([
