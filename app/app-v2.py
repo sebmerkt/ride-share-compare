@@ -48,7 +48,7 @@ colors = { 'plotly_blue': '#119dff',
            'UserLocation': '#E6E600',
            'Lyft': 'Magenta',
            'Uber': 'white',
-           'CitiBike': '#0066ff'
+           'CitiBike': '#0066ff',
            'background': '#e6e6e6' # dark: #333432
 }
 
