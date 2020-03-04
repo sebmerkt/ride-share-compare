@@ -339,7 +339,7 @@ def make_figure(n_interval, n_clicks, input_value):
   layout = go.Layout(
     autosize=True,
     # width=1000,
-    height=900, 
+    height=700, 
     # Center around user position
     mapbox=dict( accesstoken=token,
                   center=dict( lat=lat, lon=lon ),
