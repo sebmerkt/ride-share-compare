@@ -96,7 +96,9 @@ app.layout = html.Div(
 
       # Information about individual rides
       html.Div([
-        html.Div(text="Ride information", className="card-header"),
+        dcc.Markdown("""
+            **Ride information**
+        """, className="card-header"),
         html.Pre(id='click-data', style={'color': colors['plotly_blue']}),
       ],  style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
