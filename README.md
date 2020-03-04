@@ -63,7 +63,7 @@ Install PostGIS on one of the nodes. Create the required table in PostGIS by run
 
 Run the Dash application
 
-```./app/app.py```
+```./app/app-v2.py```
 
 <hr/>
 
