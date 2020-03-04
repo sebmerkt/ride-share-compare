@@ -50,6 +50,13 @@
           box-sizing: border-box;
 }
 
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 50%; */
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;

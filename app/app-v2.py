@@ -73,7 +73,7 @@ image_name = '/static/ride-share-compare-logo.png'
 app.layout = html.Div(
   [ 
     # Logo
-    html.Img(src=image_name, style={'vertical-align': 'center'}),
+    html.Img(src=image_name, className='center'),
 
     # Input field for address search
     html.Div(className='row', style={"margin-left": "10px", 'horizontal-align': 'center', 'vertical-align': 'center'}, children=[
