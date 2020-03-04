@@ -99,17 +99,16 @@ app.layout = html.Div(
         dcc.Markdown("""
             **Ride information**
         """, className="card-header"),
-        html.Pre(id='click-data', style={'color': colors['plotly_blue']}),
+        html.Pre(id='click-data'}),
       ],  className="card text-white bg-primary mb-3", style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
       # Show the map
       html.Div([
         dcc.Graph(id="graph", config={'displayModeBar': False}, style={"width": "100%", "display": "inline-block"}),
-      ], style={'width': '75%', 'display': 'inline-block'}),
+      ], className="card text-white bg-primary mb-3", style={'width': '75%', 'display': 'inline-block'}),
     ],
-    style={ "background": colors['background'], 'color': colors['plotly_blue'],},
     ),
-  ],style={ "background": "#ffffff"},
+  ],
 )
 
 
