@@ -71,8 +71,10 @@ colors = { 'plotly_blue': '#119dff',
 app.layout = html.Div(
   [ 
     # Title
-    html.H1(" Ride-Share-Compare ", className='h1',
-            style={ 'textAlign': 'center',},),
+    # html.H1(" Ride-Share-Compare ", className='h1',
+    #         style={ 'textAlign': 'center',},),
+
+    html.Img(src='ride-share-compare-logo.png')
 
     # Input field for address search
     html.Div(className='row', style={"margin-left": "10px", 'horizontal-align': 'center', 'vertical-align': 'center'}, children=[
