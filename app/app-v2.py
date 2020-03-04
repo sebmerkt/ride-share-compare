@@ -217,7 +217,7 @@ def make_figure(n_interval, n_clicks, input_value):
         zoomlevel = 10
       else:
         zoomlevel = 9
-
+      print("HERE")
       # if largest_distance==0:
       #   zoomlevel = 14
         # df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
