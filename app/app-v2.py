@@ -75,14 +75,15 @@ app.layout = html.Div(
             style={ 'textAlign': 'center',},),
 
     # Input field for address search
-    html.P([
+    html.Div(className='row', children=[
       html.B("Enter your pickup location:  "),
+
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', className='form-inline', style={ 'textAlign': 'left'}),
         html.Button('Update', id='button', className='btn btn-primary'),
         ],
         style={ 'textAlign': 'left',
                   'display': 'inline-block',
-                    'color': colors['plotly_blue']},),
+                    'color': colors['plotly_blue']},]),
 
     # Automatically refresh map to get up-to-date ride data
     dcc.Interval(
