@@ -79,7 +79,7 @@ app.layout = html.Div(
     # Input field for address search
     html.P([
       html.B("Enter your pickup location:  "),
-        dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', className='form-inline my-2 mr-sm-2' style={ 'textAlign': 'left',
+        dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', className='form-inline my-2 mr-sm-2', style={ 'textAlign': 'left',
                     'color': colors['plotly_blue']}),
         html.Button('Update', id='button', className='btn btn-primary'),
         ],
