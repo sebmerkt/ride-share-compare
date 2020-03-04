@@ -90,7 +90,7 @@ app.layout = html.Div(
     ),
 
     # Page layout
-    html.Div(className='row', style={"margin-top": "10px"}, children=[
+    html.Div(className='row', style={"margin-top": "10px", 'horizontal-align': 'center'}, children=[
 
       # Information about individual rides
       html.Div([
@@ -104,8 +104,8 @@ app.layout = html.Div(
 
       # Show the map
       html.Div([
-        dcc.Graph(id="graph", config={'displayModeBar': False}, style={"width": "95%", "display": "inline-block"}),
-      ], className="card text-white bg-primary mb-3", style={'width': '76%', 'display': 'inline-block', 'horizontal-align': 'center'}),
+        dcc.Graph(id="graph", config={'displayModeBar': False}, style={"width": "100%", "display": "inline-block"}),
+      ], className="card text-white bg-primary mb-3", style={'width': '76%', 'display': 'inline-block'}),
     ],
     ),
   ],
