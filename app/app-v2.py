@@ -97,14 +97,14 @@ app.layout = html.Div(
         dcc.Markdown("""
             **Ride information**
         """, className="card-header"),
-        html.Pre(id='click-data'),
-      ],  className="card text-white bg-primary mb-3", style={'width': '23%', 'display': 'inline-block', 'vertical-align': 'top'}),
+        html.Pre(id='click-data', className="card text-white bg-primary mb-3"),
+      ], style={'width': '23%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
       html.Div(style={'width': '1%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
       # Show the map
       html.Div([
-        dcc.Graph(id="graph", className='card text-white bg-secondary mb-3', config={'displayModeBar': False}, style={"width": "100%", "display": "inline-block"}),
+        dcc.Graph(id="graph", config={'displayModeBar': False}, style={"width": "100%", "display": "inline-block"}),
       ], className="card text-white bg-primary mb-3", style={'width': '72%', 'display': 'inline-block'}),
     ],
     ),
@@ -346,10 +346,10 @@ def make_figure(n_interval, n_clicks, input_value):
                 #  style="streets" ),
                   style=map_mode ),
     margin=dict(
-        l=0,
-        r=0,
-        b=0,
-        t=0
+        l=5,
+        r=5,
+        b=5,
+        t=5
       ),
     clickmode='event',
     hovermode='closest',
