@@ -81,7 +81,7 @@ app.layout = html.Div(
       html.B("Enter your pickup location:  "),
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', style={ 'textAlign': 'left',
                     'color': colors['plotly_blue'], "background": colors['background']}),
-        html.Button('Update', id='btn', style={'color': colors['plotly_blue']}),
+        html.Btn('Update', id='button', style={'color': colors['plotly_blue']}),
         ],
         style={ 'textAlign': 'left',
                     'color': colors['plotly_blue'],
