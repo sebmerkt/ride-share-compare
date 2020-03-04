@@ -78,7 +78,7 @@ app.layout = html.Div(
     html.Div(className='row', children=[
       html.B("Enter your pickup location:  "),
 
-        dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', className='form-inline', style={ 'textAlign': 'left'}),
+        dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', className='form-inline', style={ 'textAlign': 'left', "margin-left": "10px", "margin-right": "10px"}),
         html.Button('Update', id='button', className='btn btn-primary'),
         ],),
 
@@ -98,7 +98,7 @@ app.layout = html.Div(
             **Ride information**
         """, className="card-header"),
         html.Pre(id='click-data'),
-      ],  className="card text-white bg-primary mb-3", style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top'}),
+      ],  className="card text-white bg-primary mb-3", style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top', "margin-right": "10px"}),
 
       # Show the map
       html.Div([
