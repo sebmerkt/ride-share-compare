@@ -49,7 +49,7 @@ colors = { 'plotly_blue': '#119dff',
            'Lyft': 'Magenta',
            'Uber': 'white',
            'CitiBike': '#0066ff'
-
+           'background': '#e6e6e6' # dark: #333432
 }
 
 # Define the layout
@@ -59,18 +59,18 @@ app.layout = html.Div(
     html.H1(" Ride-Share-Compare ",
             style={ 'textAlign': 'center',
                     'color': colors['plotly_blue'],
-                   "background": "#333432"},),
+                   "background": colors['background']},),
 
     # Input field for address search
     html.P([
       html.B("Enter your pickup location:  "),
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', style={ 'textAlign': 'left',
-                    'color': colors['plotly_blue'], "background": "#333432"}),
+                    'color': colors['plotly_blue'], "background": colors['background']}),
         html.Button('Update', id='button', style={'color': colors['plotly_blue']}),
         ],
         style={ 'textAlign': 'left',
                     'color': colors['plotly_blue'],
-               "background": "#333432"},),
+               "background": colors['background']},),
 
     # Automatically refresh map to get up-to-date ride data
     dcc.Interval(
@@ -95,9 +95,9 @@ app.layout = html.Div(
         dcc.Graph(id="graph", config={'displayModeBar': False}, style={"width": "100%", "display": "inline-block"}),
       ], style={'width': '75%', 'display': 'inline-block'}),
     ],
-    style={ "background": "#333432", 'color': colors['plotly_blue'],},
+    style={ "background": colors['background'], 'color': colors['plotly_blue'],},
     ),
-  ],style={ "background": "#191a1a"},
+  ],style={ "background": "#ffffff"},
 )
 
 
