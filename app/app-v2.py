@@ -104,8 +104,8 @@ app.layout = html.Div(
 
       # Show the map
       html.Div([
-        dcc.Graph(id="graph", config={'displayModeBar': False}, style={"width": "100%", "display": "inline-block"}),
-      ], className="card text-white bg-primary mb-3", style={'width': '76%', 'display': 'inline-block'}),
+        dcc.Graph(id="graph", config={'displayModeBar': False}, style={"width": "95%", "display": "inline-block"}),
+      ], className="card text-white bg-primary mb-3", style={'width': '76%', 'display': 'inline-block', 'horizontal-align': 'center'}),
     ],
     ),
   ],
