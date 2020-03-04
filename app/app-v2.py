@@ -77,7 +77,7 @@ app.layout = html.Div(
 
     # Input field for address search
     html.Div(className='row', style={"margin-left": "10px", 'horizontal-align': 'center', 'vertical-align': 'center'}, children=[
-      html.B("Enter your pickup location:  ", style={'vertical-align': 'center'}),
+      html.B("Enter your pickup location:  ", style={'vertical-align': 'center', 'horizontal-align': 'center'}),
         # Address input
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', className='form-inline', style={ 'textAlign': 'left', "margin-left": "10px", "margin-right": "10px"}),
         # Geocode button
