@@ -80,17 +80,13 @@ app.layout = html.Div(
 
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', className='form-inline', style={ 'textAlign': 'left'}),
         html.Button('Update', id='button', className='btn btn-primary'),
-        ],
-        style={ 'textAlign': 'left',
-                  'display': 'inline-block',
-                    'color': colors['plotly_blue']},),
+        ],),
 
     # Automatically refresh map to get up-to-date ride data
     dcc.Interval(
       id='interval-component',
       interval=5*1000, # in milliseconds
       n_intervals=0
-    ],
     ),
 
     # Page layout
