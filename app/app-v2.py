@@ -19,6 +19,7 @@ from datetime import datetime, timedelta
 import geocoder
 import time
 import json
+import base64
 
 
 # Choose colors
@@ -75,7 +76,7 @@ app.layout = html.Div(
     # Title
     # html.H1(" Ride-Share-Compare ", className='h1',
     #         style={ 'textAlign': 'center',},),
-    html.Img(src='data:image/png;base64,{}'.format(encoded_image))
+    html.Img(src='data:image/png;base64,{}'.format(encoded_image)),
 
     # Input field for address search
     html.Div(className='row', style={"margin-left": "10px", 'horizontal-align': 'center', 'vertical-align': 'center'}, children=[
