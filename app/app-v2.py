@@ -98,7 +98,7 @@ app.layout = html.Div(
             **Ride information**
         """, className="card-header"),
         html.Pre(id='click-data', className="card text-white bg-primary mb-3"),
-      ], style={'width': '23%', 'display': 'inline-block', 'vertical-align': 'top'}),
+      ], className="card text-white bg-primary mb-3", style={'width': '23%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
       html.Div(style={'width': '1%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
