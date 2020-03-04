@@ -99,7 +99,7 @@ app.layout = html.Div(
         dcc.Markdown("""
             **Ride information**
         """, className="card-header"),
-        html.Pre(id='click-data'}),
+        html.Pre(id='click-data'),
       ],  className="card text-white bg-primary mb-3", style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
       # Show the map
