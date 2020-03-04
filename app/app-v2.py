@@ -67,21 +67,20 @@ colors = { 'plotly_blue': '#119dff',
            'background': bkg
 }
 
-image_filename = '/static/ride-share-compare-logo.png'
+image_name = '/static/ride-share-compare-logo.png'
 
 # Define the layout
 app.layout = html.Div(
   [ 
-    # Title
-    # html.H1(" Ride-Share-Compare ", className='h1',
-    #         style={ 'textAlign': 'center',},),
-    html.Img(src=image_filename),
+    # Logo
+    html.Img(src=image_name, style={'vertical-align': 'center'}),
 
     # Input field for address search
     html.Div(className='row', style={"margin-left": "10px", 'horizontal-align': 'center', 'vertical-align': 'center'}, children=[
       html.B("Enter your pickup location:  "),
-
+        # Address input
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', className='form-inline', style={ 'textAlign': 'left', "margin-left": "10px", "margin-right": "10px"}),
+        # Geocode button
         html.Button('Update', id='button', className='btn btn-primary'),
         ],),
 
