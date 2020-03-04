@@ -15,7 +15,13 @@ cd $SCRIPT_DIR"/../Kafka/RideShareProducer/target/"
 nohup java -jar RideShareProducerV4.jar "/home/$USER/nyc-taxi-rideshare/trip_data/yellow_tripdata_2015-06.csv" 2>&1 > "$LOG_DIR/RideShareProducerV4.log" & echo "$!" >> $PID_FILE
 echo "Producer 1 running with PID $!"
 
+nohup java -jar RideShareProducerV5.jar "/home/$USER/nyc-taxi-rideshare/trip_data/yellow_tripdata_2017-06.csv" 2>&1 > "$LOG_DIR/RideShareProducerV5.log" & echo "$!" >> $PID_FILE
+echo "Producer 1 running with PID $!"
+
 nohup java -jar RideShareProducerV4.jar "/home/$USER/nyc-taxi-rideshare/trip_data/green_tripdata_2015-06.csv" 2>&1 > "$LOG_DIR/RideShareProducerV4.log" & echo "$!" >> $PID_FILE
+echo "Producer 2 running with PID $!"
+
+nohup java -jar RideShareProducerV5.jar "/home/$USER/nyc-taxi-rideshare/trip_data/green_tripdata_2017-06.csv" 2>&1 > "$LOG_DIR/RideShareProducerV5.log" & echo "$!" >> $PID_FILE
 echo "Producer 2 running with PID $!"
 
 nohup java -jar BikeShareProducerV1.jar "/home/$USER/nyc-taxi-rideshare/schema_evolution_data/201909-citibike-tripdata.csv" > "$LOG_DIR/BikeShareProducerV1.log" 2>&1 & echo "$!" >> $PID_FILE
@@ -28,6 +34,9 @@ cd $SCRIPT_DIR"/../Kafka/RideShareStreamer/target/"
 nohup java -jar "RideShareStreamerV4.jar" > "$LOG_DIR/RideShareStreamerV4.log" 2>&1 & echo "$!" >> $PID_FILE
 echo "Streamer 1 running with PID $!"
 
+nohup java -jar "RideShareStreamerV5.jar" > "$LOG_DIR/RideShareStreamerV5.log" 2>&1 & echo "$!" >> $PID_FILE
+echo "Streamer 1 running with PID $!"
+
 nohup java -jar "BikeShareStreamerV1.jar" > "$LOG_DIR/BikeShareStreamerV1.log" 2>&1 & echo "$!" >> $PID_FILE
 echo "Streamer 2 running with PID $!"
 
@@ -36,6 +45,9 @@ echo "Streamer 2 running with PID $!"
 cd $SCRIPT_DIR"/../Kafka/RideShareConsumer/target/"
 
 nohup java -jar "RideShareConsumerV4.jar" > "$LOG_DIR/RideShareConsumerV4.log" 2>&1 & echo "$!" >> $PID_FILE
+echo "Consumer 1 running with PID $!"
+
+nohup java -jar "RideShareConsumerV5.jar" > "$LOG_DIR/RideShareConsumerV5.log" 2>&1 & echo "$!" >> $PID_FILE
 echo "Consumer 1 running with PID $!"
 
 nohup java -jar "BikeShareConsumerV1.jar" > "$LOG_DIR/BikeShareConsumerV1.log" 2>&1 & echo "$!" >> $PID_FILE
