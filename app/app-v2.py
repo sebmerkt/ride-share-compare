@@ -183,8 +183,8 @@ def make_figure(n_interval, n_clicks, input_value):
     # Define number of rides found and a multiplication factor to extend search radius if necessary
     lendf=0
     largest_distance=0
-
-    # Save time window between now and window start
+    # If no rides found, extend radius and keep looking
+  
     now = datetime.utcnow()
     some_time_ago = now - timedelta(hours=0, minutes=0, seconds=20)
 
@@ -216,7 +216,8 @@ def make_figure(n_interval, n_clicks, input_value):
       zoomlevel = 10
     else:
       zoomlevel = 9
-      
+    print("HERE")
+    
     # Import mapbox token
     px.set_mapbox_access_token(token)
 
@@ -241,133 +242,135 @@ def make_figure(n_interval, n_clicks, input_value):
     df_loc=df_lyft_new.append(df_uber_new)
     rides_per_loc=df_loc.groupby("dolocationid")["dolocationid"].transform("count")
 
-    if lendf>0:
-      # Define color scale for the ride locations IDs
-      if len(rides_per_loc.unique())>1:
-        color_range=['rgba(%s,%s,%s,0.3)'%(int(i/max(rides_per_loc)*200), int(i/max(rides_per_loc)*255), int(100+i/max(rides_per_loc)*155)) for i in list(reversed(sorted(rides_per_loc.unique())))]
-      else:
-        color_range=['rgba(200,255,255,0.3)','rgba(100,127,177,0.3)']
 
-      # Define the data
-      data = [
-        go.Choroplethmapbox(geojson=city_locations, colorscale=color_range,
-                            z=rides_per_loc,
-                            locations=df_loc.dolocationid, featureidkey="properties.LocationID",
-                            hovertemplate = ['%s rides in neighborhood'%i if i>1 else '%s ride in neighborhood'%i for i in rides_per_loc],
-                            text=["Rides"],
-                            name='',
-                            showscale=False,
-                            ),
-
-        go.Scattermapbox(
-        lat=lats_citibike,
-        lon=lons_citibike,
-        mode='markers', name='Citi Bike', 
-        marker={'color': colors['CitiBike'], 'size': 12, 'symbol': "bicycle"},
-        line_color="lightskyblue",
-        hovertemplate = ['Citi Bike' for i in range(len(lons_citibike))],
-        customdata=citibike_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
-        text=["Citi Bike"],
-        # showlegend=False,
-        ), 
-
-        go.Scattermapbox(
-        lat=lats_uber,
-        lon=lons_uber,
-        mode='markers', name='Uber', 
-        marker=go.scattermapbox.Marker(
-              size=11,
-              color=colors['Uber'],
-              opacity=1
-          ),
-        hovertemplate = ['Uber' for i in range(len(lons_uber))],
-        customdata=uber_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
-        text=["Uber"],
-        # showlegend=False,
-        ), 
-
-        go.Scattermapbox(
-        lat=lats_lyft,
-        lon=lons_lyft,
-        mode='markers', name='Lyft', 
-        marker=go.scattermapbox.Marker(
-              size=11,
-              color=colors['Lyft'],
-              opacity=1
-          ),
-        hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
-        customdata=lyft_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
-        text=["Lyft"],
-        # showlegend=False,
-        ),
-
-        go.Scattermapbox(
-        lat=[lat],
-        lon=[lon],
-        mode='markers', name='You are here', 
-        marker=go.scattermapbox.Marker(
-              size=11,
-              color=colors['UserLocation'],
-              opacity=1
-          ),
-        hovertemplate = [input_value],
-        # showlegend=False,
-        ),
-
-      ]
-    else:
-      data = [
-        go.Scattermapbox(
-        lat=[lat],
-        lon=[lon],
-        mode='markers', name='You are here', 
-        marker=go.scattermapbox.Marker(
-              size=11,
-              color=colors['UserLocation'],
-              opacity=1
-          ),
-        hovertemplate = [input_value],
-        # showlegend=False,
-        ),
-
-      ]
-    
-    # Define map layout
-    layout = go.Layout(
-      autosize=True,
-      # width=1000,
-      height=800, 
-      # Center around user position
-      mapbox=dict( accesstoken=token,
-                   center=dict( lat=lat, lon=lon ),
-                   zoom=zoomlevel,
-                  #  style=os.getenv("MAPBOX_STYLE") ),
-                  #  style="streets" ),
-                   style=map_mode ),
-      margin=dict(
-          l=5,
-          r=5,
-          b=5,
-          t=5
-        ),
-      clickmode='event',
-      hovermode='closest',
-      paper_bgcolor='rgba(0,0,0,0)',
-      plot_bgcolor='rgba(0,0,0,0)',
-      font=dict(
-        size=18,
-        color=colors['plotly_blue']
-    )
-    )
-
-    config={'displayModeBar': True}
-
-    # Return the map
-    fig = go.Figure( data, layout)
-    return fig
   except:
     # If fetching data failed, do nothing
     pass
+
+  if lendf>0:
+    # Define color scale for the ride locations IDs
+    if len(rides_per_loc.unique())>1:
+      color_range=['rgba(%s,%s,%s,0.3)'%(int(i/max(rides_per_loc)*200), int(i/max(rides_per_loc)*255), int(100+i/max(rides_per_loc)*155)) for i in list(reversed(sorted(rides_per_loc.unique())))]
+    else:
+      color_range=['rgba(200,255,255,0.3)','rgba(100,127,177,0.3)']
+
+    # Define the data
+    data = [
+      go.Choroplethmapbox(geojson=city_locations, colorscale=color_range,
+                          z=rides_per_loc,
+                          locations=df_loc.dolocationid, featureidkey="properties.LocationID",
+                          hovertemplate = ['%s rides in neighborhood'%i if i>1 else '%s ride in neighborhood'%i for i in rides_per_loc],
+                          text=["Rides"],
+                          name='',
+                          showscale=False,
+                          ),
+
+      go.Scattermapbox(
+      lat=lats_citibike,
+      lon=lons_citibike,
+      mode='markers', name='Citi Bike', 
+      marker={'color': colors['CitiBike'], 'size': 12, 'symbol': "bicycle"},
+      line_color="lightskyblue",
+      hovertemplate = ['Citi Bike' for i in range(len(lons_citibike))],
+      customdata=citibike_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
+      text=["Citi Bike"],
+      # showlegend=False,
+      ), 
+
+      go.Scattermapbox(
+      lat=lats_uber,
+      lon=lons_uber,
+      mode='markers', name='Uber', 
+      marker=go.scattermapbox.Marker(
+            size=11,
+            color=colors['Uber'],
+            opacity=1
+        ),
+      hovertemplate = ['Uber' for i in range(len(lons_uber))],
+      customdata=uber_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
+      text=["Uber"],
+      # showlegend=False,
+      ), 
+
+      go.Scattermapbox(
+      lat=lats_lyft,
+      lon=lons_lyft,
+      mode='markers', name='Lyft', 
+      marker=go.scattermapbox.Marker(
+            size=11,
+            color=colors['Lyft'],
+            opacity=1
+        ),
+      hovertemplate = ['Lyft' for i in range(len(lons_lyft))],
+      customdata=lyft_data[["total_amt", "trip_distance", "st_distance", "vendor_name"]],
+      text=["Lyft"],
+      # showlegend=False,
+      ),
+
+      go.Scattermapbox(
+      lat=[lat],
+      lon=[lon],
+      mode='markers', name='You are here', 
+      marker=go.scattermapbox.Marker(
+            size=11,
+            color=colors['UserLocation'],
+            opacity=1
+        ),
+      hovertemplate = [input_value],
+      # showlegend=False,
+      ),
+
+    ]
+  else:
+    data = [
+      go.Scattermapbox(
+      lat=[lat],
+      lon=[lon],
+      mode='markers', name='You are here', 
+      marker=go.scattermapbox.Marker(
+            size=11,
+            color=colors['UserLocation'],
+            opacity=1
+        ),
+      hovertemplate = [input_value],
+      # showlegend=False,
+      ),
+
+    ]
+  
+  # Define map layout
+  layout = go.Layout(
+    autosize=True,
+    # width=1000,
+    height=800, 
+    # Center around user position
+    mapbox=dict( accesstoken=token,
+                  center=dict( lat=lat, lon=lon ),
+                  zoom=zoomlevel,
+                #  style=os.getenv("MAPBOX_STYLE") ),
+                #  style="streets" ),
+                  style=map_mode ),
+    margin=dict(
+        l=5,
+        r=5,
+        b=5,
+        t=5
+      ),
+    clickmode='event',
+    hovermode='closest',
+    paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)',
+    font=dict(
+      size=18,
+      color=colors['plotly_blue']
+  )
+  )
+
+  config={'displayModeBar': True}
+
+  # Return the map
+  fig = go.Figure( data, layout)
+  return fig
 
   
 
