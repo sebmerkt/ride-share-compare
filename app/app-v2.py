@@ -359,7 +359,7 @@ def make_figure(n_interval, n_clicks, input_value):
     plot_bgcolor='rgba(0,0,0,0)',
     font=dict(
       size=18,
-      # color=colors['plotly_blue']
+      color="#ffffff"
   )
   )
 
