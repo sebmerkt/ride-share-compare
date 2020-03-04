@@ -77,7 +77,7 @@ app.layout = html.Div(
 
     # Input field for address search
     html.Div(className='row', style={"margin-left": "10px", 'horizontal-align': 'center', 'vertical-align': 'center'}, children=[
-      html.B("Enter your pickup location:  ", style={'vertical-align': 'center', 'horizontal-align': 'center'}),
+      html.B("Enter your pickup location:  "),
         # Address input
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', className='form-inline', style={ 'textAlign': 'left', "margin-left": "10px", "margin-right": "10px"}),
         # Geocode button
@@ -339,7 +339,7 @@ def make_figure(n_interval, n_clicks, input_value):
   layout = go.Layout(
     autosize=True,
     # width=1000,
-    height=800, 
+    height=700, 
     # Center around user position
     mapbox=dict( accesstoken=token,
                   center=dict( lat=lat, lon=lon ),
