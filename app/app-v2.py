@@ -247,6 +247,7 @@ def make_figure(n_interval, n_clicks, input_value):
     df_loc=df_lyft_new.append(df_uber_new)
     rides_per_loc=df_loc.groupby("dolocationid")["dolocationid"].transform("count")
 
+    print("HERE")
     if lendf>0:
       # Define color scale for the ride locations IDs
       if len(rides_per_loc.unique())>1:
