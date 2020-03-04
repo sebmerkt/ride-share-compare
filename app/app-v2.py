@@ -92,7 +92,7 @@ app.layout = html.Div(
     ),
 
     # Page layout
-    html.Div(className='card text-white bg-primary mb-3', children=[
+    html.Div(className='row', children=[
 
       # Information about individual rides
       html.Div([
@@ -100,7 +100,7 @@ app.layout = html.Div(
             **Ride information**
         """, className="card-header"),
         html.Pre(id='click-data', style={'color': colors['plotly_blue']}),
-      ],  style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top'}),
+      ],  className="card text-white bg-primary mb-3", style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
       # Show the map
       html.Div([
