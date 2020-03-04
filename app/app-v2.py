@@ -67,8 +67,7 @@ colors = { 'plotly_blue': '#119dff',
            'background': bkg
 }
 
-image_filename = 'ride-share-compare-logo.png'
-encoded_image = base64.b64encode(open(image_filename, 'rb').read())
+image_filename = '/static/ride-share-compare-logo.png'
 
 # Define the layout
 app.layout = html.Div(
@@ -76,7 +75,7 @@ app.layout = html.Div(
     # Title
     # html.H1(" Ride-Share-Compare ", className='h1',
     #         style={ 'textAlign': 'center',},),
-    html.Img(src='data:image/png;base64,{}'.format(encoded_image)),
+    html.Img(src=image_filename),
 
     # Input field for address search
     html.Div(className='row', style={"margin-left": "10px", 'horizontal-align': 'center', 'vertical-align': 'center'}, children=[
