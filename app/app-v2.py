@@ -81,6 +81,7 @@ app.layout = html.Div(
         html.Button('Update', id='button', className='btn btn-primary'),
         ],
         style={ 'textAlign': 'left',
+                  'display': 'inline-block',
                     'color': colors['plotly_blue']},),
 
     # Automatically refresh map to get up-to-date ride data
