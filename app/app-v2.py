@@ -21,6 +21,20 @@ import time
 import json
 
 
+# Choose colors
+dark_mode=False
+
+if dark_mode:
+  bkg = '#333432'
+else:
+  bkg = '#e6e6e6'
+
+if dark_mode:
+  map_mode = "dark"
+else:
+  map_mode="light"
+
+
 # Import taxi zones
 with open('./taxi_zones.geojson') as zones:
     city_locations = json.load(zones)
@@ -49,8 +63,9 @@ colors = { 'plotly_blue': '#119dff',
            'Lyft': 'Magenta',
            'Uber': 'white',
            'CitiBike': '#0066ff',
-           'background': '#e6e6e6' # dark: #333432
+           'background': bkg
 }
+
 
 # Define the layout
 app.layout = html.Div(
@@ -334,7 +349,7 @@ def make_figure(n_interval, n_clicks, input_value):
                    zoom=zoomlevel,
                   #  style=os.getenv("MAPBOX_STYLE") ),
                   #  style="streets" ),
-                   style="dark" ),
+                   style=map_mode ),
       margin=dict(
           l=5,
           r=5,
