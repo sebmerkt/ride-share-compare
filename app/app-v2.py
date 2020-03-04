@@ -346,10 +346,10 @@ def make_figure(n_interval, n_clicks, input_value):
                 #  style="streets" ),
                   style=map_mode ),
     margin=dict(
-        l=5,
-        r=5,
-        b=5,
-        t=5
+        l=0,
+        r=0,
+        b=0,
+        t=0
       ),
     clickmode='event',
     hovermode='closest',
