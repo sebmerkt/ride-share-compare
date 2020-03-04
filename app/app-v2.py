@@ -75,7 +75,7 @@ app.layout = html.Div(
             style={ 'textAlign': 'center',},),
 
     # Input field for address search
-    html.Div(className='row', style={"margin-left": "10px", 'horizontal-align': 'center'}, children=[
+    html.Div(className='row', style={"margin-left": "10px", 'horizontal-align': 'center', 'vertical-align': 'center'}, children=[
       html.B("Enter your pickup location:  "),
 
         dcc.Input(id='my-id', value='11 Wall Street, New York', type='text', className='form-inline', style={ 'textAlign': 'left', "margin-left": "10px", "margin-right": "10px"}),
