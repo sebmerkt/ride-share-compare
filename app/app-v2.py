@@ -98,12 +98,12 @@ app.layout = html.Div(
             **Ride information**
         """, className="card-header"),
         html.Pre(id='click-data'),
-      ],  className="card text-white bg-primary mb-3", style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top', "margin-right": "10px"}),
+      ],  className="card text-white bg-primary mb-3", style={'width': '20%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
       # Show the map
       html.Div([
         dcc.Graph(id="graph", config={'displayModeBar': False}, style={"width": "100%", "display": "inline-block"}),
-      ], className="card text-white bg-primary mb-3", style={'width': '75%', 'display': 'inline-block'}),
+      ], className="card text-white bg-primary mb-3", style={'width': '70%', 'display': 'inline-block'}),
     ],
     ),
   ],
