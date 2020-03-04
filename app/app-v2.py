@@ -183,44 +183,39 @@ def make_figure(n_interval, n_clicks, input_value):
     # Define number of rides found and a multiplication factor to extend search radius if necessary
     lendf=0
     largest_distance=0
-    # If no rides found, extend radius and keep looking
-    while( lendf==0):
-      # Save time window between now and window start
-      now = datetime.utcnow()
-      some_time_ago = now - timedelta(hours=0, minutes=0, seconds=20)
 
-      # Static query for testing
-      # create_table_query = '''SELECT vendor_name, total_amt, trip_distance, end_lon, end_lat, dolocationid, ST_Distance(geom_end::geography, 'SRID=4326;POINT( %s %s )'::geography)
-      # FROM ride_share_data ORDER BY ST_Distance(geom_end::geography, 'SRID=4326;POINT( %s %s )'::geography) ASC FETCH FIRST 10 ROWS ONLY;'''%(lon, lat, lon, lat)
+    # Save time window between now and window start
+    now = datetime.utcnow()
+    some_time_ago = now - timedelta(hours=0, minutes=0, seconds=20)
 
-      # Streaming query
-      create_table_query = '''SELECT vendor_name, total_amt, trip_distance, end_lon, end_lat, dolocationid, ST_Distance(geom_end::geography, 'SRID=4326;POINT( %s %s )'::geography)
-      FROM ride_share_data  WHERE Process_time < '%s' AND Process_time > '%s' ORDER BY ST_Distance(geom_end::geography, 'SRID=4326;POINT( %s %s )'::geography) ASC FETCH FIRST 15 ROWS ONLY;'''%(lon, lat, now, some_time_ago, lon, lat)
+    # Static query for testing
+    # create_table_query = '''SELECT vendor_name, total_amt, trip_distance, end_lon, end_lat, dolocationid, ST_Distance(geom_end::geography, 'SRID=4326;POINT( %s %s )'::geography)
+    # FROM ride_share_data ORDER BY ST_Distance(geom_end::geography, 'SRID=4326;POINT( %s %s )'::geography) ASC FETCH FIRST 10 ROWS ONLY;'''%(lon, lat, lon, lat)
 
-      # fetch data from PostGIS and save in pandas dataframe
-      df = pd.read_sql_query(create_table_query, connection)
+    # Streaming query
+    create_table_query = '''SELECT vendor_name, total_amt, trip_distance, end_lon, end_lat, dolocationid, ST_Distance(geom_end::geography, 'SRID=4326;POINT( %s %s )'::geography)
+    FROM ride_share_data  WHERE Process_time < '%s' AND Process_time > '%s' ORDER BY ST_Distance(geom_end::geography, 'SRID=4326;POINT( %s %s )'::geography) ASC FETCH FIRST 15 ROWS ONLY;'''%(lon, lat, now, some_time_ago, lon, lat)
 
-      largest_distance=df.st_distance.max()
-      
-      # Save number of rides found
-      lendf=len(df)
-      # Adjust zoom level to distance of the rides to the user location
-      if largest_distance<=1200:
-        zoomlevel = 14
-      elif largest_distance<=2000 and largest_distance>1200:
-        zoomlevel = 13
-      elif largest_distance<=10000 and largest_distance>2000:
-        zoomlevel = 12
-      elif largest_distance<=15000 and largest_distance>10000:
-        zoomlevel = 11
-      elif largest_distance<=20000 and largest_distance>15000:
-        zoomlevel = 10
-      else:
-        zoomlevel = 9
-      print("HERE")
-      # if largest_distance==0:
-      #   zoomlevel = 14
-        # df=pd.DataFrame(columns=["vendor_name", "total_amt", "trip_distance", "end_lon", "end_lat", "dolocationid", "st_distance"])
+    # fetch data from PostGIS and save in pandas dataframe
+    df = pd.read_sql_query(create_table_query, connection)
+
+    largest_distance=df.st_distance.max()
+    
+    # Save number of rides found
+    lendf=len(df)
+    # Adjust zoom level to distance of the rides to the user location
+    if largest_distance<=1200:
+      zoomlevel = 14
+    elif largest_distance<=2000 and largest_distance>1200:
+      zoomlevel = 13
+    elif largest_distance<=10000 and largest_distance>2000:
+      zoomlevel = 12
+    elif largest_distance<=15000 and largest_distance>10000:
+      zoomlevel = 11
+    elif largest_distance<=20000 and largest_distance>15000:
+      zoomlevel = 10
+    else:
+      zoomlevel = 9
       
     # Import mapbox token
     px.set_mapbox_access_token(token)
