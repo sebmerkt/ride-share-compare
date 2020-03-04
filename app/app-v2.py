@@ -92,13 +92,11 @@ app.layout = html.Div(
     ),
 
     # Page layout
-    html.Div(className='row', children=[
+    html.Div(className='card text-white bg-primary mb-3', children=[
 
       # Information about individual rides
       html.Div([
-        dcc.Markdown("""
-            **Ride information**
-        """),
+        dcc.Div(text="Ride information", className="card-header"),
         html.Pre(id='click-data', style={'color': colors['plotly_blue']}),
       ],  style={'width': '25%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
