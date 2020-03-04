@@ -100,12 +100,12 @@ app.layout = html.Div(
         html.Pre(id='click-data'),
       ],  className="card text-white bg-primary mb-3", style={'width': '23%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
-      html.Div(style={'width': '2%', 'display': 'inline-block', 'vertical-align': 'top'}),
+      html.Div(style={'width': '1%', 'display': 'inline-block', 'vertical-align': 'top'}),
 
       # Show the map
       html.Div([
-        dcc.Graph(id="graph", config={'displayModeBar': False}, style={"width": "100%", "display": "inline-block"}),
-      ], className="card text-white bg-primary mb-3", style={'width': '73%', 'display': 'inline-block'}),
+        dcc.Graph(id="graph", className='card text-white bg-secondary mb-3', config={'displayModeBar': False}, style={"width": "100%", "display": "inline-block"}),
+      ], className="card text-white bg-primary mb-3", style={'width': '72%', 'display': 'inline-block'}),
     ],
     ),
   ],
