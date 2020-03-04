@@ -90,7 +90,7 @@ app.layout = html.Div(
     ),
 
     # Page layout
-    html.Div(className='row', style={"margin-top": "10px", 'horizontal-align': 'center'}, children=[
+    html.Div(className='row', style={"margin-top": "10px", "margin-left": "10px", 'horizontal-align': 'center'}, children=[
 
       # Information about individual rides
       html.Div([
