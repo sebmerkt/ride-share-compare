@@ -69,7 +69,7 @@ Run the Dash application
 
 ## Introduction
 
-Ride-share providers like Lyft and Uber are getting more and more popular. As their popularity increases, so does the number of available ride-share providers. Ride-share users want to be able to compare different providers according to their current needs. Whether they need their ride to arrive fast or be cheap, Ride-Share-Compare will give users all the information to make an informed choice. 
+Ride-share providers like Lyft and Uber are getting more and more popular. As the market grows, more ride-share and mobility providers join the trend. Ride-share users want to be able to compare different providers according to their current needs. Whether they need their ride to arrive fast or be cheap, Ride-Share-Compare will give users all the information to make an informed choice. 
 
 ![User interface](/images/application.png "Application")
 
