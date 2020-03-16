@@ -69,7 +69,7 @@ Run the Dash application
 
 ## Introduction
 
-Ride-share providers like Lyft and Uber are getting more and more popular. As the market grows, more ride-share and mobility providers join this trend. Ride-share users want to be able to compare different providers according to their current needs. Whether they need their ride to arrive fast or be cheap, Ride-Share-Compare will give users all the information to make an informed choice. 
+Ride-share providers like Lyft and Uber are getting more and more popular. As the market grows, more ride-share and mobility providers join this trend. Ride-share users want to be able to compare different providers according to their current needs without checking every providers application. Whether they need their ride to arrive fast or be cheap, Ride-Share-Compare will give users all the information to make an informed decision. 
 
 ![User interface](/images/application.png "Application")
 
@@ -95,7 +95,7 @@ The Plotly Dash web application is hosted on another EC2 node. Dash was chosen s
 Real-time ride-share data is not easily available. Therefore, the New York City taxi dataset is used. The dataset is published by the [NYC Taxi and Limousine Commission (TLC)](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 Using a pre-existing dataset instead of real-time data also allows for the simulation of an evolving schema. 
 
-In addition, Citi Bike data is used. The data is published by [Citi Bike](https://www.citibikenyc.com/system-data)
+In addition, Citi Bike data is used. The data is published by [Citi Bike](https://www.citibikenyc.com/system-data).
 
 
 ## Engineering challenges
@@ -105,7 +105,7 @@ The ride-share data evolves over time. New versions of the Kafka applications ac
 
 ## Trade-offs
 
-Trade-off had to be made in storing the incoming data. One PostGIS database is used for storing the data. This is sufficient for stroring the amount of data coming in in this test version. For an increasing number of ride-share providers as well as when including locations other than just New York City the database will not be able to handle the input. In this case the data should not be put in a SQL database like PostGIS for permanent storage, but rather saved in a NoSQL database. The incoming data should then be processed directly for usage in the web app.
+Trade-off had to be made in storing the incoming data. One PostGIS database is used for storing the data. This is sufficient for storing the amount of incoming data in this test version. For an increasing number of ride-share providers as well as when including locations other than just New York City the database will not be able to handle the input. In this case the data should not be put in a SQL database like PostGIS for permanent storage, but rather saved in a NoSQL database. The incoming data should then be processed directly for usage in the web app.
 
 
 ## Rolling deployment
