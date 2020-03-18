@@ -1,7 +1,7 @@
 FROM maven:3.6.1-jdk-11-slim AS build
 
 ARG user=ubuntu
-ENV user=user
+#ENV user=user
 WORKDIR /home/$user/producer
 
 # Fetch all dependencies
