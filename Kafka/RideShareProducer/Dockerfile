@@ -6,7 +6,7 @@ WORKDIR /home/$user/producer
 
 # Fetch all dependencies
 COPY pom.xml .
-RUN mvn verify -DskipTests --fail-never
+RUN mvn verify -DskipTests -Dgit.skip --fail-never
 
 # Build application
 COPY src ./src
