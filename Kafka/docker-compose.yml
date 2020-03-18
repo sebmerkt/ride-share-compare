@@ -1,0 +1,20 @@
+version: "3"
+services:
+  consumer:
+    build: consumer
+    image: kafka-consumer/consumer:latest
+    environment:
+      - "SPRING_PROFILES_ACTIVE=${ACTIVE_PROFILE}"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - kafka
+  producer:
+    build: producer
+    image: kafka-producer/producer:latest
+    environment:
+      - "SPRING_PROFILES_ACTIVE=${ACTIVE_PROFILE}"
+    ports:
+      - "8082:8082"
+    depends_on:
+      - kafka
