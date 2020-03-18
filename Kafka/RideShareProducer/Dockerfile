@@ -1,6 +1,8 @@
 FROM maven:3.6.1-jdk-11-slim AS build
 
-WORKDIR /home/$USER/producer
+ARG user=ubuntu
+ENV user=user
+WORKDIR /home/$user/producer
 
 # Fetch all dependencies
 COPY pom.xml .
@@ -14,4 +16,4 @@ FROM azul/zulu-openjdk-alpine:11.0.3-jre
 ENTRYPOINT ["java", "-jar", "/app/RideShareProducerV1.jar"]
 
 WORKDIR /app
-COPY --from=build /home/$USER/producer/target .
+COPY --from=build /home/$user/producer/target .
