@@ -1,17 +1,17 @@
-FROM openjdk:8-jdk-alpine
+FROM maven:3.6.1-jdk-11-slim AS build
 
-ARG JAR_FILE=target/RideShareProducerV1.jar
-ARG JAR_LIB_FILE=target/lib/
+WORKDIR /home/producer
 
-# cd /usr/local/runme
-WORKDIR /usr/local/runme
+# Fetch all dependencies
+COPY pom.xml .
+RUN mvn verify -DskipTests --fail-never
 
-# copy target/RideShareProducerV1.jar /usr/local/runme/RideShareProducerV1.jar
-COPY ${JAR_FILE} RideShareProducerV1.jar
+# Build application
+COPY src ./src
+RUN mvn verify
 
-# copy project dependencies
-# cp -rf target/lib/  /usr/local/runme/lib
-ADD ${JAR_LIB_FILE} lib/
+FROM azul/zulu-openjdk-alpine:11.0.3-jre
+ENTRYPOINT ["java", "-jar", "/app/RideShareProducerV1.jar"]
 
-# java -jar /usr/local/runme/app.jar
-ENTRYPOINT ["java","-jar","RideShareProducerV1.jar"]
+WORKDIR /app
+COPY --from=build /home/producer/target .
