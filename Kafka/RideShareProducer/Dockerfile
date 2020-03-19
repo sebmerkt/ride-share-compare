@@ -1,4 +1,4 @@
-FROM maven:3.6.1-jdk-8-openj9 AS build
+FROM maven:3.6.3-jdk-11-openj9 AS build
 
 ARG user=ubuntu
 #ENV user=user
