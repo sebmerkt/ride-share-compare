@@ -1,4 +1,4 @@
-FROM maven:3.6.1-jdk-11-slim AS build
+FROM circleci/openjdk:8-jdk AS build
 
 ARG user=ubuntu
 #ENV user=user
