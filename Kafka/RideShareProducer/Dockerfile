@@ -1,4 +1,4 @@
-FROM circleci/openjdk:8-jdk AS build
+FROM maven:3.6.1-jdk-8-openj9 AS build
 
 ARG user=ubuntu
 #ENV user=user
@@ -6,7 +6,7 @@ WORKDIR /home/$user/ride-share-compare/Kafka/RideShareProducer
 
 # Fetch all dependencies
 COPY pom.xml .
-RUN mvn verify -DskipTests -Dgit.skip=true --fail-never
+RUN mvn verify -DskipTests --fail-never
 
 # Build application
 COPY src ./src
