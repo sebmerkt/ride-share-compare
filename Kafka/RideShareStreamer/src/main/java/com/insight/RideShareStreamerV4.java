@@ -25,8 +25,8 @@ public class RideShareStreamerV4 extends RideShareStreamerBase {
         rideShareStreamer.processStream();
     }
 
-    @Override
-    GenericRecord processMessage(GenericRecord val) throws JSONException {
+
+    static GenericRecord processMessage(GenericRecord val) throws JSONException {
         // Newer schema have integer codes: 1= Creative Mobile Technologies (CMT), LLC; 2= VeriFone Inc. (VTS)
         if ( val.get("vendor_name") == "1" ) {
             val.put("vendor_name", String.valueOf("CMT"));

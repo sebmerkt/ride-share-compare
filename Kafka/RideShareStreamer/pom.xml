@@ -7,7 +7,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
       <groupId>io.confluent</groupId>
       <artifactId>rest-utils-parent</artifactId>
-      <version>5.4.0</version>
+      <version>5.4.1</version>
   </parent>
 
   <artifactId>ride-share-kafka</artifactId>
@@ -75,14 +75,24 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
       <version>${gson.version}</version>
     </dependency>
     <dependency>
-       <groupId>org.slf4j</groupId>
+       <groupId>org.slf4j</groupId>`
        <artifactId>slf4j-log4j12</artifactId>
      </dependency>
       <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
       <version>20090211</version>
-  </dependency>
+     </dependency>
+      <dependency>
+          <groupId>org.apache.kafka</groupId>
+          <artifactId>kafka-streams-test-utils</artifactId>
+          <version>${kafka.version}</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+      </dependency>
   </dependencies>
 
   <build>

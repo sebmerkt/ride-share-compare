@@ -31,8 +31,8 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
         rideShareStreamer.processStream();
     }
 
-    @Override
-    GenericRecord processMessage(GenericRecord val) throws JSONException, IOException {
+
+    static GenericRecord processMessage(GenericRecord val) throws JSONException, IOException {
         // Newer schema have integer codes: 1= Creative Mobile Technologies (CMT), LLC; 2= VeriFone Inc. (VTS)
         if ( val.get("vendor_name") == "1" ) {
             val.put("vendor_name", "CMT");
@@ -63,7 +63,7 @@ public class RideShareStreamerV5 extends RideShareStreamerBase {
         }
 
         // open file to translate between Location IDs and geographical coordinates
-        final InputStream inputStream = getClass().getResourceAsStream("taxi_zones.json");
+        final InputStream inputStream = RideShareStreamerV5.class.getResourceAsStream("taxi_zones.json");
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
         StringBuilder stringBuilder = new StringBuilder();
         String inputStr;

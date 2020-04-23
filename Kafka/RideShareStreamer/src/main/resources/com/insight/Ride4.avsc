@@ -1,0 +1,6 @@
+{"namespace": "com.insight",
+  "type": "record",
+  "name": "Ride4",
+  "fields": [
+    {"name": "vendor_name", "type": "string", "default": ""}]
+}

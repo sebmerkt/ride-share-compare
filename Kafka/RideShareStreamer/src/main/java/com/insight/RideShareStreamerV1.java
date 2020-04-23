@@ -23,8 +23,7 @@ public class RideShareStreamerV1 extends RideShareStreamerBase {
         rideShareStreamer.processStream();
     }
 
-    @Override
-    GenericRecord processMessage(GenericRecord val) {
+    static GenericRecord processMessage(GenericRecord val) {
         return val;
     }
 

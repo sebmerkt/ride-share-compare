@@ -19,6 +19,7 @@ import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
+import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.KStream;
 import org.json.JSONException;
 
@@ -34,27 +35,33 @@ public abstract class RideShareStreamerBase {
     void processStream() {
         StreamsConfig config = initConfig();
 
+        // start kafka streams.
+        KafkaStreams streams = new KafkaStreams(buildStream(TOPICIN, TOPICOUT), config);
+        streams.start();
+
+        // shutdown hook to correctly close the streams application
+        Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
+    }
+
+    static Topology buildStream( String topicin, String topiout ) {
         StreamsBuilder builder = new StreamsBuilder();
 
-        KStream<String, GenericRecord> rideStream = builder.stream(TOPICIN);
+        KStream<String, GenericRecord> rideStream = builder.stream(topicin);
 
         KStream<String, GenericRecord> processedStream = rideStream.mapValues(val -> {
             try {
                 return processMessage(val);
-            } catch (JSONException | IOException e) {
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
             return val;
         });
 
-        processedStream.to(TOPICOUT);
+        processedStream.to(topiout);
 
-        // start kafka streams.
-        KafkaStreams streams = new KafkaStreams(builder.build(), config);
-        streams.start();
-
-        // shutdown hook to correctly close the streams application
-        Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
+        return builder.build();
     }
 
     static StreamsConfig initConfig() {
@@ -81,6 +88,8 @@ public abstract class RideShareStreamerBase {
         return new StreamsConfig(props);
     }
 
-    abstract GenericRecord processMessage(GenericRecord val) throws JSONException, IOException;
+    static GenericRecord processMessage(GenericRecord val) throws JSONException, IOException {
+        return val;
+    }
 
 }
